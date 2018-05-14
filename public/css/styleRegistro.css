@@ -1,0 +1,134 @@
+body{
+		background-image:url(../img/fiatbosque.jpg);			
+		margin: 0;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 0;
+		background-attachment: fixed;
+		}
+		
+	#contenedorForm{
+		border:1px solid #ad3928;
+		margin: auto;
+		padding: 10px;
+		width: 700px;
+		height: auto;
+		background: #5bc0de;
+		box-shadow:5px 4px 43px #000;
+		margin-top: 100px;
+		margin-left: 15px;
+		margin-bottom: 2000px;
+		border-bottom: 100px;
+		background:rgba(0,0,0,.2);
+	}
+	
+	img{
+			display:block;
+			width: 110px;
+			margin:-75px auto 0 auto;
+		}
+		
+	#formRegistro b{
+		font-size:20px;
+		color:white;
+	}
+
+	#formRegistro ul{
+		list-style: none;
+		width: 750px;
+		margin: 0px;
+		padding: 10px;
+	}	
+	
+	#formRegistro li{
+		border-bottom: 1 solid #9293a0;
+		position: relative;
+		margin-bottom: 22px;
+	}
+	
+	#formRegistro label{
+		float: relative;
+		padding: 3px;
+		display: inline-block;
+		margin-top: 3px;
+		width: 150px;
+		color: white;
+	}
+	
+	#formRegistro input{
+		height: 30px;
+		width: 350px;
+		padding: 3px;
+		border: 1px solid #aaa;
+		box-shadow: 0 0 3px #ccc, 0 10px 15px #eee inset;
+		border-radius: 2px;
+		padding-right: 30px;
+	}
+	
+	#formRegistro li select{
+		height: 30px;
+		width: 150px;
+		padding: 3px;
+		border: 1px solid #aaa;
+		box-shadow: 0 0 3px #ccc, 0 10px 15px #eee inset;
+		border-radius: 2px;
+		padding-right: 30px;
+	}
+	
+	#formRegistro input:focus{
+		background: #fff;
+		border: 1px solid #555;
+		box-shadow: 0 0 3px #aaa;
+		padding-right: 70px;
+	}
+	
+	#formRegistro input:required, #formRegistro select:required {
+		background: #fff url(../img/advertencia.png) no-repeat 98% center;
+		padding-right: 70px;
+	}
+	
+	#formRegistro input:required:valid, #formRegistro select:required:valid {
+		background: #fff url(../img/valido.png) no-repeat 98% center;
+		box-shadow: 0 0 5px #5cd053;
+		border-color: #28921f;
+		padding-right: 70px;
+	}
+	
+	#formRegistro input:focus:invalid, #formRegistro select:focus:invalid {
+		background: #fff url(../img/invalido.png) no-repeat 98% center;
+		box-shadow: 0 0 5px #d45252;
+		border-color: #b03535;
+		padding-right: 70px;
+	}
+	
+	#formRegistro input:focus{
+		display: inline;
+	}
+	
+	#formRegistro input[type="submit"]:hover{
+			background:#33cc00;
+	}
+	
+	#formRegistro input[type="date"]{
+		height: 30px;
+		width: 180px;
+		padding: 4px;
+		border: 1px solid #aaa;
+		box-shadow: 0 0 3px #ccc, 0 10px 15px #eee inset;
+		border-radius: 2px;
+		padding-right: 30px;
+	}
+	
+	#formRegistro input[type="submit"]{
+		cursor:pointer;
+		padding: 5px;
+		font-size: 15px;
+		font-weight:700;
+		border:1px solid #ffffff;
+		width: 150px;
+		height: 40px;
+		margin-top: 20px;
+		margin-left: 250px;
+		background:red;
+		
+	}

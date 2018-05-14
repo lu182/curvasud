@@ -1,0 +1,4 @@
+
+Bienvenido {{$empleado->nombre }}</p>
+
+
