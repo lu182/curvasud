@@ -11,7 +11,7 @@ class PruebaController extends Controller
     public function saludar($nombre)
     {
 
-        $empleados= TipoEmpleado::with("empleados")->get();
+        $empleados= Empleado::with("tipo_empleado")->get();
         return $empleados;
 
     }
