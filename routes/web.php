@@ -12,11 +12,28 @@
 */
 
 Route::get('/', function () {
-    return view('prueba');
+    return view('home');
 });
+
+
+Route::get('/misturnos', function () {
+    return view('cliente.misturnos');
+})->name("misturnos");
 
 Route::resource("usuarios","ClientesEmpleadosControlador");
 
 Route::get("/saludar/{id}","PruebaController@saludar");
 
 Route::post("/saludar","PruebaController@post");
+
+Route::get('/escritorio', function () {
+    return view('loggeduser');
+})->name("escritorio");
+
+Route::get('/misdatos', function () {
+    return view('comunes.perfil');
+})->name("misdatos");
+
+Route::get('/mivehiculo', function () {
+    return view('cliente.vehiculo');
+})->name("mivehiculo");
