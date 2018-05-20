@@ -22,21 +22,23 @@ Route::get('/misturnos', function () {
 
 Route::resource("usuarios","ClientesEmpleadosControlador");
 
-Route::get("/saludar/{id}","PruebaController@saludar");
 
-Route::post("/saludar","PruebaController@post");
 
 Route::get('/escritorio', "usuariosController@escritorio")->name("escritorio");
+Route::get('/misdatos', "usuariosController@misdatos")->name("misdatos");
 
-Route::get('/misdatos', function () {
-    return view('comunes.perfil');
-})->name("misdatos");
 
-Route::get('/mivehiculo', function () {
-    return view('cliente.vehiculo');
-})->name("mivehiculo");
+
+Route::get('/mivehiculo', 'usuariosController@mivehiculo')->name("mivehiculo");
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('login', [
+    'as' => 'login',
+    'uses' => 'ClientesEmpleadosControlador@index'
+  ]);
+
+  
+Route::get('/home', 'usuariosController@escritorio')->name('home');

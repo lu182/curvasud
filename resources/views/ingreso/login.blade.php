@@ -26,7 +26,7 @@
 	<div class="container">
 
 		<div id="contenedor1">
-			<form action="" method="post" id="formlogin">
+			<form action="{{ route('login') }}" method="post" id="formlogin">
             @csrf
 
 				<img src="img/admin.png"/>
@@ -39,13 +39,13 @@
 				<!-- <div class="form-input" id="iconoEmail"> -->
 				<div id="iconoMail">
 					<img id="imgMail" src="img/email.png"/>
-					<input type="email" name="txtEmail" value="" placeholder="Email" id="inputMail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3}$" title="Incluye un signo @, por ejemplo: nombre@dominio.com" required />
+					<input type="email" name="email" value="" placeholder="Email" id="email" title="Incluye un signo @, por ejemplo: nombre@dominio.com" required />
 				</div>
 				
 				<div id="iconoPass">
 				
 					<img id="imgPass" src="img/password.png"/>
-					<input type="password" name="txtContra" value="" placeholder="Contraseña" id="" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Debe contener un minimo de 8 caracteres y al menos un número y una letra" required />
+					<input type="password" name="password" value="" placeholder="Contraseña" id="" title="Debe contener un minimo de 8 caracteres y al menos un número y una letra" required />
 				</div>
 				
 				<input type="submit" name="btnIngresar" value="INGRESAR" placeholder="" id="login" />

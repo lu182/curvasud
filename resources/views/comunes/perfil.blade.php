@@ -6,21 +6,21 @@
 <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Edit Profile</h4>
+                <h4 class="card-title">Editar mis datos</h4>
             </div>
             <div class="card-body">
                 <form>
                     <div class="row">
                         <div class="col-md-5 pr-1">
                             <div class="form-group">
-                                <label>Company (disabled)</label>
-                                <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
+                                <label>Nombre </label>
+                                <input type="text" class="form-control"  placeholder="" value=" {{ Auth::user()->name }}">
                             </div>
                         </div>
                         <div class="col-md-3 px-1">
                             <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                                <label>Email</label>
+                                <input type="text" class="form-control" placeholder="Username" value="{{ Auth::user()->email }}">
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
