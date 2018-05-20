@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('prueba');
 });
 
 
@@ -26,9 +26,7 @@ Route::get("/saludar/{id}","PruebaController@saludar");
 
 Route::post("/saludar","PruebaController@post");
 
-Route::get('/escritorio', function () {
-    return view('loggeduser');
-})->name("escritorio");
+Route::get('/escritorio', "usuariosController@escritorio")->name("escritorio");
 
 Route::get('/misdatos', function () {
     return view('comunes.perfil');
@@ -37,3 +35,8 @@ Route::get('/misdatos', function () {
 Route::get('/mivehiculo', function () {
     return view('cliente.vehiculo');
 })->name("mivehiculo");
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

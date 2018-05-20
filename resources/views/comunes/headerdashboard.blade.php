@@ -58,10 +58,21 @@
                         </li>
 
                     <li>
-                            <a class="nav-link" href="./user.html">
-                                <i class="nc-icon nc-tap-01"></i>
-                                <p>Cerrar Sesión</p>
-                            </a>
+                        
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                                    @csrf
+
+
+                                    <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+                                        <i class="nc-icon nc-tap-01"></i>
+                                        <p>Cerrar Sesión</p>
+                                    </a>
+
+
+                                </form>
+                        
+
+                           
                         </li>
                       
                   
@@ -73,6 +84,16 @@
                             <p>Solicitar Turno</p>
                         </a>
                     </li>
+
+
+                    
+<script>
+        document.getElementById("btnLogout").onclick = function() {myFunction()};
+        
+        function myFunction() {
+            document.getElementById("logout-form").submit();
+        }
+        </script>
 
                    
                 </ul>

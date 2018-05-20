@@ -63,16 +63,12 @@
 
                         
                         <div class="form-group row">
-                                @if ($errors->has('tipo_user_id'))
-                                <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('tipo_user_id') }}</strong>
-                                </span>
-                            @endif
-                            <label for="tipo_user_id" class="col-md-4 col-form-label text-md-right">{{ __('Elegir tipo de usuario') }}</label>
-                            <div class="col-md-6">
-                                <input id="tipo_user_id" type="text" class="form-control" name="tipo_user_id" required>
+                                <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Seleccione tipo de usuario') }}</label>
+    
+                                <div class="col-md-6">
+                                    <input id="tipo_user_id" type="number" class="form-control" name="tipo_user_id" required>
+                                </div>
                             </div>
-                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

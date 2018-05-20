@@ -8,7 +8,7 @@
                         <div class="col-md-12">
                             <div class="card ">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Bievenido {{$cliente->nombre }}</h4>
+                                    <h4 class="card-title">Bievenido {{ Auth::user()->name }}</h4>
                                     <p class="card-category">Gracias por elegir Curvasud</p>
                                 </div>
                                 <div class="card-body ">
