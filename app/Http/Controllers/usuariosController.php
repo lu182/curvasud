@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Vehiculo;
+use DB;
 
 class usuariosController extends Controller
 {
@@ -54,6 +57,28 @@ class usuariosController extends Controller
 
     }
 
+    public function registro_clientes_ver(){
+        $ciudades = DB::table("ciudades")->get();
+        $tipos_vehiculos = DB::table("tipos_vehiculos")->get();
+
+        return view("cliente.registro",["ciudades"=>$ciudades,"tipos_vehiculos"=>$tipos_vehiculos]);
+    }
+
+    public function registro_clientes_registrar(Request $request){
+
+       $usuario = User::create($request->all());
+       $usuario->password = bcrypt($usuario->password);
+       $usuario->tipo_user_id = 1;
+       $usuario->save();
+
+       $vehiculo = Vehiculo::create($request->all());
+       $vehiculo->id_cliente = $usuario->id;
+       $vehiculo->save();
+     //  return response(["usuario"=>$usuario,"vehiculo"=>$vehiculo]);
+
+       return view("prueba");
+
+    }
 
     
 }

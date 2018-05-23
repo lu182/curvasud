@@ -11,7 +11,7 @@ class Empleado extends Model
 
     protected $fillable = [
          'id_tipo_empleado', 'id_tipo_doc', 'usuario', 'pass', 'nombre', 'apellido',
-         'dni', 'cuil', 'domicilio', 'fecha_nac', 'telefono', 'email' 
+         'dni', 'cuil', 'domicilio', 'fecha_nac', 'telefono', 'email',
 
     ];
 

@@ -3,6 +3,14 @@
 
 @section("content")
 <div class="col-md-12">
+        @if (\Session::has('success'))
+        <div class="alert alert-success">
+            <ul>
+                <li>{!! \Session::get('success') !!}</li>
+            </ul>
+        </div>
+    @endif
+    
         <div class="card strpied-tabled-with-hover">
             <div class="card-header ">
                 <h4 class="card-title">Listado de Turnos</h4>
@@ -12,48 +20,23 @@
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
-                        <th>Name</th>
-                        <th>Salary</th>
-                        <th>Country</th>
-                        <th>City</th>
-                    </tr></thead>
+                            <th>Fecha  </th>
+                            <th>Hora</th>
+                            <th>Tipo</th>
+
+                        </tr>
+                    </thead>
                     <tbody>
+                        @foreach ($turnos as $turno)
                         <tr>
-                            <td>Dakota Rice</td>
-                            <td>$36,738</td>
-                            <td>Niger</td>
-                            <td>Oud-Turnhout</td>
-                        </tr>
-                        <tr>
-                            <td>Minerva Hooper</td>
-                            <td>$23,789</td>
-                            <td>Curaçao</td>
-                            <td>Sinaai-Waas</td>
-                        </tr>
-                        <tr>
-                            <td>Sage Rodriguez</td>
-                            <td>$56,142</td>
-                            <td>Netherlands</td>
-                            <td>Baileux</td>
-                        </tr>
-                        <tr>
-                            <td>Philip Chaney</td>
-                            <td>$38,735</td>
-                            <td>Korea, South</td>
-                            <td>Overland Park</td>
-                        </tr>
-                        <tr>
-                            <td>Doris Greene</td>
-                            <td>$63,542</td>
-                            <td>Malawi</td>
-                            <td>Feldkirchen in Kärnten</td>
-                        </tr>
-                        <tr>
-                            <td>Mason Porter</td>
-                            <td>$78,615</td>
-                            <td>Chile</td>
-                            <td>Gloucester</td>
-                        </tr>
+                                <td>{{$turno->fecha}}</td>
+                                <td>{{$turno->hora}}</td>
+                                <td>{{$turno->tipo->tipoServicio}}</td>
+
+                            </tr>
+                        @endforeach
+                     
+
                     </tbody>
                 </table>
             </div>

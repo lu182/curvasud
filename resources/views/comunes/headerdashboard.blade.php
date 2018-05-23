@@ -79,7 +79,7 @@
                    
                   
                     <li class="nav-item active active-pro">
-                        <a class="nav-link active" href="upgrade.html">
+                        <a class="nav-link active" href="{{route('turnero')}}">
                             <i class="nc-icon nc-alien-33"></i>
                             <p>Solicitar Turno</p>
                         </a>

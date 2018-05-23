@@ -26,9 +26,7 @@ Route::get('modelos', function () {
 })->name("modelos");
 
 
-Route::get('/misturnos', function () {
-    return view('cliente.misturnos');
-})->name("misturnos");
+Route::get('/misturnos',"TuneroController@verTurnos")->name("misturnos");
 
 Route::resource("usuarios","ClientesEmpleadosControlador");
 
@@ -51,4 +49,10 @@ Route::get('login', [
   
 Route::get('/home', 'usuariosController@escritorio')->name('home');
 
+Route::get('/registro_clientes', 'usuariosController@registro_clientes_ver')->name('registro_clientes');
 
+Route::post('/registro_clientes', 'usuariosController@registro_clientes_registrar')->name('registro_clientes');
+
+Route::get('/turnero', 'TuneroController@index')->name('turnero');
+Route::post('/turnero', 'TuneroController@registrar')->name('turnero');
+Route::post('/guardarTurno', 'TuneroController@guardarTurno')->name('guardarTurno');

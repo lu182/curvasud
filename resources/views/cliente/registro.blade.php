@@ -28,60 +28,54 @@
         @csrf
             <img src="img/registro.png"/>
             <b> REGISTRO DE CLIENTES </b>
+            @csrf
             <br>
             <br>
             <br>
             <ul> 
-                <li><label>Nombre de usuario:</label> <input type="text" name="txtUsuario" placeholder="Ingrese un nombre de usuario" id="" required /> </li>
-                <li><label>Email:</label> <input type="email" name="txtEmail" value="" placeholder="Ingrese su correo electrónico" id="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3}$" title="Incluye un signo @, por ejemplo: nombre@dominio.com" required /> </li>
-                <li><label>Contraseña:</label> <input type="password" name="txtContra" value="" placeholder="Ingrese una contraseña" id="" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Debe contener un minimo de 8 caracteres y al menos un número y una letra" required /> </li>
+                <li><label>Nombre de usuario:</label> <input type="text" name="name" placeholder="Ingrese un nombre de usuario" id="" required /> </li>
+                <li><label>Email:</label> <input type="email" name="email" value="" placeholder="Ingrese su correo electrónico" id="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3}$" title="Incluye un signo @, por ejemplo: nombre@dominio.com" required /> </li>
+                <li><label>Contraseña:</label> <input type="password" name="password" value="" placeholder="Ingrese una contraseña" id="" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Debe contener un minimo de 8 caracteres y al menos un número y una letra" required /> </li>
                 <li><label>Tipo de documento:</label>
-                    <select name="comboDni" id="comboDni" required>
-                        <option value="Dni" selected>DNI</option>
-                        <option value="Pasaporte">Pasaporte</option>
-                        <option value="Le">LE</option>				
+                    <select name="id_tipo_doc" id="comboDni" required>
+                        <option value="1" selected>DNI</option>
+                        <option value="2">Pasaporte</option>
+                        <option value="3">LE</option>				
                     </select>
                 </li>
-                <li><label>Dni:</label> <input type="number" name="txtDni" accept="number" value="" id="" maxlength="8" required> </li>
+                <li><label>Dni:</label> <input type="number" name="dni" accept="number" value="" id="" maxlength="8" required> </li>
                 <li><label>Ciudad/Localidad:</label>
-                    <select name="comboCiudades" id="comboCiudades" required>
-                        <option value="Cordoba" selected>Córdoba</option>
-                        <option value="Villa maria">Villa maria</option>
-                        <option value="Rio Cuarto">Rio Cuarto</option>
-                        <option value="Jesus Maria">Jesús Maria</option>
-                        <option value="Alta Gracia">Alta Gracia</option>
-                        <option value="Dean Funes">Dean Funes</option>
-                        <option value="La Falda">La Falda</option>
-                        <option value="Capilla Del Monte">Capilla Del Monte</option>
-                        <option value="Agua De Oro">Agua De Oro</option>
-                        <option value="Otro">Otro</option>
+                    <select name="id_ciudad" id="comboCiudades" required>
+                        @foreach ($ciudades as $ciudad)
+                        <option value="{{$ciudad->id_ciudad}}">{{$ciudad->ciudad}}</option>
+                        @endforeach
                     </select> 
                 </li>
-                <li><label>Nombre:</label> <input type="text" name="txtNombre" value="" id="" required> </li>
-                <li><label>Apellido:</label> <input type="text" name="txtApellido" value="" id="" required> </li>
-                <li><label>Fecha de nacimiento:</label> <input type="date" name="txtFechaNac" value="" id=""></li>
-                <li><label>Razón social:</label> <input type="text" name="txtRazon" value="" id="">  </li>
-                <li> <label>Domicilio:</label> <input type="text" name="txtDomicilio" value="" id=""> </li>
-                <li><label>Cód. Postal:</label> <input type="number" accept="number" name="txtCodPostal" value="" id=""> </li>
-                <li><label>Teléfono:</label> <input type="text" name="txtTel" value="" id="" required> </li>
+                <li><label>Nombre:</label> <input type="text" name="nombre" value="" id="" required> </li>
+                <li><label>Apellido:</label> <input type="text" name="apellido" value="" id="" required> </li>
+                <li><label>Fecha de nacimiento:</label> <input type="date" name="fecha_nac" value="" id=""></li>
+                <li><label>Razón social:</label> <input type="text" name="razon_social" value="" id="">  </li>
+                <li> <label>Domicilio:</label> <input type="text" name="domicilio" value="" id=""> </li>
+                <li><label>Cód. Postal:</label> <input type="number" accept="number" name="cod_postal" value="" id=""> </li>
+                <li><label>Teléfono:</label> <input type="text" name="telefono" value="" id="" required> </li>
                 <br>
                 <b> DATOS DEL VEHÍCULO</b>
                 <br>
                 <br>
                 <br>
                 <li><label>Tipo de vehiculo:</label>
-                    <select name="comboTiposV" id="comboTiposV" required>
-                        <option value="Auto" selected>Auto</option>
-                        <option value="Pick up">Pick up</option>
-                        <option value="Utilitario">Utilitario</option>
+                    <select name="id_tipo_vehiculo" id="comboTiposV" required>
+                        @foreach ($tipos_vehiculos as $tipo_vehiculo)
+                        <option value="{{$tipo_vehiculo->id_tipo_vehiculo}}">{{$tipo_vehiculo->tipoVehiculo}}</option>
+                        @endforeach
                     </select>
                 </li>
-                <li><label>Marca:</label> <input type="text" name="txtMarca" value="Fiat" id="" readonly> </li>
-                <li><label>Modelo:</label><input type="text" name="txtModelo" value="" id="" required></li>
-                <li><label>Año:</label> <input type="number" accept="number" name="txtAño" value="" id="" required> </li>
-                <li><label>Patente:</label><input type="text" name="txtPatente" value="" id="" minlength=7 required> </li>
-                <li><label>Número de Chasis:</label><input type="text" name="txtChasis" value="" id="" minlength=7 required> </li>
-                <li><label>Inicio de garantía:</label> <input type="date" name="txtFechaGarantia" value="" id="" required></li>
+                <li><label>Marca:</label> <input type="text" name="marca" value="Fiat" id="" readonly> </li>
+                <li><label>Modelo:</label><input type="text" name="modelo" value="" id="" required></li>
+                <li><label>Año:</label> <input type="number" accept="number" name="anio" value="" id="" required> </li>
+                <li><label>Patente:</label><input type="text" name="patente" value="" id="" minlength=7 required> </li>
+                <li><label>Número de Chasis:</label><input type="text" name="nro_chasis" value="" id="" minlength=7 required> </li>
+                <li><label>Inicio de garantía:</label> <input type="date" name="fecha_inicio_garantia" value="" id="" required></li>
                 <br>	
                 <li> <input type="submit" name="btnRegistrarse" value="REGISTRARSE" placeholder="" id="registrarse"/> </li>
             </ul>
