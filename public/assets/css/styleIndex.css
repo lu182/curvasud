@@ -1,13 +1,14 @@
 
 .header{
-		background-image:url(../img/header2.jpg);
+		background-image:url(../img/header2.jpg)!important;
 		padding: 20px 0 30px 0;
+		border-bottom: 3px solid lightblue;
 		position: relative;
 		color: #f312e0;
 		text-align: -webkit-left;
 	}
 	
-img{
+#imgLogo{
 	display:block;
 	width: 200px;
 	height: 200px;

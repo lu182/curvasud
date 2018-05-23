@@ -18,7 +18,7 @@
 	
 	<!-- Mis CSS -->
     <link href="{{ asset('css/styleIndex.css') }}" rel="stylesheet">
-    
+
 
 </head>
 
@@ -30,8 +30,8 @@
 			<div class="row">
 				<div class="col-md-5" id="divLogo_Slogan">
 				    <div class="col-md-4" id="divLogo">
-						<a href="index.html" title="Home">
-							<img src="img/logocurvasud.png">
+						<a href="/" title="Home">
+							<img id="imgLogo" src="img/logocurvasud.png">
 						</a>
 					</div>				  
 					<div class="navbar-slogan" id="divSlogan">
@@ -44,17 +44,41 @@
 				<div class="col-md-7" id="div_ulUsers">
 				  <!--user menu-->
 				  <ul class="list-inline user-menu pull-right">
-					<li class="user-register"><i class="fa fa-edit text-primary "></i> <a href="" class="text-uppercase">Registro clientes</a></li>
+					<li class="user-register"><i class="fa fa-edit text-primary "></i> <a href="{{ route('register') }}" class="text-uppercase">Registro clientes</a></li>
 					<li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="{{ route('usuarios.index') }}" class="text-uppercase">Login</a></li>
 				  </ul>
 				</div>
+
+
+				
+			  <!-- Collect the nav links, forms, and other content for toggling -->
+			  <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav navegacion" style="float: right;margin-top: 5%;">
+				  <li class="active"><a href="/">Inicio <span class="sr-only">(current)</span></a></li>
+				  <li><a href="{{route('nosotros')}}">Nosotros</a></li>
+				  <li><a href="{{route('modelos')}}">Modelos</a></li>
+				  <li><a href="#">Contacto</a></li>
+
+				</ul>
+				
+			
+			  </div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		  </nav>
+				
+				
 			</div>
         </div>
-    </div>
+	</div>
+	
+
+		
+		  
+
+
 <!--/fin del div header-->
 
 <!--inicio del nav_menu-->
-<div class="container">
 
 	
 
@@ -62,7 +86,7 @@
 
 		
 		
-</div>
+
 		
 
 

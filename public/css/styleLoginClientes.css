@@ -1,111 +1,106 @@
+body {
+    background-image: url(../img/background_login.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    background-position: center;
+    background-attachment: fixed;
+}
 
-		body{
-			background-image:url(../img/background_login.jpg);
-			background-size:cover;
-			background-repeat: no-repeat;
-			margin:0;
-			background-position: center;
-			background-attachment: fixed;
-		}
-				
-		input{
-			width:90%;
-			outline:none;
-			padding:10px 45px;
-			border:1px #aaa solid;
-			font-size:15px;
-			background:#fff;
-			display:block;
-			margin:20px auto;
-		}		
-		
-		#login{
-			background:#19b1ca;
-			color:#fff;
-			cursor:pointer;
-			font-size:18px;
-		}
-		
-		
-		#contenedor1{
-			width:30%;
-			height:400px;
-			background:rgba(0,0,0,.2);			
-			/* position:absolute; */
-			top:80px;
-			margin:auto;
-			margin-top:100px;
-			margin-right: 20px;
-			border-radius: 4px;
-		}
-		
-		#formlogin{
-			margin:30px auto;
-			text-align:center;
-			padding:50px 20px 10px 20px;
-		}
-		
-		#formlogin input[type="submit"]:hover{
-			background:#33cc00;
-		}
-		
-		b{
-			font-size:25px;
-			color:#fff;
-		}
-		
-		a{
-			color:#fff;
-		}
-		
-		p{
-			color:#fff;
-		}
-		
-		img{
-			display:block;
-			width: 80px;
-			margin:-75px auto 0 auto;
-		}
-		
-	#formlogin input:required{
-		background: #fff url(../img/advertencia.png) no-repeat 98% center;
-		padding-right: 70px;
-	}
-	
-	#formlogin input:required:valid{
-		background: #fff url(../img/valido.png) no-repeat 98% center;
-		box-shadow: 0 0 5px #5cd053;
-		border-color: #28921f;
-		padding-right: 70px;
-	}
-	
-	#formlogin input:focus:invalid{
-		background: #fff url(../img/invalido.png) no-repeat 98% center;
-		box-shadow: 0 0 5px #d45252;
-		border-color: #b03535;
-		padding-right: 70px;
-	}
-	
-	#imgMail{
-		display: block;
-		margin: inherit;
-		width: 30px;
-		padding-bottom: 70px;
-		position: absolute;
-		margin-left: 25px;
-		margin-top: 7px;
-	}
-	
-	#imgPass{
-		display:block;
-		margin: inherit;
-		width: 30px;
-		padding-bottom: 70px;
-		position: absolute;
-		margin-left: 25px;
-		margin-top: 7px;
-	}
-	
+input {
+    width: 90%;
+    outline: none;
+    padding: 10px 45px;
+    border: 1px #aaa solid;
+    font-size: 15px;
+    background: #fff;
+    display: block;
+    margin: 20px auto;
+}
 
-	
+#login {
+    background: #19b1ca;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#contenedor1 {
+    width: 30%;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.2);
+    /* position:absolute; */
+    top: 80px;
+    margin: auto;
+    margin-top: 100px;
+    margin-right: 20px;
+    border-radius: 4px;
+}
+
+#formlogin {
+    margin: 30px auto;
+    text-align: center;
+    padding: 50px 20px 10px 20px;
+}
+
+#formlogin input[type="submit"]:hover {
+    background: #33cc00;
+}
+
+b {
+    font-size: 25px;
+    color: #fff;
+}
+
+a {
+    color: #fff;
+}
+
+p {
+    color: #fff;
+}
+
+img {
+    display: block;
+    width: 80px;
+    margin: -75px auto 0 auto;
+}
+
+#formlogin input:required {
+    background: #fff url(../img/advertencia.png) no-repeat 98% center;
+    padding-right: 70px;
+}
+
+#formlogin input:required:valid {
+    background: #fff url(../img/valido.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #5cd053;
+    border-color: #28921f;
+    padding-right: 70px;
+}
+
+#formlogin input:focus:invalid {
+    background: #fff url(../img/invalido.png) no-repeat 98% center;
+    box-shadow: 0 0 5px #d45252;
+    border-color: #b03535;
+    padding-right: 70px;
+}
+
+#imgMail {
+    display: block;
+    margin: inherit;
+    width: 30px;
+    padding-bottom: 70px;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 7px;
+}
+
+#imgPass {
+    display: block;
+    margin: inherit;
+    width: 30px;
+    padding-bottom: 70px;
+    position: absolute;
+    margin-left: 25px;
+    margin-top: 7px;
+}

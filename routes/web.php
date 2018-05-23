@@ -16,6 +16,16 @@ Route::get('/', function () {
 });
 
 
+
+Route::get('nosotros', function () {
+    return view('nosotros');
+})->name("nosotros");
+
+Route::get('modelos', function () {
+    return view('modelos');
+})->name("modelos");
+
+
 Route::get('/misturnos', function () {
     return view('cliente.misturnos');
 })->name("misturnos");
@@ -26,8 +36,6 @@ Route::resource("usuarios","ClientesEmpleadosControlador");
 
 Route::get('/escritorio', "usuariosController@escritorio")->name("escritorio");
 Route::get('/misdatos', "usuariosController@misdatos")->name("misdatos");
-
-
 
 Route::get('/mivehiculo', 'usuariosController@mivehiculo')->name("mivehiculo");
 
@@ -42,3 +50,5 @@ Route::get('login', [
 
   
 Route::get('/home', 'usuariosController@escritorio')->name('home');
+
+

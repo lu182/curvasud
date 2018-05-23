@@ -9,7 +9,7 @@ class usuariosController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+     //   $this->middleware('auth');
 
     }
 
@@ -17,7 +17,8 @@ class usuariosController extends Controller
 
 
         $user =  Auth::user();
-     
+        //return view("cliente.bienvenida");
+
         //Llama al usuario logueado y lo almacena en una variable $user
 
         //Comienza un switch para verificar el tipo de usuario
