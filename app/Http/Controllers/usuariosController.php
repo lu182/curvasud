@@ -68,6 +68,7 @@ class usuariosController extends Controller
 
        $usuario = User::create($request->all());
        $usuario->password = bcrypt($usuario->password);
+       //cliente
        $usuario->tipo_user_id = 1;
        $usuario->save();
 

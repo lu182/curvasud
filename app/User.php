@@ -23,7 +23,7 @@ class User extends Authenticatable
         'fecha_nac',
         'razon_social',
         'domicilio',
-         'cod_postal',
+        'cod_postal',
         'telefono',
         'cuil',
     ];

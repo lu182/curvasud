@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class TuneroController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index(){
 
         $tipos_servicio = DB::table("tipos_servicios")->get();
