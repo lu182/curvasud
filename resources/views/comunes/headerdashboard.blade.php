@@ -86,6 +86,11 @@
                     </li>
 
 
+
+                    @if (  Auth::user()->tipo_user_id > 1 )
+
+                    USUARIO CON PERMISO ESPECIAL
+                    @endif
                     
 <script>
         document.getElementById("btnLogout").onclick = function() {myFunction()};

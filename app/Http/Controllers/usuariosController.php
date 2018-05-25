@@ -35,15 +35,34 @@ class usuariosController extends Controller
 
             //estado 2 de turno sabemos que es un turno ocupado, o sea que el usuario va a tenerlo
                 $turno = Turno::where("id_cliente",$user->id)->where("id_estado_turno",2)->first();
-                $turnoEncriptado = Crypt::encryptString($turno->id_turno);
-                return view("cliente.bienvenida",["turno"=>$turno,"turnoEncriptado"=>$turnoEncriptado]);
+
+                if($turno){
+                    $turnoEncriptado = Crypt::encryptString($turno->id_turno);
+
+                    return view("cliente.bienvenida",["turno"=>$turno,"turnoEncriptado"=>$turnoEncriptado,"tieneTurno"=>1]);
+
+                }else{
+                    return view("cliente.bienvenida",["tieneTurno"=>0]);
+
+                }
             case 2:
              //Verifica que el usuario tiene un tipo_user_id = 1, lo que significa que es un cliente
             //Por ello, le devuelve la vista de bienvenida para clientes
                 return "Es un tipo de usuario 2";
             case 3:
                 return "Es un tipo de usuario 3";
-            
+            case 4:
+            $turno = Turno::where("id_cliente",$user->id)->where("id_estado_turno",2)->first();
+
+            if($turno){
+                $turnoEncriptado = Crypt::encryptString($turno->id_turno);
+
+                return view("cliente.bienvenida",["turno"=>$turno,"turnoEncriptado"=>$turnoEncriptado,"tieneTurno"=>1]);
+
+            }else{
+                return view("cliente.bienvenida",["tieneTurno"=>0]);
+
+            }
         }
 
 

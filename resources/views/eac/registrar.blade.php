@@ -27,7 +27,7 @@
         <form action="" method="post" id="formRegistro">
         @csrf
             <img src="img/registro.png"/>
-            <b> REGISTRO DE CLIENTES </b>
+            <b> REGISTRO DE EMPLEADOS </b>
             @csrf
             <br>
             <br>
