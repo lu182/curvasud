@@ -13,4 +13,9 @@ class TipoServicio extends Model
         'id_tipo_servicio', 'tipoServicio'
    ];
 
+   public function tiposervicio_turno()
+   {
+       return $this->hasMany('App\Turno',"id_tipo_servicio");
+   }
+
 }

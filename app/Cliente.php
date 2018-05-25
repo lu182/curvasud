@@ -15,7 +15,6 @@ class Cliente extends Model
         'email'
         
    ];
-
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -24,5 +23,31 @@ class Cliente extends Model
     protected $hidden = [
         'pass',
     ];
+
+    public function turno_cliente()
+    {
+        return $this->belongsTo('App\Turno',"id_cliente"); //El cliente pertenece a un turno 
+    }
+
+    public function vehiculos_cliente()
+    {
+        return $this->hasMany('App\Vehiculo',"id_cliente"); //El cliente puede tener muchos vehiculos
+    }
+
+    public function tipodoc_cliente()
+    {
+        return $this->belongsTo('App\TipoDocumento',"id_tipo_doc"); //El cliente pertenece a un tipo de doc 
+    }
+
+    public function ciudad_cliente()
+    {
+        return $this->belongsTo('App\Ciudad',"id_ciudad"); //El cliente pertenece a una ciudad 
+    }
+
+    public function cliente_orden()
+    {
+        return $this->belongsTo('App\OrdenReparacion',"id_cliente"); //El cliente pertenece a una orden de reparacion 
+    }
+
 
 }

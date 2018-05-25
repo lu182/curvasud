@@ -26,4 +26,19 @@ class Vehiculo extends Model
    {
        return $this->belongsTo('App\User',"id_cliente");
    }
+
+   public function vehiculo_tipoVehiculo()
+   {
+       return $this->belongsTo('App\TipoVehiculo',"id_tipo_vehiculo"); //El vehiculo pertenece a un tipo de vehiculo
+   }
+
+   public function vehiculo_cliente()
+   {
+       return $this->belongsTo('App\Cliente',"id_cliente"); //El vehiculo pertenece a un cliente
+   }
+
+
+
+
+
 }

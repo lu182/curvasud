@@ -11,7 +11,7 @@ class Empleado extends Model
 
     protected $fillable = [
          'id_tipo_empleado', 'id_tipo_doc', 'usuario', 'pass', 'nombre', 'apellido',
-         'dni', 'cuil', 'domicilio', 'fecha_nac', 'telefono', 'email',
+         'dni', 'cuil', 'domicilio', 'fecha_nac', 'telefono', 'email'
 
     ];
 
@@ -19,6 +19,18 @@ class Empleado extends Model
     {
         return $this->belongsTo('App\TipoEmpleado',"id_tipo_empleado");
     }
+
+    public function tipo_doc()
+    {
+        return $this->belongsTo('App\TipoDocumento',"id_tipo_doc"); 
+    }
+
+    public function orden()
+    {
+        return $this->belongsTo('App\OrdenReparacion',"id_empleado"); 
+    }
+
+
 
     /**
      * The attributes that should be hidden for arrays.

@@ -20,5 +20,10 @@ class Turno extends Model
        return $this->belongsTo('App\TipoServicio',"id_tipo_servicio");
    }
 
+   public function estado()
+   {
+       return $this->belongsTo('App\EstadoTurno',"id_estado_turno");
+   }
+
 
 }
