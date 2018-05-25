@@ -21,8 +21,6 @@
                         <div class="alert alert-danger">Ocupado</div>
 
 
-                            <div class="alert alert-primary">Cancelado</div>
-
 
                         </div>
 
@@ -39,12 +37,14 @@
 
 
                                 @foreach ($horas as $hora)
-                                <input type="submit" class="btn btn-info btn-lg" value="{{$hora}}"  name="hora" style="cursor:pointer;width:80%;margin:auto"/> 
-
-                                 @foreach ($horas as $hora)
-                                 
-                                  @endforeach
-
+                                <div style="margin-top:5%">
+                                @if ($hora["estado"] == 0)
+                                <input type="" class="alert alert-danger" disabled value="{{$hora['hora']}}"  name="hora" style="cursor:pointer;width:80%;margin:auto"/> 
+                                @endif
+                                @if ($hora["estado"] == 1)
+                                <input type="submit" class="alert alert-success" value="{{$hora['hora']}}"  name="hora" style="cursor:pointer;width:80%;margin:auto"/> 
+                                @endif
+                                </div>
                                 @endforeach
 
     </div>

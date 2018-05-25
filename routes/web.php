@@ -56,3 +56,10 @@ Route::post('/registro_clientes', 'usuariosController@registro_clientes_registra
 Route::get('/turnero', 'TuneroController@index')->name('turnero');
 Route::post('/turnero', 'TuneroController@registrar')->name('turnero');
 Route::post('/guardarTurno', 'TuneroController@guardarTurno')->name('guardarTurno');
+
+Route::post('/eliminarTurno', 'TuneroController@eliminar')->name('eliminarTurno');
+
+Route::post('cambiarTurno', 'TuneroController@cambiar')->name('cambiarTurno');
+
+Route::get('/registro_empleado', 'RegistroEmpleadoController@registroEmp_ver')->name('registro_empleado');
+Route::post('/registro_empleado', 'RegistroEmpleadoController@registroEmp_registrar')->name('registro_empleado');

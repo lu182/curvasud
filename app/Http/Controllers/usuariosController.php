@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Vehiculo;
 use DB;
+use App\Turno;
+use Illuminate\Support\Facades\Crypt;
 
 class usuariosController extends Controller
 {
@@ -30,7 +32,11 @@ class usuariosController extends Controller
             case 1:
             //Verifica que el usuario tiene un tipo_user_id = 1, lo que significa que es un cliente
             //Por ello, le devuelve la vista de bienvenida para clientes
-                return view("cliente.bienvenida");
+
+            //estado 2 de turno sabemos que es un turno ocupado, o sea que el usuario va a tenerlo
+                $turno = Turno::where("id_cliente",$user->id)->where("id_estado_turno",2)->first();
+                $turnoEncriptado = Crypt::encryptString($turno->id_turno);
+                return view("cliente.bienvenida",["turno"=>$turno,"turnoEncriptado"=>$turnoEncriptado]);
             case 2:
              //Verifica que el usuario tiene un tipo_user_id = 1, lo que significa que es un cliente
             //Por ello, le devuelve la vista de bienvenida para clientes
@@ -67,6 +73,7 @@ class usuariosController extends Controller
     public function registro_clientes_registrar(Request $request){
 
        $usuario = User::create($request->all());
+       //encriptar contraseña al guardar usuario ya que esto permite el login
        $usuario->password = bcrypt($usuario->password);
        //cliente
        $usuario->tipo_user_id = 1;
