@@ -39,13 +39,13 @@
 				<!-- <div class="form-input" id="iconoEmail"> -->
 				<div id="iconoMail">
 					<img id="imgMail" src="img/email.png"/>
-					<input type="email" name="email" value="" placeholder="Email" id="email" title="Incluye un signo @, por ejemplo: nombre@dominio.com" required />
+					<input type="email" name="email" value=""  autocomplete="off" placeholder="Email" id="email" title="Incluye un signo @, por ejemplo: nombre@dominio.com" required />
 				</div>
 				
 				<div id="iconoPass">
 				
 					<img id="imgPass" src="img/password.png"/>
-					<input type="password" name="password" value="" placeholder="Contraseña" id="" title="Debe contener un minimo de 8 caracteres y al menos un número y una letra" required />
+					<input type="password" name="password" value=""  autocomplete="off" placeholder="Contraseña" id="" title="Debe contener un minimo de 8 caracteres y al menos un número y una letra" required />
 				</div>
 				
 				<input type="submit" name="btnIngresar" value="INGRESAR" placeholder="" id="login" />

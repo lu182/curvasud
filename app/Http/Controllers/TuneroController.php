@@ -120,7 +120,8 @@ class TuneroController extends Controller
         
         $usuario = Auth::user();
         $turnos = Turno::where("id_cliente",$usuario->id)->where("id_estado_turno",2)->get();
-        return view("cliente.misturnos",["turnos"=>$turnos])->with('success', ['Turno Registrado Correctamente']);   
+        $tipos_servicio = DB::table("tipos_servicios")->get();
+        return view("cliente.misturnos",["turnos"=>$turnos], ["tipos_servicio"=> $tipos_servicio])->with('success', ['Turno Registrado Correctamente']);   
       
 
     }

@@ -44,9 +44,15 @@
 				<div class="col-md-7" id="div_ulUsers">
 				  <!--user menu-->
 				  <ul class="list-inline user-menu pull-right">
+					@guest
 					<li class="user-register"><i class="fa fa-edit text-primary "></i> <a href="{{ route('registro_clientes') }}" class="text-uppercase">Registro clientes</a></li>
 					<li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="{{ route('usuarios.index') }}" class="text-uppercase">Login</a></li>
-				  </ul>
+					@else
+					<li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="{{ route('escritorio') }}" class="text-uppercase">Mi escritorio</a></li>
+					<li class="user-login"><i class="fa fa-sign-in text-primary"></i> <a href="{{Auth::logout()}}" class="text-uppercase">Cerrar Sesión</a></li>
+
+					@endguest
+				</ul>
 				</div>
 
 
