@@ -9,6 +9,7 @@ use App\Vehiculo;
 use DB;
 use App\Turno;
 use Illuminate\Support\Facades\Crypt;
+use Carbon\Carbon;
 
 class usuariosController extends Controller
 {
@@ -21,8 +22,8 @@ class usuariosController extends Controller
     public function escritorio(){
 
 
-        $user =  Auth::user();
-        //return view("cliente.bienvenida");
+        $user = Auth::user();
+
 
         //Llama al usuario logueado y lo almacena en una variable $user
 
@@ -34,7 +35,25 @@ class usuariosController extends Controller
             //Por ello, le devuelve la vista de bienvenida para clientes
 
             //estado 2 de turno sabemos que es un turno ocupado, o sea que el usuario va a tenerlo
-                $turno = Turno::where("id_cliente",$user->id)->where("id_estado_turno",2)->first();
+
+
+                $fecha_actual = Carbon::now();
+                $año = $fecha_actual->year;
+                $mes = $fecha_actual->month;
+                if ($mes<10){
+        
+                    $mes = "0".$mes;
+        
+                }
+                $dia = $fecha_actual->day;
+                $fecha_a_buscar= $año."-".$mes."-".$dia;
+                $user =  Auth::user();
+                //return view("cliente.bienvenida");
+                $turno = Turno::where("id_estado_turno",2)
+                ->where("fecha",'>',$fecha_a_buscar)
+                ->orderBy('fecha', 'asc')
+                ->first();
+               
 
                 if($turno){
                     $turnoEncriptado = Crypt::encryptString($turno->id_turno);
@@ -52,7 +71,24 @@ class usuariosController extends Controller
             case 3:
                 return "Es un tipo de usuario 3";
             case 4:
-            $turno = Turno::where("id_cliente",$user->id)->where("id_estado_turno",2)->first();
+
+            $fecha_actual = Carbon::now();
+            $año = $fecha_actual->year;
+            $mes = $fecha_actual->month;
+            if ($mes<10){
+    
+                $mes = "0".$mes;
+    
+            }
+            $dia = $fecha_actual->day;
+            $fecha_a_buscar= $año."-".$mes."-".$dia;
+            $user =  Auth::user();
+            //return view("cliente.bienvenida");
+            $turno = Turno::where("id_estado_turno",2)
+            ->where("fecha",'>',$fecha_a_buscar)
+            ->orderBy('fecha', 'asc')
+            ->first();
+           
 
             if($turno){
                 $turnoEncriptado = Crypt::encryptString($turno->id_turno);

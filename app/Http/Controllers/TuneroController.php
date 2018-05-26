@@ -8,6 +8,7 @@ use DB;
 use App\Turno;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Redirect;
 
 class TuneroController extends Controller
 {
@@ -23,6 +24,11 @@ class TuneroController extends Controller
         $tipos_servicio = DB::table("tipos_servicios")->get();
       return view("turnero.registrar",["tipos_servicio"=>$tipos_servicio]);
 
+    }
+
+    public function editar_ver(){
+        $tipos_servicio = DB::table("tipos_servicios")->get();
+        return view("turnero.editar",["tipos_servicio"=>$tipos_servicio]);
     }
 
     public function registrar(Request $request){
@@ -113,7 +119,7 @@ class TuneroController extends Controller
         $turno = Turno::create($request->all());
         
         $usuario = Auth::user();
-        $turnos = Turno::where("id_cliente",$usuario->id)->get();
+        $turnos = Turno::where("id_cliente",$usuario->id)->where("id_estado_turno",2)->get();
         return view("cliente.misturnos",["turnos"=>$turnos])->with('success', ['Turno Registrado Correctamente']);   
       
 
@@ -121,8 +127,12 @@ class TuneroController extends Controller
 
     public function verTurnos(){
         $usuario = Auth::user();
-        $turnos = Turno::with("tipo")->where("id_cliente",$usuario->id)->get();
-        return view("cliente.misturnos",["turnos"=>$turnos])->with('success', ['Turno Registrado Correctamente']);   
+        $turnos = Turno::with("tipo")->where("id_cliente",$usuario->id)->where("id_estado_turno",2)->get();
+
+        $tipos_servicio = DB::table("tipos_servicios")->get();
+
+
+        return view("cliente.misturnos",["turnos"=>$turnos,"tipos_servicio"=>$tipos_servicio]);
 
     }
 
@@ -139,8 +149,16 @@ class TuneroController extends Controller
         $turno_a_eliminar->save();
 
         $turno = Turno::where("id_cliente",$user->id)->where("id_estado_turno",2)->first();
-        $turnoEncriptado = Crypt::encryptString($turno->id_turno);
-        return view("cliente.bienvenida",["turno"=>$turno,"turnoEncriptado"=>$turnoEncriptado]);
+
+        if($turno){
+            $turnoEncriptado = Crypt::encryptString($turno->id_turno);
+
+            return view("cliente.bienvenida",["turno"=>$turno,"turnoEncriptado"=>$turnoEncriptado,"tieneTurno"=>1]);
+
+        }else{
+            return view("cliente.bienvenida",["tieneTurno"=>0]);
+
+        }
 
     }
 
@@ -176,8 +194,137 @@ class TuneroController extends Controller
         }
         //definimos del turno que ya existe, que es un array, que su id_estado_turno va a ser 3
        
+  }
 
-       
+    public function cambiar_tipo_servicio(Request $request){
+
+        $id_turno = Crypt::decryptString($request->id_turno);
+     
+        $turno_a_cambiar = Turno::find($id_turno);
+        $turno_a_cambiar->id_tipo_servicio = $request->id_tipo_servicio;
+        $turno_a_cambiar->save();
+        return Redirect::back()->withErrors(['Turno Modificado correctamente']);
 
     }
+
+
+
+
+    public function cambiar_fecha(Request $request){
+
+        $id_turno = Crypt::decryptString($request->id_turno);
+        $turno_a_editar = Turno::find($id_turno);
+        return view ("turnero.editar", ['turno'=> $turno_a_editar]);
+
+
+    }
+
+
+    public function ver_fechas_disponibles(Request $request){
+
+        $id_turno = Crypt::decryptString($request->id_turno);
+        $turno_a_editar = Turno::find($id_turno);
+        $fecha = $request->fecha;
+        $fecha = strtotime($fecha);
+
+        $fecha = date( 'Y-m-d', $fecha );
+
+
+        $turnos_fecha = Turno::where("fecha",$fecha)->where("id_estado_turno",2)->get();
+
+
+
+        //Creamos un array de horas 
+
+        $horas = array(
+            ["hora"=>"08:00:00","estado"=>1],
+            ["hora"=>"09:00:00","estado"=>1],
+            ["hora"=>"10:00:00","estado"=>1],
+            ["hora"=>"11:00:00","estado"=>1],
+            ["hora"=>"12:00:00","estado"=>1],
+            ["hora"=>"13:00:00","estado"=>1],
+            ["hora"=>"14:00:00","estado"=>1],
+            ["hora"=>"15:00:00","estado"=>1],
+            ["hora"=>"16:00:00","estado"=>1],
+            ["hora"=>"17:00:00","estado"=>1],
+            ["hora"=>"17:00:00","estado"=>1],
+            ["hora"=>"18:00:00","estado"=>1],
+        );
+
+
+        //Hacemos la comparación del Array con los turnos cargados en Database, 
+        // y agregamos los ya tomados, junto con sus 3 horas siguientes y 2 anteriores
+        foreach($turnos_fecha as $turno) {
+
+            //clave es = a index o indice
+
+            $clave = array_search($turno->hora, array_column($horas,"hora"));
+
+            if($clave==0){
+
+                    $horas[0] = ["hora"=>$horas[0]["hora"],"estado"=>0];
+                    $horas[1] = ["hora"=>$horas[1]["hora"],"estado"=>0];
+                    $horas[2] = ["hora"=>$horas[2]["hora"],"estado"=>0];
+
+            }
+            
+            if($clave){
+//Si la clave existe, significa que encontró un turno que se corresponde a algun horario.
+// A través de la clave, comparamos el horario del turno con el array de horas para cambiar su estado
+                $horas[$clave] = ["hora"=>$horas[$clave]["hora"],"estado"=>0];
+
+                if (array_key_exists($clave+1,$horas)){
+                    $horas[$clave + 1] = ["hora"=>$horas[$clave+1]["hora"],"estado"=>0];
+                }
+
+                if (array_key_exists($clave+2,$horas)){
+                    $horas[$clave + 2] = ["hora"=>$horas[$clave+2]["hora"],"estado"=>0];
+                }
+
+                if (array_key_exists($clave+3,$horas)){
+                    $horas[$clave + 3] =["hora"=>$horas[$clave+3]["hora"],"estado"=>0];
+                }
+
+                if (array_key_exists($clave-1,$horas)){
+                    $horas[$clave - 1] =["hora"=>$horas[$clave-1]["hora"],"estado"=>0];
+                }
+
+                if (array_key_exists($clave-2,$horas)){
+                    $horas[$clave - 2] =["hora"=>$horas[$clave-2]["hora"],"estado"=>0];
+                }
+
+            }
+        }
+
+
+
+
+
+        return view("turnero.cambiarhora",["fecha"=>$fecha,"horas"=>$horas,"turnos_fecha"=>$turnos_fecha,"turno"=>$turno_a_editar]);
+
+
+    }
+
+
+    public function actualizarTurno(Request $request){
+
+        $id_turno = Crypt::decryptString($request->id_turno);
+        $turno_a_editar = Turno::find($id_turno);
+      
+        $turno_a_editar->fecha=$request->fecha;
+        $turno_a_editar->hora = $request->hora;
+        $turno_a_editar->save();
+
+        $usuario = Auth::user();
+        $turnos = Turno::with("tipo")->where("id_cliente",$usuario->id)->where("id_estado_turno",2)->get();
+
+        $tipos_servicio = DB::table("tipos_servicios")->get();
+
+
+        return view("cliente.misturnos",["turnos"=>$turnos,"tipos_servicio"=>$tipos_servicio]);
+
+    }
+
+
+
 }

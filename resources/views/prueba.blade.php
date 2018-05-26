@@ -27,7 +27,7 @@
     <div class="container"> 
         <h1>Solicite su turno ahora</h1>
         <p>Crea una cuenta y registra tus turnos</p>
-        <p><a class="btn btn-primary btn-lg" href="{{ route('register') }}" role="button">Registrarme</a></p>
+        <p><a class="btn btn-primary btn-lg" href="{{ route('turnero') }}" role="button">Registrarme</a></p>
       </div>
     </div>
 

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 class Turno extends Model
 {
@@ -23,6 +24,10 @@ class Turno extends Model
    public function estado()
    {
        return $this->belongsTo('App\EstadoTurno',"id_estado_turno");
+   }
+
+   public function encriptarTurno(){
+       return Crypt::encryptString($this->id_turno);
    }
 
 

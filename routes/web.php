@@ -59,7 +59,14 @@ Route::post('/guardarTurno', 'TuneroController@guardarTurno')->name('guardarTurn
 
 Route::post('/eliminarTurno', 'TuneroController@eliminar')->name('eliminarTurno');
 
-Route::post('cambiarTurno', 'TuneroController@cambiar')->name('cambiarTurno');
 
 Route::get('/registro_empleado', 'RegistroEmpleadoController@registroEmp_ver')->name('registro_empleado');
 Route::post('/registro_empleado', 'RegistroEmpleadoController@registroEmp_registrar')->name('registro_empleado');
+
+Route::post('/cambiar_tipo_servicio', 'TuneroController@cambiar_tipo_servicio')->name('cambiar_tipo_servicio');
+
+Route::post('/cambiar_fecha', 'TuneroController@cambiar_fecha')->name('cambiar_fecha');
+Route::post('/ver_fechas_disponibles', 'TuneroController@ver_fechas_disponibles')->name('ver_fechas_disponibles');
+
+
+Route::post('/actualizarTurno', 'TuneroController@actualizarTurno')->name('actualizarTurno');
