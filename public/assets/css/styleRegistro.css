@@ -33,6 +33,11 @@ body{
 		color:white;
 	}
 
+	#formRegistro p{
+		margin: 0 0 10px;
+		color:white;
+	}
+
 	#formRegistro ul{
 		list-style: none;
 		width: 750px;
