@@ -57,7 +57,6 @@ class TuneroController extends Controller
             ["hora"=>"15:00:00","estado"=>1],
             ["hora"=>"16:00:00","estado"=>1],
             ["hora"=>"17:00:00","estado"=>1],
-            ["hora"=>"17:00:00","estado"=>1],
             ["hora"=>"18:00:00","estado"=>1],
         );
 
@@ -247,7 +246,6 @@ class TuneroController extends Controller
             ["hora"=>"14:00:00","estado"=>1],
             ["hora"=>"15:00:00","estado"=>1],
             ["hora"=>"16:00:00","estado"=>1],
-            ["hora"=>"17:00:00","estado"=>1],
             ["hora"=>"17:00:00","estado"=>1],
             ["hora"=>"18:00:00","estado"=>1],
         );
