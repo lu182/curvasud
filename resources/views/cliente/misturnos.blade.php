@@ -54,12 +54,12 @@
                                 <td>{{$turno->tipo->tipoServicio}}</td>
                                 <td>
                                         <!--Botón para activar modal -->
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" style="margin-top:0px!important">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal{{$turno->id_turno}}" style="margin-top:0px!important">
                                           Cambiar tipo de servicio
                                         </button>
                                         
                                         <!-- Modal -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModal{{$turno->id_turno}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                           <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                               <div class="modal-header">
