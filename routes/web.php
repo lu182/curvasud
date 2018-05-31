@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('prueba');
-});
+Route::get('/', "LandingController@index");
 
 
 
@@ -70,3 +68,5 @@ Route::post('/ver_fechas_disponibles', 'TuneroController@ver_fechas_disponibles'
 
 
 Route::post('/actualizarTurno', 'TuneroController@actualizarTurno')->name('actualizarTurno');
+
+Route::get("/eac/verTurnos","EacController@verTurnos")->name("/eac/verTurnos");

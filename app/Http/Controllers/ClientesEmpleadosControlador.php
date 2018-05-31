@@ -63,7 +63,6 @@ class ClientesEmpleadosControlador extends Controller
         if($verificarCliente === null){
             return Redirect::back()->withErrors([ 'Los datos ingresados no son validos']);
         }else{
-            
             return view("cliente.bienvenida",["cliente"=>$verificarCliente]);
         }
         

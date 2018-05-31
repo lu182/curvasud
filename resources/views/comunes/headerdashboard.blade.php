@@ -14,8 +14,7 @@
         <!-- CSS Files -->
         <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
         <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
-    
-        <link href="../assets/css/demo.css" rel="stylesheet" />
+        <link href="../assets/css/animate.css" rel="stylesheet" />
 </head>
 
 <body>

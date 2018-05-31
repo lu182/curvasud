@@ -13,6 +13,7 @@
     }
 
 </style>
+
 @section("content")
 <div class="col-md-12">
         @if (\Session::has('success'))
