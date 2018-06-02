@@ -100,10 +100,7 @@ class EacController extends Controller
     public function buscarClientePorVehiculo(){
 
 
-
-
-
-        return Vehiculo::with("user","vehiculo_tipoVehiculo")->orderBy("id_tipo_vehiculo")->get()->groupBy('id_tipo_vehiculo');
+        return Vehiculo::with("user","vehiculo_tipoVehiculo")->orderBy()->get()->groupBy('id_tipo_vehiculo');
         
 
 

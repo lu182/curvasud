@@ -66,7 +66,8 @@ class usuariosController extends Controller
             case 2:
              //Verifica que el usuario tiene un tipo_user_id = 1, lo que significa que es un cliente
             //Por ello, le devuelve la vista de bienvenida para clientes
-                return "Es un tipo de usuario 2";
+            return view("eac.bienvenida");
+
             case 3:
                 return "Es un tipo de usuario 3";
             case 4:

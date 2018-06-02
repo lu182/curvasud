@@ -17,10 +17,12 @@
    </head>
    <body>
       <div class="wrapper">
+
       <div class="sidebar" data-image="../assets/img/sidebar-5.jpg">
          <div class="sidebar-wrapper">
             <div class="logo" style="text-align:center">
-               <img src="img/logocurvasud.png" style="max-width: 70%;margin:auto">
+                    <img src="{{asset('img/logocurvasud.png')}}" style="max-width: 70%;margin:auto">
+
             </div>
             
             @if(Auth::user()->tipo_user_id == 1)
