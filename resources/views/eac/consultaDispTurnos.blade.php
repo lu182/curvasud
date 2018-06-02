@@ -1,5 +1,8 @@
 
+@extends('comunes.headerdashboard')
 
+
+@section("content")
 <h2>TURNOS DISPONIBLES</h2>
 @foreach($disp as $turnoDisponible)
 
@@ -14,3 +17,5 @@
     <p>Fecha: {{$turnoNoDisponible->fecha}} </p>
 
 @endforeach
+
+@endsection

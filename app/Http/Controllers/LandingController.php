@@ -14,9 +14,9 @@ class LandingController extends Controller
         
        $vehiculos = DB::table('vehiculos')->where("anio",2018)->select('marca', 'modelo as holaa')->get();
 
+     
+       //return $vehiculos;
 
-      
-       return $vehiculos;
         //Los datos enviados a la vista van en forma de array, 
         //KEY es el nombre que nosotros queramos
         //VALUE es el dato que ya definido y queremos enviar

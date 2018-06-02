@@ -69,4 +69,22 @@ Route::post('/ver_fechas_disponibles', 'TuneroController@ver_fechas_disponibles'
 
 Route::post('/actualizarTurno', 'TuneroController@actualizarTurno')->name('actualizarTurno');
 
+
+
+Route::get("/eac/bienvenida",'EacController@escritorioEac')->name('/eac/bienvenida');
+
 Route::get("/eac/verTurnos","EacController@verTurnos")->name("/eac/verTurnos");
+
+Route::get("/eac/turnosHoy", "EacController@TurnosHoy")->name("/eac/turnosHoy");
+
+Route::get("/eac/clientesregistrados", "EacController@clientesRegistrados")->name("/eac/clientesregistrados");
+
+Route::get("/eac/buscarPorChasis", "EacController@mostrar")->name("/eac/buscarPorChasis");
+Route::post("/eac/buscarPorChasis", "EacController@buscarClientePorChasis")->name("/eac/buscarPorChasis");
+
+Route ::get("encargado/{pagina}", "EacController@mostrarPagina")->name("/encargado/");
+
+Route::get("/eac/buscarPorModelo", "EacController@buscarModeloMostrar")->name("/eac/buscarPorModelo");
+Route::post("/eac/buscarPorModelo", "EacController@buscarModeloRecibir")->name("/eac/buscarPorModelo");
+
+Route::get("/eac/clientesPorVehiculo", "EacController@buscarClientePorVehiculo")->name("/eac/clientesPorVehiculo");
