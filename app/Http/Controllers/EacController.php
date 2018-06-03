@@ -105,17 +105,12 @@ class EacController extends Controller
 
     }
 
-    //Consultar órdenes de reparación ingresadas, por cliente.
-
-    //Consultar órdenes de reparación ingresadas, por nro_chasis.
+   
 
     //Reporte del total de clientes por tipo de vehiculo.
     public function buscarClientePorVehiculo()
     {
-
-    //    return Vehiculo::with("user", "vehiculo_tipoVehiculo")->orderBy()->get()->groupBy('id_tipo_vehiculo');
-
-     
+    
     $consulta = TipoVehiculo::with("tipovehiculo_vehiculo")->get();
         return view("eac.clientesPorTipoVehiculo",["vehiculos"=>$consulta]);
     }
@@ -130,11 +125,11 @@ class EacController extends Controller
         return view("eac.clientesturnoscancelados",["clientesConTurnosCancelados"=>$clientesConTurnosCancelados]);
     }
 
-//return view ("eac.clientesRegistrados", ["totalClientes"=> $totalClientes]);
+     //Consultar órdenes de reparación ingresadas, por cliente.
 
-//$turnosCancelados = DB::table("turnos")->where("id_estado_turno", 3)->where("fecha",$fechaActual)->get();
+    //Consultar órdenes de reparación ingresadas, por nro_chasis.
 
-//return view('eac.canceladosDelDia', ["turnosCancelados"=>$turnosCancelados]);
+    
 
     //Funciones para devolver página de consultas y reportes
     public function mostrarPagina($pagina)
