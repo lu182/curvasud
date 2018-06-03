@@ -3,7 +3,7 @@
 
 @section("content")
 
-<h2>  PANEL EAC (empleado)</h2>
+<h2>  PANEL JEFE DE TALLER (empleado)</h2>
 
 
 

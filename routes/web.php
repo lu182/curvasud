@@ -94,3 +94,7 @@ Route::get("/eac/turnosCancelados", "EacController@clientesTurnosCancelados")->n
 
 
 Route::get("/jefetaller/bienvenida", "JefeDeTallerController@bienvenida")->name("/jefetaller/bienvenida")->middleware('jefetaller');
+
+Route::get("/jefetaller/ordenreparacion", "JefeDeTallerController@mostrarFormOrden")->name("/jefetaller/ordenreparacion");
+Route::post("/jefetaller/ordenreparacion", "JefeDeTallerController@registrarOrden")->name("/jefetaller/ordenreparacion");
+Route::get("pdf", "JefeDeTallerController@pdf")->name("pdf");
