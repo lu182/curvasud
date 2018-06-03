@@ -8,11 +8,11 @@
 
 <ul>
 <li>
-    <a href="{{route('/eac/verTurnos')}}"> Ver Turnos Disponibles y No Disponibles </a>
+    <a href="{{route('/eac/verTurnos')}}"> Ver turnos disponibles y no disponibles </a>
 </li>
 
 <li>
-        <a href="{{route('/eac/turnosHoy')}}"> Ver Turnos cancelados del día </a>
+        <a href="{{route('/eac/turnosHoy')}}"> Ver turnos cancelados del día </a>
     </li>
 
     <li>
@@ -20,11 +20,11 @@
         </li>
 
         <li>
-                <a href="{{route('/eac/buscarPorChasis')}}"> Buscar clientes por chasis </a>
+                <a href="{{route('/eac/buscarPorChasis')}}"> Buscar clientes por número de chasis </a>
             </li>
 
             <li>
-                    <a href="{{route('/eac/buscarPorModelo')}}"> Buscar vehiculos por modelo </a>
+                    <a href="{{route('/eac/buscarPorModelo')}}"> Consultar clientes por modelo de vehículo </a>
                 </li>
 </ul>
 

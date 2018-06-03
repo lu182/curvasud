@@ -48,7 +48,7 @@
                <li>
                   <a class="nav-link" href="{{ route('mivehiculo') }}">
                      <i class="nc-icon nc-notes"></i>
-                     <p>Mi Vehículo</p>
+                     <p>Mis Vehículos</p>
                   </a>
                </li>
                <li>
@@ -109,6 +109,101 @@
 
 
                @endif
+
+               @if (  Auth::user()->tipo_user_id == 3 )
+               <ul class="nav">
+               <li class="nav-item ">
+                    <a class="nav-link" href="{{ route('escritorio') }}">
+                       <i class="nc-icon nc-circle-09"></i>
+                       <p>Escritorio</p>
+                    </a>
+                 </li>
+                 <li class="nav-item ">
+                    <a class="nav-link" href="{{ route('misdatos') }}">
+                       <i class="nc-icon nc-circle-09"></i>
+                       <p>Mis datos</p>
+                    </a>
+                 </li>
+                 <li class="nav-item ">
+                        <a class="nav-link" href="">
+                           <i class="nc-icon nc-circle-09"></i>
+                           <p>Consultas</p>
+                        </a>
+                     </li>
+
+                     <li class="nav-item ">
+                            <a class="nav-link" href="">
+                               <i class="nc-icon nc-circle-09"></i>
+                               <p>Reportes</p>
+                            </a>
+                         </li>
+
+                         <li class="nav-item ">
+                                <a class="nav-link" href="">
+                                   <i class="nc-icon nc-circle-09"></i>
+                                   <p>Registrar Mecánico</p>
+                                </a>
+                             </li>
+
+                             <li class="nav-item ">
+                                    <a class="nav-link" href="">
+                                       <i class="nc-icon nc-circle-09"></i>
+                                       <p>Registrar órden de reparación</p>
+                                    </a>
+                                 </li>
+
+
+                 <li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                           @csrf
+                           <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+                              <i class="nc-icon nc-tap-01"></i>
+                              <p>Cerrar Sesión</p>
+                           </a>
+                        </form>
+                     </li>
+                 @endif
+
+                 @if (  Auth::user()->tipo_user_id == 4 )
+                 <ul class="nav">
+                 <li class="nav-item ">
+                      <a class="nav-link" href="{{ route('escritorio') }}">
+                         <i class="nc-icon nc-circle-09"></i>
+                         <p>Escritorio</p>
+                      </a>
+                   </li>
+                   <li class="nav-item ">
+                      <a class="nav-link" href="">
+                         <i class="nc-icon nc-circle-09"></i>
+                         <p>Registrar empleados</p>
+                      </a>
+                   </li>
+                   <li class="nav-item ">
+                          <a class="nav-link" href="">
+                             <i class="nc-icon nc-circle-09"></i>
+                             <p>Registrar clientes</p>
+                          </a>
+                       </li>
+  
+                       <li class="nav-item ">
+                              <a class="nav-link" href="">
+                                 <i class="nc-icon nc-circle-09"></i>
+                                 <p>Otras acciones</p>
+                              </a>
+                           </li>
+  
+  
+                    <li>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                             @csrf
+                             <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+                                <i class="nc-icon nc-tap-01"></i>
+                                <p>Cerrar Sesión</p>
+                             </a>
+                          </form>
+                       </li>
+                     @endif
+
                <script>
                   document.getElementById("btnLogout").onclick = function() {myFunction()};
                   

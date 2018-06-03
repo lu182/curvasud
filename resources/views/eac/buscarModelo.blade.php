@@ -2,7 +2,7 @@
 
 
 @section("content")
-<h2>BUSCAR VEHICULOS POR MODELO<h2>
+<h2>CLIENTES POR MODELO DE VEHICULO<h2>
 
         <div id="contenedorForm">
                 <form action="" method="post" id="formBuscarPorChasis">
@@ -11,7 +11,7 @@
                     <br>
                     <br>
                     <ul> 
-                        <li><label>Número de chasis:</label> 
+                        <li><label>Modelo de vehículo:</label> 
                        
                             <select name="modelo">
                                     @foreach ($modelos as $key => $modelo)

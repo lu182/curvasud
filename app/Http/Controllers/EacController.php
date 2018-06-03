@@ -96,6 +96,8 @@ class EacController extends Controller
 
     //Consultar órdenes de reparación ingresadas, por nro_chasis.
 
+    
+    
     //Reporte del total de clientes por tipo de vehiculo.
     public function buscarClientePorVehiculo(){
 
@@ -110,6 +112,22 @@ class EacController extends Controller
 
 
      //Reporte de clientes con turnos cancelados
+     public function clientesTurnosCancelados(){
+
+        $totalClientes = DB::table("users")->where("tipo_user_id", 1)->select('nombre', 'apellido', 'telefono')->get();
+        $turnosCancelados = DB::table("turnos")->where("id_estado_turno", 3)->get();
+
+      
+
+     }
+     
+//return view ("eac.clientesRegistrados", ["totalClientes"=> $totalClientes]);
+
+//$turnosCancelados = DB::table("turnos")->where("id_estado_turno", 3)->where("fecha",$fechaActual)->get();
+        
+//return view('eac.canceladosDelDia', ["turnosCancelados"=>$turnosCancelados]);
+
+
 
     
 
