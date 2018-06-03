@@ -26,6 +26,19 @@
             <li>
                     <a href="{{route('/eac/buscarPorModelo')}}"> Consultar clientes por modelo de vehículo </a>
                 </li>
+
+
+    
+                <li>
+                        <a href="{{route('/eac/clientesPorVehiculo')}}"> Consultar clientes por tipo de vehículo </a>
+                    </li>
+
+
+                    <li>
+                            <a href="{{route('/eac/turnosCancelados')}}"> Consultar clientes con turnos cancelados </a>
+                        </li>
+
+                    
 </ul>
 
 

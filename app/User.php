@@ -41,4 +41,16 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Vehiculo',"id_cliente");
     }
+
+    public function turnos()
+    {
+        return $this->hasMany('App\Turno',"id_cliente");
+    }
+
+    public function turnos_cancelados()
+    {
+        return $this->hasMany('App\Turno',"id_cliente")->where("id_estado_turno",3)->orderBy('id_turno', 'desc');
+    }
+
+  
 }

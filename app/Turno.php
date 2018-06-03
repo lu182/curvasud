@@ -21,6 +21,11 @@ class Turno extends Model
        return $this->belongsTo('App\TipoServicio',"id_tipo_servicio");
    }
 
+   public function cliente()
+   {
+       return $this->belongsTo('App\User',"id_cliente");
+   }
+
    public function estado()
    {
        return $this->belongsTo('App\EstadoTurno',"id_estado_turno");
@@ -29,6 +34,8 @@ class Turno extends Model
    public function encriptarTurno(){
        return Crypt::encryptString($this->id_turno);
    }
+
+  
 
 
 }

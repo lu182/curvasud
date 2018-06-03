@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Cliente;
+use App\Empleado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use App\Empleado;
-use App\Cliente;
 
 class ClientesEmpleadosControlador extends Controller
 {
 
-
     public function __construct()
     {
 
-   //     $this->middleware('auth');
+        //     $this->middleware('auth');
 
     }
     /**
@@ -24,10 +23,8 @@ class ClientesEmpleadosControlador extends Controller
      */
     public function index()
     {
-     
-        return view("ingreso.login");
 
-     
+        return view("ingreso.login");
 
     }
 
@@ -55,26 +52,24 @@ class ClientesEmpleadosControlador extends Controller
         $mail = $request->txtEmail;
         $pass = $request->txtContra;
 
-
         //Función de verificar usuario
 
         $verificarCliente = Cliente::where("pass", $pass)
-        ->where("email",$mail)->first();
-        if($verificarCliente === null){
-            return Redirect::back()->withErrors([ 'Los datos ingresados no son validos']);
-        }else{
-            return view("cliente.bienvenida",["cliente"=>$verificarCliente]);
-        }
-        
-        $verificarEmpleado = Empleado::where("pass", $pass)
-        ->where("email",$mail)->first();
-        if($verificarEmpleado === null){
+            ->where("email", $mail)->first();
+        if ($verificarCliente === null) {
             return Redirect::back()->withErrors(['Los datos ingresados no son validos']);
-        }else{
-            return view("empleado.bienvenida",["empleado"=>$verificarEmpleado]);
+        } else {
+            return view("cliente.bienvenida", ["cliente" => $verificarCliente]);
         }
-        
-        
+
+        $verificarEmpleado = Empleado::where("pass", $pass)
+            ->where("email", $mail)->first();
+        if ($verificarEmpleado === null) {
+            return Redirect::back()->withErrors(['Los datos ingresados no son validos']);
+        } else {
+            return view("empleado.bienvenida", ["empleado" => $verificarEmpleado]);
+        }
+
     }
 
     /**

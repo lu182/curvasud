@@ -16,10 +16,10 @@
                         <li>Chasis: {{$modeloAMostrar->nro_chasis}} </li>
                         <li>Fecha inicio de garantía: {{$modeloAMostrar->fecha_inicio_garantia}} </li>
                         <br>
-                        <li>Titular: </li>
-                        <li>DNI: </li>
-                        <li>Teléfono: </li>
-                        <li>Email: </li>
+                        <li>Titular: {{$modeloAMostrar->vehiculo_cliente->nombre}} </li>
+                        <li>DNI:  {{$modeloAMostrar->vehiculo_cliente->dni}}</li>
+                        <li>Teléfono: {{$modeloAMostrar->vehiculo_cliente->telefono}} </li>
+                        <li>Email: {{$modeloAMostrar->vehiculo_cliente->email}}  </li>
                         
                         <p>------------------------------------------------------------------------ </p>
                     </ul>

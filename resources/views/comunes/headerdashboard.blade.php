@@ -14,6 +14,8 @@
       <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
       <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
       <link href="../assets/css/animate.css" rel="stylesheet" />
+      <link href="{{asset('tablas/estilo.css')}}" rel="stylesheet" />
+
    </head>
    <body>
       <div class="wrapper">
@@ -322,5 +324,41 @@
           demo.showNotification();
       
       });
+
+
+     // var tablas = $("#tabla")
+
+      $(document).ready(function() {
+        $('table').dataTable({
+            "language": {
+                
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                
+            }
+        } );
+    } );
    </script>
+
+   <script src="{{asset('tablas/js.js')}}"></script>
 </html>

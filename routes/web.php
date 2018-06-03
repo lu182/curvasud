@@ -88,3 +88,9 @@ Route::get("/eac/buscarPorModelo", "EacController@buscarModeloMostrar")->name("/
 Route::post("/eac/buscarPorModelo", "EacController@buscarModeloRecibir")->name("/eac/buscarPorModelo");
 
 Route::get("/eac/clientesPorVehiculo", "EacController@buscarClientePorVehiculo")->name("/eac/clientesPorVehiculo");
+
+
+Route::get("/eac/turnosCancelados", "EacController@clientesTurnosCancelados")->name("/eac/turnosCancelados");
+
+
+Route::get("/jefetaller/bienvenida", "JefeDeTallerController@bienvenida")->name("/jefetaller/bienvenida")->middleware('jefetaller');

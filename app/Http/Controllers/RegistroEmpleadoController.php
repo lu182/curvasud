@@ -2,30 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RegistroEmpleadoController extends Controller
 {
 
-
-    public function registroEmp_ver(){
+    public function registroEmp_ver()
+    {
 
         $user = Auth::user();
-        if ( Auth::check() && $user->tipo_user_id == 4 ){
+        if (Auth::check() && $user->tipo_user_id == 4) {
             return view('eac.registrar');
+        } else {
+            return "No tienes permiso para acceder";
         }
-else{
-    return "No tienes permiso para acceder";
-}
-     
-  
 
-   
-}
-       
+    }
 
-
-
-    
 }

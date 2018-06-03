@@ -14,6 +14,6 @@ class TipoVehiculo extends Model
 
    public function tipovehiculo_vehiculo()
    {
-       return $this->hasMany('App\Vehiculo',"id_tipo_vehiculo");
+       return $this->hasMany('App\Vehiculo',"id_tipo_vehiculo")->orderBy('id_vehiculo', 'desc');
    }
 }
