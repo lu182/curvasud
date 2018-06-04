@@ -10,6 +10,8 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use PDF;
+
 class EacController extends Controller
 {
     public function escritorioEac()
@@ -27,7 +29,9 @@ class EacController extends Controller
         return "No tienes permiso para acceder";
     }
 
-    //Consultar turnos disponibles y no disponibles
+                                //----CONSULTAS---//
+    
+    //Consultar turnos disponibles y no disponibles (serian todos los del mes que no estan ocupados o que fueron cancelados hasta el año que viene)
     public function verTurnos()
     {
 
@@ -60,18 +64,20 @@ class EacController extends Controller
     public function clientesRegistrados()
     {
 
-        $totalClientes = DB::table("users")->where("tipo_user_id", 1)->select('nombre', 'apellido', 'telefono')->get();
+        $totalClientes = DB::table("users")->where("tipo_user_id", 1)->select('name', 'nombre', 'apellido', 'telefono', 'fecha_nac','email')->get();
 
         return view("eac.clientesRegistrados", ["totalClientes" => $totalClientes]);
 
     }
 
     //Consultar clientes por modelo de vehiculo
-
     public function buscarModeloMostrar()
     {
+        //falta filtrar los clientes con tipo de usuario 1 
+        //$clientes = DB::table("users")->where("tipo_user_id", 1)->get();
 
         $modelos = DB::table("vehiculos")->select("modelo")->distinct()->get();
+        //acá toma todos los modelos sin repetirse
         return view("eac.buscarModelo", ["modelos" => $modelos]);
     }
 
@@ -99,15 +105,12 @@ class EacController extends Controller
         $vehiculo = DB::table("vehiculos")->where("nro_chasis", $chasis)
             ->join('users', 'vehiculos.id_cliente', '=', 'users.id')->first();
 
-        //  return $vehiculo;join
-
         return view("eac.clientePorChasis", ["clienteEncontrado" => $vehiculo]);
 
     }
 
    
-
-    //Reporte del total de clientes por tipo de vehiculo.
+    //Consultar total de clientes por tipo de vehiculo. (tambien se imprime)
     public function buscarClientePorVehiculo()
     {
     
@@ -115,21 +118,26 @@ class EacController extends Controller
         return view("eac.clientesPorTipoVehiculo",["vehiculos"=>$consulta]);
     }
 
-    //Reporte de clientes con turnos cancelados
+
+    //Consultar clientes con turnos cancelados (tambien se imprime)
     public function clientesTurnosCancelados()
     {
         $clientesConTurnosCancelados = User::with("turnos_cancelados")->get();
-
-
-
+        
         return view("eac.clientesturnoscancelados",["clientesConTurnosCancelados"=>$clientesConTurnosCancelados]);
     }
 
-     //Consultar órdenes de reparación ingresadas, por cliente.
+
+
+
+
+
+
+    //Consultar órdenes de reparación ingresadas, por cliente.
 
     //Consultar órdenes de reparación ingresadas, por nro_chasis.
 
-    
+
 
     //Funciones para devolver página de consultas y reportes
     public function mostrarPagina($pagina)

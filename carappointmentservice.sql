@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 03-06-2018 a las 22:50:55
+-- Tiempo de generación: 04-06-2018 a las 06:37:11
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 7.2.4
 
@@ -394,7 +394,7 @@ CREATE TABLE IF NOT EXISTS `turnos` (
   KEY `fk_turno_tipos_servicios_idx` (`id_tipo_servicio`),
   KEY `FK_turnos_estados_turnos_idx` (`id_estado_turno`),
   KEY `FK_turnos_clientes_idx` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `turnos`
@@ -410,11 +410,12 @@ INSERT INTO `turnos` (`id_turno`, `id_tipo_servicio`, `id_cliente`, `id_estado_t
 (7, 1, 2, 3, '2018-05-30', '14:00:00'),
 (8, 1, 2, 3, '2018-05-25', '08:00:00'),
 (9, 1, 2, 3, '2018-06-05', '08:00:00'),
-(10, 2, 2, 2, '2018-06-22', '13:00:00'),
+(10, 2, 2, 3, '2018-06-22', '13:00:00'),
 (11, 6, 2, 3, '2018-06-29', '10:00:00'),
 (12, 6, 2, 3, '2018-06-29', '15:00:00'),
 (13, 1, 2, 3, '2018-07-14', '09:00:00'),
-(14, 3, 2, 3, '2018-06-01', '11:00:00');
+(14, 3, 2, 3, '2018-06-01', '11:00:00'),
+(15, 3, 2, 2, '2018-06-06', '16:00:00');
 
 -- --------------------------------------------------------
 
@@ -450,21 +451,22 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `users_id_tipo_doc_foreign` (`id_tipo_doc`),
   KEY `users_id_ciudad_foreign` (`id_ciudad`),
   KEY `users_id_tipo_empleado_foreign` (`id_tipo_empleado`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `tipo_user_id`, `id_tipo_doc`, `id_ciudad`, `dni`, `nombre`, `apellido`, `fecha_nac`, `razon_social`, `domicilio`, `cod_postal`, `telefono`, `id_tipo_empleado`, `cuil`) VALUES
-(1, 'Jorgelino', 'asdasdas@asdasd.com', '$2y$10$zl.hL9ooDIhDlxm2Y3gpM.JX0g04tXhu4cKQx3I0CP..MbNYVKM3C', 'D9BZbySaKjVctypNL3s1roswNosOrkYsUMBGDGq6Mgd3bvKTn793AsJf2bNK', '2018-05-20 04:18:38', '2018-05-20 04:18:38', 1, 0, 0, 0, '', '', '', '', '', 0, '', NULL, NULL),
-(2, 'Marcelo Tinelli', 'marcelo@tinelli.com', '$2y$10$n/dDC50fxyiSjuoNUcXQM.UcnVIvHKx9Goz6HgUp0JtOlRmWfxdCm', '763rkjuoRmgeMFAryjHL9s2FmbpJZnn0OSJFcXxnkqh0B4O9mtWJNdLloFt5', '2018-05-20 04:21:24', '2018-05-20 04:21:24', 3, 0, 0, 0, 'Marcelo', 'Tinelli', '', '', '', 0, '', NULL, NULL),
-(3, 'sdasddsa', 'asdsad@asdsad.com', '$2y$10$oIqztiwaYdX4eHBdfU6GA.ZjUiYa/Dt2FlBPrvVhZP684/7laEsSO', NULL, '2018-05-20 05:29:07', '2018-05-20 05:29:07', 1, 0, 0, 0, '', '', '', '', '', 0, '', NULL, NULL),
-(4, 'asdsad', 'asdas@asdasd.com', '$2y$10$FvLZMaVHfPtFxlyMdNiaY.3EhzqYgha2BNwqYbSwJiocgXENG9T7a', NULL, '2018-05-20 05:33:52', '2018-05-20 05:33:52', 1, 0, 0, 0, '', '', '', '', '', 0, '', NULL, NULL),
-(8, 'juampi', 'juancho1@gmail.com', '$2y$10$.21042BLp6H.O1yHCAW7O.375wvUR/Uj3HXtuHhUwh3PYQLLZ/QpS', NULL, '2018-05-23 04:00:35', '2018-05-23 04:00:35', 1, 1, 1, 36234993, 'Juan Pablo', 'Paillet', '2018-05-31', 'Jpaillet', 'Caseros 1180', 5000, '3543640112', NULL, NULL),
-(7, 'juampi', 'juancho@gmail.com', '$2y$10$xTbuyCkqDxUAXdabFUecL.BWPsnMm9p8pRqWVbYoHlJJskhb1jmG6', NULL, '2018-05-23 04:00:11', '2018-05-23 04:00:11', 1, 1, 1, 36234993, 'Juan Pablo', 'Paillet', '2018-05-31', 'Jpaillet', 'Caseros 1180', 5000, '3543640112', NULL, NULL),
-(9, 'juampi', 'juancho2@gmail.com', '25f9e794323b453885f5181f1b624d0b', 'siMrVhj7f8ymqStdAoWhMhSUkDLs64RgS4LV9W6EGxWoLhBnZkPAQjSjiIm1', '2018-05-23 04:01:07', '2018-05-23 04:01:07', 3, 1, 1, 36234999, 'Carlos', 'Gómez', '2018-05-31', NULL, 'Caseros 1180', 5000, '3543640112', NULL, NULL),
-(10, 'Lucianota', 'lucianota@lucianota.com', '$2y$10$dvCizcP8kg5rKzzUKTNwIeu9AwdHE7y4BaIEHFN/9yzAg7Bf4mzIu', 'yif7Qhk00X1KSqIRsuRTUMClHfxVglO8DcSHOxu5R5VsHKi3qtVYGpo3ZUEH', '2018-06-02 02:12:39', '2018-06-02 02:12:39', 2, 1, 1, 14569874, 'Luciana', 'Fernandez', '1990-05-28', 'Luciana', NULL, NULL, '35435856885', NULL, NULL);
+(1, 'jorge89', 'jorge_carranza89@gmail.com', '$2y$10$zl.hL9ooDIhDlxm2Y3gpM.JX0g04tXhu4cKQx3I0CP..MbNYVKM3C', 'D9BZbySaKjVctypNL3s1roswNosOrkYsUMBGDGq6Mgd3bvKTn793AsJf2bNK', '2018-05-20 04:18:38', '2018-05-20 04:18:38', 1, 1, 1, 33236587, 'Jorge', 'Carranza', '1989-03-19', '', '', 0, '3516996321', NULL, NULL),
+(2, 'marce22', 'marcelo@tinelli.com', '$2y$10$n/dDC50fxyiSjuoNUcXQM.UcnVIvHKx9Goz6HgUp0JtOlRmWfxdCm', '5WXdUngUWvdOrmEC230cwP94vDcPpoRxGIjVQfIGaKm6TwPIQ1PBQGqbpagA', '2018-05-20 04:21:24', '2018-05-20 04:21:24', 1, 1, 1, 35333210, 'Marcelo', 'Tinelli', '1983-08-20', '', '', 0, '3518235425', NULL, NULL),
+(3, 'lucas58', 'lucas.venencia@hotmail.com', '$2y$10$oIqztiwaYdX4eHBdfU6GA.ZjUiYa/Dt2FlBPrvVhZP684/7laEsSO', NULL, '2018-05-20 05:29:07', '2018-05-20 05:29:07', 1, 1, 1, 33254877, 'Lucas', 'Venencia', '1990-09-21', '', '', 0, '351699845', NULL, NULL),
+(4, 'caro23', 'caro.benitez@gmail.com', '$2y$10$FvLZMaVHfPtFxlyMdNiaY.3EhzqYgha2BNwqYbSwJiocgXENG9T7a', NULL, '2018-05-20 05:33:52', '2018-05-20 05:33:52', 1, 1, 1, 36303214, 'Carolina', 'Benitez', '1988-02-15', '', '', 0, '3515784569', NULL, NULL),
+(8, 'juampi_88', 'juancho1@gmail.com', '$2y$10$.21042BLp6H.O1yHCAW7O.375wvUR/Uj3HXtuHhUwh3PYQLLZ/QpS', NULL, '2018-05-23 04:00:35', '2018-05-23 04:00:35', 1, 1, 1, 36234993, 'Juan Pablo', 'Paillet', '2018-05-31', '', 'Caseros 1180', 5000, '3543640112', NULL, NULL),
+(7, 'hector86', 'hectorcaceres@gmail.com', '$2y$10$xTbuyCkqDxUAXdabFUecL.BWPsnMm9p8pRqWVbYoHlJJskhb1jmG6', NULL, '2018-05-23 04:00:11', '2018-05-23 04:00:11', 1, 1, 1, 36234993, 'Héctor', 'Cáceres', '2018-05-31', '', 'Bv. san juan 600', 5000, '3512566477', NULL, NULL),
+(9, 'lucre29', 'lucrecia.m@hotmail.com', '25f9e794323b453885f5181f1b624d0b', 'siMrVhj7f8ymqStdAoWhMhSUkDLs64RgS4LV9W6EGxWoLhBnZkPAQjSjiIm1', '2018-05-23 04:01:07', '2018-05-23 04:01:07', 1, 1, 1, 36234999, 'Lucrecia', 'Martinez', '2018-05-31', '', 'Av. Duarte Quiros 1500', 5000, '3516985254', NULL, NULL),
+(10, 'luli', 'lucianota@lucianota.com', '$2y$10$dvCizcP8kg5rKzzUKTNwIeu9AwdHE7y4BaIEHFN/9yzAg7Bf4mzIu', '2s3tCwQNmKO8woOM8zuBzg0oBbXyKFCTreqizSP0ZFgyS4qZVPjhKIOSdzSy', '2018-06-02 02:12:39', '2018-06-02 02:12:39', 2, 1, 1, 14569874, 'Luciana', 'Fernandez', '1990-05-28', '', 'Av.Juan B Justo 600', NULL, '3513655410', NULL, NULL),
+(12, 'carlosfca', 'carlosgomez@curvasud.com', '$2y$10$1miGxsLiXYUzKbDiQCgDfuaUwQXw/PVUwmvT74hkJVi4h8zG6VPai', 'RacE01DIX8paRjQcYz1mwI9yGKavogRP160XxJPKjaVF4GNfoEyGExnntufp', '2018-06-04 08:29:25', '2018-06-04 08:29:25', 3, 1, 1, 33333333, 'Carlos', 'Gómez', '1983-06-14', NULL, 'Bolivar 555', 5000, '3512654788', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -487,32 +489,33 @@ CREATE TABLE IF NOT EXISTS `vehiculos` (
   UNIQUE KEY `patente_UNIQUE` (`patente`),
   UNIQUE KEY `nro_chasis_UNIQUE` (`nro_chasis`),
   KEY `FK_vehiculos_tipos_vehiculos_idx` (`id_tipo_vehiculo`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `vehiculos`
 --
 
 INSERT INTO `vehiculos` (`id_vehiculo`, `id_tipo_vehiculo`, `marca`, `modelo`, `anio`, `patente`, `nro_chasis`, `fecha_inicio_garantia`, `id_cliente`) VALUES
-(1, 1, 'Fiat', 'Toro Freedom', 2015, 'ab123cd', 'kb12345', '2017-11-14', 10),
-(2, 1, 'Fiat', 'qasad', 12312, '1231231', '1231231', NULL, 10),
-(4, 1, 'Fiat', 'toro freedom', 2017, 'AB123FO', 'KB12348', NULL, 10),
-(5, 1, 'Fiat', 'Toro volcano', 2017, 'AB333FD', 'KB12223', NULL, 8),
-(7, 1, 'Fiat', 'Toro volcano', 2017, 'AB333FE', 'KB12221', NULL, 10),
-(10, 1, 'Fiat', 'Toro volcano', 2017, 'AB333FB', 'KB12226', NULL, 1),
-(13, 1, 'Fiat', 'Toro volcano', 2017, 'AB333OI', 'KB122OI', NULL, 1),
-(15, 1, 'Fiat', 'Toro volcano', 2017, 'AB33123', 'KB12123', NULL, 2),
-(16, 1, 'Fiat', 'Toro volcano', 2017, 'AB33647', 'KB12647', NULL, 2),
-(17, 1, 'Fiat', 'Toro volcano', 2017, 'AB33609', 'KB12609', NULL, 2),
-(18, 2, 'Fiat', 'Modelo 1', 2018, '789456a', '78945av', '2018-05-24', 3),
-(19, 1, 'Fiat', 'Cronos drive', 2017, 'AC122GH', 'KB55555', '2016-06-20', 2),
-(20, 1, 'Fiat', 'Mobi', 2017, 'AB456RE', 'KB12875', '2017-02-04', 2),
-(21, 1, 'Fiat', 'Argo Drive', 2017, 'AB489HG', 'KB78945', '2017-03-06', 8),
-(22, 1, 'Fiat', 'Mobi drive', 2017, 'AB123UY', 'KB1234E', '2017-02-20', 8),
-(23, 2, 'Fiat', 'Fiorino', 2014, 'AS123GF', 'OI45687', '2014-03-20', 8),
-(24, 1, 'Fiat', 'Cronos drive', 2018, '12cd23w', 'kb11111', '2018-03-20', 2),
+(1, 2, 'Fiat', 'Toro Freedom', 2015, 'AB123CD', 'KB12345', '2017-11-14', 10),
+(2, 1, 'Fiat', 'Tipo', 2014, '1231231', '1231231', NULL, 10),
+(4, 2, 'Fiat', 'Toro Freedom', 2017, 'AB123FO', 'KB12348', '2016-12-15', 9),
+(5, 2, 'Fiat', 'Toro volcano', 2017, 'AB333FD', 'KB12223', NULL, 8),
+(7, 2, 'Fiat', 'Toro volcano', 2017, 'AB333FE', 'KB12221', NULL, 8),
+(10, 2, 'Fiat', 'Strada', 2017, 'AB333FB', 'KB12226', '2017-05-12', 2),
+(13, 2, 'Fiat', 'Toro volcano', 2017, 'AB333OI', 'KB122OI', NULL, 1),
+(15, 3, 'Fiat', 'Ducato', 2017, 'AB33123', 'KB12123', '2016-03-02', 2),
+(16, 2, 'Fiat', 'Toro volcano', 2017, 'AB33647', 'KB12647', NULL, 2),
+(17, 2, 'Fiat', 'Toro volcano', 2017, 'AB33609', 'KB12609', NULL, 2),
+(18, 3, 'Fiat', 'Dobló Cargo', 2018, '789456a', '78945av', '2018-05-24', 3),
+(19, 1, 'Fiat', 'Grand Siena', 2017, 'AC122GH', 'KB55555', '2016-06-20', 3),
+(20, 1, 'Fiat', 'Mobi Easy', 2017, 'AB456RE', 'KB12875', '2017-02-04', 4),
+(21, 1, 'Fiat', 'Argo Drive', 2017, 'AB489HG', 'KB78945', '2017-03-06', 3),
+(22, 1, 'Fiat', 'Mobi Way', 2017, 'AB123UY', 'KB1234E', '2017-02-20', 7),
+(23, 3, 'Fiat', 'Fiorino', 2014, 'AS123GF', 'OI45687', '2014-03-20', 8),
+(24, 1, 'Fiat', 'Cronos Drive', 2018, '12cd23w', 'kb11111', '2018-03-20', 9),
 (25, 1, 'Fiat', 'Argo Drive', 2018, 'A123212', 'KB12278', '2018-05-26', 9),
-(26, 1, 'Fiat', 'Cronos drive', 1231, 'LO587OI', 'KB34567', '2018-06-01', 10);
+(26, 1, 'Fiat', 'Cronos Drive', 2018, 'LO587OI', 'KB34567', '2018-06-01', 2),
+(27, 1, 'Fiat', 'Strada', 2014, 'AF123FD', 'CD12385', '2017-06-07', 12);
 
 --
 -- Restricciones para tablas volcadas

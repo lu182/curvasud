@@ -82,7 +82,7 @@ Route::get("/eac/clientesregistrados", "EacController@clientesRegistrados")->nam
 Route::get("/eac/buscarPorChasis", "EacController@mostrar")->name("/eac/buscarPorChasis");
 Route::post("/eac/buscarPorChasis", "EacController@buscarClientePorChasis")->name("/eac/buscarPorChasis");
 
-Route ::get("encargado/{pagina}", "EacController@mostrarPagina")->name("/encargado/");
+Route::get("encargado/{pagina}", "EacController@mostrarPagina")->name("/encargado/");
 
 Route::get("/eac/buscarPorModelo", "EacController@buscarModeloMostrar")->name("/eac/buscarPorModelo");
 Route::post("/eac/buscarPorModelo", "EacController@buscarModeloRecibir")->name("/eac/buscarPorModelo");
@@ -98,3 +98,5 @@ Route::get("/jefetaller/bienvenida", "JefeDeTallerController@bienvenida")->name(
 Route::get("/jefetaller/ordenreparacion", "JefeDeTallerController@mostrarFormOrden")->name("/jefetaller/ordenreparacion");
 Route::post("/jefetaller/ordenreparacion", "JefeDeTallerController@registrarOrden")->name("/jefetaller/ordenreparacion");
 Route::get("pdf", "JefeDeTallerController@pdf")->name("pdf");
+
+Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");

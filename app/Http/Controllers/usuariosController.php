@@ -66,7 +66,8 @@ class usuariosController extends Controller
                 return view("eac.bienvenida");
 
             case 3:
-                return "Es un tipo de usuario 3";
+                return view ("jefetaller.bienvenida");
+            
             case 4:
 
                 $fecha_actual = Carbon::now();

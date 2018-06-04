@@ -4,9 +4,9 @@
 
 @section("content")
 
-<h2>TURNOS CANCELADO DEL DÍA</h2>
+<h2>TURNOS CANCELADOS DEL DÍA</h2>
 
-<h3> Cantidad de turnos {{$turnosCancelados->count()}}<h3>
+<h3> Cantidad de turnos: {{$turnosCancelados->count()}}<h3>
 
     <ul> 
 @foreach($turnosCancelados as $turnoCancelado)

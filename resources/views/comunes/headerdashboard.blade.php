@@ -37,13 +37,13 @@
                </li>
                <li class="nav-item ">
                   <a class="nav-link" href="{{ route('misdatos') }}">
-                     <i class="nc-icon nc-circle-09"></i>
+                     <i class="nc-icon nc-badge"></i>
                      <p>Mis datos</p>
                   </a>
                </li>
                <li>
                   <a class="nav-link" href="{{ route('misturnos') }}">
-                     <i class="nc-icon nc-notes"></i>
+                     <i class="nc-icon nc-bell-55"></i>
                      <p>Mis Turnos</p>
                   </a>
                </li>
@@ -64,7 +64,7 @@
                </li>
                <li class="nav-item active active-pro">
                   <a class="nav-link active" href="{{route('turnero')}}">
-                     <i class="nc-icon nc-alien-33"></i>
+                     <i class="nc-icon nc-settings-tool-66"></i>
                      <p>Solicitar Turno</p>
                   </a>
                </li>
@@ -122,34 +122,34 @@
                  </li>
                  <li class="nav-item ">
                     <a class="nav-link" href="{{ route('misdatos') }}">
-                       <i class="nc-icon nc-circle-09"></i>
+                       <i class="nc-icon nc-badge"></i>
                        <p>Mis datos</p>
                     </a>
                  </li>
                  <li class="nav-item ">
-                        <a class="nav-link" href="">
-                           <i class="nc-icon nc-circle-09"></i>
+                        <a class="nav-link" href="{{ route('/jefetaller/','consultas') }}">
+                           <i class="nc-icon nc-check-2"></i>
                            <p>Consultas</p>
                         </a>
                      </li>
 
                      <li class="nav-item ">
-                            <a class="nav-link" href="">
-                               <i class="nc-icon nc-circle-09"></i>
+                            <a class="nav-link" href="{{ route('/jefetaller/','reportes') }}">
+                               <i class="nc-icon nc-chart-pie-35"></i>
                                <p>Reportes</p>
                             </a>
                          </li>
 
                          <li class="nav-item ">
                                 <a class="nav-link" href="">
-                                   <i class="nc-icon nc-circle-09"></i>
+                                   <i class="nc-icon nc-settings-90"></i>
                                    <p>Registrar Mecánico</p>
                                 </a>
                              </li>
 
                              <li class="nav-item ">
                                     <a class="nav-link" href="">
-                                       <i class="nc-icon nc-circle-09"></i>
+                                       <i class="nc-icon nc-paper-2"></i>
                                        <p>Registrar órden de reparación</p>
                                     </a>
                                  </li>

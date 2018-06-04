@@ -5,14 +5,30 @@
 @section("content")
 
 @if(!$clienteEncontrado == null)
-<h2> Cliente: {{ $clienteEncontrado->nombre}} 
-    
+<h2> Cliente: {{ $clienteEncontrado->nombre}} {{ $clienteEncontrado->apellido}}
   para el chasis: {{$clienteEncontrado->nro_chasis}}</h2>
-<h2> Marca: {{ $clienteEncontrado->marca }} </h2>
-<h2> Modelo: {{ $clienteEncontrado->modelo }}</h2>
-<h2> Año: {{ $clienteEncontrado->anio }}</h2>
-<h2> Patente: {{ $clienteEncontrado->patente }}</h2>
-<h2> Fecha de inicio de garantía: {{ $clienteEncontrado->fecha_inicio_garantia}} </h2>
+
+<table class="table display" id="tabla">
+    <thead class="thead-dark">
+        <tr>
+          <th scope="col">Marca</th>
+          <th scope="col">Modelo</th>
+          <th scope="col">Año</th>
+          <th scope="col">Patente</th>
+          <th scope="col">Fecha de inicio de garantía</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <th scope="row">{{$clienteEncontrado->marca}} </th>
+          <td>{{$clienteEncontrado->modelo}}</td>
+          <td>{{$clienteEncontrado->anio}}</td>
+          <td>{{$clienteEncontrado->patente}}</td>
+          <td>{{$clienteEncontrado->fecha_inicio_garantia}}</td>
+        </tr>
+         
+    </tbody> 
+</table> 
 
 @else
 <div class="alert alert-danger"> No se encontró el vehículo </div>

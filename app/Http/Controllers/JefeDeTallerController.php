@@ -89,7 +89,15 @@ class JefeDeTallerController extends Controller
     }
 
 
+ //Funciones para devolver página de consultas y reportes
+ public function mostrarPagina($pagina)
+ {
 
+     if ($pagina == "consultas") {
+         return view("jefetaller.consultas");
+     }
+     return view("jefetaller.reportes");
+ }
 
 
 

@@ -8,12 +8,7 @@
 
         <h2> Tipo de Vehículo: {{$tipoVehiculo->tipoVehiculo}} </h2>
 
-
-     
-
-
-
-                <table class="table display" id="tabla" >
+             <table class="table display" id="tabla" >
                         <thead class="thead-dark">
                           <tr>
                             <th scope="col">Marca</th>
@@ -29,15 +24,12 @@
                       
                    
             @foreach ($tipoVehiculo->tipovehiculo_vehiculo as $vehiculo)
-
-
-
-            <tr>
+                <tr>
                     <th scope="row">{{$vehiculo->marca}} </th>
                     <td>{{$vehiculo->modelo}}</td>
                     <td>{{$vehiculo->vehiculo_cliente->nombre}} {{$vehiculo->vehiculo_cliente->apellido}} </td>
                     <td>{{$vehiculo->vehiculo_cliente->dni}} </td>
-                  </tr>
+                </tr>
           
 
 
