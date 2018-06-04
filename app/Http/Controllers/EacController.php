@@ -18,7 +18,7 @@ class EacController extends Controller
 
         if (!empty($user)) {
 
-            if ($user->tipo_user_id == 2) {
+            if ($user->tipo_user_id > 1) {
                 return view("eac.bienvenida");
 
             }
@@ -115,7 +115,7 @@ class EacController extends Controller
 
     //    return Vehiculo::with("user", "vehiculo_tipoVehiculo")->orderBy()->get()->groupBy('id_tipo_vehiculo');
 
-     
+
     $consulta = TipoVehiculo::with("tipovehiculo_vehiculo")->get();
         return view("eac.clientesPorTipoVehiculo",["vehiculos"=>$consulta]);
     }

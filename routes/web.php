@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', "LandingController@index");
 
 
 
@@ -44,8 +43,9 @@ Route::get('login', [
     'uses' => 'ClientesEmpleadosControlador@index'
   ]);
 
-  
+
 Route::get('/home', 'usuariosController@escritorio')->name('home');
+Route::get('/', 'usuariosController@escritorio')->name('/');
 
 Route::get('/registro_clientes', 'usuariosController@registro_clientes_ver')->name('registro_clientes');
 
