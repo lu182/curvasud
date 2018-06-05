@@ -141,14 +141,14 @@
                          </li>
 
                          <li class="nav-item ">
-                                <a class="nav-link" href="">
+                                <a class="nav-link" href="{{ route('/jefetaller/registrarmecanico') }}">
                                    <i class="nc-icon nc-settings-90"></i>
                                    <p>Registrar Mecánico</p>
                                 </a>
                              </li>
 
                              <li class="nav-item ">
-                                    <a class="nav-link" href="">
+                                    <a class="nav-link" href="{{ route('/jefetaller/ordenreparacion') }}">
                                        <i class="nc-icon nc-paper-2"></i>
                                        <p>Registrar órden de reparación</p>
                                     </a>

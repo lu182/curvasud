@@ -89,6 +89,14 @@ class JefeDeTallerController extends Controller
     }
 
 
+
+    public function mostrarFormMecanico(){
+
+        return view("jefetaller.registrarmecanico");
+
+    }
+
+
  //Funciones para devolver página de consultas y reportes
  public function mostrarPagina($pagina)
  {

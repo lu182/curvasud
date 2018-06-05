@@ -8,7 +8,7 @@
         <div class="col-md-12">
         <div class="card">
         
-        <h2> Registrar Órden de Reparación </h2>
+        <h2> Órden de Reparación N° 14 </h2>
            <form action="" method="post" >
                 @csrf
 
@@ -19,13 +19,19 @@
                 
                 </div>
 
+                <div class="form-control">
+                                <li><label>Fecha estimada de Egreso :</label> 
+                                <input type="date" name="fecha_estimada_egreso" required></li>
+                        
+                        </div>
+
 
                 <div class="form-control">
                         <li><label>Seleccione Cliente:</label> 
                         <select name="cliente">
-@foreach ($clientes as $cliente)
+                        @foreach ($clientes as $cliente)
                             <option value="{{$cliente->id}}"> {{$cliente->nombre}}  {{$cliente->apellido}}  </option>
-                            @endforeach
+                        @endforeach
                         </select>
                 
                 </div>
@@ -35,7 +41,7 @@
                 <div class="form-control">
                         <li><label>Seleccione Vehiculo:</label> 
                         <select name="vehiculo">
-@foreach ($vehiculos as $vehiculo)
+                        @foreach ($vehiculos as $vehiculo)
                             <option value="{{$vehiculo->id_vehiculo}}">  {{$vehiculo->modelo}}  </option>
                             @endforeach
                         </select>
@@ -75,11 +81,7 @@
                 </div>
 
                 
-                <div class="form-control">
-                        <li><label>Fecha estimada de Egreso :</label> 
-                        <input type="date" name="fecha_estimada_egreso" required></li>
-                
-                </div>
+               
                 
 
         <div class="form-control">
@@ -102,7 +104,7 @@
         
         
 
-        <li> <input type="submit"  value="Registrar órden" placeholder="" id="registrarse"/> </li>
+        <input type="submit"  value="Registrar órden" placeholder="" id="registrarse"/> 
         
         </div>
         </div>

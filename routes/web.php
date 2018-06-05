@@ -99,4 +99,7 @@ Route::get("/jefetaller/ordenreparacion", "JefeDeTallerController@mostrarFormOrd
 Route::post("/jefetaller/ordenreparacion", "JefeDeTallerController@registrarOrden")->name("/jefetaller/ordenreparacion");
 Route::get("pdf", "JefeDeTallerController@pdf")->name("pdf");
 
+Route::get("/jefetaller/registrarmecanico", "JefeDeTallerController@mostrarFormMecanico")->name("/jefetaller/registrarmecanico");
+
 Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");
+
