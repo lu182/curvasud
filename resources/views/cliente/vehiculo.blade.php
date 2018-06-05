@@ -3,10 +3,10 @@
 
 @section("content")
 
-<div class="col-md-8">
+<div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Edit Profile</h4>
+                <h4 class="card-title">Mis vehículos</h4>
             </div>
             <div class="card-body">
                 <form>

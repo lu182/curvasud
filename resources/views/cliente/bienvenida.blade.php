@@ -26,7 +26,7 @@
                                 <div class="card " style="min-width: 900px">
 
                                     @if($tieneTurno == 1  )
-                                <div class="row animated  fadeIn">
+                                <div class="row animated  bounceInRight">
                                     <div class="col-lg-4">
                                             <div class="card-header ">
                                                 <h4 class="card-title">{{ $turno->fecha }}</h4>

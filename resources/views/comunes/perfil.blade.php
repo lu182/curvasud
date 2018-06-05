@@ -6,81 +6,105 @@
 <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Editar mis datos</h4>
+                <h4 class="card-title">Actualizar mis datos</h4>
             </div>
             <div class="card-body">
                 <form>
                     <div class="row">
                         <div class="col-md-5 pr-1">
                             <div class="form-group">
-                                <label>Nombre </label>
+                                <label>Usuario </label>
                                 <input type="text" class="form-control"  placeholder="" value=" {{ Auth::user()->name }}">
                             </div>
                         </div>
-                        <div class="col-md-3 px-1">
+                        <div class="col-md-5 px-1">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" placeholder="Username" value="{{ Auth::user()->email }}">
+                                <input type="text" class="form-control" placeholder="" value="{{ Auth::user()->email }}">
                             </div>
                         </div>
-                        <div class="col-md-4 pl-1">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
+                        
                     </div>
                     <div class="row">
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
-                                <label>First Name</label>
-                                <input type="text" class="form-control" placeholder="Company" value="Mike">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" placeholder="" value="{{ Auth::user()->nombre }}" readonly>
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
-                                <label>Last Name</label>
-                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 pr-1">
-                            <div class="form-group">
-                                <label>City</label>
-                                <input type="text" class="form-control" placeholder="City" value="Mike">
-                            </div>
-                        </div>
-                        <div class="col-md-4 px-1">
-                            <div class="form-group">
-                                <label>Country</label>
-                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
+                                <label>Apellido</label>
+                                <input type="text" class="form-control" placeholder="" value="{{ Auth::user()->apellido }}" readonly>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
-                                <label>Postal Code</label>
-                                <input type="number" class="form-control" placeholder="ZIP Code">
+                                <label>DNI</label>
+                                <input type="number" class="form-control" placeholder="" value="{{ Auth::user()->dni }}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                           <label for="">Tipo de documento</label>
+                            <select id="" class="form-control">
+                              <option selected>DNI</option>
+                              <option>LE</option>
+                              <option>Pasaporte</option>
+                            </select>
+                        </div> 
+                        <div class="col-md-4 pl-1">
+                            <div class="form-group">
+                                <label>Fecha de nacimiento</label>
+                                <input type="date" class="form-control" placeholder="" value="{{ Auth::user()->fecha_nac }}" readonly>
+                            </div>
+                        </div>
+                        <div class="col-md-5 pl-1">
+                            <div class="form-group">
+                                <label>Razón Social</label>
+                                <input type="text" class="form-control" placeholder="" value="{{ Auth::user()->razon_social }}">
+                            </div>
+                        </div>
+                    
+                    </div>
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="form-group">
+                                <label>Domicilio</label>
+                                <input type="text" class="form-control" placeholder="Domicilio" value="{{ Auth::user()->domicilio }}">
+                            </div>
+                        </div>
+                        <div class="col-md-4 px-1">
+                            <div class="form-group">
+                                <label>Cód.Postal</label>
+                                <input type="number" class="form-control" placeholder="" value="{{ Auth::user()->cod_postal }}">
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12">
+                        <div class="col-md-4 px-1">
                             <div class="form-group">
-                                <label>About Me</label>
-                                <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
+                                <label>Teléfono</label>
+                                <input type="text" class="form-control" placeholder="" value="{{ Auth::user()->telefono }}">
                             </div>
                         </div>
-                    </div>
-                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
+                       <div class="form-group col-md-4">
+                            <label for="">Ciudad</label>
+                             <select id="" class="form-control">
+                               <option selected>Córdoba</option>
+                               <option>Villa María</option>
+                               <option>Rio cuarto</option>
+                               <option>Jesús María</option>
+                               <option>Alta Gracia</option>
+                               <option>Dean Funes</option>
+                               <option>La Falda</option>
+                               <option>Capilla del monte</option>
+                               <option>Rio ceballos</option>
+                               <option>Agua de oro</option>
+                               <option>Otro..</option>
+                             </select>
+                        </div>
+                   
+                    <button type="submit" class="btn btn-info btn-fill pull-right">ACTUALIZAR MIS DATOS</button>
                     <div class="clearfix"></div>
                 </form>
             </div>

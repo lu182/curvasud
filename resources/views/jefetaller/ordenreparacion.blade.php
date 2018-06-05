@@ -14,7 +14,7 @@
 
 
                 <div class="form-control">
-                        <li><label>Seleccione Fecha estimada de Egreso :</label> 
+                        <li><label>Fecha de ingreso :</label> 
                         <input type="date" name="fecha_estimada_egreso" required></li>
                 
                 </div>
@@ -45,7 +45,7 @@
 
                         
                 <div class="form-control">
-                        <li><label>Seleccione Motivo de Ingreso :</label> 
+                        <li><label>Motivo de Ingreso :</label> 
                             <input type="text" name="motivo_ingreso" required></li>
                 
                 </div>
@@ -64,7 +64,7 @@
 
                 <div class="form-control">
                         <li><label>Extra:</label> 
-                            <input type="textarea" name="extra" required></li>
+                            <input type="textarea" name="extra"></li>
                 
                 </div>
 
@@ -76,7 +76,7 @@
 
                 
                 <div class="form-control">
-                        <li><label>Seleccione Fecha estimada de Egreso :</label> 
+                        <li><label>Fecha estimada de Egreso :</label> 
                         <input type="date" name="fecha_estimada_egreso" required></li>
                 
                 </div>
@@ -90,10 +90,19 @@
                             @endforeach
                         </select>
         </div>
+
+        <div class="form-control">
+                        <li><label>Seleccione mecánico:</label> 
+                            <select name="">
+                                   
+                                    <option selected value=""> Matias Gonzalez </option>
+                                    
+                                </select>
+                </div>
         
         
 
-        <li> <input type="submit"  value="Registrar Turno" placeholder="" id="registrarse"/> </li>
+        <li> <input type="submit"  value="Registrar órden" placeholder="" id="registrarse"/> </li>
         
         </div>
         </div>

@@ -76,8 +76,8 @@ class EacController extends Controller
         //falta filtrar los clientes con tipo de usuario 1 
         //$clientes = DB::table("users")->where("tipo_user_id", 1)->get();
 
-        $modelos = DB::table("vehiculos")->select("modelo")->distinct()->get();
-        //acá toma todos los modelos sin repetirse
+        $modelos = DB::table("vehiculos")->select("modelo")->distinct()->get(); //acá toma todos los modelos sin repetirse
+        
         return view("eac.buscarModelo", ["modelos" => $modelos]);
     }
 

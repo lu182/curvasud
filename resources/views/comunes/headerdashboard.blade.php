@@ -80,20 +80,20 @@
                  </li>
                  <li class="nav-item ">
                     <a class="nav-link" href="{{ route('misdatos') }}">
-                       <i class="nc-icon nc-circle-09"></i>
+                       <i class="nc-icon nc-badge"></i>
                        <p>Mis datos</p>
                     </a>
                  </li>
                  <li class="nav-item ">
                         <a class="nav-link" href="{{ route('/encargado/','consultas') }}">
-                           <i class="nc-icon nc-circle-09"></i>
+                           <i class="nc-icon nc-check-2"></i>
                            <p>Consultas</p>
                         </a>
                      </li>
 
                      <li class="nav-item ">
                             <a class="nav-link" href="{{ route('/encargado/','reportes') }}">
-                               <i class="nc-icon nc-circle-09"></i>
+                               <i class="nc-icon nc-chart-pie-35"></i>
                                <p>Reportes</p>
                             </a>
                          </li>
