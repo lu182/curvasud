@@ -15,6 +15,8 @@
       <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
       <link href="../assets/css/animate.css" rel="stylesheet" />
       <link href="{{asset('tablas/estilo.css')}}" rel="stylesheet" />
+      <link href="{{asset('calendario/styles/glDatePicker.default.css')}}" rel="stylesheet" />
+
 
    </head>
    <body>
@@ -62,12 +64,23 @@
                      </a>
                   </form>
                </li>
+               @if (  count(Auth::user()->vehiculo) > 0 )
+
                <li class="nav-item active active-pro">
                   <a class="nav-link active" href="{{route('turnero')}}">
                      <i class="nc-icon nc-settings-tool-66"></i>
                      <p>Solicitar Turno</p>
                   </a>
                </li>
+               @else
+               
+               <li class="nav-item active active-pro">
+                    <a class="nav-link active disabled" href="{{ route('mivehiculo') }}">
+                       <i class="nc-icon nc-settings-tool-66"></i>
+                       <p>Registra tu vehiculo para solicitar turno</p>
+                    </a>
+                 </li>
+               @endif
                @endif
 
                @if (  Auth::user()->tipo_user_id == 2 )
@@ -186,7 +199,6 @@
                              <p>Registrar clientes</p>
                           </a>
                        </li>
-  
                        <li class="nav-item ">
                               <a class="nav-link" href="">
                                  <i class="nc-icon nc-circle-09"></i>
@@ -329,7 +341,7 @@
      // var tablas = $("#tabla")
 
       $(document).ready(function() {
-        $('table').dataTable({
+       var tabla =  $('table').dataTable({
             "language": {
                 
                     "sProcessing":     "Procesando...",
@@ -357,8 +369,82 @@
                 
             }
         } );
-    } );
+    }
+    
+    );
+
+
+
    </script>
 
    <script src="{{asset('tablas/js.js')}}"></script>
+
+
+   <script>
+        $(document).ready(function (){
+
+            $("#ciudad_input").hide();
+            $("#selector_ciudad").change(function() {
+                // Mostramos el campo de ingresar ciudad basado en el valor del select
+                if ($(this).val() == "11") {
+                    $("#ciudad_input").fadeIn();
+                }else{
+                    $("#ciudad_input").fadeOut();
+                } 
+            });
+
+            $("#ciudad_input2").hide();
+            $("#selector_ciudad2").change(function() {
+                // Mostramos el campo de ingresar ciudad basado en el valor del select
+                if ($(this).val() == "11") {
+                    $("#ciudad_input2").fadeIn();
+                }else{
+                    $("#ciudad_input2").fadeOut();
+                } 
+            });
+        });
+
+
+    </script>
+    <script src="{{asset('calendario/glDatePicker.min.js')}}" rel="stylesheet" ></script>
+
+    <script type="text/javascript">
+        var today = new Date();
+    var future = new Date(today);
+    
+    // Dejamos que el usuario seleccione desde hoy hasta dentro de 1 año
+    future.setDate(today.getDate() + 364);
+    
+     var $calendar = $('#calendario').glDatePicker(
+         
+    {
+        showAlways: true,
+        selectedDate: new Date(),
+        selectableDOW: [1, 2, 3,4,5],
+        allowYearSelect: false,
+        selectableDateRange: [ { from: today, to: future } ],
+        monthNames: [ 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE' ],
+        dowNames:["Dom","Lun","Mar","Mier","Jue","Vier","Sab"],
+       onClick: function(target, cell, date, data) {
+
+        var mes = date.getMonth();
+        if(mes < 10){
+            mes = "0"+date.getMonth();
+        }
+			$("#calendario").val(date.getFullYear() + '-' +
+						mes + '-' +
+						date.getDate());
+
+			if(data != null) {
+				alert(data.message + '\n' + date);
+			}
+		}
+    
+    });
+
+
+
+
+        </script>
+
 </html>

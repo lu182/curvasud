@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Turno;
+use App\Vehiculo;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +21,9 @@ class TuneroController extends Controller
     public function index()
     {
 
+        $vehiculos = Vehiculo::where("id_cliente", Auth::user()->id)->get();
         $tipos_servicio = DB::table("tipos_servicios")->get();
-        return view("turnero.registrar", ["tipos_servicio" => $tipos_servicio]);
+        return view("turnero.registrar", ["tipos_servicio" => $tipos_servicio,"vehiculos"=>$vehiculos]);
 
     }
 
@@ -36,6 +38,9 @@ class TuneroController extends Controller
 
         $fecha = $request->fecha;
         $fecha = strtotime($fecha);
+        $id_vehiculo = $request->id_vehiculo;
+
+    
 
         $fecha = date('Y/m/d', $fecha);
 
@@ -104,7 +109,7 @@ class TuneroController extends Controller
             }
         }
 
-        return view("turnero.hora", ["fecha" => $fecha, "horas" => $horas, "servicio" => $servicio, "turnos_fecha" => $turnos_fecha]);
+        return view("turnero.hora", ["id_vehiculo"=>$id_vehiculo,"fecha" => $fecha, "horas" => $horas, "servicio" => $servicio, "turnos_fecha" => $turnos_fecha]);
 
     }
 
@@ -203,6 +208,7 @@ class TuneroController extends Controller
 
     public function cambiar_fecha(Request $request)
     {
+        $vehiculos = Vehiculo::where("id_cliente", Auth::user()->id)->get();
 
         $id_turno = Crypt::decryptString($request->id_turno);
         $turno_a_editar = Turno::find($id_turno);

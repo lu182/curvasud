@@ -33,4 +33,4 @@
 <p> {{$km}} </p>
 
 </h2> Trabajo realizado por: </h2>
-<p>Matias Gonzalez</p>
+<p>{{$mecanico->nombre}} {{$mecanico->apellido}}</p>

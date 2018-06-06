@@ -30,6 +30,8 @@
 
                         <form action="{{ route('guardarTurno') }}" method="post" id="formRegistro">
                                 @csrf
+                                <input type="hidden" value="{{$id_vehiculo}}" name="id_vehiculo">
+
                                 <input type="hidden" value="{{$fecha}}" name="fecha">
                                 <input type="hidden" value="{{ Auth::user()->id }}" name="id_cliente">
                                 <input type="hidden" value="2" name="id_estado_turno">

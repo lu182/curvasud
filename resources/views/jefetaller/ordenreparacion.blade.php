@@ -95,10 +95,14 @@
 
         <div class="form-control">
                         <li><label>Seleccione mecánico:</label> 
-                            <select name="">
+                            <select name="id_mecanico">
                                    
-                                    <option selected value=""> Matias Gonzalez </option>
-                                    
+
+                                @foreach($mecanicos as $mecanico)
+
+                                <option value="{{$mecanico->id_mecanico}}">{{$mecanico->nombre}} {{$mecanico->apellido}}</option>
+
+                                @endforeach
                                 </select>
                 </div>
         

@@ -47,9 +47,18 @@ class User extends Authenticatable
         return $this->hasMany('App\Turno',"id_cliente");
     }
 
+    public function ciudad()
+    {
+        return $this->belongsTo('App\Ciudad',"id_ciudad");
+    }
+
     public function turnos_cancelados()
     {
         return $this->hasMany('App\Turno',"id_cliente")->where("id_estado_turno",3)->orderBy('id_turno', 'desc');
+    }
+
+    public function tipo_documento(){
+        return $this->belongsTo("App\TipoDocumento","id_tipo_doc");
     }
 
   

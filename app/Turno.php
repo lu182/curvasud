@@ -13,7 +13,7 @@ class Turno extends Model
 
 
     protected $fillable = [
-        'id_turno', 'id_cliente', 'id_estado_turno', 'id_tipo_servicio', 'fecha', 'hora'
+        'id_turno', 'id_cliente', 'id_estado_turno', 'id_tipo_servicio', 'fecha', 'hora','id_vehiculo'
    ];
 
    public function tipo()
@@ -33,6 +33,10 @@ class Turno extends Model
 
    public function encriptarTurno(){
        return Crypt::encryptString($this->id_turno);
+   }
+
+   public function vehiculo(){
+       return $this->hasOne("App\Vehiculo","id_vehiculo");
    }
 
   

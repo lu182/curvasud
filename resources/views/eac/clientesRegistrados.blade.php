@@ -5,7 +5,7 @@
 
 <h2>CLIENTES REGISTRADOS:</h2>
 
-<h3> Cantidad de CLIENTES: {{$totalClientes->count()}}<h3>
+<h3> Cantidad de CLIENTES: {{$totalClientes->count()}}</h3>
 
 <table class="table display" id="tabla">
 

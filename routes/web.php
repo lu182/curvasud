@@ -31,9 +31,17 @@ Route::resource("usuarios","ClientesEmpleadosControlador");
 
 
 Route::get('/escritorio', "usuariosController@escritorio")->name("escritorio");
+
+
 Route::get('/misdatos', "usuariosController@misdatos")->name("misdatos");
+Route::post('/misdatos', "usuariosController@actualizarMisDatos")->name("misdatos");
+
 
 Route::get('/mivehiculo', 'usuariosController@mivehiculo')->name("mivehiculo");
+Route::post('/bajaVehiculo', 'usuariosController@bajaVehiculo')->name("bajaVehiculo");
+Route::post('/altaVehiculo', 'usuariosController@altaVehiculo')->name("altaVehiculo");
+
+Route::post('/agregarVehiculo', 'usuariosController@agregarVehiculo')->name("agregarVehiculo");
 
 
 Auth::routes();
@@ -100,6 +108,7 @@ Route::post("/jefetaller/ordenreparacion", "JefeDeTallerController@registrarOrde
 Route::get("pdf", "JefeDeTallerController@pdf")->name("pdf");
 
 Route::get("/jefetaller/registrarmecanico", "JefeDeTallerController@mostrarFormMecanico")->name("/jefetaller/registrarmecanico");
+Route::post("/jefetaller/registrarmecanico", "JefeDeTallerController@registrarMecanico")->name("/jefetaller/registrarmecanico");
 
 Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");
 

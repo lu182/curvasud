@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Vehiculo;
+use App\Mecanico;
+use App\Ciudad;
+use App\TipoDocumento;
 use App\TipoVehiculo;
 use App\Turno;
 use App\OrdenReparacion;
@@ -30,8 +33,9 @@ class JefeDeTallerController extends Controller
         $clientes = User::where("tipo_user_id",1)->get();
         $vehiculos = Vehiculo::get();
         $tipos_servicio = TipoServicio::get();
+        $mecanicos = Mecanico::get();
 
-        return view('jefetaller.ordenreparacion',["clientes"=>$clientes, "vehiculos"=>$vehiculos,"tipos_servicio"=>$tipos_servicio]);
+        return view('jefetaller.ordenreparacion',["mecanicos"=>$mecanicos,"clientes"=>$clientes, "vehiculos"=>$vehiculos,"tipos_servicio"=>$tipos_servicio]);
 
 
 
@@ -53,6 +57,7 @@ class JefeDeTallerController extends Controller
 
 
 
+        $mecanico = Mecanico::find($request->id_mecanico);
         $fecha_ingreso =  date('Y-m-d', time());
         $fecha_estimada_egreso = $request->fecha_estimada_egreso;
 
@@ -81,7 +86,8 @@ class JefeDeTallerController extends Controller
         "observaciones"=>$observaciones,
         "extra"=>$extra,
         "km"=>$km,
-        "realizado_por"=>$realizado_por
+        "realizado_por"=>$realizado_por,
+        "mecanico"=>$mecanico
         ]
     );
         return $orden->stream('orden.pdf');
@@ -92,7 +98,28 @@ class JefeDeTallerController extends Controller
 
     public function mostrarFormMecanico(){
 
-        return view("jefetaller.registrarmecanico");
+
+        $ciudades = Ciudad::get();
+        $tipos_documento = TipoDocumento::get();
+        return view("jefetaller.registrarmecanico",["tipos_documento"=>$tipos_documento,"ciudades"=>$ciudades]);
+        
+
+    }
+
+    
+    public function registrarMecanico(Request $request){
+
+
+      $mecanicoNuevo = Mecanico::create($request->all());
+
+      
+      if(!is_null($request->inputOtro)){
+        $ciudadNueva = Ciudad::create(["ciudad"=>$request->inputOtro]);
+        $mecanicoNuevo->update(["id_ciudad"=>$ciudadNueva->id_ciudad]);
+
+    }
+        return view("jefetaller.bienvenida");
+        
 
     }
 

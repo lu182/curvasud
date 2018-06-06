@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Turno;
 use App\User;
+use App\Ciudad;
 use App\Vehiculo;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Redirect;
 
 class usuariosController extends Controller
 {
@@ -48,6 +50,7 @@ class usuariosController extends Controller
                 //return view("cliente.bienvenida");
                 $turno = Turno::where("id_estado_turno", 2)
                     ->where("fecha", '>', $fecha_a_buscar)
+                    ->where("id_cliente",Auth::user()->id)
                     ->orderBy('fecha', 'asc')
                     ->first();
 
@@ -103,14 +106,22 @@ class usuariosController extends Controller
     public function misdatos()
     {
 
-        return view('comunes.perfil');
+        $ciudades = Ciudad::all();
+
+        return view('comunes.perfil',["ciudades"=>$ciudades]);
 
     }
 
     public function mivehiculo()
     {
+        $usuarioActual = Auth::user();
 
-        return view('cliente.vehiculo');
+     $tipos_vehiculos = DB::table("tipos_vehiculos")->get();
+
+        $vehiculos = Vehiculo::where("id_cliente",$usuarioActual->id)->get();
+
+ 
+        return view('cliente.vehiculo',["vehiculos"=>$vehiculos,"tipos_vehiculos"=> $tipos_vehiculos]);
 
     }
 
@@ -132,13 +143,102 @@ class usuariosController extends Controller
         $usuario->tipo_user_id = 1;
         $usuario->save();
 
-        $vehiculo = Vehiculo::create($request->all());
-        $vehiculo->id_cliente = $usuario->id;
-        $vehiculo->save();
-        //  return response(["usuario"=>$usuario,"vehiculo"=>$vehiculo]);
 
         return view("prueba");
 
     }
+
+    //funcion para enviar post a la bd
+    public function actualizarMisDatos(Request $request){
+
+
+        $usuarioActualizar = Auth::user();
+        $usuarioActualizar->update($request->all());
+
+        if(!is_null($request->inputOtro)){
+            $ciudadNueva = Ciudad::create(["ciudad"=>$request->inputOtro]);
+            $usuarioActualizar->update(["id_ciudad"=>$ciudadNueva->id_ciudad]);
+
+        }
+
+        $ciudades = Ciudad::all();
+
+        return Redirect::back()->withErrors(['Turno Modificado correctamente']);
+
+
+
+    }
+
+    public function bajaVehiculo(Request $request){
+
+
+        $vehiculoACancelar = Vehiculo::find($request->id_vehiculo);
+        $vehiculoACancelar->cancelado = 1;
+        $vehiculoACancelar->save();
+
+        return Redirect::back()->withErrors(['Vehiculo dado de baja correctamente']);
+
+
+    }
+
+    public function altaVehiculo(Request $request){
+
+
+        $vehiculoACancelar = Vehiculo::find($request->id_vehiculo);
+        $vehiculoACancelar->cancelado = 0;
+        $vehiculoACancelar->save();
+        
+        return Redirect::back()->withErrors(['Vehiculo dado de alta correctamente']);
+
+
+    }
+
+    public function agregarVehiculo(Request $request){
+
+        
+        $vehiculo = Vehiculo::create($request->all());
+        $vehiculo->id_cliente = Auth::user()->id;
+        $vehiculo->save();
+        $usuarioActual = Auth::user();
+
+        $tipos_vehiculos = DB::table("tipos_vehiculos")->get();
+   
+           $vehiculos = Vehiculo::where("id_cliente",$usuarioActual->id)->get();
+   
+
+           
+           $fecha_actual = Carbon::now();
+           $año = $fecha_actual->year;
+           $mes = $fecha_actual->month;
+           if ($mes < 10) {
+
+               $mes = "0" . $mes;
+
+           }
+           $dia = $fecha_actual->day;
+           $fecha_a_buscar = $año . "-" . $mes . "-" . $dia;
+           $user = Auth::user();
+           //return view("cliente.bienvenida");
+           $turno = Turno::where("id_estado_turno", 2)
+               ->where("fecha", '>', $fecha_a_buscar)
+               ->where("id_cliente",Auth::user()->id)
+               ->orderBy('fecha', 'asc')
+               ->first();
+
+           if ($turno) {
+               $turnoEncriptado = Crypt::encryptString($turno->id_turno);
+
+               return view("cliente.bienvenida", ["turno" => $turno, "turnoEncriptado" => $turnoEncriptado, "tieneTurno" => 1]);
+
+           } else {
+               return view("cliente.bienvenida", ["tieneTurno" => 0]);
+
+           }
+
+
+        }
+
+
+
 
 }

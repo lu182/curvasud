@@ -19,10 +19,19 @@
                 </select>
 </div>
 
+<div class="form-control">
+                <li><label>Seleccione Vehiculo:</label> 
+                    <select name="id_vehiculo"  required>
+                            @foreach ($vehiculos as $vehiculo)
+                            <option value="{{$vehiculo->id_vehiculo}}">{{$vehiculo->modelo}} - {{$vehiculo->patente}} </option>
+                            @endforeach
+                        </select>
+        </div>
+
 
 <div class="form-control">
         <li><label>Seleccione Fecha del Turno:</label> 
-        <input type="date" name="fecha" value="" id="" required></li>
+        <input type="text" name="fecha" value="" id="calendario" readonly required style="width:400px"></li>
 
 </div>
 
