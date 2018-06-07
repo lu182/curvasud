@@ -142,11 +142,8 @@ $fechas_finales = array();
        }
 
       //return $fechas_finales;
-
-
-
-
-        date_default_timezone_set('America/Argentina/Buenos_Aires');
+      
+         date_default_timezone_set('America/Argentina/Buenos_Aires');
 
         $fechaActual = date('Y-m-d', time());
 

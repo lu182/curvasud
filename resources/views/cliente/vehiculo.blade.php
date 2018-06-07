@@ -94,7 +94,7 @@
                     <li><label>* Inicio de garantía:</label> <input type="date" name="fecha_inicio_garantia" value="" id="" required></li>
                     <br>
                                        
-                    <li> <input type="submit" name="btnRegistrarse" value="REGISTRARSE" placeholder="" id="registrarse"/> </li>
+                    <li> <input type="submit" name="btnRegistrarse" value="REGISTRAR" placeholder="" id="registrarse"/> </li>
                 </ul>
             </form>
             </div>

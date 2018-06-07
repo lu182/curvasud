@@ -163,7 +163,7 @@ class usuariosController extends Controller
 
         $ciudades = Ciudad::all();
 
-        return Redirect::back()->withErrors(['Turno Modificado correctamente']);
+        return Redirect::back()->withErrors(['Datos actualizados correctamente']);
 
 
 

@@ -113,7 +113,7 @@ class TuneroController extends Controller
 
     }
 
-    public function guardarTurno(Request $request)
+    public function guardarTurno(Request $request) //NO GUARDA UN NUEVO TURNO PARA UN NUEVO USUARIO
     {
 
         $turno = Turno::create($request->all());
@@ -131,12 +131,12 @@ class TuneroController extends Controller
         $turnos = Turno::with("tipo")->where("id_cliente", $usuario->id)->where("id_estado_turno", 2)->get();
 
         $tipos_servicio = DB::table("tipos_servicios")->get();
-
+        //return $turnos;
         return view("cliente.misturnos", ["turnos" => $turnos, "tipos_servicio" => $tipos_servicio]);
 
     }
 
-    public function eliminar(Request $request)
+    public function eliminar(Request $request) //SE ELIMINA DE LA VIEW PERO NO DE LA BD
     {
         $user = Auth::user();
 
@@ -181,7 +181,7 @@ class TuneroController extends Controller
 
         if (!$validacion) {
 
-            // de ca par aabajo guardar turno
+            // de aca para abajo guardar turno
 
             $turno_a_cambiar->fecha = $request->fecha;
             $turno_a_cambiar->hora = $request->hora;
@@ -190,7 +190,7 @@ class TuneroController extends Controller
         } else {
             return "El turno ya esta ocupado";
         }
-        //definimos del turno que ya existe, que es un array, que su id_estado_turno va a ser 3
+        
 
     }
 
@@ -206,7 +206,7 @@ class TuneroController extends Controller
 
     }
 
-    public function cambiar_fecha(Request $request)
+    public function cambiar_fecha(Request $request) //da error la ruta curvasud.com/cambiar_fecha
     {
         $vehiculos = Vehiculo::where("id_cliente", Auth::user()->id)->get();
 
@@ -300,6 +300,7 @@ class TuneroController extends Controller
 
         $turno_a_editar->fecha = $request->fecha;
         $turno_a_editar->hora = $request->hora;
+        //return $turno_a_editar; //me devuelve otro id_turno y otro id_estado_turno a comparacion de la BD
         $turno_a_editar->save();
 
         $usuario = Auth::user();

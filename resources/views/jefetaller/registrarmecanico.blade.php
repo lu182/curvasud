@@ -6,7 +6,7 @@
 <div class="col-md-8">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Actualizar mis datos</h4>
+                <h4 class="card-title">Registrar mecánico</h4>
 
                 @if($errors->any())
 
@@ -112,7 +112,7 @@
                                     </div>
                                 </div>
                    
-                    <button type="submit" class="btn btn-info btn-fill pull-right">ACTUALIZAR MIS DATOS</button>
+                    <button type="submit" class="btn btn-info btn-fill pull-right">REGISTRAR</button>
                     <div class="clearfix"></div>
                 </form>
             </div>

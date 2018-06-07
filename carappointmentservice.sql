@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 06-06-2018 a las 04:45:52
+-- Tiempo de generación: 07-06-2018 a las 05:41:42
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 7.2.4
 
@@ -91,17 +91,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 --
 
 INSERT INTO `clientes` (`id_cliente`, `id_tipo_doc`, `id_vehiculo`, `id_ciudad`, `usuario`, `pass`, `dni`, `nombre`, `apellido`, `fecha_nac`, `razon_social`, `domicilio`, `cod_postal`, `telefono`, `email`) VALUES
-(1, 1, 1, 1, 'lulu', '1234567a', 35963113, 'Luciana', 'Fernandez', '1991-09-12', NULL, 'Bv. Chacabuco 182', 5000, '3516766657', 'luciana@gmail.com'),
-(2, 1, NULL, 1, 'luciana@gmail.com', '1234568u', 17963122, 'Pablo', 'Fernandez', '1964-03-22', NULL, 'av. santa ana 1800', 5004, '3516766657', 'pfernandez348@hotmail.com'),
-(6, 1, 15, 1, 'asdasaddasasd', 'asdasdasd1', 17963187, 'Pablo', 'Fernandez', '1964-03-22', NULL, 'av. santa ana 1800', 5004, '3516766657', 'pfernande1223248@hotmail.com'),
-(7, 1, 16, 1, 'asdasaddasq1as1d', 'asdads112', 7060976, 'Pablo', 'Fernandez', '1964-03-22', NULL, 'av. santa ana 1800', 5004, '3516766657', 'pfernande12212qw3241128@hotmail.com'),
-(8, 1, 17, 1, 'asdasaddasaq1as1d', 'qweqweeqw1', 7060909, 'Pablo', 'Fernandez', '1964-03-22', NULL, 'av. santa ana 1800', 5004, '3516766657', 'pfernande122a12qw3241128@hotmail.com'),
-(9, 1, 18, 1, 'usuarioPrueba1', '123456789a', 36234997, 'Juan Pablo', 'Paillet', '2018-05-31', 'PAilletjp', 'Caseros 1180', 5000, '3543640112', 'email1@email.com'),
-(10, 1, 19, 1, 'Marcelo', '12345679jh', 36963552, 'Marcelo', 'Tinelli', '1990-06-20', NULL, 'av valparaiso 2500', 5004, '3514789455', 'marce@hotmail.com'),
-(11, 1, 20, 1, 'Sabrina45', 'sabri451', 33210254, 'Sabrina', 'Aguilera', '1989-07-28', NULL, 'Larrañaga 150', 5000, '3515179685', 'sabri45@hotmail.com'),
-(12, 1, 21, 1, 'Nati86', 'nataliacba86', 30655998, 'Natalia', 'Sanchez', '1986-04-22', NULL, 'Pellegrini 1400', 5003, '3518174565', 'nataliacba@hotmail.com'),
-(13, 1, 22, 1, 'Mari86', 'mari8612', 30231458, 'Mariela', 'Mercado', '1986-06-20', NULL, 'Bv.san juan 566', 5003, '3516766658', 'mmercado@hotmail.com'),
-(14, 1, 23, 1, 'lele86', '98754jhk', 30223127, 'Leticia', 'Moreno', '1990-07-21', NULL, 'Mariano moreno 189', 5000, '3513445598', 'lele86@hotmail.com');
+(2, 1, NULL, 1, 'pablof@gmail.com', '1234568u', 17963122, 'Pablo', 'Fernandez', '1964-03-22', NULL, 'av. santa ana 1800', 5004, '3516766657', 'pfernandez348@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -231,10 +221,10 @@ CREATE TABLE IF NOT EXISTS `mecanicos` (
 --
 
 INSERT INTO `mecanicos` (`id_mecanico`, `nombre`, `apellido`, `email`, `dni`, `id_tipo_doc`, `fecha_nac`, `domicilio`, `cod_postal`, `telefono`, `id_ciudad`) VALUES
-(1, 'Matias Agustin', 'Fernandez', 'pfernandez348@hotmail.com', 13123123, 1, '2018-06-16', 'Bv. san juan', 5000, '3543640112', 1),
-(2, 'Matias Agustin', 'Fernandez', 'marcelo@tinelli.com', 1223211, 1, '2018-06-08', 'Bv. san juan', 5000, '3514789455', 1),
-(3, 'Matias Agustin', 'Fernandez', 'pfernandez348@hot2mail.com', 36234993, 1, '2018-06-22', 'Bv. san juan', 5000, '123122331', 1),
-(4, 'Matias Agustin', 'Fernandez', 'pfernandez348@hot2mail.com', 36234997, 1, '2018-06-22', 'Bv. san juan', 5000, '1321321das', 13);
+(1, 'Matias ', 'Rodriguez', 'pfernandez348@hotmail.com', 13123123, 1, '2018-06-16', 'Bv. san juan', 5000, '3543640112', 1),
+(2, 'Fernando', 'Freytes', 'marcelo@tinelli.com', 1223211, 1, '2018-06-08', 'Bv. san juan', 5000, '3514789455', 1),
+(3, 'Pablo', 'Molina', 'pfernandez348@hot2mail.com', 36234993, 1, '2018-06-22', 'Bv. san juan', 5000, '123122331', 1),
+(4, 'Gustavo', 'Gonzalez', 'pfernandez348@hot2mail.com', 36234997, 1, '2018-06-22', 'Bv. san juan', 5000, '1321321das', 13);
 
 -- --------------------------------------------------------
 
@@ -429,34 +419,16 @@ CREATE TABLE IF NOT EXISTS `turnos` (
   KEY `fk_turno_tipos_servicios_idx` (`id_tipo_servicio`),
   KEY `FK_turnos_estados_turnos_idx` (`id_estado_turno`),
   KEY `FK_turnos_clientes_idx` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `turnos`
 --
 
 INSERT INTO `turnos` (`id_turno`, `id_tipo_servicio`, `id_cliente`, `id_estado_turno`, `fecha`, `hora`, `id_vehiculo`) VALUES
-(1, 1, 9, 3, '2018-05-11', '11:00:00', NULL),
-(2, 4, 9, 2, '2018-05-18', '14:00:00', NULL),
-(3, 5, 2, 3, '2018-05-25', '09:00:00', NULL),
-(4, 6, 2, 3, '2018-06-05', '14:00:00', NULL),
-(5, 1, 2, 3, '2018-05-19', '08:00:00', NULL),
-(6, 1, 2, 3, '2018-05-26', '15:00:00', NULL),
-(7, 1, 2, 3, '2018-05-30', '14:00:00', NULL),
-(8, 1, 2, 3, '2018-05-25', '08:00:00', NULL),
-(9, 1, 2, 3, '2018-06-05', '08:00:00', NULL),
-(10, 2, 2, 3, '2018-06-22', '13:00:00', NULL),
-(11, 6, 2, 3, '2018-06-29', '10:00:00', NULL),
-(12, 6, 2, 3, '2018-06-29', '15:00:00', NULL),
-(13, 1, 2, 3, '2018-07-14', '09:00:00', NULL),
-(14, 3, 2, 3, '2018-06-01', '11:00:00', NULL),
-(15, 2, 2, 2, '2018-06-16', '09:00:00', NULL),
-(16, 1, 2, 3, '2018-05-22', '15:00:00', NULL),
-(17, 1, 2, 2, '2018-05-07', '10:00:00', NULL),
-(18, 1, 2, 2, '2018-05-13', '12:00:00', NULL),
-(19, 1, 2, 2, '2018-05-21', '10:00:00', NULL),
-(20, 1, 2, 2, '2018-05-27', '13:00:00', 10),
-(21, 1, 2, 3, '2018-05-06', '09:00:00', 10);
+(20, 2, 2, 2, '2018-07-22', '08:00:00', 10),
+(23, 3, 2, 2, '2019-04-30', '09:00:00', 15),
+(26, 2, 2, 3, '2018-11-13', '09:00:00', 17);
 
 -- --------------------------------------------------------
 
@@ -492,23 +464,24 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `users_id_tipo_doc_foreign` (`id_tipo_doc`),
   KEY `users_id_ciudad_foreign` (`id_ciudad`),
   KEY `users_id_tipo_empleado_foreign` (`id_tipo_empleado`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `created_at`, `updated_at`, `tipo_user_id`, `id_tipo_doc`, `id_ciudad`, `dni`, `nombre`, `apellido`, `fecha_nac`, `razon_social`, `domicilio`, `cod_postal`, `telefono`, `id_tipo_empleado`, `cuil`) VALUES
-(1, 'jorge89', 'jorge_carranza89@gmail.com', '$2y$10$zl.hL9ooDIhDlxm2Y3gpM.JX0g04tXhu4cKQx3I0CP..MbNYVKM3C', 'D9BZbySaKjVctypNL3s1roswNosOrkYsUMBGDGq6Mgd3bvKTn793AsJf2bNK', '2018-05-20 04:18:38', '2018-05-20 04:18:38', 1, 1, 1, 33236587, 'Jorge', 'Carranza', '1989-03-19', '', '', 0, '3516996321', NULL, NULL),
-(2, 'marce', 'marcelo@tinelli.com', '$2y$10$n/dDC50fxyiSjuoNUcXQM.UcnVIvHKx9Goz6HgUp0JtOlRmWfxdCm', 'fPAPVVrKLToWaQ1NhknIgILvaornTyZuPus6zOLXWNJOSgoS2N9bVaTTjOAX', '2018-05-20 04:21:24', '2018-06-06 03:54:34', 1, 1, 12, 35333210, 'Marcelo', 'Tinelli', '1983-08-20', 'Ideas del sur SA', 'Av. don bosco 1563', 5003, '3518235425', NULL, NULL),
-(3, 'lucas58', 'lucas.venencia@hotmail.com', '$2y$10$oIqztiwaYdX4eHBdfU6GA.ZjUiYa/Dt2FlBPrvVhZP684/7laEsSO', NULL, '2018-05-20 05:29:07', '2018-05-20 05:29:07', 1, 1, 1, 33254877, 'Lucas', 'Venencia', '1990-09-21', '', '', 0, '351699845', NULL, NULL),
-(4, 'caro23', 'caro.benitez@gmail.com', '$2y$10$FvLZMaVHfPtFxlyMdNiaY.3EhzqYgha2BNwqYbSwJiocgXENG9T7a', NULL, '2018-05-20 05:33:52', '2018-05-20 05:33:52', 1, 1, 1, 36303214, 'Carolina', 'Benitez', '1988-02-15', '', '', 0, '3515784569', NULL, NULL),
+(1, 'jorge89', 'jorge_carranza89@gmail.com', '$2y$10$zl.hL9ooDIhDlxm2Y3gpM.JX0g04tXhu4cKQx3I0CP..MbNYVKM3C', 'D9BZbySaKjVctypNL3s1roswNosOrkYsUMBGDGq6Mgd3bvKTn793AsJf2bNK', '2018-05-20 04:18:38', '2018-05-20 04:18:38', 1, 1, 1, 33236587, 'Jorge', 'Carranza', '1989-03-19', '', '', 5000, '3516996321', NULL, NULL),
+(2, 'marce', 'marcelo@tinelli.com', '$2y$10$n/dDC50fxyiSjuoNUcXQM.UcnVIvHKx9Goz6HgUp0JtOlRmWfxdCm', 'aji5AtzDxTKIJUEk76HdaQM8eH3EQk7wT63kF5wSJaCyhdYhTUda24BBDcSN', '2018-05-20 04:21:24', '2018-06-07 01:19:47', 1, 1, 1, 35333210, 'Marcelo', 'Tinelli', '1983-08-20', 'Ideas del sur SA', 'Av. Colón 500', 5002, '3518235425', NULL, NULL),
+(3, 'lucas58', 'lucas.venencia@hotmail.com', '$2y$10$oIqztiwaYdX4eHBdfU6GA.ZjUiYa/Dt2FlBPrvVhZP684/7laEsSO', NULL, '2018-05-20 05:29:07', '2018-05-20 05:29:07', 1, 1, 1, 33254877, 'Lucas', 'Venencia', '1990-09-21', '', '', 5004, '351699845', NULL, NULL),
+(4, 'caro23', 'caro.benitez@gmail.com', '$2y$10$FvLZMaVHfPtFxlyMdNiaY.3EhzqYgha2BNwqYbSwJiocgXENG9T7a', NULL, '2018-05-20 05:33:52', '2018-05-20 05:33:52', 1, 1, 1, 36303214, 'Carolina', 'Benitez', '1988-02-15', '', '', 5000, '3515784569', NULL, NULL),
 (8, 'juampi_88', 'juancho1@gmail.com', '$2y$10$.21042BLp6H.O1yHCAW7O.375wvUR/Uj3HXtuHhUwh3PYQLLZ/QpS', NULL, '2018-05-23 04:00:35', '2018-05-23 04:00:35', 1, 1, 1, 36234993, 'Juan Pablo', 'Paillet', '2018-05-31', '', 'Caseros 1180', 5000, '3543640112', NULL, NULL),
 (7, 'hector86', 'hectorcaceres@gmail.com', '$2y$10$xTbuyCkqDxUAXdabFUecL.BWPsnMm9p8pRqWVbYoHlJJskhb1jmG6', NULL, '2018-05-23 04:00:11', '2018-05-23 04:00:11', 1, 1, 1, 36234993, 'Héctor', 'Cáceres', '2018-05-31', '', 'Bv. san juan 600', 5000, '3512566477', NULL, NULL),
 (9, 'lucre29', 'lucrecia.m@hotmail.com', '25f9e794323b453885f5181f1b624d0b', 'siMrVhj7f8ymqStdAoWhMhSUkDLs64RgS4LV9W6EGxWoLhBnZkPAQjSjiIm1', '2018-05-23 04:01:07', '2018-05-23 04:01:07', 1, 1, 1, 36234999, 'Lucrecia', 'Martinez', '2018-05-31', '', 'Av. Duarte Quiros 1500', 5000, '3516985254', NULL, NULL),
-(10, 'luli', 'lucianota@lucianota.com', '$2y$10$dvCizcP8kg5rKzzUKTNwIeu9AwdHE7y4BaIEHFN/9yzAg7Bf4mzIu', 'GrBRoyWRuLb4dgpfJ5C5rDl1OjuAtaI4PyZkZkKdWMqKB46cxgL3DlfiFE6z', '2018-06-02 02:12:39', '2018-06-02 02:12:39', 2, 1, 1, 14569874, 'Luciana', 'Fernandez', '1990-05-28', '', 'Av.Juan B Justo 600', 5000, '3513655410', NULL, NULL),
+(10, 'luFCA', 'lueac@curvasud.com', '$2y$10$dvCizcP8kg5rKzzUKTNwIeu9AwdHE7y4BaIEHFN/9yzAg7Bf4mzIu', 'n00DaVRbX9Xr0qrhiMwK1HAwbuM9utxlRCS70NCwj5GrDsD5DWb3DCGWQG01', '2018-06-02 02:12:39', '2018-06-02 02:12:39', 2, 1, 1, 14569874, 'Luciana', 'Fernandez', '1990-05-28', '', 'Av.Juan B Justo 600', 5000, '3513655410', NULL, NULL),
 (12, 'carlosfca', 'carlosgomez@curvasud.com', '$2y$10$1miGxsLiXYUzKbDiQCgDfuaUwQXw/PVUwmvT74hkJVi4h8zG6VPai', 'xGuMRNwLnhGnVrW2Qm9IWVZoFJuMGV8eCFfJJHlIvmOQfeSKlBvuQjp06zJS', '2018-06-04 08:29:25', '2018-06-04 08:29:25', 3, 1, 1, 33333333, 'Carlos', 'Gómez', '1983-06-14', NULL, 'Bolivar 555', 5000, '3512654788', NULL, NULL),
-(13, 'UsuarioPrueba', 'asdasd@asdasddas.com', '$2y$10$d.c/5IZ5Ui0cyVcCUNmiBO3rMyML9DB5bcUAAEJzDbCVvtUtIeAf6', 'OGC73nblHxEEdal16TWGJ6gg3rKfcuSXrixDQ3zJLJilUo7rd7xYodbvrPuH', '2018-06-06 06:20:04', '2018-06-06 06:20:04', 1, 1, 1, 1726372, 'Matias Agustin', 'Fernandez', '2018-06-09', 'PailletJP', 'Salta', 5000, '3543640117', NULL, NULL);
+(13, 'UsuarioPrueba', 'asdasd@asdasddas.com', '$2y$10$d.c/5IZ5Ui0cyVcCUNmiBO3rMyML9DB5bcUAAEJzDbCVvtUtIeAf6', 'OGC73nblHxEEdal16TWGJ6gg3rKfcuSXrixDQ3zJLJilUo7rd7xYodbvrPuH', '2018-06-06 06:20:04', '2018-06-06 06:20:04', 1, 1, 1, 1726372, 'Matias Agustin', 'Fernandez', '2018-06-09', 'PailletJP', 'Salta', 5000, '3543640117', NULL, NULL),
+(14, 'LuPrueba', 'luprueba@gmail.com', '$2y$10$0RQv/ZFHLjyFKaFp/VuWTOlRRrig8UHAnGFGrKwCLjx.VnqF/3Lsm', 'GUEX8xP4ZSbxy24ml9GokiLFkvGr85GFgWiZKFjmphpRJCDlOa7pF3eU08gb', '2018-06-07 03:25:28', '2018-06-07 03:25:28', 1, 1, 1, 35963113, 'Luciana', 'Fernandez', '2018-05-28', NULL, 'Bv. san juan 700', 5000, '3518179694', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -532,7 +505,7 @@ CREATE TABLE IF NOT EXISTS `vehiculos` (
   UNIQUE KEY `patente_UNIQUE` (`patente`),
   UNIQUE KEY `nro_chasis_UNIQUE` (`nro_chasis`),
   KEY `FK_vehiculos_tipos_vehiculos_idx` (`id_tipo_vehiculo`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `vehiculos`
@@ -561,8 +534,9 @@ INSERT INTO `vehiculos` (`id_vehiculo`, `id_tipo_vehiculo`, `marca`, `modelo`, `
 (27, 1, 'Fiat', 'Strada', 2014, 'AF123FD', 'CD12385', '2017-06-07', 12, 0),
 (28, 1, 'Fiat', 'Cronos drive', 5852, 'AB123AE', 'KB34568', '2018-06-09', 13, 0),
 (32, 1, 'Fiat', 'Cronos drive', 5852, 'AB123A5', 'KB34563', '2018-06-09', 13, 1),
-(34, 1, 'Fiat', 'Cronos drive', 5858, 'AB828UY', 'AW45872', '2018-06-29', 13, 0),
-(35, 1, 'Fiat', 'Cronos drive', 5858, 'AW784AO', '789456Y', '2018-06-29', 13, 0);
+(34, 1, 'Fiat', 'Cronos drive', 5858, 'AB828UY', 'AW45872', '2018-06-29', 7, 0),
+(35, 1, 'Fiat', 'Cronos drive', 5858, 'AW784AO', '789456Y', '2018-06-29', 7, 0),
+(36, 1, 'Fiat', 'Fiorino', 2016, 'AL566MO', 'JU56987', '2016-06-14', 14, 0);
 
 --
 -- Restricciones para tablas volcadas
