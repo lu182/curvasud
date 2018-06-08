@@ -56,7 +56,7 @@ padding:3px!important
                     <tbody>
                         @foreach ($turnos as $turno)
                         <tr>
-                                <td>{{$turno->fecha}}</td>
+                                <td>{{$turno->corregirFecha()}}</td>
                                 <td>{{$turno->hora}}</td>
                                 <td>{{$turno->tipo->tipoServicio}}</td>
                                 <td>

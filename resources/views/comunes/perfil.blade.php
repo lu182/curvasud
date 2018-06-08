@@ -105,7 +105,8 @@
                                  <option value="{{$ciudad->id_ciudad}}" >{{$ciudad->ciudad}}</option>
                                 @endif
                                  @endforeach
-                             
+                                 <option value="Otro" >Otro</option>
+
                              </select>
                         </div>
 

@@ -2,7 +2,7 @@
 
 
 @section("content")
-<h2>CLIENTES POR MODELO DE VEHICULO<h2>
+<h3>CLIENTES POR MODELO DE VEHICULO</h3>
 
         <div id="contenedorForm">
                 <form action="" method="post" id="formBuscarPorChasis">

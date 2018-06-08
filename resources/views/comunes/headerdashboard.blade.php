@@ -5,7 +5,7 @@
       <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
       <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-      <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+      <title>Curvasud</title>
       <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
       <!--     Fonts and icons     -->
       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -287,19 +287,11 @@
                      </a>
                  </li>
          
-                 <li class="button-container">
-                     <div class="">
-                         <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard" target="_blank" class="btn btn-info btn-block btn-fill">Download, it's free!</a>
-                     </div>
-                 </li>
+                 
          
                  <li class="header-title pro-title text-center">Want more components?</li>
          
-                 <li class="button-container">
-                     <div class="">
-                         <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard-pro" target="_blank" class="btn btn-warning btn-block btn-fill">Get The PRO Version!</a>
-                     </div>
-                 </li>
+                 
          
                  <li class="header-title" id="sharrreTitle">Thank you for sharing!</li>
          
@@ -318,24 +310,15 @@
    <script src="../assets/js/core/bootstrap.min.js" type="text/javascript"></script>
    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
    <script src="../assets/js/plugins/bootstrap-switch.js"></script>
-   <!--  Google Maps Plugin    -->
-   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
    <!--  Chartist Plugin  -->
    <script src="../assets/js/plugins/chartist.min.js"></script>
    <!--  Notifications Plugin    -->
    <script src="../assets/js/plugins/bootstrap-notify.js"></script>
    <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
    <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
-   <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
-   <!-- <script src="../assets/js/demo.js"></script>-->
+
    <script type="text/javascript">
-      $(document).ready(function() {
-          // Javascript method's body can be found in assets/js/demos.js
-          demo.initDashboardPageCharts();
-      
-          demo.showNotification();
-      
-      });
+    
 
 
      // var tablas = $("#tabla")
@@ -386,7 +369,7 @@
             $("#ciudad_input").hide();
             $("#selector_ciudad").change(function() {
                 // Mostramos el campo de ingresar ciudad basado en el valor del select
-                if ($(this).val() == "11") {
+                if ($(this).val() == "Otro") {
                     $("#ciudad_input").fadeIn();
                 }else{
                     $("#ciudad_input").fadeOut();
@@ -413,7 +396,7 @@
     var future = new Date(today);
     
     // Dejamos que el usuario seleccione desde hoy hasta dentro de 1 año
-    future.setDate(today.getDate() + 364);
+    future.setDate(today.getDate() + 728);
     
      var $calendar = $('#calendario').glDatePicker(
          
@@ -428,21 +411,50 @@
        onClick: function(target, cell, date, data) {
 
         var mes = date.getMonth();
-        if(mes < 10){
-            mes = "0"+date.getMonth();
+        if(mes < 9){
+            mes = "0"+(mes+1);
+
+        }else{
+            var mes = date.getMonth();
+
+            mes = (mes+1)
+
         }
 			$("#calendario").val(date.getFullYear() + '-' +
 						mes + '-' +
 						date.getDate());
 
 			if(data != null) {
-				alert(data.message + '\n' + date);
+				alert("seleccione una fecha válida");
 			}
 		}
     
     });
 
 
+
+    function vehiculoscliente(obj)
+  {
+    $('#vehiculos').empty()
+    var dropDown = document.getElementById("buscarclientes");
+    var carId = dropDown.options[dropDown.selectedIndex].value;
+    $.ajax({
+            type: "GET",
+            url: "http://curvasud.com/api/vehiculoclienteajax/"+carId,
+           // data: { 'carId': carId  },
+            success: function(data){
+          
+                // Parse the returned json data
+                var opts = $.parseJSON(data);
+                
+                // Use jQuery's each to iterate over the opts value
+                $.each(opts, function(i, d) {
+                    // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                    $('#vehiculos').append('<option value="' + d.id_vehiculo + '">' + d.modelo + '</option>');
+                });
+            }
+        });
+  }
 
 
         </script>

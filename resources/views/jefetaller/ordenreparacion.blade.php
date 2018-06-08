@@ -13,12 +13,7 @@
                 @csrf
 
 
-                <div class="form-control">
-                        <li><label>Fecha de ingreso :</label> 
-                        <input type="date" name="fecha_estimada_egreso" required></li>
-                
-                </div>
-
+       
                 <div class="form-control">
                                 <li><label>Fecha estimada de Egreso :</label> 
                                 <input type="date" name="fecha_estimada_egreso" required></li>
@@ -28,7 +23,7 @@
 
                 <div class="form-control">
                         <li><label>Seleccione Cliente:</label> 
-                        <select name="cliente">
+                        <select name="cliente" onchange="vehiculoscliente(this)" id="buscarclientes">
                         @foreach ($clientes as $cliente)
                             <option value="{{$cliente->id}}"> {{$cliente->nombre}}  {{$cliente->apellido}}  </option>
                         @endforeach
@@ -40,10 +35,8 @@
                 
                 <div class="form-control">
                         <li><label>Seleccione Vehiculo:</label> 
-                        <select name="vehiculo">
-                        @foreach ($vehiculos as $vehiculo)
-                            <option value="{{$vehiculo->id_vehiculo}}">  {{$vehiculo->modelo}}  </option>
-                            @endforeach
+                        <select name="vehiculo" id="vehiculos">
+                 
                         </select>
                 
                 </div>

@@ -103,8 +103,33 @@
 
 
 <!-- JavaScript Librerias -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-
+<script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js"></script>
+	<script>
+			$(document).ready(function (){
+	
+				$("#ciudad_input").hide();
+				$("#selector_ciudad").change(function() {
+					// Mostramos el campo de ingresar ciudad basado en el valor del select
+					if ($(this).val() == "Otro") {
+						$("#ciudad_input").fadeIn();
+					}else{
+						$("#ciudad_input").fadeOut();
+					} 
+				});
+	
+				$("#ciudad_input2").hide();
+				$("#selector_ciudad2").change(function() {
+					// Mostramos el campo de ingresar ciudad basado en el valor del select
+					if ($(this).val() == "11") {
+						$("#ciudad_input2").fadeIn();
+					}else{
+						$("#ciudad_input2").fadeOut();
+					} 
+				});
+			});
+	
+	
+		</script>
 </body>
 </html>

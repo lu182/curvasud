@@ -7,6 +7,11 @@
 <div class="col-md-12">
 <div class="card">
 
+                @if($errors->any())
+
+                <div class="alert alert-success">{{$errors->first()}}</div>
+            
+            @endif
 <h2> Registrar Turno </h2>
    <form action="" method="post" id="formRegistro">
         @csrf
@@ -31,7 +36,7 @@
 
 <div class="form-control">
         <li><label>Seleccione Fecha del Turno:</label> 
-        <input type="text" name="fecha" value="" id="calendario" readonly required style="width:400px"></li>
+        <input type="text" name="fecha" value="" id="calendario" readonly required style="width:400px;border: none;color: white;"></li>
 
 </div>
 

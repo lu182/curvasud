@@ -10,6 +10,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use PDF;
 
 class EacController extends Controller
 {
@@ -51,12 +52,9 @@ class EacController extends Controller
     //Consultar turnos disponibles y no disponibles
     public function verTurnos()
     {
-
-
-$fechas_finales = array();
-
+        $fechas_finales = array();
         $start = Carbon::now();
-        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(90), 0, 10));
+        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(10), 0, 10));
 
         $fechas = [];
 
@@ -64,10 +62,11 @@ $fechas_finales = array();
 
             $fechas[] = $start->copy()->format('Y-m-d');
 
-            $start->addDay();
+            $diaAgregar = $start->addDay();
+
+            
         }
 
-       //return $fechas;
 
        foreach ($fechas as $fecha){
 
@@ -142,7 +141,7 @@ $fechas_finales = array();
        }
 
       //return $fechas_finales;
-      
+
          date_default_timezone_set('America/Argentina/Buenos_Aires');
 
         $fechaActual = date('Y-m-d', time());
@@ -155,16 +154,18 @@ $fechas_finales = array();
     //Consultar turnos cancelados del día
     public function TurnosHoy()
     {
-        //VER !!!
+        //VER !!! 
          date_default_timezone_set('America/Argentina/Buenos_Aires');
 
         $fechaActual = date('Y-m-d', time());
 
         // $turnosHoy = DB::table("turnos")->where("fecha",$fechaActual)->get();
 
-        $turnosCancelados = DB::table("turnos")->where("id_estado_turno", 3)->where("fecha", $fechaActual)->get();
+        $turnosCancelados = DB::table("turnos")
+        ->where("id_estado_turno", 3)->where("fecha", $fechaActual)->get();
 
         return view('eac.canceladosDelDia', ["turnosCancelados" => $turnosCancelados]);
+
 
     }
 
@@ -256,6 +257,31 @@ $fechas_finales = array();
             return view("eac.consultas");
         }
         return view("eac.reportes");
+    }
+
+    public function reporteClientes(){
+
+        $consulta = TipoVehiculo::with("tipovehiculo_vehiculo")->get();
+
+        $reporte = PDF::loadView('eac.pdf.clientesportipo', ["vehiculos"=>$consulta]);
+        return $reporte->stream('clientesportipo.pdf');
+    }
+
+    public function reporteCancelados()
+    {
+        $clientesConTurnosCancelados = User::with("turnos_cancelados")->get();
+
+
+        $reporte = PDF::loadView('eac.pdf.clientesturnoscancelados', ["clientesConTurnosCancelados"=>$clientesConTurnosCancelados]);
+        return $reporte->stream('clientesportipo.pdf');
+    }
+
+    public function vehiculoclienteajax($id){
+
+        $vehiculos = Vehiculo::where("id_cliente",$id)->where("cancelado",0)->get();
+        echo json_encode($vehiculos);
+        die();
+
     }
 
 }

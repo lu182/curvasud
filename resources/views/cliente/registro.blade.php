@@ -47,12 +47,18 @@
                 </li>
                 <li><label>* Dni:</label> <input type="number" name="dni" accept="number" value="" id="" maxlength="8" required> </li>
                 <li><label>* Ciudad/Localidad:</label>
-                    <select name="id_ciudad" id="comboCiudades" required>
+                    <select name="id_ciudad" id="selector_ciudad" required>
                         @foreach ($ciudades as $ciudad)
                         <option value="{{$ciudad->id_ciudad}}">{{$ciudad->ciudad}}</option>
                         @endforeach
+                        <option value="11">Otro</option>
+
                     </select> 
                 </li>
+                <div class="form-group" id="ciudad_input">
+                        <label>Ingrese nombre de ciudad</label>
+                        <input type="text" class="form-control" placeholder="" name = "inputOtro" >
+                    </div>
                 <li><label>* Nombre:</label> <input type="text" name="nombre" value="" id="" required> </li>
                 <li><label>* Apellido:</label> <input type="text" name="apellido" value="" id="" required> </li>
                 <li><label>Fecha de nacimiento:</label> <input type="date" name="fecha_nac" value="" id=""></li>
@@ -75,7 +81,32 @@
 <!-- JavaScript Librerias -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-        
+    <script>
+			$(document).ready(function (){
+	
+				$("#ciudad_input").hide();
+				$("#selector_ciudad").change(function() {
+					// Mostramos el campo de ingresar ciudad basado en el valor del select
+					if ($(this).val() == "11") {
+						$("#ciudad_input").fadeIn();
+					}else{
+						$("#ciudad_input").fadeOut();
+					} 
+				});
+	
+				$("#ciudad_input2").hide();
+				$("#selector_ciudad2").change(function() {
+					// Mostramos el campo de ingresar ciudad basado en el valor del select
+					if ($(this).val() == "11") {
+						$("#ciudad_input2").fadeIn();
+					}else{
+						$("#ciudad_input2").fadeOut();
+					} 
+				});
+			});
+	
+	
+		</script>
         
                 
 </body>

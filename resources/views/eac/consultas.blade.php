@@ -6,40 +6,40 @@
 <h2> CONSULTAS DISPONIBLES</h2>
 
 
-<ul>
-<li>
+
+<div class="card"><div class="card-header"><h4 class="card-title">
     <a href="{{route('/eac/verTurnos')}}"> Ver turnos disponibles y no disponibles </a>
-</li>
+</h4><br></div></div>
 
-<li>
+<div class="card"><div class="card-header"><h4 class="card-title">
         <a href="{{route('/eac/turnosHoy')}}"> Ver turnos cancelados del día </a>
-    </li>
+    </h4><br></div></div>
 
-    <li>
+    <div class="card"><div class="card-header"><h4 class="card-title">
             <a href="{{route('/eac/clientesregistrados')}}"> Consultar clientes registrados </a>
-        </li>
+        </h4><br></div></div>
 
-        <li>
+        <div class="card"><div class="card-header"><h4 class="card-title">
                 <a href="{{route('/eac/buscarPorChasis')}}"> Buscar clientes por número de chasis </a>
-            </li>
+            </h4><br></div></div>
 
-            <li>
+            <div class="card"><div class="card-header"><h4 class="card-title">
                     <a href="{{route('/eac/buscarPorModelo')}}"> Consultar clientes por modelo de vehículo </a>
-                </li>
+                </h4><br></div></div>
 
 
     
-                <li>
+                <div class="card"><div class="card-header"><h4 class="card-title">
                         <a href="{{route('/eac/clientesPorVehiculo')}}"> Consultar clientes por tipo de vehículo </a>
-                    </li>
+                    </h4><br></div></div>
 
 
-                    <li>
+                    <div class="card"><div class="card-header"><h4 class="card-title">
                             <a href="{{route('/eac/turnosCancelados')}}"> Consultar clientes con turnos cancelados </a>
-                        </li>
+                        </h4><br></div></div>
 
                     
-</ul>
+
 
 
 

@@ -71,7 +71,22 @@ class JefeDeTallerController extends Controller
         $extra = $request->extra;
         $km = $request->km;
 
-        $realizado_por = "Jorge Gonzales";
+        $orden_reparacion = OrdenReparacion::create([
+            "id_estado_orden"=>2, //en proceso
+            "fecha_ingreso_vehiculo"=>$fecha_ingreso,
+            "fecha_egreso_vehiculo"=>$fecha_estimada_egreso,
+            "id_mecanico"=>$mecanico->id_mecanico
+        ]);
+
+        $detalle_orden = DetalleOrden::create([
+            "id_orden_reparacion"=>$orden_reparacion->id_orden_reparacion,
+            "kilometraje"=>$km ,
+            "motivo_ingreso"=>$motivo_ingreso,
+            "observaciones"=>$observaciones,
+            "extra"=>$extra,
+            "mecanico"=>$mecanico->id_mecanico,
+            "operacion_realizada"=>$operacion_realizada
+        ]);
 
 
         $orden = PDF::loadView('jefetaller.pdf.ordenreparacion', 
@@ -86,11 +101,12 @@ class JefeDeTallerController extends Controller
         "observaciones"=>$observaciones,
         "extra"=>$extra,
         "km"=>$km,
-        "realizado_por"=>$realizado_por,
         "mecanico"=>$mecanico
         ]
     );
-        return $orden->stream('orden.pdf');
+         return $orden->download('orden '.$cliente->nombre.' '.$cliente->apellido.'.pdf');
+         return redirect()->route("home");
+        
 
     }
 

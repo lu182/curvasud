@@ -7,7 +7,7 @@
 <div class="col-md-12">
 <div class="card">
 
-<h2> Turnos disponibles para {{$fecha}} </h2>
+<h2> Turnos disponibles para la fecha seleccionada </h2>
 <h2> Con el tipo de servicio {{$servicio->tipoServicio}} </h2>
 
 <h3> Referencias </h3>

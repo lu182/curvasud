@@ -36,15 +36,43 @@ class TuneroController extends Controller
     public function registrar(Request $request)
     {
 
-        $fecha = $request->fecha;
-        $fecha = strtotime($fecha);
         $id_vehiculo = $request->id_vehiculo;
-
-    
-
-        $fecha = date('Y/m/d', $fecha);
-
+        $fecha = $request->fecha;
+       $fecha = strtotime($fecha);
+        $turnos_registrados_vehiculo = Turno::where("id_vehiculo",$id_vehiculo)->get();
         $id_tipo_servicio = $request->id_tipo_servicio;
+        $fecha = date('Y-m-d', $fecha);
+
+        //Primera validación: Que no exista un turno ya registrado para ese mismo tipo de servicio
+
+        foreach($turnos_registrados_vehiculo as $turno){
+
+            if($turno->id_tipo_servicio == $request->id_tipo_servicio){
+                return redirect()->route('turnero')->withErrors(['Ya tienes un turno registrado con ese tipo de servicio']);
+            }
+
+
+            // El id de tipo de servicio es mayor al que ya esta registrado
+            // La fecha que quiero registrar es menor a la que ya está registrada
+
+
+            if($fecha < $turno->fecha and $id_tipo_servicio > $turno->id_tipo_servicio){
+                return redirect()->route('turnero')->withErrors(['Ya tienes un turno registrado con un tipo de servicio anterior']);
+
+            }
+        }
+
+
+
+       
+
+
+
+     
+
+
+
+
         $turnos_fecha = Turno::where("fecha", $fecha)->where("id_estado_turno", 2)->get();
 
         $servicio = DB::table("tipos_servicios")->where("id_tipo_servicio", $id_tipo_servicio)->first();

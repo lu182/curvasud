@@ -8,10 +8,11 @@ class OrdenReparacion extends Model
 {
     protected $table = "ordenes_reparacion";
     protected $primaryKey = 'id_orden_reparacion';
+    public $timestamps = false;
 
     protected $fillable = [
         'id_cliente', 'id_empleado', 'id_estado_orden', 'fecha_ingreso_vehiculo',
-        'fecha_egreso_vehiculo'
+        'fecha_egreso_vehiculo','id_mecanico'
     ];
 
     public function estado_ordenes()

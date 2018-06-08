@@ -4,7 +4,7 @@
 @section("content")
 <h2>Resultados de la búsqueda:</h2>
 
-    <h3> Se encontraron {{$nombreModeloSeleccionado->count()}} vehiculos<h3>
+    <h3> Se encontraron {{$nombreModeloSeleccionado->count()}} vehiculos</h3>
 
     <table class="table display" id="tabla">
 

@@ -39,6 +39,13 @@ class Turno extends Model
        return $this->hasOne("App\Vehiculo","id_vehiculo");
    }
 
+   public function corregirFecha(){
+       $fecha = $this->fecha;
+       $fecha = strtotime($fecha);
+       $fecha = date('d-m-Y', $fecha);
+       return $fecha;
+   }
+
   
 
 

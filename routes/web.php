@@ -112,3 +112,6 @@ Route::post("/jefetaller/registrarmecanico", "JefeDeTallerController@registrarMe
 
 Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");
 
+Route::get("/eac/reporteclientes", "EacController@reporteClientes")->name("eac/reporteclientes");
+Route::get("/eac/reportecancelados", "EacController@reporteCancelados")->name("eac/reportecancelados");
+

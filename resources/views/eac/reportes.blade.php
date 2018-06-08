@@ -8,16 +8,21 @@
 <ul>
 
     <li>
-        <a href="">Generar un informe del total de clientes por tipo de vehiculo</a>
+        <a href="{{route('eac/reporteclientes')}}" target="_blank">Generar un informe del total de clientes por tipo de vehiculo</a>
     </li>
 
     <li>
-        <a href="">Generar un informe de clientes con turnos cancelados</a>
+        <a href="{{route('eac/reportecancelados')}}">Generar un informe de clientes con turnos cancelados</a>
         </li>
 
     <li>
-        <a href="">Buscar órdenes de reparación por cliente</a>
+        <a href="">Consultar órdenes de reparación ingresadas por cliente</a>
     </li>
+
+    <li>
+            <a href="">Consultar órdenes de reparación ingresadas por N° de chasis</a>
+        </li>
+    
 
 </ul>
 
