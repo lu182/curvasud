@@ -21,7 +21,7 @@ class LandingController extends Controller
         //VALUE es el dato que ya definido y queremos enviar
         // [KEY => VALUE]
 
-        return view("prueba");
+        return view("newHome.inicio");
     }
 
     public function indexPost()
