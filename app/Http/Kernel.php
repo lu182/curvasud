@@ -33,8 +33,9 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \App\Http\Middleware\VerifyCsrfToken::class,
+          //  \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        //    \App\Http\Middleware\VerificarAdmin::class,
         ],
 
         'api' => [
@@ -59,8 +60,7 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'admin' => 'App\Http\Middleware\VerificarAdmin', // this line right here
-        'jefetaller' => 'App\Http\Middleware\ChequearJefeTalle', // this line right here
-
+    //    'admin' => 'App\Http\Middleware\VerificarAdmin', // this line right here
+     //   'jefetaller' => 'App\Http\Middleware\ChequearJefeTalle', // this line right here
     ];
 }

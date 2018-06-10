@@ -11,29 +11,29 @@
         <tr>
           <th scope="col">Fecha</th>
           <th scope="col">Hora</th>
-          <th scope="col">Cliente</th>
 
-          <th scope="col">Tipo de Servicio</th>
+
+
         </tr>
       </thead>
       <tbody>
-@foreach($disp as $turnoDisponible)
-        
+@foreach($disp as $fecha)
 
+@foreach($fecha['horas'] as $hora)
+@if ($hora["estado"] == 1)
                 <tr>
-                        <th scope="row">{{$turnoDisponible->fecha}} </th>
-                        <td>{{$turnoDisponible->hora}}</td>
-                        <td>{{$turnoDisponible->cliente->nombre}} {{$turnoDisponible->cliente->apellido}} </td>
-                        <td>{{$turnoDisponible->tipo->tipoServicio}}  </td>
+                        <th scope="row">{{$fecha['fecha']}} </th>
+                        <th scope="row">{{$hora['hora']}} </th>
+
                       </tr>
-              
-    
-    
-    
-       
- 
+                      @endif
+
+                      @endforeach
+
+
+
 @endforeach
-      
+
 </tbody>
 </table>
 
@@ -46,7 +46,7 @@
                   <th scope="col">Fecha</th>
                   <th scope="col">Hora</th>
                   <th scope="col">Cliente</th>
-        
+
                   <th scope="col">Tipo de Servicio</th>
                 </tr>
               </thead>

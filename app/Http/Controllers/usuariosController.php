@@ -23,6 +23,11 @@ class usuariosController extends Controller
 
         $user = Auth::user();
 
+        if (!Auth::check()) {
+            return view("prueba");
+
+        }
+
         //Llama al usuario logueado y lo almacena en una variable $user
 
         //Comienza un switch para verificar el tipo de usuario
@@ -66,7 +71,7 @@ class usuariosController extends Controller
                 return view("eac.bienvenida");
 
             case 3:
-                return "Es un tipo de usuario 3";
+                return view("jefetaller.bienvenida");
             case 4:
 
                 $fecha_actual = Carbon::now();
