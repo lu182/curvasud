@@ -68,9 +68,8 @@
                       <li><a href="{{ route('login') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Acceso Clientes</a></li>
                       @else
                       <li><a href="{{ route('escritorio') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Ir al escritorio</a></li>
-					  <li class="user-login"><a href="{{Auth::logout()}}" class="text-uppercase" style=     "background-image: -webkit-linear-gradient(0deg, #f45622 0%, #171cb8 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
-
-                      @endguest
+					  <li><a href="{{ route('logout') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
+					  @endguest
 
 
                     </ul>
