@@ -55,6 +55,14 @@
                      <p>Mis Vehículos</p>
                   </a>
                </li>
+
+               <li class="nav-item ">
+                    <a class="nav-link" href="{{ route('principal') }}">
+                       <i class="nc-icon nc-zoom-split"></i>
+                       <p>Ir al sitio</p>
+                    </a>
+                 </li>
+
                <li>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                      @csrf
@@ -110,6 +118,13 @@
                                <p>Reportes</p>
                             </a>
                          </li>
+
+                         <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('principal') }}">
+                                   <i class="nc-icon nc-zoom-split"></i>
+                                   <p>Ir al sitio</p>
+                                </a>
+                             </li>
 
 
                  <li>
@@ -167,16 +182,23 @@
                                     </a>
                                  </li>
 
+                                 <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('principal') }}">
+                                           <i class="nc-icon nc-zoom-split"></i>
+                                           <p>Ir al sitio</p>
+                                        </a>
+                                     </li>
 
-                 <li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                           @csrf
-                           <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+
+                        <li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                            @csrf
+                            <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
                               <i class="nc-icon nc-tap-01"></i>
                               <p>Cerrar Sesión</p>
-                           </a>
-                        </form>
-                     </li>
+                            </a>
+                            </form>
+                        </li>
                  @endif
 
                  @if (  Auth::user()->tipo_user_id == 4 )

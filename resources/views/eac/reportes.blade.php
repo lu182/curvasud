@@ -12,7 +12,7 @@
     </li>
 
     <li>
-        <a href="{{route('eac/reportecancelados')}}">Generar un informe de clientes con turnos cancelados</a>
+        <a href="{{route('eac/reportecancelados')}}" target="_blank">Generar un informe de clientes con turnos cancelados</a>
         </li>
 
     <li>

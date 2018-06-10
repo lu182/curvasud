@@ -60,6 +60,8 @@ class TuneroController extends Controller
                 return redirect()->route('turnero')->withErrors(['Ya tienes un turno registrado con un tipo de servicio anterior']);
 
             }
+
+            
         }
 
 

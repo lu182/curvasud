@@ -13,9 +13,13 @@
 
 Route::get('/', "LandingController@index");
 
+
 Route::get('inicio', function () {
     return view('newHome.inicio');
 })->name("inicio");
+
+Route::get('/principal', "LandingController@index")->name("principal");
+
 
 
 Route::get('nosotros', function () {
