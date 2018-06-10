@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Vehiculo;
+use App\Mecanico;
+use App\Ciudad;
+use App\TipoDocumento;
 use App\TipoVehiculo;
 use App\Turno;
 use App\OrdenReparacion;
@@ -38,8 +41,9 @@ class JefeDeTallerController extends Controller
         $clientes = User::where("tipo_user_id",1)->get();
         $vehiculos = Vehiculo::get();
         $tipos_servicio = TipoServicio::get();
+        $mecanicos = Mecanico::get();
 
-        return view('jefetaller.ordenreparacion',["clientes"=>$clientes, "vehiculos"=>$vehiculos,"tipos_servicio"=>$tipos_servicio]);
+        return view('jefetaller.ordenreparacion',["mecanicos"=>$mecanicos,"clientes"=>$clientes, "vehiculos"=>$vehiculos,"tipos_servicio"=>$tipos_servicio]);
 
 
 
@@ -61,6 +65,7 @@ class JefeDeTallerController extends Controller
 
 
 
+        $mecanico = Mecanico::find($request->id_mecanico);
         $fecha_ingreso =  date('Y-m-d', time());
         $fecha_estimada_egreso = $request->fecha_estimada_egreso;
 
@@ -74,7 +79,22 @@ class JefeDeTallerController extends Controller
         $extra = $request->extra;
         $km = $request->km;
 
-        $realizado_por = "Jorge Gonzales";
+        $orden_reparacion = OrdenReparacion::create([
+            "id_estado_orden"=>2, //en proceso
+            "fecha_ingreso_vehiculo"=>$fecha_ingreso,
+            "fecha_egreso_vehiculo"=>$fecha_estimada_egreso,
+            "id_mecanico"=>$mecanico->id_mecanico
+        ]);
+
+        $detalle_orden = DetalleOrden::create([
+            "id_orden_reparacion"=>$orden_reparacion->id_orden_reparacion,
+            "kilometraje"=>$km ,
+            "motivo_ingreso"=>$motivo_ingreso,
+            "observaciones"=>$observaciones,
+            "extra"=>$extra,
+            "mecanico"=>$mecanico->id_mecanico,
+            "operacion_realizada"=>$operacion_realizada
+        ]);
 
 
         $orden = PDF::loadView('jefetaller.pdf.ordenreparacion',
@@ -89,15 +109,54 @@ class JefeDeTallerController extends Controller
         "observaciones"=>$observaciones,
         "extra"=>$extra,
         "km"=>$km,
-        "realizado_por"=>$realizado_por
+        "mecanico"=>$mecanico
         ]
     );
-        return $orden->stream('orden.pdf');
+         return $orden->download('orden '.$cliente->nombre.' '.$cliente->apellido.'.pdf');
+         return redirect()->route("home");
+        
 
     }
 
 
 
+    public function mostrarFormMecanico(){
+
+
+        $ciudades = Ciudad::get();
+        $tipos_documento = TipoDocumento::get();
+        return view("jefetaller.registrarmecanico",["tipos_documento"=>$tipos_documento,"ciudades"=>$ciudades]);
+        
+
+    }
+
+    
+    public function registrarMecanico(Request $request){
+
+
+      $mecanicoNuevo = Mecanico::create($request->all());
+
+      
+      if(!is_null($request->inputOtro)){
+        $ciudadNueva = Ciudad::create(["ciudad"=>$request->inputOtro]);
+        $mecanicoNuevo->update(["id_ciudad"=>$ciudadNueva->id_ciudad]);
+
+    }
+        return view("jefetaller.bienvenida");
+        
+
+    }
+
+
+ //Funciones para devolver página de consultas y reportes
+ public function mostrarPagina($pagina)
+ {
+
+     if ($pagina == "consultas") {
+         return view("jefetaller.consultas");
+     }
+     return view("jefetaller.reportes");
+ }
 
 
 

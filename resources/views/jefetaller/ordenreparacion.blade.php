@@ -8,24 +8,25 @@
         <div class="col-md-12">
         <div class="card">
         
-        <h2> Registrar Órden de Reparación </h2>
+        <h2> Órden de Reparación N° 14 </h2>
            <form action="" method="post" >
                 @csrf
 
 
+       
                 <div class="form-control">
-                        <li><label>Seleccione Fecha estimada de Egreso :</label> 
-                        <input type="date" name="fecha_estimada_egreso" required></li>
-                
-                </div>
+                                <li><label>Fecha estimada de Egreso :</label> 
+                                <input type="date" name="fecha_estimada_egreso" required></li>
+                        
+                        </div>
 
 
                 <div class="form-control">
                         <li><label>Seleccione Cliente:</label> 
-                        <select name="cliente">
-@foreach ($clientes as $cliente)
+                        <select name="cliente" onchange="vehiculoscliente(this)" id="buscarclientes">
+                        @foreach ($clientes as $cliente)
                             <option value="{{$cliente->id}}"> {{$cliente->nombre}}  {{$cliente->apellido}}  </option>
-                            @endforeach
+                        @endforeach
                         </select>
                 
                 </div>
@@ -34,10 +35,8 @@
                 
                 <div class="form-control">
                         <li><label>Seleccione Vehiculo:</label> 
-                        <select name="vehiculo">
-@foreach ($vehiculos as $vehiculo)
-                            <option value="{{$vehiculo->id_vehiculo}}">  {{$vehiculo->modelo}}  </option>
-                            @endforeach
+                        <select name="vehiculo" id="vehiculos">
+                 
                         </select>
                 
                 </div>
@@ -45,7 +44,7 @@
 
                         
                 <div class="form-control">
-                        <li><label>Seleccione Motivo de Ingreso :</label> 
+                        <li><label>Motivo de Ingreso :</label> 
                             <input type="text" name="motivo_ingreso" required></li>
                 
                 </div>
@@ -64,7 +63,7 @@
 
                 <div class="form-control">
                         <li><label>Extra:</label> 
-                            <input type="textarea" name="extra" required></li>
+                            <input type="textarea" name="extra"></li>
                 
                 </div>
 
@@ -75,11 +74,7 @@
                 </div>
 
                 
-                <div class="form-control">
-                        <li><label>Seleccione Fecha estimada de Egreso :</label> 
-                        <input type="date" name="fecha_estimada_egreso" required></li>
-                
-                </div>
+               
                 
 
         <div class="form-control">
@@ -90,10 +85,23 @@
                             @endforeach
                         </select>
         </div>
+
+        <div class="form-control">
+                        <li><label>Seleccione mecánico:</label> 
+                            <select name="id_mecanico">
+                                   
+
+                                @foreach($mecanicos as $mecanico)
+
+                                <option value="{{$mecanico->id_mecanico}}">{{$mecanico->nombre}} {{$mecanico->apellido}}</option>
+
+                                @endforeach
+                                </select>
+                </div>
         
         
 
-        <li> <input type="submit"  value="Registrar Turno" placeholder="" id="registrarse"/> </li>
+        <input type="submit"  value="Registrar órden" placeholder="" id="registrarse"/> 
         
         </div>
         </div>

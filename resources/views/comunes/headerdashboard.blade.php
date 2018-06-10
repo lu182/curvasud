@@ -5,7 +5,7 @@
       <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
       <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.ico')}}">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-      <title>Light Bootstrap Dashboard - Free Bootstrap 4 Admin Dashboard by Creative Tim</title>
+      <title>Curvasud</title>
       <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
       <!--     Fonts and icons     -->
       <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -15,6 +15,8 @@
       <link href="{{asset('assets/css/light-bootstrap-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
       <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet" />
       <link href="{{asset('tablas/estilo.css')}}" rel="stylesheet" />
+      <link href="{{asset('calendario/styles/glDatePicker.default.css')}}" rel="stylesheet" />
+
 
    </head>
    <body>
@@ -37,13 +39,13 @@
                </li>
                <li class="nav-item ">
                   <a class="nav-link" href="{{ route('misdatos') }}">
-                     <i class="nc-icon nc-circle-09"></i>
+                     <i class="nc-icon nc-badge"></i>
                      <p>Mis datos</p>
                   </a>
                </li>
                <li>
                   <a class="nav-link" href="{{ route('misturnos') }}">
-                     <i class="nc-icon nc-notes"></i>
+                     <i class="nc-icon nc-bell-55"></i>
                      <p>Mis Turnos</p>
                   </a>
                </li>
@@ -53,6 +55,14 @@
                      <p>Mis Vehículos</p>
                   </a>
                </li>
+
+               <li class="nav-item ">
+                    <a class="nav-link" href="{{ route('principal') }}">
+                       <i class="nc-icon nc-zoom-split"></i>
+                       <p>Ir al sitio</p>
+                    </a>
+                 </li>
+
                <li>
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                      @csrf
@@ -62,12 +72,23 @@
                      </a>
                   </form>
                </li>
+               @if (  count(Auth::user()->vehiculo) > 0 )
+
                <li class="nav-item active active-pro">
                   <a class="nav-link active" href="{{route('turnero')}}">
-                     <i class="nc-icon nc-alien-33"></i>
+                     <i class="nc-icon nc-settings-tool-66"></i>
                      <p>Solicitar Turno</p>
                   </a>
                </li>
+               @else
+               
+               <li class="nav-item active active-pro">
+                    <a class="nav-link active disabled" href="{{ route('mivehiculo') }}">
+                       <i class="nc-icon nc-settings-tool-66"></i>
+                       <p>Registra tu vehiculo para solicitar turno</p>
+                    </a>
+                 </li>
+               @endif
                @endif
 
                @if (  Auth::user()->tipo_user_id == 2 )
@@ -80,23 +101,30 @@
                  </li>
                  <li class="nav-item ">
                     <a class="nav-link" href="{{ route('misdatos') }}">
-                       <i class="nc-icon nc-circle-09"></i>
+                       <i class="nc-icon nc-badge"></i>
                        <p>Mis datos</p>
                     </a>
                  </li>
                  <li class="nav-item ">
                         <a class="nav-link" href="{{ route('/encargado/','consultas') }}">
-                           <i class="nc-icon nc-circle-09"></i>
+                           <i class="nc-icon nc-check-2"></i>
                            <p>Consultas</p>
                         </a>
                      </li>
 
                      <li class="nav-item ">
                             <a class="nav-link" href="{{ route('/encargado/','reportes') }}">
-                               <i class="nc-icon nc-circle-09"></i>
+                               <i class="nc-icon nc-chart-pie-35"></i>
                                <p>Reportes</p>
                             </a>
                          </li>
+
+                         <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('principal') }}">
+                                   <i class="nc-icon nc-zoom-split"></i>
+                                   <p>Ir al sitio</p>
+                                </a>
+                             </li>
 
 
                  <li>
@@ -122,48 +150,55 @@
                  </li>
                  <li class="nav-item ">
                     <a class="nav-link" href="{{ route('misdatos') }}">
-                       <i class="nc-icon nc-circle-09"></i>
+                       <i class="nc-icon nc-badge"></i>
                        <p>Mis datos</p>
                     </a>
                  </li>
                  <li class="nav-item ">
-                        <a class="nav-link" href="">
-                           <i class="nc-icon nc-circle-09"></i>
+                        <a class="nav-link" href="{{ route('/jefetaller/','consultas') }}">
+                           <i class="nc-icon nc-check-2"></i>
                            <p>Consultas</p>
                         </a>
                      </li>
 
                      <li class="nav-item ">
-                            <a class="nav-link" href="">
-                               <i class="nc-icon nc-circle-09"></i>
+                            <a class="nav-link" href="{{ route('/jefetaller/','reportes') }}">
+                               <i class="nc-icon nc-chart-pie-35"></i>
                                <p>Reportes</p>
                             </a>
                          </li>
 
                          <li class="nav-item ">
-                                <a class="nav-link" href="">
-                                   <i class="nc-icon nc-circle-09"></i>
+                                <a class="nav-link" href="{{ route('/jefetaller/registrarmecanico') }}">
+                                   <i class="nc-icon nc-settings-90"></i>
                                    <p>Registrar Mecánico</p>
                                 </a>
                              </li>
 
                              <li class="nav-item ">
-                                    <a class="nav-link" href="">
-                                       <i class="nc-icon nc-circle-09"></i>
+                                    <a class="nav-link" href="{{ route('/jefetaller/ordenreparacion') }}">
+                                       <i class="nc-icon nc-paper-2"></i>
                                        <p>Registrar órden de reparación</p>
                                     </a>
                                  </li>
 
+                                 <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('principal') }}">
+                                           <i class="nc-icon nc-zoom-split"></i>
+                                           <p>Ir al sitio</p>
+                                        </a>
+                                     </li>
 
-                 <li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                           @csrf
-                           <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+
+                        <li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                            @csrf
+                            <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
                               <i class="nc-icon nc-tap-01"></i>
                               <p>Cerrar Sesión</p>
-                           </a>
-                        </form>
-                     </li>
+                            </a>
+                            </form>
+                        </li>
                  @endif
 
                  @if (  Auth::user()->tipo_user_id == 4 )
@@ -186,6 +221,9 @@
                              <p>Registrar clientes</p>
                           </a>
                        </li>
+
+
+
 
                        <li class="nav-item ">
                               <a class="nav-link" href="">
@@ -275,6 +313,7 @@
                      </a>
                  </li>
 
+
                  <li class="button-container">
                      <div class="">
                          <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard" target="_blank" class="btn btn-info btn-block btn-fill">Download, it's free!</a>
@@ -288,6 +327,14 @@
                          <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard-pro" target="_blank" class="btn btn-warning btn-block btn-fill">Get The PRO Version!</a>
                      </div>
                  </li>
+
+
+                 
+         
+                 <li class="header-title pro-title text-center">Want more components?</li>
+         
+                 
+         
 
                  <li class="header-title" id="sharrreTitle">Thank you for sharing!</li>
 
@@ -305,20 +352,29 @@
    <script src="{{asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
    <script src="{{asset('assets/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+
    <script src="{{asset('assets/js/plugins/bootstrap-switch.js')}}"></script>
    <!--  Google Maps Plugin    -->
    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+
+   <script src="../assets/js/plugins/bootstrap-switch.js"></script>
+
    <!--  Chartist Plugin  -->
    <script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
    <!--  Notifications Plugin    -->
    <script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
    <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
-   <script src="{{asset('assets/js/light-bootstrap-dashboard.js?v=2.0.1')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/light-bootstrap-dashboard.js?v=2.0.1')}}" type="text/javascript"></script>
    <script type="text/javascript">
+   <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
+
+   <script type="text/javascript">
+    
+
 
      // var tablas = $("#tabla")
       $(document).ready(function() {
-        $('table').dataTable({
+       var tabla =  $('table').dataTable({
             "language": {
 
                     "sProcessing":     "Procesando...",
@@ -346,8 +402,115 @@
 
             }
         } );
-    } );
+    }
+    
+    );
+
+
+
    </script>
 
    <script src="{{asset('tablas/js.js')}}"></script>
+
 </html>
+
+
+
+   <script>
+        $(document).ready(function (){
+
+            $("#ciudad_input").hide();
+            $("#selector_ciudad").change(function() {
+                // Mostramos el campo de ingresar ciudad basado en el valor del select
+                if ($(this).val() == "Otro") {
+                    $("#ciudad_input").fadeIn();
+                }else{
+                    $("#ciudad_input").fadeOut();
+                } 
+            });
+
+            $("#ciudad_input2").hide();
+            $("#selector_ciudad2").change(function() {
+                // Mostramos el campo de ingresar ciudad basado en el valor del select
+                if ($(this).val() == "11") {
+                    $("#ciudad_input2").fadeIn();
+                }else{
+                    $("#ciudad_input2").fadeOut();
+                } 
+            });
+        });
+
+
+    </script>
+    <script src="{{asset('calendario/glDatePicker.min.js')}}" rel="stylesheet" ></script>
+
+    <script type="text/javascript">
+        var today = new Date();
+    var future = new Date(today);
+    
+    // Dejamos que el usuario seleccione desde hoy hasta dentro de 1 año
+    future.setDate(today.getDate() + 728);
+    
+     var $calendar = $('#calendario').glDatePicker(
+         
+    {
+        showAlways: true,
+        selectedDate: new Date(),
+        selectableDOW: [1, 2, 3,4,5],
+        allowYearSelect: false,
+        selectableDateRange: [ { from: today, to: future } ],
+        monthNames: [ 'ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE' ],
+        dowNames:["Dom","Lun","Mar","Mier","Jue","Vier","Sab"],
+       onClick: function(target, cell, date, data) {
+
+        var mes = date.getMonth();
+        if(mes < 9){
+            mes = "0"+(mes+1);
+
+        }else{
+            var mes = date.getMonth();
+
+            mes = (mes+1)
+
+        }
+			$("#calendario").val(date.getFullYear() + '-' +
+						mes + '-' +
+						date.getDate());
+
+			if(data != null) {
+				alert("seleccione una fecha válida");
+			}
+		}
+    
+    });
+
+
+
+    function vehiculoscliente(obj)
+  {
+    $('#vehiculos').empty()
+    var dropDown = document.getElementById("buscarclientes");
+    var carId = dropDown.options[dropDown.selectedIndex].value;
+    $.ajax({
+            type: "GET",
+            url: "http://curvasud.com/api/vehiculoclienteajax/"+carId,
+           // data: { 'carId': carId  },
+            success: function(data){
+          
+                // Parse the returned json data
+                var opts = $.parseJSON(data);
+                
+                // Use jQuery's each to iterate over the opts value
+                $.each(opts, function(i, d) {
+                    // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data
+                    $('#vehiculos').append('<option value="' + d.id_vehiculo + '">' + d.modelo + '</option>');
+                });
+            }
+        });
+  }
+
+
+        </script>
+
+</html>
+

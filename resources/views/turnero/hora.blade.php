@@ -7,7 +7,7 @@
 <div class="col-md-12">
 <div class="card">
 
-<h2> Turnos disponibles para {{$fecha}} </h2>
+<h2> Turnos disponibles para la fecha seleccionada </h2>
 <h2> Con el tipo de servicio {{$servicio->tipoServicio}} </h2>
 
 <h3> Referencias </h3>
@@ -30,6 +30,8 @@
 
                         <form action="{{ route('guardarTurno') }}" method="post" id="formRegistro">
                                 @csrf
+                                <input type="hidden" value="{{$id_vehiculo}}" name="id_vehiculo">
+
                                 <input type="hidden" value="{{$fecha}}" name="fecha">
                                 <input type="hidden" value="{{ Auth::user()->id }}" name="id_cliente">
                                 <input type="hidden" value="2" name="id_estado_turno">

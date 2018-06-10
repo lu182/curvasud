@@ -1,17 +1,23 @@
 @extends('comunes.headerdashboard')
 
 <style>
-    .btn{ 
-        width: 200px!important;
-        height: 60px!important;
-        font-size: 12px!importat;
-        margin: auto!important;
-        margin-right: 10px!important;
-    }
-    buttton{
-        margin-top:0px!important
-    }
 
+        .btn{ 
+            width: 200px!important;
+            height: 30px!important;
+            font-size: 12px!importat;
+            margin: auto!important;
+            margin-right: 10px!important;
+            padding:3px!important
+
+        }
+        buttton{
+            margin-top:0px!important;
+            font-size: 12px!importat;
+padding:3px!important
+        }
+
+        
 </style>
 
 @section("content")
@@ -37,7 +43,7 @@
                 <p class="card-category">Estos son los turnos cargados en el sistema</p>
             </div>
             <div class="card-body table-full-width table-responsive">
-                <table class="table table-hover table-striped">
+                <table class="table table-hover table-striped" id="tablaSinBuscar">
                     <thead>
                         <tr>
                             <th>Fecha  </th>
@@ -50,7 +56,7 @@
                     <tbody>
                         @foreach ($turnos as $turno)
                         <tr>
-                                <td>{{$turno->fecha}}</td>
+                                <td>{{$turno->corregirFecha()}}</td>
                                 <td>{{$turno->hora}}</td>
                                 <td>{{$turno->tipo->tipoServicio}}</td>
                                 <td>
@@ -129,6 +135,7 @@
 
 
 
+    
     @endsection
 
 

@@ -3,88 +3,103 @@
 
 @section("content")
 
-<div class="col-md-8">
+<div class="col-md-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Edit Profile</h4>
-            </div>
-            <div class="card-body">
-                <form>
-                    <div class="row">
-                        <div class="col-md-5 pr-1">
-                            <div class="form-group">
-                                <label>Company (disabled)</label>
-                                <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
-                            </div>
-                        </div>
-                        <div class="col-md-3 px-1">
-                            <div class="form-group">
-                                <label>Username</label>
-                                <input type="text" class="form-control" placeholder="Username" value="michael23">
-                            </div>
-                        </div>
-                        <div class="col-md-4 pl-1">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" placeholder="Email">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 pr-1">
-                            <div class="form-group">
-                                <label>First Name</label>
-                                <input type="text" class="form-control" placeholder="Company" value="Mike">
-                            </div>
-                        </div>
-                        <div class="col-md-6 pl-1">
-                            <div class="form-group">
-                                <label>Last Name</label>
-                                <input type="text" class="form-control" placeholder="Last Name" value="Andrew">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Address</label>
-                                <input type="text" class="form-control" placeholder="Home Address" value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4 pr-1">
-                            <div class="form-group">
-                                <label>City</label>
-                                <input type="text" class="form-control" placeholder="City" value="Mike">
-                            </div>
-                        </div>
-                        <div class="col-md-4 px-1">
-                            <div class="form-group">
-                                <label>Country</label>
-                                <input type="text" class="form-control" placeholder="Country" value="Andrew">
-                            </div>
-                        </div>
-                        <div class="col-md-4 pl-1">
-                            <div class="form-group">
-                                <label>Postal Code</label>
-                                <input type="number" class="form-control" placeholder="ZIP Code">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>About Me</label>
-                                <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-info btn-fill pull-right">Update Profile</button>
-                    <div class="clearfix"></div>
-                </form>
+                <h4 class="card-title">Mis vehículos</h4>
+
+                
+    @if($errors->any())
+
+    <div class="alert alert-success">{{$errors->first()}}</div>
+
+@endif
             </div>
         </div>
+
+        @foreach ($vehiculos as $vehiculo)
+
+         
+        <div class="card">
+
+            <div class="card-body">
+              
+
+                <!-- Mostramos todos los vehiculos cargados del cliente -->
+                
+            <h4>     Patente del vehículo:   </h4> 
+                {{$vehiculo->patente}}
+
+                <h4>     Modelo del vehículo:   </h4> 
+                {{$vehiculo->modelo}}
+
+
+                @if ($vehiculo->cancelado == 0)
+                <form method="POST" action="{{route('bajaVehiculo')}}">
+
+                    @csrf
+                    <input type="hidden" value="{{$vehiculo->id_vehiculo}}" name="id_vehiculo">
+
+
+                    <input type="submit"  class="btn btn-danger" value="Dar vehiculo de baja">
+
+                    
+                </form>
+                @else
+                <form method="POST" action="{{route('altaVehiculo')}}">
+
+                        @csrf
+                        <input type="hidden" value="{{$vehiculo->id_vehiculo}}" name="id_vehiculo">
+    
+    
+                        <input type="submit" class="btn btn-primary" value="Dar vehiculo de alta nuevamente">
+    
+                        
+                    </form>
+                    @endif
+
+                    @if ($vehiculo->cancelado == 1)
+
+                    <div class="alert alert-danger">  Este vehiculo se encuentra no disponible </div>
+ 
+                     @endif
+            </div>
+        </div>
+               
+        @endforeach
+    </div>
+
+
+    <div class="card">
+            <div class="card-header">
+                    <h4 class="card-title">Dar de alta un nuevo vehiculo</h4>
+ 
+    
+            </div>
+            <div class="card-body">
+              <form method="POST" action="{{route('agregarVehiculo')}}">
+                  @csrf
+                    <li><label>* Tipo de vehiculo:</label>
+                        <select name="id_tipo_vehiculo" id="comboTiposV" required>
+                            @foreach ($tipos_vehiculos as $tipo_vehiculo)
+                            <option value="{{$tipo_vehiculo->id_tipo_vehiculo}}">{{$tipo_vehiculo->tipoVehiculo}}</option>
+                            @endforeach
+                        </select>
+                    </li>
+                    <li><label>Marca:</label> <input type="text" name="marca" value="Fiat" id="" readonly> </li>
+                    <li><label>* Modelo:</label><input type="text" name="modelo" value="" id="" required></li>
+                    <li><label>* Año:</label> <input type="number" accept="number" name="anio" value="" id="" required> </li>
+                    <li><label>* Patente:</label><input type="text" name="patente" value="" id="" minlength=7 required> </li>
+                    <li><label>* Número de Chasis:</label><input type="text" name="nro_chasis" value="" id="" minlength=7 required> </li>
+                    <li><label>* Inicio de garantía:</label> <input type="date" name="fecha_inicio_garantia" value="" id="" required></li>
+                    <br>
+                                       
+                    <li> <input type="submit" name="btnRegistrarse" value="REGISTRAR" placeholder="" id="registrarse"/> </li>
+                </ul>
+            </form>
+            </div>
+
+
     </div>
 
     @endsection

@@ -6,30 +6,31 @@
 
 
 <h2>Cliente </h2>
-<h3> Nombre: {{$cliente->nombre}} </h3>
-<h3> Apellido: {{$cliente->apellido}} </h3>
-<h3> DNI: {{$cliente->dni}} </h3>
-<h3> Email: {{$cliente->email}} </h3>
-
-</h2> Detalles del vehiculo </h2>
-
-<h3> Marca: {{$vehiculo->marca}} </h3>
-<h3> Modelo: {{$vehiculo->modelo}} </h3>
-<h3> Patente: {{$vehiculo->patente}} </h3>
-<h3> Número de Chasis: {{$vehiculo->nro_chasis}} </h3>
+<p> Nombre: {{$cliente->nombre}} </p>
+<p> Apellido: {{$cliente->apellido}} </p>
+<p> DNI: {{$cliente->dni}} </p>
+<p> Email: {{$cliente->email}} </p>
+<br>
+<h2> Detalles del vehiculo </h2>
+<p> Marca: {{$vehiculo->marca}} </p>
+<p> Modelo: {{$vehiculo->modelo}} </p>
+<p> Patente: {{$vehiculo->patente}} </p>
+<p> Número de Chasis: {{$vehiculo->nro_chasis}} </p>
 
 </h2> Motivo de Ingreso: </h2>
-<h3> {{$motivo_ingreso}} </h3>
+<p> {{$motivo_ingreso}} </p>
 
 </h2> Observaciones: </h2>
-<h3> {{$observaciones}} </h3>
+<p> {{$observaciones}} </p>
 
 </h2> Operación Realizada: </h2>
-<h3> {{$operacion_realizada}} </h3>
+<p> {{$operacion_realizada}} </p>
 
 </h2> Extra: </h2>
-<h3> {{$extra}} </h3>
+<p> {{$extra}} </p>
 
 </h2> Km: </h2>
-<h3> {{$km}} </h3>
+<p> {{$km}} </p>
 
+</h2> Trabajo realizado por: </h2>
+<p>{{$mecanico->nombre}} {{$mecanico->apellido}}</p>

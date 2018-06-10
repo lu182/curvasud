@@ -24,12 +24,16 @@ class LandingController extends Controller
         // [KEY => VALUE]
 
 
+
         if (Auth::check()) {
             return view("prueba");
         }
         else{
             return view("prueba");
         }
+
+
+        return view("newHome.inicio");
 
     }
 

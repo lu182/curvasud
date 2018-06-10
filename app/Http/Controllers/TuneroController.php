@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Turno;
+use App\Vehiculo;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,8 +21,9 @@ class TuneroController extends Controller
     public function index()
     {
 
+        $vehiculos = Vehiculo::where("id_cliente", Auth::user()->id)->get();
         $tipos_servicio = DB::table("tipos_servicios")->get();
-        return view("turnero.registrar", ["tipos_servicio" => $tipos_servicio]);
+        return view("turnero.registrar", ["tipos_servicio" => $tipos_servicio,"vehiculos"=>$vehiculos]);
 
     }
 
@@ -34,12 +36,45 @@ class TuneroController extends Controller
     public function registrar(Request $request)
     {
 
+        $id_vehiculo = $request->id_vehiculo;
         $fecha = $request->fecha;
-        $fecha = strtotime($fecha);
-
-        $fecha = date('Y/m/d', $fecha);
-
+       $fecha = strtotime($fecha);
+        $turnos_registrados_vehiculo = Turno::where("id_vehiculo",$id_vehiculo)->get();
         $id_tipo_servicio = $request->id_tipo_servicio;
+        $fecha = date('Y-m-d', $fecha);
+
+        //Primera validación: Que no exista un turno ya registrado para ese mismo tipo de servicio
+
+        foreach($turnos_registrados_vehiculo as $turno){
+
+            if($turno->id_tipo_servicio == $request->id_tipo_servicio){
+                return redirect()->route('turnero')->withErrors(['Ya tienes un turno registrado con ese tipo de servicio']);
+            }
+
+
+            // El id de tipo de servicio es mayor al que ya esta registrado
+            // La fecha que quiero registrar es menor a la que ya está registrada
+
+
+            if($fecha < $turno->fecha and $id_tipo_servicio > $turno->id_tipo_servicio){
+                return redirect()->route('turnero')->withErrors(['Ya tienes un turno registrado con un tipo de servicio anterior']);
+
+            }
+
+            
+        }
+
+
+
+       
+
+
+
+     
+
+
+
+
         $turnos_fecha = Turno::where("fecha", $fecha)->where("id_estado_turno", 2)->get();
 
         $servicio = DB::table("tipos_servicios")->where("id_tipo_servicio", $id_tipo_servicio)->first();
@@ -104,11 +139,11 @@ class TuneroController extends Controller
             }
         }
 
-        return view("turnero.hora", ["fecha" => $fecha, "horas" => $horas, "servicio" => $servicio, "turnos_fecha" => $turnos_fecha]);
+        return view("turnero.hora", ["id_vehiculo"=>$id_vehiculo,"fecha" => $fecha, "horas" => $horas, "servicio" => $servicio, "turnos_fecha" => $turnos_fecha]);
 
     }
 
-    public function guardarTurno(Request $request)
+    public function guardarTurno(Request $request) //NO GUARDA UN NUEVO TURNO PARA UN NUEVO USUARIO
     {
 
         $turno = Turno::create($request->all());
@@ -126,12 +161,12 @@ class TuneroController extends Controller
         $turnos = Turno::with("tipo")->where("id_cliente", $usuario->id)->where("id_estado_turno", 2)->get();
 
         $tipos_servicio = DB::table("tipos_servicios")->get();
-
+        //return $turnos;
         return view("cliente.misturnos", ["turnos" => $turnos, "tipos_servicio" => $tipos_servicio]);
 
     }
 
-    public function eliminar(Request $request)
+    public function eliminar(Request $request) //SE ELIMINA DE LA VIEW PERO NO DE LA BD
     {
         $user = Auth::user();
 
@@ -176,7 +211,7 @@ class TuneroController extends Controller
 
         if (!$validacion) {
 
-            // de ca par aabajo guardar turno
+            // de aca para abajo guardar turno
 
             $turno_a_cambiar->fecha = $request->fecha;
             $turno_a_cambiar->hora = $request->hora;
@@ -185,7 +220,7 @@ class TuneroController extends Controller
         } else {
             return "El turno ya esta ocupado";
         }
-        //definimos del turno que ya existe, que es un array, que su id_estado_turno va a ser 3
+        
 
     }
 
@@ -201,8 +236,9 @@ class TuneroController extends Controller
 
     }
 
-    public function cambiar_fecha(Request $request)
+    public function cambiar_fecha(Request $request) //da error la ruta curvasud.com/cambiar_fecha
     {
+        $vehiculos = Vehiculo::where("id_cliente", Auth::user()->id)->get();
 
         $id_turno = Crypt::decryptString($request->id_turno);
         $turno_a_editar = Turno::find($id_turno);
@@ -294,6 +330,7 @@ class TuneroController extends Controller
 
         $turno_a_editar->fecha = $request->fecha;
         $turno_a_editar->hora = $request->hora;
+        //return $turno_a_editar; //me devuelve otro id_turno y otro id_estado_turno a comparacion de la BD
         $turno_a_editar->save();
 
         $usuario = Auth::user();

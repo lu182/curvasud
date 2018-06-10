@@ -8,12 +8,12 @@ use Illuminate\Support\Facades\Crypt;
 class Turno extends Model
 {
     protected $table = "turnos";
-    protected $primaryKey = 'id_turno';
+    protected $primaryKey = 'id_turno'; 
     public $timestamps = false;
 
 
     protected $fillable = [
-        'id_turno', 'id_cliente', 'id_estado_turno', 'id_tipo_servicio', 'fecha', 'hora'
+        'id_turno', 'id_tipo_servicio', 'id_cliente', 'id_estado_turno', 'fecha', 'hora', 'id_vehiculo'
    ];
 
    public function tipo()
@@ -23,7 +23,7 @@ class Turno extends Model
 
    public function cliente()
    {
-       return $this->belongsTo('App\User',"id_cliente");
+       return $this->belongsTo('App\User',"id_cliente"); 
    }
 
    public function estado()
@@ -33,6 +33,17 @@ class Turno extends Model
 
    public function encriptarTurno(){
        return Crypt::encryptString($this->id_turno);
+   }
+
+   public function vehiculo(){
+       return $this->hasOne("App\Vehiculo","id_vehiculo");
+   }
+
+   public function corregirFecha(){
+       $fecha = $this->fecha;
+       $fecha = strtotime($fecha);
+       $fecha = date('d-m-Y', $fecha);
+       return $fecha;
    }
 
   

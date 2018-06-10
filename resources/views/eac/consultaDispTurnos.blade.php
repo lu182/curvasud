@@ -1,4 +1,3 @@
-
 @extends('comunes.headerdashboard')
 
 
@@ -68,4 +67,3 @@
 </tbody>
 </table>
 @endsection
-

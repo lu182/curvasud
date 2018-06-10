@@ -50,7 +50,7 @@
 				
 				<input type="submit" name="btnIngresar" value="INGRESAR" placeholder="" id="login" />
 				
-				<p>¿No tiene una cuenta?&nbsp &nbsp <a href="">Registrese aquí</a></p>
+				<p>¿No tiene una cuenta?&nbsp &nbsp <a href="{{route('registro_clientes')}}">Registrese aquí</a></p>
 			
 			</form>
 		</div>

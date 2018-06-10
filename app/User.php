@@ -17,7 +17,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',"tipo_user_id", 'id_tipo_doc',
         'id_ciudad',
-         'dni',
+        'dni',
         'nombre',
         'apellido',
         'fecha_nac',
@@ -25,7 +25,7 @@ class User extends Authenticatable
         'domicilio',
         'cod_postal',
         'telefono',
-        'cuil',
+        'cuil'
     ];
 
     /**
@@ -47,10 +47,21 @@ class User extends Authenticatable
         return $this->hasMany('App\Turno',"id_cliente");
     }
 
+    public function ciudad()
+    {
+        return $this->belongsTo('App\Ciudad',"id_ciudad");
+    }
+
+    public function tipo_documento(){
+        return $this->belongsTo("App\TipoDocumento","id_tipo_doc");
+    }
+
     public function turnos_cancelados()
     {
         return $this->hasMany('App\Turno',"id_cliente")->where("id_estado_turno",3)->orderBy('id_turno', 'desc');
     }
+
+   
 
   
 }

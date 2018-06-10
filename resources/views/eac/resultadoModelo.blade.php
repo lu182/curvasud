@@ -4,27 +4,45 @@
 @section("content")
 <h2>Resultados de la búsqueda:</h2>
 
-        <h3> Se encontraron {{$nombreModeloSeleccionado->count()}} vehiculos<h3>
+    <h3> Se encontraron {{$nombreModeloSeleccionado->count()}} vehiculos</h3>
 
-    
-                @foreach($nombreModeloSeleccionado as $modeloAMostrar)
+    <table class="table display" id="tabla">
+
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Marca</th>
+                <th scope="col">Año</th>
+                <th scope="col">Patente</th>
+                <th scope="col">Núm. chasis</th>        
+                <th scope="col">Inicio de garantía</th> 
+                <th scope="col">Titular</th>        
+                <th scope="col">Dni</th>        
+                <th scope="col">Teléfono</th>        
+                <th scope="col">Email</th>        
+
+            </tr>
+        </thead>
+        <tbody>
+        
+        @foreach($nombreModeloSeleccionado as $modeloAMostrar)
                 
-                    <ul> 
-                        <li>Marca: {{$modeloAMostrar->marca}} </li>
-                        <li>Año: {{$modeloAMostrar->anio}} </li>
-                        <li>Patente: {{$modeloAMostrar->patente}} </li>
-                        <li>Chasis: {{$modeloAMostrar->nro_chasis}} </li>
-                        <li>Fecha inicio de garantía: {{$modeloAMostrar->fecha_inicio_garantia}} </li>
-                        <br>
-                        <li>Titular: {{$modeloAMostrar->vehiculo_cliente->nombre}} </li>
-                        <li>DNI:  {{$modeloAMostrar->vehiculo_cliente->dni}}</li>
-                        <li>Teléfono: {{$modeloAMostrar->vehiculo_cliente->telefono}} </li>
-                        <li>Email: {{$modeloAMostrar->vehiculo_cliente->email}}  </li>
+        <tr> 
+            <th scope="row">{{$modeloAMostrar->marca}}</th>
+            <td>{{$modeloAMostrar->anio}}</td>
+            <td>{{$modeloAMostrar->patente}} </td>
+            <td>{{$modeloAMostrar->nro_chasis}} </td>
+            <td>{{$modeloAMostrar->fecha_inicio_garantia}} </td>
+            
+            <td>{{$modeloAMostrar->vehiculo_cliente->nombre}} {{$modeloAMostrar->vehiculo_cliente->apellido}}</td>
+            <td>{{$modeloAMostrar->vehiculo_cliente->dni}}</td>
+            <td>{{$modeloAMostrar->vehiculo_cliente->telefono}} </td>
+            <td>{{$modeloAMostrar->vehiculo_cliente->email}}  </td>
                         
-                        <p>------------------------------------------------------------------------ </p>
-                    </ul>
+        </tr>
                 
-              @endforeach  
+    @endforeach
+    </tbody>
+</table>  
 
             
 @endsection

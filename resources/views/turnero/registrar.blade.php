@@ -7,6 +7,11 @@
 <div class="col-md-12">
 <div class="card">
 
+                @if($errors->any())
+
+                <div class="alert alert-success">{{$errors->first()}}</div>
+            
+            @endif
 <h2> Registrar Turno </h2>
    <form action="" method="post" id="formRegistro">
         @csrf
@@ -19,10 +24,19 @@
                 </select>
 </div>
 
+<div class="form-control">
+                <li><label>Seleccione Vehiculo:</label> 
+                    <select name="id_vehiculo"  required>
+                            @foreach ($vehiculos as $vehiculo)
+                            <option value="{{$vehiculo->id_vehiculo}}">{{$vehiculo->modelo}} - {{$vehiculo->patente}} </option>
+                            @endforeach
+                        </select>
+        </div>
+
 
 <div class="form-control">
         <li><label>Seleccione Fecha del Turno:</label> 
-        <input type="date" name="fecha" value="" id="" required></li>
+        <input type="text" name="fecha" value="" id="calendario" readonly required style="width:400px;border: none;color: white;"></li>
 
 </div>
 
