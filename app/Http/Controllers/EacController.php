@@ -10,9 +10,7 @@ use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
 use PDF;
-
 
 class EacController extends Controller
 {
@@ -66,7 +64,7 @@ class EacController extends Controller
 
             $diaAgregar = $start->addDay();
 
-            
+
         }
 
 
@@ -107,63 +105,6 @@ class EacController extends Controller
                $fechas_finales[$fecha]['horas'][0] = ["hora" => $fechas_finales[$fecha]['horas'][0]["hora"], "estado" => 0];
                $fechas_finales[$fecha]['horas'][1] = ["hora" => $fechas_finales[$fecha]['horas'][1]["hora"], "estado" => 0];
                $fechas_finales[$fecha]['horas'][2] = ["hora" => $fechas_finales[$fecha]['horas'][2]["hora"], "estado" => 0];
-
-
-$fechas_finales = array();
-
-        $start = Carbon::now();
-        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(30), 0, 10));
-
-        $fechas = [];
-
-        while ($start->lte($end)) {
-
-            $fechas[] = $start->copy()->format('Y-m-d');
-
-            $start->addDay();
-        }
-
-       //return $fechas;
-
-       foreach ($fechas as $fecha){
-
-
-       $turnos_fecha = Turno::where("fecha", $fecha)->where("id_estado_turno", 2)->get();
-
-      // $servicio = DB::table("tipos_servicios")->where("id_tipo_servicio", $id_tipo_servicio)->first();
-
-       //Creamos un array de Fechas (Esto podría ser base de datos)
-
-       $horas = array(
-           ["hora" => "08:00:00", "estado" => 1],
-           ["hora" => "09:00:00", "estado" => 1],
-           ["hora" => "10:00:00", "estado" => 1],
-           ["hora" => "11:00:00", "estado" => 1],
-           ["hora" => "12:00:00", "estado" => 1],
-           ["hora" => "13:00:00", "estado" => 1],
-           ["hora" => "14:00:00", "estado" => 1],
-           ["hora" => "15:00:00", "estado" => 1],
-           ["hora" => "16:00:00", "estado" => 1],
-           ["hora" => "17:00:00", "estado" => 1],
-           ["hora" => "18:00:00", "estado" => 1],
-       );
-       $fechas_finales[$fecha]=['fecha'=>$fecha,"horas"=>$horas];
-
-       //Hacemos la comparación del Array con los turnos cargados en Database,
-       // y agregamos los ya tomados, junto con sus 3 horas siguientes y 2 anteriores
-       foreach ($turnos_fecha as $turno) {
-
-           //clave es = a index o indice
-
-           $clave = array_search($turno->hora, array_column($fechas_finales[$fecha]['horas'], "hora"));
-
-           if ($clave == 0) {
-
-               $fechas_finales[$fecha]['horas'][0] = ["hora" => $fechas_finales[$fecha]['horas'][0]["hora"], "estado" => 0];
-               $fechas_finales[$fecha]['horas'][1] = ["hora" => $fechas_finales[$fecha]['horas'][1]["hora"], "estado" => 0];
-               $fechas_finales[$fecha]['horas'][2] = ["hora" => $fechas_finales[$fecha]['horas'][2]["hora"], "estado" => 0];
-
-
 
            }
 
@@ -201,14 +142,7 @@ $fechas_finales = array();
 
       //return $fechas_finales;
 
-
-
-
-
-        date_default_timezone_set('America/Argentina/Buenos_Aires');
-
          date_default_timezone_set('America/Argentina/Buenos_Aires');
-
 
         $fechaActual = date('Y-m-d', time());
 
@@ -220,17 +154,8 @@ $fechas_finales = array();
     //Consultar turnos cancelados del día
     public function TurnosHoy()
     {
-
-
-
-
-
-
-        date_default_timezone_set('America/Argentina/Buenos_Aires');
-
-        //VER !!! 
+        //VER !!!
          date_default_timezone_set('America/Argentina/Buenos_Aires');
-
 
         $fechaActual = date('Y-m-d', time());
 

@@ -61,16 +61,16 @@ class TuneroController extends Controller
 
             }
 
-            
+
         }
 
 
 
-       
 
 
 
-     
+
+
 
 
 
@@ -220,7 +220,7 @@ class TuneroController extends Controller
         } else {
             return "El turno ya esta ocupado";
         }
-        
+
 
     }
 

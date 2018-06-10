@@ -23,7 +23,7 @@ class JefeDeTallerController extends Controller
 
     public function __construct()
     {
-        $this->middleware('jefetaller');
+    //    $this->middleware('jefetaller');
     }
 
 
@@ -114,7 +114,7 @@ class JefeDeTallerController extends Controller
     );
          return $orden->download('orden '.$cliente->nombre.' '.$cliente->apellido.'.pdf');
          return redirect()->route("home");
-        
+
 
     }
 
@@ -126,24 +126,24 @@ class JefeDeTallerController extends Controller
         $ciudades = Ciudad::get();
         $tipos_documento = TipoDocumento::get();
         return view("jefetaller.registrarmecanico",["tipos_documento"=>$tipos_documento,"ciudades"=>$ciudades]);
-        
+
 
     }
 
-    
+
     public function registrarMecanico(Request $request){
 
 
       $mecanicoNuevo = Mecanico::create($request->all());
 
-      
+
       if(!is_null($request->inputOtro)){
         $ciudadNueva = Ciudad::create(["ciudad"=>$request->inputOtro]);
         $mecanicoNuevo->update(["id_ciudad"=>$ciudadNueva->id_ciudad]);
 
     }
         return view("jefetaller.bienvenida");
-        
+
 
     }
 

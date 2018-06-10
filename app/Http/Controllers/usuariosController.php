@@ -35,8 +35,7 @@ class usuariosController extends Controller
 
         //Comienza un switch para verificar el tipo de usuario
         //
-        switch ($user->tipo_user_id) {
-            case 1:
+
                 //Verifica que el usuario tiene un tipo_user_id = 1, lo que significa que es un cliente
                 //Por ello, le devuelve la vista de bienvenida para clientes
 
@@ -114,7 +113,7 @@ class usuariosController extends Controller
         }
 
 
-    }}
+    }
 
     public function misdatos()
     {
