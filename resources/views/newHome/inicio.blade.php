@@ -37,7 +37,7 @@
                 <a class="primary-btn" href="#">Conoce más sobre nosotros</a>
             </div>
             <div class="col-lg-6 justify-content-center align-items-center d-flex">
-                <img class="img-fluid mx-auto" src="../public/img/tacografo.jpg" alt=""></a>
+                <img class="img-fluid mx-auto" src="{{asset('img/tacografo.jpg')}}" alt=""></a>
             </div>
         </div>
     </div>
@@ -108,42 +108,42 @@
                 <div class="active-gallery">
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header1.jpg" alt="">
+                            <img src="{{asset('img/header1.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header2.jpg" alt="">
+                            <img src="{{asset('img/header2.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header3.jpg" alt="">
+                            <img src="{{asset('img/header3.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header4.jpg" alt="">
+                            <img src="{{asset('img/header4.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header5.jpg" alt="">
+                            <img src="{{asset('img/header5.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header6.jpg" alt="">
+                            <img src="{{asset('img/header6.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>

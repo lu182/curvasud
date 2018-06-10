@@ -51,7 +51,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 home-about-left">
-                <img class="mx-auto d-block img-fluid" src="../public/img/header1.jpg" alt="">
+                <img class="mx-auto d-block img-fluid" src="{{asset('img/header1.jpg')}}" alt="">
             </div>
             <div class="col-lg-6 home-about-right">
                 <h6 class="text-uppercase">Una empresa centrada en el valor agregado</h6>

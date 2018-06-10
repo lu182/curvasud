@@ -31,7 +31,7 @@
             <div class="single-service-page">
                <div class="thumbs relative">
                   <div class="overlay-bg"></div>
-                  <img class="img-fluid" src="../public/img/modelos/1.jpg" alt="">
+                  <img class="img-fluid" src="{{asset('img/modelos/1.jpg')}}" alt="">
                </div>
                <div class="details">
                   <a href="#">
@@ -49,7 +49,7 @@
             <div class="single-service-page">
                <div class="thumbs relative">
                   <div class="overlay-bg"></div>
-                  <img class="img-fluid" src="../public/img/modelos/2.jpg" alt="">
+                  <img class="img-fluid" src="{{asset('img/modelos/2.jpg')}}" alt="">
                </div>
                <div class="details">
                   <a href="#">
@@ -67,7 +67,7 @@
             <div class="single-service-page">
                <div class="thumbs relative">
                   <div class="overlay-bg"></div>
-                  <img class="img-fluid" src="../public/img/modelos/3.jpg" alt="">
+                  <img class="img-fluid" src="{{asset('img/modelos/3.jpg')}}" alt="">
                </div>
                <div class="details">
                   <a href="#">
@@ -86,7 +86,7 @@
             <div class="single-service-page">
                <div class="thumbs relative">
                   <div class="overlay-bg"></div>
-                  <img class="img-fluid" src="../public/img/modelos/4.jpg" alt="">
+                  <img class="img-fluid" src="{{asset('img/modelos/4.jpg')}}" alt="">
                </div>
                <div class="details">
                   <a href="#">
@@ -104,7 +104,7 @@
             <div class="single-service-page">
                <div class="thumbs relative">
                   <div class="overlay-bg"></div>
-                  <img class="img-fluid" src="../public/img/modelos/5.jpg" alt="">
+                  <img class="img-fluid" src="{{asset('img/modelos/5.jpg')}}" alt="">
                </div>
                <div class="details">
                   <a href="#">
@@ -122,7 +122,7 @@
             <div class="single-service-page">
                <div class="thumbs relative">
                   <div class="overlay-bg"></div>
-                  <img class="img-fluid" src="../public/img/modelos/6.jpg" alt="">
+                  <img class="img-fluid" src="{{asset('img/modelos/6.jpg')}}" alt="">
                </div>
                <div class="details">
                   <a href="#">

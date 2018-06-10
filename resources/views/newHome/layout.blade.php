@@ -20,15 +20,15 @@
         <!--
         CSS
         ============================================= -->
-        <link rel="stylesheet" href="../public/newHome/css/linearicons.css">
-        <link rel="stylesheet" href="../public/newHome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../public/newHome/css/bootstrap.css">
-        <link rel="stylesheet" href="../public/newHome/css/magnific-popup.css">
-        <link rel="stylesheet" href="../public/newHome/css/nice-select.css">
-        <link rel="stylesheet" href="../public/newHome/css/animate.min.css">
+        <link rel="stylesheet" href="{{asset('newHome/css/linearicons.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/magnific-popup.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/nice-select.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/animate.min.css')}}">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="../public/newHome/css/owl.carousel.css">
-        <link rel="stylesheet" href="../public/newHome/css/main.css">
+        <link rel="stylesheet" href="{{asset('newHome/css/owl.carousel.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/main.css')}}">
     </head>
     <body>
           <header id="header" id="home">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="col-lg-4 menu-top-middle justify-content-center d-flex">
                         <a href="index.html">
-                            <img class="img-fluid" src="../public/img/logocurvasud.png" alt="" width="120">
+                            <img class="img-fluid" src="{{asset('img/logocurvasud.png')}}" alt="" width="120">
                         </a>
                     </div>
                     <div class="col-lg-4 col-sm-4 menu-top-right">
@@ -134,24 +134,24 @@ Esperamos su contacto en nuestras lineas rotativas								</p>
 			</footer>
 			<!-- End footer Area -->
 
-			<script src="../public/newHome/js/vendor/jquery-2.2.4.min.js"></script>
+			<script src="{{asset('newHome/js/vendor/jquery-2.2.4.min.js')}}"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-			<script src="../public/newHome/js/vendor/bootstrap.min.js"></script>
+			<script src="{{asset('newHome/js/vendor/bootstrap.min.js')}}"></script>
 			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-  			<script src="../public/newHome/js/easing.min.js"></script>
-			<script src="../public/newHome/js/hoverIntent.js"></script>
-			<script src="../public/newHome/js/superfish.min.js"></script>
-			<script src="../public/newHome/js/jquery.ajaxchimp.min.js"></script>
-			<script src="../public/newHome/js/jquery.magnific-popup.min.js"></script>
-			<script src="../public/newHome/js/owl.carousel.min.js"></script>
-			<script src="../public/newHome/js/jquery.sticky.js"></script>
+  			<script src="{{asset('newHome/js/easing.min.js')}}"></script>
+			<script src="{{asset('newHome/js/hoverIntent.js')}}"></script>
+			<script src="{{asset('newHome/js/superfish.min.js')}}"></script>
+			<script src="{{asset('newHome/js/jquery.ajaxchimp.min.js')}}"></script>
+			<script src="{{asset('newHome/js/jquery.magnific-popup.min.js')}}"></script>
+			<script src="{{asset('newHome/js/owl.carousel.min.js')}}"></script>
+			<script src="{{asset('newHome/js/jquery.sticky.js')}}"></script>
 			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-			<script src="../public/newHome/js/jquery.nice-select.min.js"></script>
-			<script src="../public/newHome/js/parallax.min.js"></script>
-			<script src="../public/newHome/js/waypoints.min.js"></script>
-			<script src="../public/newHome/js/jquery.counterup.min.js"></script>
-			<script src="../public/newHome/js/mail-script.js"></script>
-			<script src="../public/newHome/js/main.js"></script>
+			<script src="{{asset('newHome/js/jquery.nice-select.min.js')}}"></script>
+			<script src="{{asset('newHome/js/parallax.min.js')}}"></script>
+			<script src="{{asset('newHome/js/waypoints.min.js')}}"></script>
+			<script src="{{asset('newHome/js/jquery.counterup.min.js')}}"></script>
+			<script src="{{asset('newHome/js/mail-script.js')}}"></script>
+			<script src="{{asset('newHome/js/main.js')}}"></script>
 		</body>
 	</html>
 
