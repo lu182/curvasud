@@ -25,6 +25,23 @@ class usuariosController extends Controller
 
         $user = Auth::user();
 
+
+        if (!Auth::check()) {
+            return view("prueba");
+
+        }
+
+        //Llama al usuario logueado y lo almacena en una variable $user
+
+        //Comienza un switch para verificar el tipo de usuario
+        //
+        switch ($user->tipo_user_id) {
+            case 1:
+                //Verifica que el usuario tiene un tipo_user_id = 1, lo que significa que es un cliente
+                //Por ello, le devuelve la vista de bienvenida para clientes
+
+                //estado 2 de turno sabemos que es un turno ocupado, o sea que el usuario va a tenerlo
+
         if (isset($user)) {
 //Llama al usuario logueado y lo almacena en una variable $user
 
@@ -96,6 +113,7 @@ class usuariosController extends Controller
             return view("prueba");
         }
 
+
     }
 
     public function misdatos()
@@ -113,7 +131,13 @@ class usuariosController extends Controller
 
         $tipos_vehiculos = DB::table("tipos_vehiculos")->get();
 
+
+            case 3:
+                return view("jefetaller.bienvenida");
+            case 4:
+
         $vehiculos = Vehiculo::where("id_cliente", $usuarioActual->id)->get();
+
 
         return view('cliente.vehiculo', ["vehiculos" => $vehiculos, "tipos_vehiculos" => $tipos_vehiculos]);
 

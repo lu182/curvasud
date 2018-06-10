@@ -16,12 +16,25 @@ class LandingController extends Controller
 
         //return $vehiculos;
 
+
+
         //Los datos enviados a la vista van en forma de array,
         //KEY es el nombre que nosotros queramos
         //VALUE es el dato que ya definido y queremos enviar
         // [KEY => VALUE]
 
+
+
+        if (Auth::check()) {
+            return view("prueba");
+        }
+        else{
+            return view("prueba");
+        }
+
+
         return view("newHome.inicio");
+
     }
 
     public function indexPost()
