@@ -13,6 +13,7 @@
 
 Route::get('/', "LandingController@index");
 
+Route::get('/principal', "LandingController@index")->name("principal");
 
 
 Route::get('nosotros', function () {
