@@ -10,9 +10,13 @@
                 <h6>Bienvenido a CurvaSud</h6>
                 <span class="bar"></span>
                 <h1 class="text-white">
-                    Gestiona Facilmente  el <br>
+                    Gestiona Fácilmente  el <br>
                     mantenimiento de tu Vehículo
                 </h1>
+                <h3 class="text-white">
+                    Registrate y solicitá un turno online
+                </h3>
+                <br>
                 <a href="{{ route('registro_clientes') }}" class="genric-btn">Comenzar Ahora</a>
             </div>
         </div>
@@ -31,13 +35,13 @@
                 </h1>
 
                 <p>
-                    A través de el sistema de gestión de CurvaSud, podrás realizar un registro y
+                    A través del sistema de gestión de CurvaSud, podrás realizar un registro y
                     seguimiento de todas las tareas de mantenimiento de tu vehículo, para que puedas ocuparte de lo que te importa.
                 </p>
                 <a class="primary-btn" href="#">Conoce más sobre nosotros</a>
             </div>
             <div class="col-lg-6 justify-content-center align-items-center d-flex">
-                <img class="img-fluid mx-auto" src="../public/img/tacografo.jpg" alt=""></a>
+                <img class="img-fluid mx-auto" src="{{asset('img/tacografo.jpg')}}" alt=""></a>
             </div>
         </div>
     </div>
@@ -68,7 +72,7 @@
                     <div class="single-feature">
                         <a href="#"><h4 class="text-white">Flexibilidad</h4></a>
                         <p>
-                          Podrás dar de baja tus turnos facilmente ante cualquier inconveniente.
+                          Podrás dar de baja tus turnos fácilmente ante cualquier inconveniente.
                         </p>
                     </div>
                 </div>
@@ -108,42 +112,42 @@
                 <div class="active-gallery">
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header1.jpg" alt="">
+                            <img src="{{asset('img/header1.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header2.jpg" alt="">
+                            <img src="{{asset('img/header7.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header3.jpg" alt="">
+                            <img src="{{asset('img/header3.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header4.jpg" alt="">
+                            <img src="{{asset('img/header4.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header5.jpg" alt="">
+                            <img src="{{asset('img/header5.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>
                     </div>
                     <div class="item single-gallery">
                         <div class="thumb">
-                            <img src="../public/img/header6.jpg" alt="">
+                            <img src="{{asset('img/header6.jpg')}}" alt="">
                             <div class="align-items-center justify-content-center d-flex">
                             </div>
                         </div>

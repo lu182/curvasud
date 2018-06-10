@@ -8,9 +8,9 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                   Nosotros
+                   Services
                 </h1>
-                <p class="text-white link-nav"><a href="{{ route('inicio') }}">Inicio </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Nosotros</a></p>
+                <p class="text-white link-nav"><a href="{{ route('inicio') }}">Inicio </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Servicios</a></p>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 about-video-left">
-                <h6 class="text-uppercase">Trayectoria que nos distingue</h6>
+                <h6 class="text-uppercase">Conozca nuestros servicios de mantenimiento</h6>
                 <h1>
                    Más de 20 años puestos<br>
                     a su servicio
@@ -51,7 +51,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 home-about-left">
-                <img class="mx-auto d-block img-fluid" src="{{asset('img/header1.jpg')}}" alt="">
+                <img class="mx-auto d-block img-fluid" src="{{asset('img/services_2.jpg')}}" alt="">
             </div>
             <div class="col-lg-6 home-about-right">
                 <h6 class="text-uppercase">Una empresa centrada en el valor agregado</h6>

@@ -20,34 +20,39 @@
         <!--
         CSS
         ============================================= -->
-        <link rel="stylesheet" href="../public/newHome/css/linearicons.css">
-        <link rel="stylesheet" href="../public/newHome/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../public/newHome/css/bootstrap.css">
-        <link rel="stylesheet" href="../public/newHome/css/magnific-popup.css">
-        <link rel="stylesheet" href="../public/newHome/css/nice-select.css">
-        <link rel="stylesheet" href="../public/newHome/css/animate.min.css">
+        <link rel="stylesheet" href="{{asset('newHome/css/linearicons.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/bootstrap.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/magnific-popup.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/nice-select.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/animate.min.css')}}">
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="../public/newHome/css/owl.carousel.css">
-        <link rel="stylesheet" href="../public/newHome/css/main.css">
+        <link rel="stylesheet" href="{{asset('newHome/css/owl.carousel.css')}}">
+        <link rel="stylesheet" href="{{asset('newHome/css/main.css')}}">
     </head>
     <body>
           <header id="header" id="home">
             <div class="container">
                 <div class="row header-top align-items-center">
                     <div class="col-lg-4 col-sm-4 menu-top-left">
-                        <a href="mailto:info@horseclub.com"><span class="lnr lnr-location"></span></a>
-                        <a class="tel" href="mailto:info@horseclub.com">info@curvasud.com.ar</a>
+                        <a href="mailto:info@curvasud.com.ar"><span class="lnr lnr-location"></span></a>
+                        <a class="tel" href="mailto:info@curvasud.com.ar">info@curvasud.com.ar</a>
                     </div>
                     <div class="col-lg-4 menu-top-middle justify-content-center d-flex">
-                        <a href="index.html">
-                            <img class="img-fluid" src="../public/img/logocurvasud.png" alt="" width="120">
-                        </a>
-                    </div>
+                        <a href="{{ route('inicio') }}">
+                            <img class="img-fluid" src="{{asset('img/logocurvasud.png')}}" alt="" width="120">
+						</a>
+						
+					</div>
+					
                     <div class="col-lg-4 col-sm-4 menu-top-right">
                         <a class="tel" href="tel:+880 123 12 658 439">0800 555 28782 </a>
                         <a href="tel:+880 123 12 658 439"><span class="lnr lnr-phone-handset"></span></a>
                     </div>
-                </div>
+				</div>
+				<div class="col-lg-4 col-sm-2 menu-top-left">
+					<p>Concesionario oficial Fiat</p>
+				</div>
             </div>
                 <hr>
             <div class="container">
@@ -56,12 +61,14 @@
                     <ul class="nav-menu">
                         <li  class="{{ Request::path() == 'inicio' ? 'menu-active' : '' }}"><a href="{{ route('inicio') }}">Inicio</a></li>
                         <li  class="{{ Request::path() == 'nosotros' ? 'menu-active' : '' }}"><a href="{{ route('nosotros') }}">Nosotros</a></li>
-                        <li  class="{{ Request::path() == 'modelos' ? 'menu-active' : '' }}"><a href="{{ route('modelos') }}">Modelos</a></li>
+						<li  class="{{ Request::path() == 'modelos' ? 'menu-active' : '' }}"><a href="{{ route('modelos') }}">Modelos</a></li>
+						<li  class="{{ Request::path() == 'services' ? 'menu-active' : '' }}"><a href="{{ route('services') }}">Servicios</a></li>
                       <li  class="{{ Request::path() == 'contacto' ? 'menu-active' : '' }}"><a href="{{ route('contacto') }}">Contacto</a></li>
                       @guest
                       <li><a href="{{ route('login') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Acceso Clientes</a></li>
                       @else
                       <li><a href="{{ route('escritorio') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Ir al escritorio</a></li>
+					  <li class="user-login"><a href="{{Auth::logout()}}" class="text-uppercase" style=     "background-image: -webkit-linear-gradient(0deg, #f45622 0%, #171cb8 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
 
                       @endguest
 
@@ -134,24 +141,24 @@ Esperamos su contacto en nuestras lineas rotativas								</p>
 			</footer>
 			<!-- End footer Area -->
 
-			<script src="../public/newHome/js/vendor/jquery-2.2.4.min.js"></script>
+			<script src="{{asset('newHome/js/vendor/jquery-2.2.4.min.js')}}"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-			<script src="../public/newHome/js/vendor/bootstrap.min.js"></script>
+			<script src="{{asset('newHome/js/vendor/bootstrap.min.js')}}"></script>
 			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-  			<script src="../public/newHome/js/easing.min.js"></script>
-			<script src="../public/newHome/js/hoverIntent.js"></script>
-			<script src="../public/newHome/js/superfish.min.js"></script>
-			<script src="../public/newHome/js/jquery.ajaxchimp.min.js"></script>
-			<script src="../public/newHome/js/jquery.magnific-popup.min.js"></script>
-			<script src="../public/newHome/js/owl.carousel.min.js"></script>
-			<script src="../public/newHome/js/jquery.sticky.js"></script>
+  			<script src="{{asset('newHome/js/easing.min.js')}}"></script>
+			<script src="{{asset('newHome/js/hoverIntent.js')}}"></script>
+			<script src="{{asset('newHome/js/superfish.min.js')}}"></script>
+			<script src="{{asset('newHome/js/jquery.ajaxchimp.min.js')}}"></script>
+			<script src="{{asset('newHome/js/jquery.magnific-popup.min.js')}}"></script>
+			<script src="{{asset('newHome/js/owl.carousel.min.js')}}"></script>
+			<script src="{{asset('newHome/js/jquery.sticky.js')}}"></script>
 			<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-			<script src="../public/newHome/js/jquery.nice-select.min.js"></script>
-			<script src="../public/newHome/js/parallax.min.js"></script>
-			<script src="../public/newHome/js/waypoints.min.js"></script>
-			<script src="../public/newHome/js/jquery.counterup.min.js"></script>
-			<script src="../public/newHome/js/mail-script.js"></script>
-			<script src="../public/newHome/js/main.js"></script>
+			<script src="{{asset('newHome/js/jquery.nice-select.min.js')}}"></script>
+			<script src="{{asset('newHome/js/parallax.min.js')}}"></script>
+			<script src="{{asset('newHome/js/waypoints.min.js')}}"></script>
+			<script src="{{asset('newHome/js/jquery.counterup.min.js')}}"></script>
+			<script src="{{asset('newHome/js/mail-script.js')}}"></script>
+			<script src="{{asset('newHome/js/main.js')}}"></script>
 		</body>
 	</html>
 

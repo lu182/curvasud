@@ -34,6 +34,10 @@ Route::get('modelos', function () {
     return view('newHome.modelos');
 })->name("modelos");
 
+Route::get('services', function () {
+    return view('newHome.services');
+})->name("services");
+
 
 Route::get('/misturnos',"TuneroController@verTurnos")->name("misturnos");
 
@@ -66,7 +70,7 @@ Route::get('login', [
 
 Route::get('/home', 'usuariosController@escritorio')->name('home');
 
-//Route::get('/', 'usuariosController@escritorio')->name('/');
+
 
 Route::get('/registro_clientes', 'usuariosController@registro_clientes_ver')->name('registro_clientes');
 
