@@ -26,10 +26,10 @@ class LandingController extends Controller
 
 
         if (Auth::check()) {
-            return view("prueba");
+            return view("newHome.inicio");
         }
         else{
-            return view("prueba");
+            return view("newHome.inicio");
         }
 
 

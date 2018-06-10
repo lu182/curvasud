@@ -13,7 +13,7 @@
                     Gestiona Facilmente  el <br>
                     mantenimiento de tu Vehículo
                 </h1>
-                <a href="#" class="genric-btn">Comenzar Ahora</a>
+                <a href="{{ route('registro_clientes') }}" class="genric-btn">Comenzar Ahora</a>
             </div>
         </div>
     </div>

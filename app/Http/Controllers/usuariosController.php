@@ -27,7 +27,7 @@ class usuariosController extends Controller
 
 
         if (!Auth::check()) {
-            return view("prueba");
+            return view("newHome.inicio");
 
         }
 
@@ -114,7 +114,7 @@ class usuariosController extends Controller
         }
 
 
-    }
+    }}
 
     public function misdatos()
     {
@@ -130,11 +130,6 @@ class usuariosController extends Controller
         $usuarioActual = Auth::user();
 
         $tipos_vehiculos = DB::table("tipos_vehiculos")->get();
-
-
-            case 3:
-                return view("jefetaller.bienvenida");
-            case 4:
 
         $vehiculos = Vehiculo::where("id_cliente", $usuarioActual->id)->get();
 
@@ -159,7 +154,7 @@ class usuariosController extends Controller
         $usuario->password = bcrypt($usuario->password);
         //cliente
         $usuario->tipo_user_id = 1;
-       
+
         if (!is_null($request->inputOtro)) {
             $ciudadNueva = Ciudad::create(["ciudad" => $request->inputOtro]);
             $usuario->update(["id_ciudad" => $ciudadNueva->id_ciudad]);

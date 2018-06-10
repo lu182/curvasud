@@ -58,7 +58,7 @@
                         <li  class="{{ Request::path() == 'nosotros' ? 'menu-active' : '' }}"><a href="{{ route('nosotros') }}">Nosotros</a></li>
                         <li  class="{{ Request::path() == 'modelos' ? 'menu-active' : '' }}"><a href="{{ route('modelos') }}">Modelos</a></li>
                       <li  class="{{ Request::path() == 'contacto' ? 'menu-active' : '' }}"><a href="{{ route('contacto') }}">Contacto</a></li>
-                      <li><a href="events.html" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Acceso Clientes</a></li>
+                      <li><a href="{{ route('login') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Acceso Clientes</a></li>
 
                     </ul>
                   </nav><!--nav-menu-container -->

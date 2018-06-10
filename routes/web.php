@@ -12,6 +12,7 @@
 */
 
 
+Route::get('/', "LandingController@index")->name("principal");
 
 Route::get('inicio', function () {
     return view('newHome.inicio');
@@ -64,6 +65,7 @@ Route::get('login', [
 
 
 Route::get('/home', 'usuariosController@escritorio')->name('home');
+
 Route::get('/', 'usuariosController@escritorio')->name('/');
 
 Route::get('/registro_clientes', 'usuariosController@registro_clientes_ver')->name('registro_clientes');

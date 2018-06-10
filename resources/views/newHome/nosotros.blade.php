@@ -10,7 +10,7 @@
                 <h1 class="text-white">
                    Nosotros
                 </h1>
-                <p class="text-white link-nav"><a href="{{route('inicio)'}}">Inicio </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Nosotros</a></p>
+                <p class="text-white link-nav"><a href="{{ route('inicio') }}">Inicio </a>  <span class="lnr lnr-arrow-right"></span>  <a href="#"> Nosotros</a></p>
             </div>
         </div>
     </div>
