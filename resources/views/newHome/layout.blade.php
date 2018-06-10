@@ -35,19 +35,24 @@
             <div class="container">
                 <div class="row header-top align-items-center">
                     <div class="col-lg-4 col-sm-4 menu-top-left">
-                        <a href="mailto:info@horseclub.com"><span class="lnr lnr-location"></span></a>
-                        <a class="tel" href="mailto:info@horseclub.com">info@curvasud.com.ar</a>
+                        <a href="mailto:info@curvasud.com.ar"><span class="lnr lnr-location"></span></a>
+                        <a class="tel" href="mailto:info@curvasud.com.ar">info@curvasud.com.ar</a>
                     </div>
                     <div class="col-lg-4 menu-top-middle justify-content-center d-flex">
-                        <a href="index.html">
+                        <a href="{{ route('inicio') }}">
                             <img class="img-fluid" src="{{asset('img/logocurvasud.png')}}" alt="" width="120">
-                        </a>
-                    </div>
+						</a>
+						
+					</div>
+					
                     <div class="col-lg-4 col-sm-4 menu-top-right">
                         <a class="tel" href="tel:+880 123 12 658 439">0800 555 28782 </a>
                         <a href="tel:+880 123 12 658 439"><span class="lnr lnr-phone-handset"></span></a>
                     </div>
-                </div>
+				</div>
+				<div class="col-lg-4 col-sm-2 menu-top-left">
+					<p>Concesionario oficial Fiat</p>
+				</div>
             </div>
                 <hr>
             <div class="container">
@@ -56,12 +61,14 @@
                     <ul class="nav-menu">
                         <li  class="{{ Request::path() == 'inicio' ? 'menu-active' : '' }}"><a href="{{ route('inicio') }}">Inicio</a></li>
                         <li  class="{{ Request::path() == 'nosotros' ? 'menu-active' : '' }}"><a href="{{ route('nosotros') }}">Nosotros</a></li>
-                        <li  class="{{ Request::path() == 'modelos' ? 'menu-active' : '' }}"><a href="{{ route('modelos') }}">Modelos</a></li>
+						<li  class="{{ Request::path() == 'modelos' ? 'menu-active' : '' }}"><a href="{{ route('modelos') }}">Modelos</a></li>
+						<li  class="{{ Request::path() == 'services' ? 'menu-active' : '' }}"><a href="{{ route('services') }}">Servicios</a></li>
                       <li  class="{{ Request::path() == 'contacto' ? 'menu-active' : '' }}"><a href="{{ route('contacto') }}">Contacto</a></li>
                       @guest
                       <li><a href="{{ route('login') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Acceso Clientes</a></li>
                       @else
                       <li><a href="{{ route('escritorio') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Ir al escritorio</a></li>
+					  <li class="user-login"><a href="{{Auth::logout()}}" class="text-uppercase" style=     "background-image: -webkit-linear-gradient(0deg, #f45622 0%, #171cb8 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
 
                       @endguest
 
