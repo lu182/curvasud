@@ -132,3 +132,4 @@ Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name(
 Route::get("/eac/reporteclientes", "EacController@reporteClientes")->name("eac/reporteclientes");
 Route::get("/eac/reportecancelados", "EacController@reporteCancelados")->name("eac/reportecancelados");
 
+Route::get('/logout', 'Auth\LoginController@logout')->name("logout");

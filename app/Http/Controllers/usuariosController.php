@@ -108,8 +108,6 @@ class usuariosController extends Controller
                     }
             }
 
-        } else {
-            return view("prueba");
         }
 
 

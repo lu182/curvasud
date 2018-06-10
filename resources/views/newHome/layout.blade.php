@@ -42,9 +42,9 @@
                         <a href="{{ route('inicio') }}">
                             <img class="img-fluid" src="{{asset('img/logocurvasud.png')}}" alt="" width="120">
 						</a>
-						
+
 					</div>
-					
+
                     <div class="col-lg-4 col-sm-4 menu-top-right">
                         <a class="tel" href="tel:+880 123 12 658 439">0800 555 28782 </a>
                         <a href="tel:+880 123 12 658 439"><span class="lnr lnr-phone-handset"></span></a>
@@ -68,7 +68,7 @@
                       <li><a href="{{ route('login') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Acceso Clientes</a></li>
                       @else
                       <li><a href="{{ route('escritorio') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Ir al escritorio</a></li>
-					  <li class="user-login"><a href="{{Auth::logout()}}" class="text-uppercase" style=     "background-image: -webkit-linear-gradient(0deg, #f45622 0%, #171cb8 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
+                      <li><a href="{{ route('logout') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
 
                       @endguest
 
