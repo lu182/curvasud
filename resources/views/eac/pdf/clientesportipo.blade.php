@@ -5,13 +5,13 @@
 
         <h2> Tipo de Vehículo: {{$tipoVehiculo->tipoVehiculo}} </h2>
 
-             <table class="table display" id="tabla" border="1" cellspacing="1">
+             <table class="table display" id="tabla" border="1" cellspacing="1" align="center">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">Marca</th>
-                            <th scope="col">Modelo</th>
-                            <th scope="col">Titular</th>
-                            <th scope="col">Dni</th>
+                            <th scope="col" style="text-align:center">Marca</th>
+                            <th scope="col" style="text-align:center">Modelo</th>
+                            <th scope="col" style="text-align:center">Titular</th>
+                            <th scope="col" style="text-align:center">Dni</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -22,10 +22,10 @@
                    
             @foreach ($tipoVehiculo->tipovehiculo_vehiculo as $vehiculo)
                 <tr>
-                    <th scope="row">{{$vehiculo->marca}} </th>
-                    <td>{{$vehiculo->modelo}}</td>
-                    <td>{{$vehiculo->vehiculo_cliente->nombre}} {{$vehiculo->vehiculo_cliente->apellido}} </td>
-                    <td>{{$vehiculo->vehiculo_cliente->dni}} </td>
+                    <th scope="row" style="text-align:center">{{$vehiculo->marca}} </th>
+                    <td style="text-align:center">{{$vehiculo->modelo}}</td>
+                    <td style="text-align:center">{{$vehiculo->vehiculo_cliente->nombre}} {{$vehiculo->vehiculo_cliente->apellido}} </td>
+                    <td style="text-align:center">{{$vehiculo->vehiculo_cliente->dni}} </td>
                 </tr>
           
 

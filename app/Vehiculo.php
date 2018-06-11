@@ -37,6 +37,12 @@ class Vehiculo extends Model
        return $this->belongsTo('App\User',"id_cliente"); //El vehiculo pertenece a un cliente
    }
 
+   public function corregirFecha(){
+    $fecha_inicio_garantia = $this->fecha_inicio_garantia;
+    $fecha_inicio_garantia = strtotime($fecha_inicio_garantia);
+    $fecha_inicio_garantia = date('d-m-Y', $fecha_inicio_garantia);
+    return $fecha_inicio_garantia;
+}
 
 
 

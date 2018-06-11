@@ -108,8 +108,6 @@ class usuariosController extends Controller
                     }
             }
 
-        } else {
-            return view("prueba");
         }
 
 
@@ -161,7 +159,7 @@ class usuariosController extends Controller
         }
 
         $usuario->save();
-        return view("prueba");
+        return view("newHome.inicio");
 
     }
 

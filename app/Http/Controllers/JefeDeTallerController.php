@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User;
-use App\Vehiculo;
+use App\User; 
+use App\Vehiculo; 
 use App\Mecanico;
 use App\Ciudad;
 use App\TipoDocumento;
-use App\TipoVehiculo;
-use App\Turno;
+use App\TipoVehiculo; 
+use App\Turno; 
 use App\OrdenReparacion;
 use App\DetalleOrden;
 use App\TipoServicio;
-use DB;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use DB; 
+use Illuminate\Http\Request; 
+use Illuminate\Support\Facades\Auth; 
+use Carbon\Carbon;
 
 use PDF;
 
@@ -50,21 +51,7 @@ class JefeDeTallerController extends Controller
     }
 
     public function registrarOrden(Request $request){
-
-
-        // Fecha actual (Ingreso)
-        // Fecha estimada Egreso
-        // Nombre de quien lo generó (Usuario)
-
-        //Detales del Cliente
-        //Detalles del Vehiculo
-
-        //Motivo del Ingreso (Viene desde Turno)
-
-        //Llena datos adicionales
-
-
-
+        
         $mecanico = Mecanico::find($request->id_mecanico);
         $fecha_ingreso =  date('Y-m-d', time());
         $fecha_estimada_egreso = $request->fecha_estimada_egreso;
@@ -112,39 +99,32 @@ class JefeDeTallerController extends Controller
         "mecanico"=>$mecanico
         ]
     );
-         return $orden->download('orden '.$cliente->nombre.' '.$cliente->apellido.'.pdf');
+         return $orden->download('Orden Reparación '.$cliente->nombre.' '.$cliente->apellido.'.pdf');
          return redirect()->route("home");
-
 
     }
 
 
-
+    //Registrar mecánicos
     public function mostrarFormMecanico(){
-
 
         $ciudades = Ciudad::get();
         $tipos_documento = TipoDocumento::get();
         return view("jefetaller.registrarmecanico",["tipos_documento"=>$tipos_documento,"ciudades"=>$ciudades]);
 
-
     }
-
 
     public function registrarMecanico(Request $request){
 
+        $mecanicoNuevo = Mecanico::create($request->all());
 
-      $mecanicoNuevo = Mecanico::create($request->all());
+        if(!is_null($request->inputOtro)){
+            $ciudadNueva = Ciudad::create(["ciudad"=>$request->inputOtro]);
+            $mecanicoNuevo->update(["id_ciudad"=>$ciudadNueva->id_ciudad]);
 
-
-      if(!is_null($request->inputOtro)){
-        $ciudadNueva = Ciudad::create(["ciudad"=>$request->inputOtro]);
-        $mecanicoNuevo->update(["id_ciudad"=>$ciudadNueva->id_ciudad]);
-
-    }
+        }
         return view("jefetaller.bienvenida");
-
-
+    
     }
 
 
@@ -159,22 +139,160 @@ class JefeDeTallerController extends Controller
  }
 
 
+ //Consultar turnos disponibles y no disponibles
+    public function verTurnos()
+    {
+        $fechas_finales = array();
+        $start = Carbon::now();
+        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(10), 0, 10));
+
+        $fechas = [];
+
+        while ($start->lte($end)) {
+
+            $fechas[] = $start->copy()->format('Y-m-d');
+
+            $diaAgregar = $start->addDay();
+        }
+
+        foreach ($fechas as $fecha){
+
+            $turnos_fecha = Turno::where("fecha", $fecha)->where("id_estado_turno", 2)->get();
+
+            //Creamos un array de Fechas (Esto podría ser base de datos)
+            $horas = array(
+                ["hora" => "08:00:00", "estado" => 1],
+                ["hora" => "09:00:00", "estado" => 1],
+                ["hora" => "10:00:00", "estado" => 1],
+                ["hora" => "11:00:00", "estado" => 1],
+                ["hora" => "12:00:00", "estado" => 1],
+                ["hora" => "13:00:00", "estado" => 1],
+                ["hora" => "14:00:00", "estado" => 1],
+                ["hora" => "15:00:00", "estado" => 1],
+                ["hora" => "16:00:00", "estado" => 1],
+                ["hora" => "17:00:00", "estado" => 1],
+                ["hora" => "18:00:00", "estado" => 1],
+            );
+            $fechas_finales[$fecha]=['fecha'=>$fecha,"horas"=>$horas];
+
+            //Hacemos la comparación del Array con los turnos cargados en Database,
+            // y agregamos los ya tomados, junto con sus 3 horas siguientes y 2 anteriores
+            foreach ($turnos_fecha as $turno) {
+
+                //clave es = a index o indice
+
+                $clave = array_search($turno->hora, array_column($fechas_finales[$fecha]['horas'], "hora"));
+
+                if ($clave == 0) {
+
+                    $fechas_finales[$fecha]['horas'][0] = ["hora" => $fechas_finales[$fecha]['horas'][0]["hora"], "estado" => 0];
+                    $fechas_finales[$fecha]['horas'][1] = ["hora" => $fechas_finales[$fecha]['horas'][1]["hora"], "estado" => 0];
+                    $fechas_finales[$fecha]['horas'][2] = ["hora" => $fechas_finales[$fecha]['horas'][2]["hora"], "estado" => 0];
+                }
+
+                if ($clave) {
+                    //Si la clave existe, significa que encontró un turno que se corresponde a algun horario.
+                    // A través de la clave, comparamos el horario del turno con el array de horas para cambiar su estado
+                    $fechas_finales[$fecha]['horas'][$clave] = ["hora" => $fechas_finales[$fecha]['horas'][$clave]["hora"], "estado" => 0];
+
+                    if (array_key_exists($clave + 1, $fechas_finales[$fecha]['horas'])) {
+                    $fechas_finales[$fecha]['horas'][$clave + 1] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 1]["hora"], "estado" => 0];
+                    }
+
+                    if (array_key_exists($clave + 2, $fechas_finales[$fecha]['horas'])) {
+                    $fechas_finales[$fecha]['horas'][$clave + 2] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 2]["hora"], "estado" => 0];
+                    }
+
+                    if (array_key_exists($clave + 3, $fechas_finales[$fecha]['horas'])) {
+                    $fechas_finales[$fecha]['horas'][$clave + 3] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 3]["hora"], "estado" => 0];
+                    }
+
+                    if (array_key_exists($clave - 1, $fechas_finales[$fecha]['horas'])) {
+                    $fechas_finales[$fecha]['horas'][$clave - 1] = ["hora" => $fechas_finales[$fecha]['horas'][$clave - 1]["hora"], "estado" => 0];
+                    }
+
+                    if (array_key_exists($clave - 2, $fechas_finales[$fecha]['horas'])) {
+                    $fechas_finales[$fecha]['horas'][$clave - 2] = ["hora" => $fechas_finales[$fecha]['horas'][$clave - 2]["hora"], "estado" => 0];
+                    }
+
+                }
+            }
+
+        }
+
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+        $fechaActual = date('Y-m-d', time());
+
+        $turnsNoDisponibles = Turno::where("id_estado_turno", 2)->where("fecha",">=",$fechaActual)->get();
+
+        return view('jefetaller.turnosDispYnoDisp', ['disp' => $fechas_finales, 'noDisp' => $turnsNoDisponibles]);
+    
+    } //termina la llave de la funcion
 
 
-
-
-
-}
-
-
-//Consultar turnos disponibles y no disponibles
 //Consultar turnos cancelados del día
+public function TurnosHoy()
+    {
+        
+         date_default_timezone_set('America/Argentina/Buenos_Aires');
+
+        $fechaActual = date('Y-m-d', time());
+
+        $turnosCancelados = DB::table("turnos")
+        ->where("id_estado_turno", 3)->where("fecha", $fechaActual)->get();
+
+        return view('jefetaller.turnosCanceladosDelDia', ["turnosCancelados" => $turnosCancelados]);
+
+
+    }
 
 //Consultar clientes por número de chasis
+  
+  public function mostrar()
+  {
+
+      return view("jefetaller.buscarClientePorChasis"); //muestra solo el form para colocar el chasis
+  }
+
+  public function buscarClientePorChasis(Request $request)
+  {
+
+      $chasis = $request->nro_chasis;
+      $vehiculo = DB::table("vehiculos")->where("nro_chasis", $chasis)
+          ->join('users', 'vehiculos.id_cliente', '=', 'users.id')->first();
+
+      return view("jefetaller.clientePorChasis", ["clienteEncontrado" => $vehiculo]); //clienteEncontrado es lo que llamas despues en la vista clientePorChasis como variable para el if
+
+  }
 
 //Consultar vehículos por modelo de vehículo
+public function buscarModeloMostrar()
+    {
+
+        $modelos = DB::table("vehiculos")->select("modelo")->distinct()->get();
+        return view("jefetaller.buscarVehiculosPorModelo", ["modelos" => $modelos]);
+    }
+
+    public function buscarModeloRecibir(Request $request)
+    {
+        //recibe de la request el modelo seleccionado, y busca los vehiculos que tengan ese modelo
+        $nombreModeloSeleccionado = DB::table("vehiculos")->where("modelo", $request->modelo)->get();
+
+        $nombreModeloSeleccionado = Vehiculo::where("modelo", $request->modelo)->get();
+
+        return view("jefetaller.resultadoVehiculosPorModelo", ["nombreModeloSeleccionado" => $nombreModeloSeleccionado]);
+    }
+
+
+
+
+
 //Consultar órdenes de reparación ingresadas, por cliente.
 //Consultar órdenes de reparación ingresadas, por número de chasis.
+
+
+
 //Reporte del total de turnos en el día por modelo de vehículo
 //Reporte de turnos por tipo de servicio
 //Reporte del total de turnos al final del día
@@ -185,8 +303,43 @@ class JefeDeTallerController extends Controller
 //Reporte del total de vehiculos ingresados en el mes
 //Emitir órden de reparación (PDF)
 
-//Registrar mecánicos *
-//Consultar mecánicos *
-//Registrar órden de reparación *
-//Consultar vehículos registrados *
-//Consultar tipos de servicios registrados *
+
+
+//Consultar mecánicos 
+public function mecanicosRegistrados()
+{
+
+    $totalMecanicos = Mecanico::all();
+    
+     return view("jefetaller.mecanicosRegistrados", ["totalMecanicos" => $totalMecanicos]);
+
+}
+
+//Consultar vehículos registrados // agregarle el tipo de vehiculo
+public function vehiculosRegistrados()
+{
+
+    $totalVehiculos = Vehiculo::all();
+    
+     return view("jefetaller.vehiculosRegistrados", ["totalVehiculos" => $totalVehiculos]);
+
+}
+
+
+//Consultar tipos de servicios registrados 
+public function serviciosRegistrados()
+{
+
+    $totalServicios = TipoServicio::all();
+    
+     return view("jefetaller.serviciosRegistrados", ["totalServicios" => $totalServicios]);
+
+}
+
+
+
+
+}
+
+
+

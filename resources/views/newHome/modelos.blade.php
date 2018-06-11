@@ -20,7 +20,7 @@
    <div class="container">
       <div class="row d-flex justify-content-center">
          <div class="col-md-9 pb-40 header-text text-center">
-            <h1 class="pb-10">Conozca algunos de los vehículos que ofrecemos en Curvasud</h1>
+            <h1 class="pb-10">Conocé algunos de los vehículos que ofrecemos en Curvasud</h1>
             <p>
                El mejor precio y financiación.
             </p>

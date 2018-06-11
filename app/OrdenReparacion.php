@@ -35,6 +35,20 @@ class OrdenReparacion extends Model
         return $this->belongsTo('App\Empleado',"id_empleado");
     }
 
+    // public function corregirFecha1(){
+    //     $fecha_ingreso_vehiculo = $this->$fecha_ingreso_vehiculo;
+    //     $fecha_ingreso_vehiculo = strtotime($fecha_ingreso_vehiculo);
+    //     $fecha_ingreso_vehiculo = date('d-m-Y', $fecha_ingreso_vehiculo);
+    //     return $fecha_ingreso_vehiculo;
+    // }
+
+    // public function corregirFecha2(){
+    //     $fecha_egreso_vehiculo = $this->$fecha_egreso_vehiculo;
+    //     $fecha_egreso_vehiculo = strtotime($fecha_egreso_vehiculo);
+    //     $fecha_egreso_vehiculo = date('d-m-Y', $fecha_egreso_vehiculo);
+    //     return $fecha_egreso_vehiculo;
+    // }
+
 
 
 }

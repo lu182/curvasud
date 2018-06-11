@@ -49,7 +49,7 @@
                     </div>
                     <div class="contact-details">
                         <h5>info@curvasud.com</h5>
-                        <p>Envíenos un email</p>
+                        <p>Envianos un email</p>
                     </div>
                 </div>
             </div>

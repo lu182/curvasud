@@ -23,6 +23,13 @@ class Mecanico extends Model
             return $this->belongsTo("App\TipoDocumento","id_tipo_doc");
         }
 
+        public function corregirFecha(){
+            $fecha_nac = $this->fecha_nac;
+            $fecha_nac = strtotime($fecha_nac);
+            $fecha_nac = date('d-m-Y', $fecha_nac);
+            return $fecha_nac;
+        }
+
 
 
 

@@ -16,11 +16,11 @@
         </li>
 
     <li>
-        <a href="">Consultar órdenes de reparación ingresadas por cliente</a>
+        <a href="{{route('/eac/mostrarOrdenPorCliente')}}">Consultar órdenes de reparación ingresadas por cliente</a>
     </li>
 
     <li>
-            <a href="">Consultar órdenes de reparación ingresadas por N° de chasis</a>
+            <a href="{{route('/eac/mostrarOrdenPorChasis')}}" >Consultar órdenes de reparación ingresadas por N° de chasis</a>
         </li>
     
 

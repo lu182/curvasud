@@ -14,8 +14,8 @@
                 <table class="table display" id="tabla" border="1" cellspacing="1">
                         <thead class="thead-dark">
                           <tr>
-                            <th scope="col">Fecha del Turno</th>
-                            <th scope="col">Hora</th>
+                            <th scope="col" style="text-align:center">Fecha del Turno</th>
+                            <th scope="col" style="text-align:center">Hora</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -29,8 +29,8 @@
 
 
             <tr>
-                    <th scope="row">{{$turnoCancelado->fecha}} </th>
-                    <td>{{$turnoCancelado->hora}}</td>
+                    <th scope="row" style="text-align:center">{{$turnoCancelado->corregirFecha()}} </th>
+                    <td style="text-align:center">{{$turnoCancelado->hora}}</td>
            
                   </tr>
           

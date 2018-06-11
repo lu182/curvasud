@@ -42,9 +42,9 @@
                         <a href="{{ route('inicio') }}">
                             <img class="img-fluid" src="{{asset('img/logocurvasud.png')}}" alt="" width="120">
 						</a>
-						
+
 					</div>
-					
+
                     <div class="col-lg-4 col-sm-4 menu-top-right">
                         <a class="tel" href="tel:+880 123 12 658 439">0800 555 28782 </a>
                         <a href="tel:+880 123 12 658 439"><span class="lnr lnr-phone-handset"></span></a>
@@ -68,8 +68,9 @@
                       <li><a href="{{ route('login') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Acceso Clientes</a></li>
                       @else
                       <li><a href="{{ route('escritorio') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Ir al escritorio</a></li>
-					  <li><a href="{{ route('logout') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
-					  @endguest
+                      <li><a href="{{ route('logout') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
+
+                      @endguest
 
 
                     </ul>
@@ -93,9 +94,9 @@ Somos Curvasud, una concesionaria de vehículos centradas en el valor agregado a
 						</div>
 						<div class="col-lg-4  col-md-6 col-sm-6">
 							<div class="single-footer-widget">
-								<h4>Contactenos</h4>
+								<h4>Contactanos</h4>
 								<p>
-Esperamos su contacto en nuestras lineas rotativas								</p>
+Esperamos tu contacto en nuestras lineas rotativas								</p>
 								<p class="number">
 									0800 555 28782<br>
 									0800 555 28783
@@ -105,7 +106,7 @@ Esperamos su contacto en nuestras lineas rotativas								</p>
 						<div class="col-lg-5  col-md-6 col-sm-6">
 							<div class="single-footer-widget">
 								<h4>Newsletter</h4>
-								<p>Suscríbase a nuestro newsletter para recibir novedades y promociones.</p>
+								<p>Suscribete a nuestro newsletter para recibir novedades y promociones.</p>
 								<div class="d-flex flex-row" id="mc_embed_signup">
 
 

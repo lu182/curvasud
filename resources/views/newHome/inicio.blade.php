@@ -28,10 +28,10 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 about-video-left">
-                <h6 class="text-uppercase">Ocúpate de lo que te importa</h6>
+                <h6 class="text-uppercase">Ocupate de lo que te importa</h6>
                 <h1>
                     Un sistema pensado <br>
-                    para su comodidad
+                    para tu comodidad
                 </h1>
 
                 <p>

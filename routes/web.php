@@ -107,6 +107,17 @@ Route::get("/eac/clientesregistrados", "EacController@clientesRegistrados")->nam
 Route::get("/eac/buscarPorChasis", "EacController@mostrar")->name("/eac/buscarPorChasis");
 Route::post("/eac/buscarPorChasis", "EacController@buscarClientePorChasis")->name("/eac/buscarPorChasis");
 
+
+
+Route::get("/eac/mostrarOrdenPorCliente", "EacController@mostrarORporCliente")->name("/eac/mostrarOrdenPorCliente");
+Route::post("/eac/mostrarOrdenPorCliente", "EacController@buscarORPorCliente")->name("/eac/mostrarOrdenPorCliente");
+
+Route::get("/eac/mostrarOrdenPorChasis", "EacController@mostrarORporChasis")->name("/eac/mostrarOrdenPorChasis");
+Route::post("/eac/mostrarOrdenPorChasis", "EacController@buscarORPorChasis")->name("/eac/mostrarOrdenPorChasis");
+
+
+
+
 Route::get("encargado/{pagina}", "EacController@mostrarPagina")->name("/encargado/");
 
 Route::get("/eac/buscarPorModelo", "EacController@buscarModeloMostrar")->name("/eac/buscarPorModelo");
@@ -127,10 +138,27 @@ Route::get("pdf", "JefeDeTallerController@pdf")->name("pdf");
 Route::get("/jefetaller/registrarmecanico", "JefeDeTallerController@mostrarFormMecanico")->name("/jefetaller/registrarmecanico");
 Route::post("/jefetaller/registrarmecanico", "JefeDeTallerController@registrarMecanico")->name("/jefetaller/registrarmecanico");
 
+Route::get("/jefetaller/mecanicosRegistrados", "JefeDeTallerController@mecanicosRegistrados")->name("/jefetaller/mecanicosRegistrados");
+
+Route::get("/jefetaller/turnosDispYnoDisp", "JefeDeTallerController@verTurnos")->name("/jefetaller/turnosDispYnoDisp");
+
+Route::get("/jefetaller/turnosCanceladosDelDia", "JefeDeTallerController@TurnosHoy")->name("/jefetaller/turnosCanceladosDelDia");
+
+Route::get("/jefetaller/serviciosRegistrados", "JefeDeTallerController@serviciosRegistrados")->name("/jefetaller/serviciosRegistrados");
+
+
+Route::get("/jefetaller/buscarPorChasis", "JefeDeTallerController@mostrar")->name("/jefetaller/buscarPorChasis");
+Route::post("/jefetaller/buscarPorChasis", "JefeDeTallerController@buscarClientePorChasis")->name("/jefetaller/buscarPorChasis");
+
+Route::get("/jefetaller/vehiculossRegistrados", "JefeDeTallerController@vehiculosRegistrados")->name("/jefetaller/vehiculossRegistrados");
+
+Route::get("/jefetaller/buscarVehiculosPorModelo", "JefeDeTallerController@buscarModeloMostrar")->name("/jefetaller/buscarVehiculosPorModelo");
+Route::post("/jefetaller/buscarVehiculosPorModelo", "JefeDeTallerController@buscarModeloRecibir")->name("/jefetaller/buscarVehiculosPorModelo");
+
+
 Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");
 
 Route::get("/eac/reporteclientes", "EacController@reporteClientes")->name("eac/reporteclientes");
 Route::get("/eac/reportecancelados", "EacController@reporteCancelados")->name("eac/reportecancelados");
 
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
-
