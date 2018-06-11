@@ -22,24 +22,150 @@
 <section class="about-video-area section-gap">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 about-video-left">
-                <h6 class="text-uppercase">Conocé nuestros servicios de mantenimiento</h6>
-                <h1>
-                   Más de 20 años puestos<br>
-                    a tu servicio
-                </h1>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doeiusmo d tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doeiusmo d tempor incididunt ut labore et dolore magna aliqua.
-                </p>
-                <a class="primary-btn" href="#">Comenzá ahora</a>
+            <div class="col-lg-12 about-video-left">
+                <h6 class="text-uppercase">Conocé nuestros servicios de mantenimiento</h6>
+                <h1> MANTENIMIENTO PROGRAMADO </h1>
+
+                <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">Modelo</th>
+                            <th scope="col">10.000 Km</th>
+                            <th scope="col">20.000 Km</th>
+                            <th scope="col">30.000 Km</th>
+                            <th scope="col">40.000 Km</th>
+                            <th scope="col">50.000 Km</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Uno - Fiorino Fire</th>
+                            <td>$3063</td>
+                            <td>$3686</td>
+                            <td>$3241</td>
+                            <td>$5491</td>
+                            <td>$3063</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Nuevo Uno - Nueva Fior XMF</th>
+                            <td>$3267</td>
+                            <td>$4449</td>
+                            <td>$3572</td>
+                            <td>$6604</td>
+                            <td>$3280</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Palio/WE/Siena/Strada/Idea/Palio 326/GSiena 1.4</th>
+                            <td>$3458</td>
+                            <td>$4741</td>
+                            <td>$3769</td>
+                            <td>$6165</td>
+                            <td>$3458</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Palio/WE/Siena/Strada/Idea/Palio 326/GSiena 1.6</th>
+                            <td>$3864</td>
+                            <td>$4983</td>
+                            <td>$3998</td>
+                            <td>$6191</td>
+                            <td>$3864</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Palio/WE/Siena/Strada/Idea 1.8</th>
+                                <td>$3445</td>
+                                <td>$4119</td>
+                                <td>$3724</td>
+                                <td>$5816</td>
+                                <td>$3432</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Punto</th>
+                                <td>$3591</td>
+                                <td>$4831</td>
+                                <td>$3610</td>
+                                <td>$6267</td>
+                                <td>$3591</td>
+                            </tr>  
+                            <tr>
+                                <th scope="row">Qubo 1.4</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr>    
+                            <tr>
+                                <th scope="row">500</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Bravo</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr> 
+                            <tr>
+                                <th scope="row">Dobló</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Argo</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Toro 2.0 MJT</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr> 
+                            <tr>
+                                <th scope="row">Cronos</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr>                
+                            <tr>
+                                <th scope="row">Mobi</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr>  
+                            <tr>
+                                <th scope="row">Ducato</th>
+                                <td>$3721</td>
+                                <td>$4932</td>
+                                <td>$4068</td>
+                                <td>$6610</td>
+                                <td>$3724</td>
+                            </tr> 
+
+                        </tbody>
+                </table>
             </div>
-            <div class="col-lg-6 about-video-right justify-content-center align-items-center d-flex">
-                <a class="play-btn" href="https://www.youtube.com/watch?v=o3SYW4NPcRw"><img class="img-fluid mx-auto" src="https://image.flaticon.com/icons/svg/26/26025.svg" width="50"alt=""></a>
-            </div>
+            
+            
+        
         </div>
     </div>
 </section>
@@ -50,9 +176,11 @@
 <section class="home-about-area section-gap">
     <div class="container">
         <div class="row">
+            
             <div class="col-lg-6 home-about-left">
                 <img class="mx-auto d-block img-fluid" src="{{asset('img/services_2.jpg')}}" alt="">
             </div>
+            
             <div class="col-lg-6 home-about-right">
                 <h6 class="text-uppercase">Una empresa centrada en el valor agregado</h6>
                 <h1>La solución para el  <br>
@@ -63,6 +191,7 @@
                 </p>
                 <a class="primary-btn" href="#">Comenzá ahora</a>
             </div>
+        
         </div>
     </div>
 </section>
