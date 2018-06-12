@@ -11,7 +11,7 @@
 
     @isset($vehiculo)
 
-        <h3> Para el vehiculo {{$vehiculo->patente}} {{$vehiculo->nro_chasis}} </h3>
+        <h3> Para el vehiculo con Patente: {{$vehiculo->patente}} y Número de chasis: {{$vehiculo->nro_chasis}} </h3>
     @endisset
 
     

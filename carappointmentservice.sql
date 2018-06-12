@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 11-06-2018 a las 06:14:47
+-- Tiempo de generación: 12-06-2018 a las 10:14:39
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 7.2.4
 
@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `detalles_ordenes_reparacion` (
   `operacion_realizada` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id_detalle_orden`),
   KEY `FK_detalles_ordenes_reparacion_ordenes_reparacion_idx` (`id_orden_reparacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `detalles_ordenes_reparacion`
@@ -136,7 +136,23 @@ INSERT INTO `detalles_ordenes_reparacion` (`id_detalle_orden`, `id_orden_reparac
 (16, 21, '19900', 'service 20.000 km', 'Cliente nota ruido en puerta trasera. Encuentra manija de la puerta lado conductor, floja.', NULL, '3', 'Se realizó service de 20.000 km correspondiente, se controló puerta ok. Se ajustó manija de la puerta'),
 (17, 22, '10128', 'gfgdfg', 'dggdfggdfg', NULL, '1', 'dgdfg'),
 (18, 23, '10128', 'hghgghhg', 'hfghfghfgh', NULL, '2', 'hfghfgh'),
-(19, 24, '19900', 'service 20.000 km', 'Cliente nota ruido en puerta trasera. Encuentra manija de la puerta lado conductor, floja.', NULL, '3', 'Se realizó service de 20.000 km correspondiente, se controló puerta ok. Se ajustó manija de la puerta');
+(19, 24, '19900', 'service 20.000 km', 'Cliente nota ruido en puerta trasera. Encuentra manija de la puerta lado conductor, floja.', NULL, '3', 'Se realizó service de 20.000 km correspondiente, se controló puerta ok. Se ajustó manija de la puerta'),
+(20, 25, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', NULL, '4', 'dgdgdgdg'),
+(21, 26, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(22, 27, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(23, 28, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(24, 29, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(25, 30, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(26, 31, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(27, 32, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(28, 33, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(29, 34, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(30, 35, '10127', 'Service de 10.000 km', 'Cliente siente ruido en puerta trasera del lado izquierdo. Controlar manija  floja de la puerta lado acompañante', '--', '4', 'Se realizó service 10.000 km. Se controló puerta trasera y manija de la puerta ok'),
+(31, 36, '20000', 'Service 20.000 km', 'Cliente no le sube vidrio lado conductor correctamente', '--', '4', 'Se realizó service 20.000 km y se controló vidrio de ventana lado conductor ok'),
+(32, 37, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
+(33, 38, '45456456', 'dfggdgdg', 'dfgfdggdfg', 'dgdfgd', '1', 'dgfdgdf'),
+(34, 39, '9800', 'Service 10.000 km', 'Clienta nota desperfecto en dirección', NULL, '5', 'Se realizó service 10.000 km correctamente y se verificó la dirección ok'),
+(35, 40, '8000', 'Cambio de aceite', 'Notaba nivel de aceite elevado', NULL, '1', 'Se realizó cambio de aceite a modo de cortesía');
 
 -- --------------------------------------------------------
 
@@ -240,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `mecanicos` (
   `telefono` varchar(50) NOT NULL,
   `id_ciudad` int(11) NOT NULL,
   PRIMARY KEY (`id_mecanico`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `mecanicos`
@@ -250,7 +266,8 @@ INSERT INTO `mecanicos` (`id_mecanico`, `nombre`, `apellido`, `email`, `dni`, `i
 (1, 'Matias ', 'Rodriguez', 'matirodriguez@hotmail.com', 33963544, 1, '1989-06-16', 'Bv. san juan', 5000, '3543640112', 1),
 (2, 'Fernando', 'Freytes', 'ffreytes@yahoo.com', 30522113, 1, '1986-06-08', 'Bv. san juan', 5000, '3514789455', 1),
 (3, 'Pablo', 'Molina', 'pmolina348@gmail.com', 36234993, 1, '1992-06-22', 'Bv. san juan', 5000, '3518566322', 1),
-(4, 'Gustavo', 'Gonzalez', 'gustavog@hotmail.com', 35221455, 1, '1991-06-22', 'Bv. san juan', 5000, '3512666411', 13);
+(4, 'Gustavo', 'Gonzalez', 'gustavog@hotmail.com', 35221455, 1, '1991-06-22', 'Bv. san juan', 5000, '3512666411', 13),
+(5, 'Mariano', 'Martinez', 'mmartinez@gmail.com', 32544112, 1, '1988-08-21', '27 de abril 400', 5000, '3516874621', 1);
 
 -- --------------------------------------------------------
 
@@ -288,36 +305,54 @@ CREATE TABLE IF NOT EXISTS `ordenes_reparacion` (
   `fecha_ingreso_vehiculo` date NOT NULL,
   `fecha_egreso_vehiculo` date DEFAULT NULL,
   `id_mecanico` int(11) DEFAULT NULL,
+  `id_vehiculo` int(50) DEFAULT NULL,
+  `id_cliente` int(50) DEFAULT NULL,
   PRIMARY KEY (`id_orden_reparacion`),
   KEY `FK_ordenes_reparacion_empleados_idx` (`id_empleado`),
   KEY `FK_ordenes_reparacion_estados_ordenes_idx` (`id_estado_orden`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ordenes_reparacion`
 --
 
-INSERT INTO `ordenes_reparacion` (`id_orden_reparacion`, `id_empleado`, `id_estado_orden`, `fecha_ingreso_vehiculo`, `fecha_egreso_vehiculo`, `id_mecanico`) VALUES
-(5, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(6, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(7, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(8, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(9, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(10, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(11, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(12, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(13, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(14, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(15, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(16, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(17, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(18, NULL, 2, '2018-06-08', '2018-06-08', 3),
-(19, NULL, 2, '2018-06-11', '2018-06-12', 3),
-(20, NULL, 2, '2018-06-11', '2018-06-12', 3),
-(21, NULL, 2, '2018-06-11', '2018-06-12', 3),
-(22, NULL, 2, '2018-06-11', '2018-06-13', 1),
-(23, NULL, 2, '2018-06-11', '2018-06-14', 2),
-(24, NULL, 2, '2018-06-11', '2018-06-12', 3);
+INSERT INTO `ordenes_reparacion` (`id_orden_reparacion`, `id_empleado`, `id_estado_orden`, `fecha_ingreso_vehiculo`, `fecha_egreso_vehiculo`, `id_mecanico`, `id_vehiculo`, `id_cliente`) VALUES
+(5, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(6, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(7, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(8, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(9, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(10, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(11, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(12, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(13, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(14, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(15, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(16, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(17, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(18, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
+(19, NULL, 2, '2018-06-11', '2018-06-12', 3, NULL, 0),
+(20, NULL, 2, '2018-06-11', '2018-06-12', 3, NULL, 0),
+(21, NULL, 2, '2018-06-11', '2018-06-12', 3, NULL, 0),
+(22, NULL, 2, '2018-06-11', '2018-06-13', 1, NULL, 0),
+(23, NULL, 2, '2018-06-11', '2018-06-14', 2, NULL, 0),
+(24, NULL, 2, '2018-06-11', '2018-06-12', 3, NULL, 0),
+(25, NULL, 2, '2018-06-12', '2018-06-12', 4, NULL, 0),
+(26, NULL, 2, '2018-06-12', '2018-06-12', 4, 5, 0),
+(27, NULL, 2, '2018-06-12', '2018-06-12', 4, 18, 0),
+(28, NULL, 2, '2018-06-12', '2018-06-12', 4, 16, 0),
+(29, NULL, 2, '2018-06-12', '2018-06-12', 4, 37, 0),
+(30, NULL, 2, '2018-06-11', '2018-06-11', 4, 20, 4),
+(31, NULL, 2, '2018-06-12', '2018-06-12', 4, 36, 14),
+(32, NULL, 2, '2018-06-12', '2018-06-12', 4, 18, 3),
+(33, NULL, 2, '2018-06-12', '2018-06-12', 4, 5, 8),
+(34, NULL, 2, '2018-06-12', '2018-06-12', 4, 18, 3),
+(35, NULL, 2, '2018-01-12', '2018-01-13', 4, 20, 13),
+(36, NULL, 2, '2018-04-15', '2018-04-16', 3, 28, 13),
+(37, NULL, 2, '2018-06-12', '2018-06-12', 4, 5, 8),
+(38, NULL, 2, '2018-06-12', '2018-06-15', 1, 21, 3),
+(39, NULL, 2, '2018-06-12', '2018-06-14', 5, 38, 20),
+(40, NULL, 2, '2018-01-20', '2018-01-21', 1, 39, 20);
 
 -- --------------------------------------------------------
 
@@ -470,7 +505,7 @@ CREATE TABLE IF NOT EXISTS `turnos` (
   KEY `fk_turno_tipos_servicios_idx` (`id_tipo_servicio`),
   KEY `FK_turnos_estados_turnos_idx` (`id_estado_turno`),
   KEY `FK_turnos_clientes_idx` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `turnos`
@@ -486,7 +521,9 @@ INSERT INTO `turnos` (`id_turno`, `id_tipo_servicio`, `id_cliente`, `id_estado_t
 (30, 1, 2, 3, '2018-06-13', '09:00:00', 10),
 (33, 1, 15, 2, '2018-06-21', '10:00:00', 37),
 (34, 1, 14, 3, '2018-06-26', '12:00:00', 36),
-(35, 2, 14, 2, '2018-07-13', '08:00:00', 36);
+(35, 2, 14, 2, '2018-07-13', '08:00:00', 36),
+(36, 1, 20, 3, '2018-08-16', '08:00:00', 38),
+(37, 1, 20, 2, '2018-07-10', '09:00:00', 39);
 
 -- --------------------------------------------------------
 
@@ -522,7 +559,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `users_id_tipo_doc_foreign` (`id_tipo_doc`),
   KEY `users_id_ciudad_foreign` (`id_ciudad`),
   KEY `users_id_tipo_empleado_foreign` (`id_tipo_empleado`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -536,13 +573,15 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 (8, 'juampi_88', 'juancho1@gmail.com', '$2y$10$.21042BLp6H.O1yHCAW7O.375wvUR/Uj3HXtuHhUwh3PYQLLZ/QpS', NULL, '2018-05-23 04:00:35', '2018-05-23 04:00:35', 1, 1, 1, 36234993, 'Pablo', 'Paillet', '2018-05-31', '', 'Caseros 1180', 5000, '3543640112', NULL, NULL),
 (7, 'hector86', 'hectorcaceres@gmail.com', '$2y$10$xTbuyCkqDxUAXdabFUecL.BWPsnMm9p8pRqWVbYoHlJJskhb1jmG6', NULL, '2018-05-23 04:00:11', '2018-05-23 04:00:11', 1, 1, 1, 36234993, 'Héctor', 'Cáceres', '2018-05-31', '', 'Bv. san juan 600', 5000, '3512566477', NULL, NULL),
 (9, 'lucre29', 'lucrecia.m@hotmail.com', '25f9e794323b453885f5181f1b624d0b', 'siMrVhj7f8ymqStdAoWhMhSUkDLs64RgS4LV9W6EGxWoLhBnZkPAQjSjiIm1', '2018-05-23 04:01:07', '2018-05-23 04:01:07', 1, 1, 1, 36234999, 'Lucrecia', 'Martinez', '2018-05-31', '', 'Av. Duarte Quiros 1500', 5000, '3516985254', NULL, NULL),
-(10, 'luFCA', 'lueac@curvasud.com', '$2y$10$dvCizcP8kg5rKzzUKTNwIeu9AwdHE7y4BaIEHFN/9yzAg7Bf4mzIu', 'y3AiPXxf6WsAJTfTEEFdx0gFCyosWwPIT4RN1zr2PLr6A6MebfvaR0VorFSN', '2018-06-02 02:12:39', '2018-06-02 02:12:39', 2, 1, 1, 14569874, 'Luciana', 'Fernandez', '1990-05-28', '', 'Av.Juan B Justo 600', 5000, '3513655410', NULL, NULL),
-(12, 'carlosfca', 'carlosgomez@curvasud.com', '$2y$10$1miGxsLiXYUzKbDiQCgDfuaUwQXw/PVUwmvT74hkJVi4h8zG6VPai', '8akWL9IOjyoDkdeAt523vrGLsSh4k8F8BN1tOLQahBTAiGjHUUDJ5yttQrQD', '2018-06-04 08:29:25', '2018-06-04 08:29:25', 3, 1, 1, 33333333, 'Carlos', 'Gómez', '1983-06-14', NULL, 'Bolivar 555', 5000, '3512654788', NULL, NULL),
-(13, 'UsuarioPrueba', 'asdasd@asdasddas.com', '$2y$10$d.c/5IZ5Ui0cyVcCUNmiBO3rMyML9DB5bcUAAEJzDbCVvtUtIeAf6', 'OGC73nblHxEEdal16TWGJ6gg3rKfcuSXrixDQ3zJLJilUo7rd7xYodbvrPuH', '2018-06-06 06:20:04', '2018-06-06 06:20:04', 1, 1, 1, 1726372, 'Matias ', 'Fernandez', '2018-06-09', 'PailletJP', 'Salta', 5000, '3543640117', NULL, NULL),
-(14, 'LuPrueba', 'luprueba@gmail.com', '$2y$10$0RQv/ZFHLjyFKaFp/VuWTOlRRrig8UHAnGFGrKwCLjx.VnqF/3Lsm', 'cdTcIi0F10eqWSkRMHsUazCY4nag1GRoYXMLWMGy91bZNEWkYYM661nFLdpG', '2018-06-07 03:25:28', '2018-06-07 03:25:28', 1, 1, 1, 35963113, 'Luciana', 'Fernandez', '2018-05-28', NULL, 'Bv. san juan 700', 5000, '3518179694', NULL, NULL),
-(15, 'Jorgelino2', 'sdasdads@asdasd.com', '$2y$10$Pf.TKbZSuPuBNwdBHz4hNOy7EiBuIqjlKqRWBDFJsJOhagq6Be6dW', NULL, '2018-06-08 06:02:14', '2018-06-08 06:02:15', 1, 1, 14, 3658947, 'Juan', 'Quiroga', '2018-06-15', 'asdsad', 'asasd', 5000, '358978444', NULL, NULL),
+(10, 'luFCA', 'lueac@curvasud.com', '$2y$10$dvCizcP8kg5rKzzUKTNwIeu9AwdHE7y4BaIEHFN/9yzAg7Bf4mzIu', 'iA9HnJYEsn4EE3zANMTssGvTI0TLyPsqSGHtcZAAyjwgMchIp3SYN1IIDRmg', '2018-06-02 02:12:39', '2018-06-12 12:26:20', 2, 1, 1, 14569874, 'Luciana', 'Fernandez', '1990-05-28', NULL, 'Av.Juan B Justo 601', 5000, '3513655411', NULL, NULL),
+(12, 'carlosfca', 'carlosgomez@curvasud.com', '$2y$10$1miGxsLiXYUzKbDiQCgDfuaUwQXw/PVUwmvT74hkJVi4h8zG6VPai', 'NyEszzIBYMbiEFm2K3i9b8xx49Qqpy9GfB9xKGqFJpwGKFUb9oig4cwBJyrl', '2018-06-04 08:29:25', '2018-06-12 12:54:42', 3, 1, 1, 33333333, 'Carlos', 'Gómez', '1983-06-14', NULL, 'Bolivar 556', 5002, '3512654787', NULL, NULL),
+(13, 'mat22', 'mat22@gmail.com', '$2y$10$d.c/5IZ5Ui0cyVcCUNmiBO3rMyML9DB5bcUAAEJzDbCVvtUtIeAf6', 'OGC73nblHxEEdal16TWGJ6gg3rKfcuSXrixDQ3zJLJilUo7rd7xYodbvrPuH', '2018-06-06 06:20:04', '2018-06-06 06:20:04', 1, 1, 1, 1726372, 'Matias ', 'Fernandez', '2018-06-09', '', 'Salta', 5000, '3543640117', NULL, NULL),
+(14, 'JuPrueba', 'juprueba@gmail.com', '$2y$10$0RQv/ZFHLjyFKaFp/VuWTOlRRrig8UHAnGFGrKwCLjx.VnqF/3Lsm', 'Dzcd9VM3VoxxyyJIaBgSllFTf6hZW0030no6LXUKGsvy8ghaWLMl1XkVPT3E', '2018-06-07 03:25:28', '2018-06-07 03:25:28', 1, 1, 1, 35963113, 'Julieta', 'Dominguez', '2018-05-28', NULL, 'Bv. san juan 700', 5000, '3518179694', NULL, NULL),
+(15, 'Jorgelino2', 'jor25@hotmail.com', '$2y$10$Pf.TKbZSuPuBNwdBHz4hNOy7EiBuIqjlKqRWBDFJsJOhagq6Be6dW', NULL, '2018-06-08 06:02:14', '2018-06-08 06:02:15', 1, 1, 14, 3658947, 'Juan', 'Quiroga', '2018-06-15', 'asdsad', 'asasd', 5000, '358978444', NULL, NULL),
 (16, 'LuProbando', 'luprobando@gmail.com', '$2y$10$eJq1vlHbygrlEkdlLGtvAegn6dtM.3WNXE8/4IOO/WClZI10n3olS', 'scesCzNbw3vRFI9Y8hmZsEPWhigAPNjLptrWpNf3QNslRpdzeG8aVGSLs1uY', '2018-06-11 09:00:44', '2018-06-11 09:00:44', 1, 1, 1, 35966333, 'Ludmila', 'Spinetta', '1991-06-21', NULL, 'Dean funes 1322', 5000, '3516988755', NULL, NULL),
-(18, 'julioPrueba', 'julio@gmail.com', '$2y$10$JpJ7Y6d53SkIBs1p1KqSIehmfIje8/BFjlPq2xMrMAHzjeG7c/xq.', 'Ddi12MGiRof6ZEcKqACsdPO8PBRQBZN3bNkH2bsBfVRU6I5Mw5o0SzbyqjdM', '2018-06-11 09:10:59', '2018-06-11 09:11:48', 1, 1, 2, 30233511, 'Julio', 'Cortazar', '1960-06-21', NULL, 'Av maipu 500', 5003, '3512455115', NULL, NULL);
+(18, 'julioPrueba', 'julio@gmail.com', '$2y$10$JpJ7Y6d53SkIBs1p1KqSIehmfIje8/BFjlPq2xMrMAHzjeG7c/xq.', 'Ddi12MGiRof6ZEcKqACsdPO8PBRQBZN3bNkH2bsBfVRU6I5Mw5o0SzbyqjdM', '2018-06-11 09:10:59', '2018-06-11 09:11:48', 1, 1, 2, 30233511, 'Julio', 'Cortazar', '1960-06-21', NULL, 'Av maipu 500', 5003, '3512455115', NULL, NULL),
+(19, 'Pichu86', 'patricio_cba@gmail.com', '$2y$10$EZHlD0X.yj4msYSJtcP99uzY9oVKMdvgWStm8pEzuxkvQcRlIMvg6', 'MU7AScQiHutmdEtCZPPEPety4DjZgKVkQ6Bkcbm0uVJDpqqHKuAc9RcOzuLO', '2018-06-12 06:00:45', '2018-06-12 06:00:45', 1, 1, 1, 33655496, 'Patricio', 'Pérez', '2018-06-14', NULL, 'Bv. chacabuco 566', 5000, '3516885544', NULL, NULL),
+(20, 'Jaz88', 'jazmin182@hotmail.com', '$2y$10$W0IAqxQI6umQ1cwRQSvGteKdRBkJjDwbcKrWXQM/ul5XCjgvQmxde', 'UuuBAcBlqi0OqWdL0LUZiRHzhrAVOU1IojHF0W55MQeiyR26y2sZiBeihWjQ', '2018-06-12 11:53:06', '2018-06-12 12:06:48', 1, 1, 1, 36355422, 'Jazmin', 'Suárez', '1988-06-22', NULL, 'Caseros 601', 5003, '3512002183', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -566,7 +605,7 @@ CREATE TABLE IF NOT EXISTS `vehiculos` (
   UNIQUE KEY `patente_UNIQUE` (`patente`),
   UNIQUE KEY `nro_chasis_UNIQUE` (`nro_chasis`),
   KEY `FK_vehiculos_tipos_vehiculos_idx` (`id_tipo_vehiculo`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `vehiculos`
@@ -598,7 +637,9 @@ INSERT INTO `vehiculos` (`id_vehiculo`, `id_tipo_vehiculo`, `marca`, `modelo`, `
 (34, 1, 'Fiat', 'Cronos drive', 2018, 'AB828UY', 'AW45872', '2018-06-29', 7, 0),
 (35, 1, 'Fiat', 'Cronos drive', 2018, 'AW784AO', '789456Y', '2018-06-29', 7, 0),
 (36, 1, 'Fiat', 'Fiorino', 2016, 'AL566MO', 'JU56987', '2016-06-14', 14, 0),
-(37, 1, 'Fiat', 'Cronos drive', 1878, 'AI874OQ', 'AW45878', '2018-06-09', 15, 0);
+(37, 1, 'Fiat', 'Cronos drive', 1878, 'AI874OQ', 'AW45878', '2018-06-09', 15, 0),
+(38, 1, 'Fiat', 'Qubo', 2013, 'AP123PO', 'KJ55555', '2013-06-08', 20, 0),
+(39, 3, 'Fiat', 'Fiorino', 2015, 'AS333PO', 'KU55698', '2015-06-18', 20, 0);
 
 --
 -- Restricciones para tablas volcadas

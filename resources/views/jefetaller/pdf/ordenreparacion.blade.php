@@ -1688,20 +1688,20 @@
 <p> Patente: {{$orden->orden_vehiculo->patente}} </p>
 <p> Número de Chasis: {{$orden->orden_vehiculo->nro_chasis}} </p>
 
-</h2> Motivo de Ingreso: </h2>
+<h2> Motivo de Ingreso: </h2>
 <p> {{$detalle_orden->motivo_ingreso}} </p>
 
-</h2> Observaciones: </h2>
+<h2> Observaciones: </h2>
 <p> {{$detalle_orden->observaciones}} </p>
 
-</h2> Operación Realizada: </h2>
+<h2> Operación Realizada: </h2>
 <p> {{$detalle_orden->operacion_realizada}} </p>
 
-</h2> Extra: </h2>
+<h2> Extra: </h2>
 <p> {{$detalle_orden->extra}} </p>
 
-</h2> Km: </h2>
+<h2> Km: </h2>
 <p> {{$detalle_orden->km}} </p>
 
-</h2> Trabajo realizado por: </h2>
+<h2> Trabajo realizado por: </h2>
 <p>{{$orden->orden_mecanico->nombre}} {{$orden->orden_mecanico->apellido}}</p>

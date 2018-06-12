@@ -82,7 +82,7 @@ class JefeDeTallerController extends Controller
 
         $detalle_orden = DetalleOrden::create([
             "id_orden_reparacion"=>$orden_reparacion->id_orden_reparacion,
-            "kilometraje"=>$km ,
+            "kilometraje"=>$km,
             "motivo_ingreso"=>$motivo_ingreso,
             "observaciones"=>$observaciones,
             "extra"=>$extra,
@@ -141,7 +141,7 @@ class JefeDeTallerController extends Controller
     {
         $fechas_finales = array();
         $start = Carbon::now();
-        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(364), 0, 10));
+        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(90), 0, 10));
 
         $fechas = [];
 

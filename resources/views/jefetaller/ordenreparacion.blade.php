@@ -12,7 +12,7 @@
                         <div class="alert alert-danger">{{$errors->first()}}</div>
                     
                     @endif
-        <h2> Órden de Reparación N° 14 </h2>
+        <h2> Órden de Reparación </h2>
            <form action="" method="post" >
                 @csrf
 

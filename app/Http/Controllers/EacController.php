@@ -57,13 +57,13 @@ class EacController extends Controller
     {
         $fechas_finales = array();
         $start = Carbon::now();
-        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(364), 0, 10));
+        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(90), 0, 10));
 
-        $fechas = [];
+        $fechas = []; 
 
         while ($start->lte($end)) {
 
-            $fechas[] = $start->copy()->format('Y-m-d');
+            $fechas[] = $start->copy()->format('Y-m-d'); 
 
             $diaAgregar = $start->addDay();
         }
