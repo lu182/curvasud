@@ -179,3 +179,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");
 
 Route::post("mail", "EnvioEmailController@enviarMail")->name("mail");
+
+Route::get("sin_permiso", function () {
+    return "NO TIENES PERMISO PARA ACCEDER";
+})->name("sin_permiso");

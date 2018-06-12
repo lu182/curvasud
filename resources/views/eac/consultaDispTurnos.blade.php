@@ -22,7 +22,7 @@
           @if ($hora["estado"] == 1)
                 <tr>
                     <th scope="row">@php
-                        date('d-m-Y', strtotime($fecha['fecha']) ) @endphp
+                        echo date('d-m-Y', strtotime($fecha['fecha']) ) @endphp
                       </th>
                     <th scope="row">{{$hora['hora']}} </th>
 

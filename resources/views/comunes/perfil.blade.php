@@ -11,7 +11,7 @@
                 @if($errors->any())
 
                 <div class="alert alert-success">{{$errors->first()}}</div>
-            
+
             @endif
 
             </div>
@@ -31,7 +31,7 @@
                                 <input type="text" class="form-control" placeholder="" value="{{ Auth::user()->email }}" name= "email">
                             </div>
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         <div class="col-md-6 pr-1">
@@ -56,7 +56,7 @@
                            <label for="">Tipo de documento</label>
                            <input type="text" class="form-control" placeholder="" value="{{ Auth::user()->tipo_documento->tipoDocumento }}" readonly>
 
-                        </div> 
+                        </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>Fecha de nacimiento</label>
@@ -69,7 +69,7 @@
                                 <input type="text" class="form-control" placeholder="" value="{{ Auth::user()->razon_social }}" name= "razon_social">
                             </div>
                         </div>
-                    
+
                     </div>
                     <div class="row">
                         <div class="col-md-7">
@@ -100,12 +100,12 @@
                                  @foreach ($ciudades as $ciudad)
 
                                  @if($ciudad->ciudad == Auth::user()->ciudad->ciudad)
-                                 
+
                                  @else
                                  <option value="{{$ciudad->id_ciudad}}" >{{$ciudad->ciudad}}</option>
                                 @endif
                                  @endforeach
-                                 <option value="Otro" >Otro</option>
+                                 <option value="0" >Otra</option>
 
                              </select>
                         </div>
@@ -116,7 +116,7 @@
                                     <input type="text" class="form-control" placeholder="" name = "inputOtro" >
                                 </div>
                             </div>
-                   
+
                     <button type="submit" class="btn btn-info btn-fill pull-right">ACTUALIZAR MIS DATOS</button>
                     <div class="clearfix"></div>
                 </form>

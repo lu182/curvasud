@@ -85,10 +85,11 @@
                     </li>
                     @else
 
-                    <li class="nav-item active active-pro">
-                        <a class="nav-link active disabled" href="{{ route('mivehiculo') }}">
+
+                    <li class="nav-item active active-pro"  style="margin-top:15px!important;position:relative">
+                        <a class="nav-link active disabled" href="{{ route('mivehiculo') }}" >
                        <i class="nc-icon nc-settings-tool-66"></i>
-                       <p>Registra tu vehiculo para solicitar turno</p>
+                       <p>Registrar vehiculo para solicitar turno</p>
                     </a>
                     </li>
                     @endif @endif @if ( Auth::user()->tipo_user_id == 2 )
@@ -325,12 +326,12 @@
                  </li>
 
 
-                 
-         
+
+
                  <li class="header-title pro-title text-center">Want more components?</li>
-         
-                 
-         
+
+
+
 
                  <li class="header-title" id="sharrreTitle">Thank you for sharing!</li>
 
@@ -397,7 +398,7 @@
             }
         } );
     }
-    
+
     );
 
 </script>
@@ -415,21 +416,21 @@
             $("#ciudad_input").hide();
             $("#selector_ciudad").change(function() {
                 // Mostramos el campo de ingresar ciudad basado en el valor del select
-                if ($(this).val() == "Otro") {
+                if ($(this).val() == "0") {
                     $("#ciudad_input").fadeIn();
                 }else{
                     $("#ciudad_input").fadeOut();
-                } 
+                }
             });
 
             $("#ciudad_input2").hide();
             $("#selector_ciudad2").change(function() {
                 // Mostramos el campo de ingresar ciudad basado en el valor del select
-                if ($(this).val() == "11") {
+                if ($(this).val() == "0") {
                     $("#ciudad_input2").fadeIn();
                 }else{
                     $("#ciudad_input2").fadeOut();
-                } 
+                }
             });
         });
 
@@ -446,15 +447,15 @@
               });
         });
 
-        
+
         var today = new Date();
     var future = new Date(today);
-    
+
     // Dejamos que el usuario seleccione desde hoy hasta dentro de 1 año
     future.setDate(today.getDate() + 728);
-    
+
      var $calendar = $('#calendario').glDatePicker(
-         
+
     {
         showAlways: true,
         selectedDate: new Date(),
@@ -483,7 +484,7 @@
 				alert("seleccione una fecha válida");
 			}
 		}
-    
+
     });
 
 
@@ -500,10 +501,10 @@
             url: "http://curvasud.com/api/vehiculoclienteajax/"+carId,
            // data: { 'carId': carId  },
             success: function(data){
-          
+
                 // Parse the returned json data
                 var opts = $.parseJSON(data);
-                
+
                 // Use jQuery's each to iterate over the opts value
                 $.each(opts, function(i, d) {
                     // You will need to alter the below to get the right values from your json object.  Guessing that d.id / d.modelName are columns in your carModels data

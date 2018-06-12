@@ -1,19 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\User; 
-use App\Vehiculo; 
+use App\User;
+use App\Vehiculo;
 use App\Mecanico;
 use App\Ciudad;
 use App\TipoDocumento;
-use App\TipoVehiculo; 
-use App\Turno; 
+use App\TipoVehiculo;
+use App\Turno;
 use App\OrdenReparacion;
 use App\DetalleOrden;
 use App\TipoServicio;
-use DB; 
-use Illuminate\Http\Request; 
-use Illuminate\Support\Facades\Auth; 
+use DB;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
@@ -24,7 +24,7 @@ class JefeDeTallerController extends Controller
 
     public function __construct()
     {
-    //    $this->middleware('jefetaller');
+       $this->middleware('jefetaller');
     }
 
 
@@ -51,7 +51,7 @@ class JefeDeTallerController extends Controller
     }
 
     public function registrarOrden(Request $request){
-        
+
         if(!isset($request->vehiculo)){
 
             return redirect()->back()->withErrors(['Debe seleccionar un cliente y un vehículo']);
@@ -121,7 +121,7 @@ class JefeDeTallerController extends Controller
 
         }
         return view("jefetaller.bienvenida");
-    
+
     }
 
 
@@ -224,14 +224,14 @@ class JefeDeTallerController extends Controller
         $turnsNoDisponibles = Turno::where("id_estado_turno", 2)->where("fecha",">=",$fechaActual)->get();
 
         return view('jefetaller.turnosDispYnoDisp', ['disp' => $fechas_finales, 'noDisp' => $turnsNoDisponibles]);
-    
+
     } //termina la llave de la funcion
 
 
 //Consultar turnos cancelados del día
 public function TurnosHoy()
     {
-        
+
          date_default_timezone_set('America/Argentina/Buenos_Aires');
 
         $fechaActual = date('Y-m-d', time());
@@ -245,7 +245,7 @@ public function TurnosHoy()
     }
 
 //Consultar clientes por número de chasis
-  
+
   public function mostrar()
   {
 
@@ -297,7 +297,7 @@ public function buscarModeloMostrar()
 
             if (!0 == count($ordenesABuscar)){
 
-                
+
                 return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"cliente"=>$clienteABuscar]);
             }
             else{
@@ -313,7 +313,7 @@ public function buscarModeloMostrar()
 
 
     }
-    
+
 
     public function mostrarOrden($id){
 
@@ -344,12 +344,12 @@ public function buscarModeloMostrar()
 
 
 
-//Consultar mecánicos 
+//Consultar mecánicos
 public function mecanicosRegistrados()
 {
 
     $totalMecanicos = Mecanico::all();
-    
+
      return view("jefetaller.mecanicosRegistrados", ["totalMecanicos" => $totalMecanicos]);
 
 }
@@ -359,18 +359,18 @@ public function vehiculosRegistrados()
 {
 
     $totalVehiculos = Vehiculo::all();
-    
+
      return view("jefetaller.vehiculosRegistrados", ["totalVehiculos" => $totalVehiculos]);
 
 }
 
 
-//Consultar tipos de servicios registrados 
+//Consultar tipos de servicios registrados
 public function serviciosRegistrados()
 {
 
     $totalServicios = TipoServicio::all();
-    
+
      return view("jefetaller.serviciosRegistrados", ["totalServicios" => $totalServicios]);
 
 }
@@ -383,7 +383,7 @@ public function mostrarORporChasis(){
 
 public function buscarORPorChasis(Request $request){
 
- 
+
     $vehiculoABuscar = Vehiculo::where("nro_chasis",$request->nro_chasis)->first();
 
     if ($vehiculoABuscar){
@@ -392,7 +392,7 @@ public function buscarORPorChasis(Request $request){
 
         if (!0 == count($ordenesABuscar)){
 
-            
+
             return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"vehiculo"=>$vehiculoABuscar]);
         }
         else{
@@ -427,7 +427,7 @@ public function turnosPorTipoServicio(){
 
   $tipos = TipoServicio::with("tiposervicio_turno")->get();
 
-   
+
     return $tipos;
 
 

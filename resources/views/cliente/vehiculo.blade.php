@@ -32,7 +32,7 @@
             <div class="card-header">
                 <h4 class="card-title">Mis vehículos</h4>
 
-                
+
     @if($errors->any())
 
     <div class="alert alert-success">{{$errors->first()}}</div>
@@ -43,18 +43,18 @@
 
         @foreach ($vehiculos as $vehiculo)
 
-         
+
         <div class="card">
 
             <div class="card-body">
-              
+
 
                 <!-- Mostramos todos los vehiculos cargados del cliente -->
-                
-            <h4>     Patente del vehículo:   </h4> 
+
+            <h4>     Patente del vehículo:   </h4>
                 {{$vehiculo->patente}}
 
-                <h4>     Modelo del vehículo:   </h4> 
+                <h4>     Modelo del vehículo:   </h4>
                 {{$vehiculo->modelo}}
 
 
@@ -67,29 +67,29 @@
 
                     <input type="submit" style="cursor: pointer"  class="btn btn-danger" value="Dar vehiculo de baja">
 
-                    
+
                 </form>
                 @else
                 <form method="POST" action="{{route('altaVehiculo')}}">
 
                         @csrf
                         <input type="hidden" value="{{$vehiculo->id_vehiculo}}" name="id_vehiculo">
-    
-    
+
+
                         <input type="submit" style="cursor: pointer"  class="btn btn-primary" value="Dar vehiculo de alta nuevamente">
-    
-                        
+
+
                     </form>
                     @endif
 
                     @if ($vehiculo->cancelado == 1)
 
                     <div class="alert alert-danger">  Este vehiculo se encuentra no disponible </div>
- 
+
                      @endif
             </div>
         </div>
-               
+
         @endforeach
     </div>
 
@@ -97,8 +97,8 @@
     <div class="card">
             <div class="card-header">
                     <h4 class="card-title">Dar de alta un nuevo vehiculo</h4>
- 
-    
+
+
             </div>
             <div class="card-body">
               <form method="POST" action="{{route('agregarVehiculo')}}">
@@ -117,7 +117,7 @@
                     <li><label>* Número de Chasis:</label><input type="text" name="nro_chasis" value="" id="" minlength=7 required> </li>
                     <li><label>* Inicio de garantía:</label> <input type="date" name="fecha_inicio_garantia" value="" id="" required></li>
                     <br>
-                                       
+
                     <li> <input type="submit" class="btn btn-primary" style="cursor:pointer"name="btnRegistrarse" value="REGISTRAR VEHICULO" placeholder="" id="registrarse"/> </li>
                 </ul>
             </form>

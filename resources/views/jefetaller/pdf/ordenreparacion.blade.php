@@ -1701,7 +1701,7 @@
 <p> {{$detalle_orden->extra}} </p>
 
 <h2> Km: </h2>
-<p> {{$detalle_orden->km}} </p>
+<p> {{$detalle_orden->kilometraje}} </p>
 
 <h2> Trabajo realizado por: </h2>
 <p>{{$orden->orden_mecanico->nombre}} {{$orden->orden_mecanico->apellido}}</p>

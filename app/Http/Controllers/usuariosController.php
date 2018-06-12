@@ -91,7 +91,7 @@ class usuariosController extends Controller
                     ->where("fecha", '=', $fecha_a_buscar)
                     ->get();
                     return view("eac.bienvenida",["turnosHoy"=>$turnosHoy]);
-                    
+
                 case 3:
                     return view("jefetaller.bienvenida");
                 case 4:

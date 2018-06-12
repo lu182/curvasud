@@ -39,7 +39,7 @@ class TuneroController extends Controller
         $id_vehiculo = $request->id_vehiculo;
         $fecha = $request->fecha;
        $fecha = strtotime($fecha);
-        $turnos_registrados_vehiculo = Turno::where("id_vehiculo",$id_vehiculo)->get();
+        $turnos_registrados_vehiculo = Turno::where("id_vehiculo",$id_vehiculo)->where("id_estado_turno",2)->get();
         $id_tipo_servicio = $request->id_tipo_servicio;
         $fecha = date('Y-m-d', $fecha);
 
@@ -151,7 +151,7 @@ class TuneroController extends Controller
         $usuario = Auth::user();
         $turnos = Turno::where("id_cliente", $usuario->id)->where("id_estado_turno", 2)->get();
         $tipos_servicio = DB::table("tipos_servicios")->get();
-        return view("cliente.misturnos", ["turnos" => $turnos], ["tipos_servicio" => $tipos_servicio])->with('success', ['Turno Registrado Correctamente']);
+        return Redirect::route('misturnos')->withErrors(['Turno registrado correctamente. Gracias por utilizar CurvaSud']);
 
     }
 
@@ -205,7 +205,7 @@ class TuneroController extends Controller
 
         //Verifcamos que no exista un turno registrado con esa misma fecha y hora
 
-        $validacion = Turno::where("fecha", $request->fecha)->where("hora", $request->hora)->first();
+        $validacion = Turno::where("fecha", $request->fecha)->where("hora", $request->hora)->where("id_estado_turno",2)->first();
 
         $clave = array_search($validacion->hora, array_column($horas, "hora"));
 
@@ -251,10 +251,33 @@ class TuneroController extends Controller
 
         $id_turno = Crypt::decryptString($request->id_turno);
         $turno_a_editar = Turno::find($id_turno);
+        $id_vehiculo = $turno_a_editar->id_vehiculo;
+        $id_tipo_servicio = $turno_a_editar->id_tipo_servicio;
         $fecha = $request->fecha;
         $fecha = strtotime($fecha);
 
         $fecha = date('Y-m-d', $fecha);
+
+
+        $turnos_registrados_vehiculo = Turno::where("id_vehiculo",$id_vehiculo)->where("id_estado_turno",2)->get();
+
+        foreach($turnos_registrados_vehiculo as $turno){
+
+
+
+
+            // El id de tipo de servicio es mayor al que ya esta registrado
+            // La fecha que quiero registrar es menor a la que ya está registrada
+
+
+            if($fecha < $turno->fecha and $id_tipo_servicio > $turno->id_tipo_servicio){
+                return redirect()->route('misturnos')->withErrors(['Ya tienes un turno registrado con un tipo de servicio anterior']);
+
+            }
+
+
+        }
+
 
         $turnos_fecha = Turno::where("fecha", $fecha)->where("id_estado_turno", 2)->get();
 

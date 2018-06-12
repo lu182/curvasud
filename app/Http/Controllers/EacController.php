@@ -17,6 +17,13 @@ use App\DetalleOrden;
 
 class EacController extends Controller
 {
+
+    public function __construct()
+    {
+
+
+        $this->middleware("eac");
+    }
     public function escritorioEac()
     {
         $user = Auth::user();
@@ -59,11 +66,11 @@ class EacController extends Controller
         $start = Carbon::now();
         $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(90), 0, 10));
 
-        $fechas = []; 
+        $fechas = [];
 
         while ($start->lte($end)) {
 
-            $fechas[] = $start->copy()->format('Y-m-d'); 
+            $fechas[] = $start->copy()->format('Y-m-d');
 
             $diaAgregar = $start->addDay();
         }
@@ -140,14 +147,14 @@ class EacController extends Controller
         $turnsNoDisponibles = Turno::where("id_estado_turno", 2)->where("fecha",">=",$fechaActual)->get();
 
         return view('eac.consultaDispTurnos', ['disp' => $fechas_finales, 'noDisp' => $turnsNoDisponibles]);
-    
+
     } //termina la llave de la funcion
 
 
     //Consultar turnos cancelados del día
     public function TurnosHoy()
     {
-        
+
          date_default_timezone_set('America/Argentina/Buenos_Aires');
 
         $fechaActual = date('Y-m-d', time());
@@ -155,7 +162,7 @@ class EacController extends Controller
         $turnosCancelados = DB::table("turnos")
         ->where("id_estado_turno", 3)->where("fecha", $fechaActual)->get();
 
-        
+
         return view('eac.canceladosDelDia', ["turnosCancelados" => $turnosCancelados]);
 
 
@@ -208,7 +215,7 @@ class EacController extends Controller
 
     }
 
-    /////////// PENDIENTEEEE !!! 
+    /////////// PENDIENTEEEE !!!
 
     //Consultar órdenes de reparación ingresadas, por cliente (tener en cuenta que un cliente puede tener varios vehiculos).
     public function mostrarORporCliente(){
@@ -234,7 +241,7 @@ class EacController extends Controller
 
     public function buscarORPorChasis(Request $request){
 
-     
+
         $vehiculoABuscar = Vehiculo::where("nro_chasis",$request->nro_chasis)->first();
 
         if ($vehiculoABuscar){
@@ -243,7 +250,7 @@ class EacController extends Controller
 
             if (!0 == count($ordenesABuscar)){
 
-                
+
                 return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"vehiculo"=>$vehiculoABuscar]);
             }
             else{
@@ -301,7 +308,7 @@ class EacController extends Controller
     }
 
     /////-----------------------------REPORTES (PDF)----------------------------/////
-    
+
     //Generar un informe del total de clientes por tipo de vehiculo
     public function reporteClientes(){
 
@@ -335,7 +342,7 @@ class EacController extends Controller
 
             if (!0 == count($ordenesABuscar)){
 
-                
+
                 return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"cliente"=>$clienteABuscar]);
             }
             else{
@@ -351,7 +358,7 @@ class EacController extends Controller
 
 
     }
-    
+
 
     public function mostrarOrden($id){
 
@@ -365,6 +372,6 @@ class EacController extends Controller
     }
 
 
-   
+
 
 }
