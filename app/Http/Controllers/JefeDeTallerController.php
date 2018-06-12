@@ -15,7 +15,7 @@ use DB;
 use Illuminate\Http\Request; 
 use Illuminate\Support\Facades\Auth; 
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Redirect;
 use PDF;
 
 class JefeDeTallerController extends Controller
@@ -52,6 +52,10 @@ class JefeDeTallerController extends Controller
 
     public function registrarOrden(Request $request){
         
+        if(!isset($request->vehiculo)){
+
+            return redirect()->back()->withErrors(['Debe seleccionar un cliente y un vehículo']);
+        }
         $mecanico = Mecanico::find($request->id_mecanico);
         $fecha_ingreso =  date('Y-m-d', time());
         $fecha_estimada_egreso = $request->fecha_estimada_egreso;
@@ -70,7 +74,10 @@ class JefeDeTallerController extends Controller
             "id_estado_orden"=>2, //en proceso
             "fecha_ingreso_vehiculo"=>$fecha_ingreso,
             "fecha_egreso_vehiculo"=>$fecha_estimada_egreso,
-            "id_mecanico"=>$mecanico->id_mecanico
+            "id_mecanico"=>$mecanico->id_mecanico,
+            "id_vehiculo"=>$vehiculo->id_vehiculo,
+            "id_cliente"=>$request->cliente
+
         ]);
 
         $detalle_orden = DetalleOrden::create([
@@ -86,17 +93,7 @@ class JefeDeTallerController extends Controller
 
         $orden = PDF::loadView('jefetaller.pdf.ordenreparacion',
 
-        ["fecha_ingreso"=>$fecha_ingreso,
-        "fecha_estimada_egreso"=>$fecha_estimada_egreso,
-        "generada_por"=>$generada_por,
-        "cliente"=>$cliente,
-        "vehiculo"=>$vehiculo,
-        "motivo_ingreso"=>$motivo_ingreso,
-        "operacion_realizada"=>$operacion_realizada,
-        "observaciones"=>$observaciones,
-        "extra"=>$extra,
-        "km"=>$km,
-        "mecanico"=>$mecanico
+        ["orden"=>$orden_reparacion,"detalle_orden"=>$detalle_orden
         ]
     );
          return $orden->download('Orden Reparación '.$cliente->nombre.' '.$cliente->apellido.'.pdf');
@@ -144,7 +141,7 @@ class JefeDeTallerController extends Controller
     {
         $fechas_finales = array();
         $start = Carbon::now();
-        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(10), 0, 10));
+        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(364), 0, 10));
 
         $fechas = [];
 
@@ -286,6 +283,48 @@ public function buscarModeloMostrar()
 
 
 
+    public function consultarordenClienteVer(){
+        return view("jefetaller.buscarOrdenPorDni");
+    }
+
+    public function consultarordenClienteBuscar(Request $request){
+
+        $clienteABuscar = User::where("dni",$request->dni)->first();
+
+        if ($clienteABuscar){
+
+            $ordenesABuscar= OrdenReparacion::where("id_cliente",$clienteABuscar->id)->get();
+
+            if (!0 == count($ordenesABuscar)){
+
+                
+                return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"cliente"=>$clienteABuscar]);
+            }
+            else{
+                return redirect()->back()->withErrors(['El cliente no tiene ninguna orden de reparación']);
+
+            }
+
+
+        }else{
+            return redirect()->back()->withErrors(['no se encontró un cliente con ese DNI']);
+
+        };
+
+
+    }
+    
+
+    public function mostrarOrden($id){
+
+        $ordenMostrar = OrdenReparacion::find($id);
+        $detalle_orden = DetalleOrden::where("id_orden_reparacion",$ordenMostrar->id_orden_reparacion)->first();
+
+       // return $detalleOrden;
+        $orden = PDF::loadView('jefetaller.pdf.ordenreparacion',
+        ["orden"=>$ordenMostrar,"detalle_orden"=>$detalle_orden]);
+         return $orden->stream('Orden Reparación.pdf');
+    }
 
 
 //Consultar órdenes de reparación ingresadas, por cliente.
@@ -301,7 +340,7 @@ public function buscarModeloMostrar()
 //Reporte del total de OR registradas
 //Reporte de OR por estado de la órden
 //Reporte del total de vehiculos ingresados en el mes
-//Emitir órden de reparación (PDF)
+//Imprimir órden de reparación (PDF)
 
 
 
@@ -333,6 +372,65 @@ public function serviciosRegistrados()
     $totalServicios = TipoServicio::all();
     
      return view("jefetaller.serviciosRegistrados", ["totalServicios" => $totalServicios]);
+
+}
+
+public function mostrarORporChasis(){
+
+    return view("eac.mostrarOrdenPorChasis");
+
+}
+
+public function buscarORPorChasis(Request $request){
+
+ 
+    $vehiculoABuscar = Vehiculo::where("nro_chasis",$request->nro_chasis)->first();
+
+    if ($vehiculoABuscar){
+
+        $ordenesABuscar= OrdenReparacion::where("id_vehiculo",$vehiculoABuscar->id_vehiculo)->get();
+
+        if (!0 == count($ordenesABuscar)){
+
+            
+            return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"vehiculo"=>$vehiculoABuscar]);
+        }
+        else{
+            return redirect()->back()->withErrors(['El vehiculo no tiene ninguna orden de reparación']);
+
+        }
+
+
+    }else{
+        return redirect()->back()->withErrors(['no se encontró un vehiculo con ese chasis']);
+
+    };
+
+}
+
+public function turnosDiaPorModelo(){
+
+
+    $turnos = Turno::with("vehiculo")->get();
+
+    foreach ($turnos as $turno){
+        if(!$turno->vehiculo == null){
+            echo $turno->vehiculo->vehiculo_tipoVehiculo->tipoVehiculo;
+            echo "
+            ";
+        }
+    }
+
+}
+
+public function turnosPorTipoServicio(){
+
+  $tipos = TipoServicio::with("tiposervicio_turno")->get();
+
+   
+    return $tipos;
+
+
 
 }
 

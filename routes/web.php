@@ -109,8 +109,6 @@ Route::post("/eac/buscarPorChasis", "EacController@buscarClientePorChasis")->nam
 
 
 
-Route::get("/eac/mostrarOrdenPorCliente", "EacController@mostrarORporCliente")->name("/eac/mostrarOrdenPorCliente");
-Route::post("/eac/mostrarOrdenPorCliente", "EacController@buscarORPorCliente")->name("/eac/mostrarOrdenPorCliente");
 
 Route::get("/eac/mostrarOrdenPorChasis", "EacController@mostrarORporChasis")->name("/eac/mostrarOrdenPorChasis");
 Route::post("/eac/mostrarOrdenPorChasis", "EacController@buscarORPorChasis")->name("/eac/mostrarOrdenPorChasis");
@@ -127,6 +125,10 @@ Route::get("/eac/clientesPorVehiculo", "EacController@buscarClientePorVehiculo")
 
 
 Route::get("/eac/turnosCancelados", "EacController@clientesTurnosCancelados")->name("/eac/turnosCancelados");
+
+Route::get("/eac/consultarordenCliente", "EacController@consultarordenClienteVer")->name("/eac/consultarordenCliente");
+Route::post("/eac/consultarordenCliente", "EacController@consultarordenClienteBuscar")->name("/eac/consultarordenCliente");
+Route::get("/eac/verOrden/{id}", "EacController@mostrarOrden")->name("/eac/verOrden");
 
 
 Route::get("/jefetaller/bienvenida", "JefeDeTallerController@bienvenida")->name("/jefetaller/bienvenida")->middleware('jefetaller');
@@ -156,9 +158,24 @@ Route::get("/jefetaller/buscarVehiculosPorModelo", "JefeDeTallerController@busca
 Route::post("/jefetaller/buscarVehiculosPorModelo", "JefeDeTallerController@buscarModeloRecibir")->name("/jefetaller/buscarVehiculosPorModelo");
 
 
-Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");
+Route::get("/jefetaller/consultarordenCliente", "JefeDeTallerController@consultarordenClienteVer")->name("/jefetaller/consultarordenCliente");
+Route::post("/jefetaller/consultarordenCliente", "JefeDeTallerController@consultarordenClienteBuscar")->name("/jefetaller/consultarordenCliente");
+Route::get("/jefetaller/verOrden/{id}", "JefeDeTallerController@mostrarOrden")->name("/jefetaller/verOrden");
+
+
+Route::get("/jefetaller/mostrarOrdenPorChasis", "JefeDeTallerController@mostrarORporChasis")->name("/jefetaller/mostrarOrdenPorChasis");
+Route::post("/jefetaller/mostrarOrdenPorChasis", "JefeDeTallerController@buscarORPorChasis")->name("/jefetaller/mostrarOrdenPorChasis");
+
+Route::get("/jefetaller/turnosDiaPorModelo", "JefeDeTallerController@turnosDiaPorModelo")->name("/jefetaller/turnosDiaPorModelo");
+Route::get("/jefetaller/turnosPorTipoServicio", "JefeDeTallerController@turnosPorTipoServicio")->name("/jefetaller/turnosPorTipoServicio");
+
 
 Route::get("/eac/reporteclientes", "EacController@reporteClientes")->name("eac/reporteclientes");
 Route::get("/eac/reportecancelados", "EacController@reporteCancelados")->name("eac/reportecancelados");
 
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
+
+
+Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");
+
+Route::post("mail", "EnvioEmailController@enviarMail")->name("mail");

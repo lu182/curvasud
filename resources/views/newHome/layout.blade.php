@@ -69,6 +69,7 @@
                       @else
                       <li><a href="{{ route('escritorio') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Ir al escritorio</a></li>
                       <li><a href="{{ route('logout') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
+					  <li> Bienvenido  {{Auth::user()->nombre }}   {{Auth::user()->apellido }}</li>
 
                       @endguest
 

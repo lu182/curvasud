@@ -43,16 +43,14 @@
                             
 
                     <li>
-                            <a href="">Consultar ordenes de reparacion ingresadas, por cliente</a>
+                            <a href="{{route('/jefetaller/consultarordenCliente')}}">Consultar ordenes de reparacion ingresadas, por cliente</a>
                         </li>
 
                         <li>
-                                <a href="">Consultar órdenes de reparacion por número de chasis</a>
+                                <a href="{{route('/jefetaller/mostrarOrdenPorChasis')}}">Consultar órdenes de reparacion por número de chasis</a>
                             </li>
 
-                            <li>
-                                    <a href="">Imprimir órden de reparación</a>
-                                </li>
+                            
                     
 </ul>
 

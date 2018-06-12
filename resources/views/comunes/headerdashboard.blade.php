@@ -1,264 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8" />
-      <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
-      <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.ico')}}">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-      <title>Curvasud</title>
-      <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-      <!--     Fonts and icons     -->
-      <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
-      <!-- CSS Files -->
-      <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
-      <link href="{{asset('assets/css/light-bootstrap-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
-      <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet" />
-      <link href="{{asset('tablas/estilo.css')}}" rel="stylesheet" />
-      <link href="{{asset('calendario/styles/glDatePicker.default.css')}}" rel="stylesheet" />
 
+<head>
+    <meta charset="utf-8" />
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('assets/img/apple-icon.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('assets/img/favicon.ico')}}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Curvasud</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport'
+    />
+    <!--     Fonts and icons     -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- CSS Files -->
+    <link href="{{asset('assets/css/bootstrap.min.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/light-bootstrap-dashboard.css?v=2.0.1')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/animate.css')}}" rel="stylesheet" />
+    <link href="{{asset('tablas/estilo.css')}}" rel="stylesheet" />
+    <link href="{{asset('calendario/styles/glDatePicker.default.css')}}" rel="stylesheet" />
+    <link href="{{asset('select/estilo.css')}}" rel="stylesheet" />
 
-   </head>
-   <body>
-      <div class="wrapper">
+</head>
 
-      <div class="sidebar" data-image="{{asset('assets/img/sidebar-5.jpg')}}">
-         <div class="sidebar-wrapper">
-            <div class="logo" style="text-align:center">
+<body>
+    <div class="wrapper">
+
+        <div class="sidebar" data-image="{{asset('assets/img/header7.jpg')}}">
+            <div class="sidebar-wrapper">
+                <div class="logo" style="text-align:center">
                     <img src="{{asset('img/logocurvasud.png')}}" style="max-width: 70%;margin:auto">
 
-            </div>
+                </div>
 
-            @if(Auth::user()->tipo_user_id == 1)
-            <ul class="nav">
-               <li class="nav-item ">
-                  <a class="nav-link" href="{{ route('escritorio') }}">
+                @if(Auth::user()->tipo_user_id == 1)
+                <ul class="nav">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ route('escritorio') }}">
                      <i class="nc-icon nc-circle-09"></i>
                      <p>Escritorio</p>
                   </a>
-               </li>
-               <li class="nav-item ">
-                  <a class="nav-link" href="{{ route('misdatos') }}">
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ route('misdatos') }}">
                      <i class="nc-icon nc-badge"></i>
                      <p>Mis datos</p>
                   </a>
-               </li>
-               <li>
-                  <a class="nav-link" href="{{ route('misturnos') }}">
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('misturnos') }}">
                      <i class="nc-icon nc-bell-55"></i>
                      <p>Mis Turnos</p>
                   </a>
-               </li>
-               <li>
-                  <a class="nav-link" href="{{ route('mivehiculo') }}">
+                    </li>
+                    <li>
+                        <a class="nav-link" href="{{ route('mivehiculo') }}">
                      <i class="nc-icon nc-notes"></i>
                      <p>Mis Vehículos</p>
                   </a>
-               </li>
+                    </li>
 
-               <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('principal') }}">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ route('principal') }}">
                        <i class="nc-icon nc-zoom-split"></i>
                        <p>Ir al sitio</p>
                     </a>
-                 </li>
+                    </li>
 
-               <li>
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                     @csrf
-                     <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+                    <li>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
                         <i class="nc-icon nc-tap-01"></i>
                         <p>Cerrar Sesión</p>
                      </a>
-                  </form>
-               </li>
-               @if (  count(Auth::user()->vehiculo) > 0 )
+                        </form>
+                    </li>
+                    @if ( count(Auth::user()->vehiculo) > 0 )
 
-               <li class="nav-item active active-pro">
-                  <a class="nav-link active" href="{{route('turnero')}}">
+                    <li class="nav-item active active-pro">
+                        <a class="nav-link active" href="{{route('turnero')}}">
                      <i class="nc-icon nc-settings-tool-66"></i>
                      <p>Solicitar Turno</p>
                   </a>
-               </li>
-               @else
-               
-               <li class="nav-item active active-pro">
-                    <a class="nav-link active disabled" href="{{ route('mivehiculo') }}">
+                    </li>
+                    @else
+
+                    <li class="nav-item active active-pro">
+                        <a class="nav-link active disabled" href="{{ route('mivehiculo') }}">
                        <i class="nc-icon nc-settings-tool-66"></i>
                        <p>Registra tu vehiculo para solicitar turno</p>
                     </a>
-                 </li>
-               @endif
-               @endif
-
-               @if (  Auth::user()->tipo_user_id == 2 )
-               <ul class="nav">
-               <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('escritorio') }}">
+                    </li>
+                    @endif @endif @if ( Auth::user()->tipo_user_id == 2 )
+                    <ul class="nav">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ route('escritorio') }}">
                        <i class="nc-icon nc-circle-09"></i>
                        <p>Escritorio</p>
                     </a>
-                 </li>
-                 <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('misdatos') }}">
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ route('misdatos') }}">
                        <i class="nc-icon nc-badge"></i>
                        <p>Mis datos</p>
                     </a>
-                 </li>
-                 <li class="nav-item ">
-                        <a class="nav-link" href="{{ route('/encargado/','consultas') }}">
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ route('/encargado/','consultas') }}">
                            <i class="nc-icon nc-check-2"></i>
                            <p>Consultas</p>
                         </a>
-                     </li>
+                        </li>
 
-                     <li class="nav-item ">
+                        <li class="nav-item ">
                             <a class="nav-link" href="{{ route('/encargado/','reportes') }}">
                                <i class="nc-icon nc-chart-pie-35"></i>
                                <p>Reportes</p>
                             </a>
-                         </li>
+                        </li>
 
-                         <li class="nav-item ">
-                                <a class="nav-link" href="{{ route('principal') }}">
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ route('principal') }}">
                                    <i class="nc-icon nc-zoom-split"></i>
                                    <p>Ir al sitio</p>
                                 </a>
-                             </li>
+                        </li>
 
 
-                 <li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                           @csrf
-                           <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+                        <li>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
                               <i class="nc-icon nc-tap-01"></i>
                               <p>Cerrar Sesión</p>
                            </a>
-                        </form>
-                     </li>
+                            </form>
+                        </li>
 
 
-               @endif
-
-               @if (  Auth::user()->tipo_user_id == 3 )
-               <ul class="nav">
-               <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('escritorio') }}">
+                        @endif @if ( Auth::user()->tipo_user_id == 3 )
+                        <ul class="nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('escritorio') }}">
                        <i class="nc-icon nc-circle-09"></i>
                        <p>Escritorio</p>
                     </a>
-                 </li>
-                 <li class="nav-item ">
-                    <a class="nav-link" href="{{ route('misdatos') }}">
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('misdatos') }}">
                        <i class="nc-icon nc-badge"></i>
                        <p>Mis datos</p>
                     </a>
-                 </li>
-                 <li class="nav-item ">
-                        <a class="nav-link" href="{{ route('/jefetaller/','consultas') }}">
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('/jefetaller/','consultas') }}">
                            <i class="nc-icon nc-check-2"></i>
                            <p>Consultas</p>
                         </a>
-                     </li>
+                            </li>
 
-                     <li class="nav-item ">
-                            <a class="nav-link" href="{{ route('/jefetaller/','reportes') }}">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('/jefetaller/','reportes') }}">
                                <i class="nc-icon nc-chart-pie-35"></i>
                                <p>Reportes</p>
                             </a>
-                         </li>
+                            </li>
 
-                         <li class="nav-item ">
+                            <li class="nav-item ">
                                 <a class="nav-link" href="{{ route('/jefetaller/registrarmecanico') }}">
                                    <i class="nc-icon nc-settings-90"></i>
                                    <p>Registrar Mecánico</p>
                                 </a>
-                             </li>
+                            </li>
 
-                             <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('/jefetaller/ordenreparacion') }}">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('/jefetaller/ordenreparacion') }}">
                                        <i class="nc-icon nc-paper-2"></i>
                                        <p>Registrar órden de reparación</p>
                                     </a>
-                                 </li>
+                            </li>
 
-                                 <li class="nav-item ">
-                                        <a class="nav-link" href="{{ route('principal') }}">
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{ route('principal') }}">
                                            <i class="nc-icon nc-zoom-split"></i>
                                            <p>Ir al sitio</p>
                                         </a>
-                                     </li>
+                            </li>
 
 
-                        <li>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                            @csrf
-                            <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+                            <li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
                               <i class="nc-icon nc-tap-01"></i>
                               <p>Cerrar Sesión</p>
                             </a>
-                            </form>
-                        </li>
-                 @endif
-
-                 @if (  Auth::user()->tipo_user_id == 4 )
-                 <ul class="nav">
-                 <li class="nav-item ">
-                      <a class="nav-link" href="{{ route('escritorio') }}">
+                                </form>
+                            </li>
+                            @endif @if ( Auth::user()->tipo_user_id == 4 )
+                            <ul class="nav">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('escritorio') }}">
                          <i class="nc-icon nc-circle-09"></i>
                          <p>Escritorio</p>
                       </a>
-                   </li>
-                   <li class="nav-item ">
-                      <a class="nav-link" href="">
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="">
                          <i class="nc-icon nc-circle-09"></i>
                          <p>Registrar empleados</p>
                       </a>
-                   </li>
-                   <li class="nav-item ">
-                          <a class="nav-link" href="">
+                                </li>
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="">
                              <i class="nc-icon nc-circle-09"></i>
                              <p>Registrar clientes</p>
                           </a>
-                       </li>
+                                </li>
 
 
 
 
-                       <li class="nav-item ">
-                              <a class="nav-link" href="">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="">
                                  <i class="nc-icon nc-circle-09"></i>
                                  <p>Otras acciones</p>
                               </a>
-                           </li>
+                                </li>
 
 
-                    <li>
-                          <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                             @csrf
-                             <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
+                                <li>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <a class="nav-link" onclick="logout-form.submit();" id="btnLogout">
                                 <i class="nc-icon nc-tap-01"></i>
                                 <p>Cerrar Sesión</p>
                              </a>
-                          </form>
-                       </li>
-                     @endif
+                                    </form>
+                                </li>
+                                @endif
 
-               <script>
-                  document.getElementById("btnLogout").onclick = function() {myFunction()};
+                                <script>
+                                    document.getElementById("btnLogout").onclick = function() {myFunction()};
 
                   function myFunction() {
                       document.getElementById("logout-form").submit();
                   }
-               </script>
-            </ul>
-         </div>
-      </div>
-      <div class="main-panel">
-      <div class="content">
-      @yield("content")
-      <!--  Termina el contenido -->
-      <!-- <div class="fixed-plugin">
+                                </script>
+                            </ul>
+            </div>
+        </div>
+        <div class="main-panel">
+            <div class="content">
+                @yield("content")
+                <!--  Termina el contenido -->
+                <!-- <div class="fixed-plugin">
          <div class="dropdown show-dropdown">
              <a href="#" data-toggle="dropdown">
                  <i class="fa fa-cog fa-2x"> </i>
@@ -346,33 +342,31 @@
          </div>
          </div>
          -->
-   </body>
-   <!--   Core JS Files   -->
-   <script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
-   <script src="{{asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
-   <script src="{{asset('assets/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
-   <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+</body>
+<!--   Core JS Files   -->
+<script src="{{asset('assets/js/core/jquery.3.2.1.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/core/popper.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('assets/js/core/bootstrap.min.js')}}" type="text/javascript"></script>
+<!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
 
-   <script src="{{asset('assets/js/plugins/bootstrap-switch.js')}}"></script>
-   <!--  Google Maps Plugin    -->
-   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+<script src="{{asset('assets/js/plugins/bootstrap-switch.js')}}"></script>
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
 
-   <script src="../assets/js/plugins/bootstrap-switch.js"></script>
+<script src="../assets/js/plugins/bootstrap-switch.js"></script>
 
-   <!--  Chartist Plugin  -->
-   <script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
-   <!--  Notifications Plugin    -->
-   <script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
-   <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+<!--  Chartist Plugin  -->
+<script src="{{asset('assets/js/plugins/chartist.min.js')}}"></script>
+<!--  Notifications Plugin    -->
+<script src="{{asset('assets/js/plugins/bootstrap-notify.js')}}"></script>
+<!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="{{asset('assets/js/light-bootstrap-dashboard.js?v=2.0.1')}}" type="text/javascript"></script>
-   <script type="text/javascript">
-   <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
-
-   <script type="text/javascript">
-    
+    <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
 
 
-     // var tablas = $("#tabla")
+
+<script type="text/javascript">
+    // var tablas = $("#tabla")
       $(document).ready(function() {
        var tabla =  $('table').dataTable({
             "language": {
@@ -406,19 +400,18 @@
     
     );
 
+</script>
 
-
-   </script>
-
-   <script src="{{asset('tablas/js.js')}}"></script>
+<script src="{{asset('tablas/js.js')}}"></script>
 
 </html>
 
 
 
-   <script>
-        $(document).ready(function (){
+<script>
+    $(document).ready(function (){
 
+        $(".seleccionVehiculo").hide();
             $("#ciudad_input").hide();
             $("#selector_ciudad").change(function() {
                 // Mostramos el campo de ingresar ciudad basado en el valor del select
@@ -440,11 +433,20 @@
             });
         });
 
+</script>
+<script src="{{asset('calendario/glDatePicker.min.js')}}" ></script>
+<script src="{{asset('select/select.js')}}"></script>
 
-    </script>
-    <script src="{{asset('calendario/glDatePicker.min.js')}}" rel="stylesheet" ></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+            $('.js-example-language').select2({
+                language: {
+                    formatNoMatches: function () { return "No se encontraron resultados"; },
+                }
+              });
+        });
 
-    <script type="text/javascript">
+        
         var today = new Date();
     var future = new Date(today);
     
@@ -488,6 +490,8 @@
 
     function vehiculoscliente(obj)
   {
+    $(".seleccionVehiculo").show();
+
     $('#vehiculos').empty()
     var dropDown = document.getElementById("buscarclientes");
     var carId = dropDown.options[dropDown.selectedIndex].value;
@@ -509,8 +513,6 @@
         });
   }
 
-
-        </script>
+</script>
 
 </html>
-

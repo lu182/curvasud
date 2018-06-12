@@ -61,6 +61,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Turno',"id_cliente")->where("id_estado_turno",3)->orderBy('id_turno', 'desc');
     }
 
+    public function usuario_ordenes(){
+        return $this->hasMany("App\OrdenReparacion","id_cliente");
+    }
+
    
 
   

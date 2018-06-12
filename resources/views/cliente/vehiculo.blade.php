@@ -2,6 +2,30 @@
 
 
 @section("content")
+<link href="{{ asset('css/styleRegistro.css') }}" rel="stylesheet">
+<style>
+
+    li {
+        padding:5px;
+        list-style-type: none;
+
+    }
+
+    label {
+        width: 300px
+    }
+
+    select {
+        width: 300px;
+    }
+
+    input {
+        width: 300px;
+    }
+
+
+</style>
+
 
 <div class="col-md-12">
         <div class="card">
@@ -41,7 +65,7 @@
                     <input type="hidden" value="{{$vehiculo->id_vehiculo}}" name="id_vehiculo">
 
 
-                    <input type="submit"  class="btn btn-danger" value="Dar vehiculo de baja">
+                    <input type="submit" style="cursor: pointer"  class="btn btn-danger" value="Dar vehiculo de baja">
 
                     
                 </form>
@@ -52,7 +76,7 @@
                         <input type="hidden" value="{{$vehiculo->id_vehiculo}}" name="id_vehiculo">
     
     
-                        <input type="submit" class="btn btn-primary" value="Dar vehiculo de alta nuevamente">
+                        <input type="submit" style="cursor: pointer"  class="btn btn-primary" value="Dar vehiculo de alta nuevamente">
     
                         
                     </form>
@@ -94,7 +118,7 @@
                     <li><label>* Inicio de garantía:</label> <input type="date" name="fecha_inicio_garantia" value="" id="" required></li>
                     <br>
                                        
-                    <li> <input type="submit" name="btnRegistrarse" value="REGISTRAR" placeholder="" id="registrarse"/> </li>
+                    <li> <input type="submit" class="btn btn-primary" style="cursor:pointer"name="btnRegistrarse" value="REGISTRAR VEHICULO" placeholder="" id="registrarse"/> </li>
                 </ul>
             </form>
             </div>

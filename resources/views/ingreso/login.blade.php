@@ -33,7 +33,7 @@
 				<b> Iniciar Sesión </b>
 				<h3>
 				@if($errors->any())
-					<h4>{{$errors->first()}}</h4>
+					<h4 style="color:white">{{$errors->first()}}</h4>
 				@endif</h3>
 
 				<!-- <div class="form-input" id="iconoEmail"> -->

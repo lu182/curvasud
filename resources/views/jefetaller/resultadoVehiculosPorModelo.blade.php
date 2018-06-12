@@ -11,6 +11,7 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Marca</th>
+                <th scope="col">Tipo de vehículo</th>
                 <th scope="col">Modelo</th>
                 <th scope="col">Año</th>
                 <th scope="col">Patente</th>
@@ -26,6 +27,7 @@
                 
         <tr> 
             <th scope="row">{{$modeloAMostrar->marca}}</th>
+            <td>{{$modeloAMostrar->vehiculo_tipoVehiculo->tipoVehiculo}}</td>
             <td>{{$modeloAMostrar->modelo}}</td>
             <td>{{$modeloAMostrar->anio}}</td>
             <td>{{$modeloAMostrar->patente}} </td>

@@ -24,7 +24,7 @@
                 <tr>
                         
                     <th scope="row" style="text-align:center">{{$vehiculo->marca}}</th>
-                    <td style="text-align:center">{{$vehiculo->id_tipo_vehiculo}}</td>
+                    <td style="text-align:center">{{$vehiculo->vehiculo_tipoVehiculo->tipoVehiculo}}</td>
                     <td style="text-align:center">{{$vehiculo->modelo}}</td>
                     <td style="text-align:center">{{$vehiculo->anio}}</td>
                     <td style="text-align:center">{{$vehiculo->corregirFecha()}}</td>

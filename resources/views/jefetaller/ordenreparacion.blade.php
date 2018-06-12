@@ -7,7 +7,11 @@
 <div class="row">
         <div class="col-md-12">
         <div class="card">
-        
+                        @if($errors->any())
+
+                        <div class="alert alert-danger">{{$errors->first()}}</div>
+                    
+                    @endif
         <h2> Órden de Reparación N° 14 </h2>
            <form action="" method="post" >
                 @csrf
@@ -23,7 +27,7 @@
 
                 <div class="form-control">
                         <li><label>Seleccione Cliente:</label> 
-                        <select name="cliente" onchange="vehiculoscliente(this)" id="buscarclientes">
+                        <select name="cliente" class="js-example-language" onchange="vehiculoscliente(this)" id="buscarclientes" required>
                         @foreach ($clientes as $cliente)
                             <option value="{{$cliente->id}}"> {{$cliente->nombre}}  {{$cliente->apellido}}  </option>
                         @endforeach
@@ -33,7 +37,7 @@
         
 
                 
-                <div class="form-control">
+                <div class="form-control seleccionVehiculo">
                         <li><label>Seleccione Vehiculo:</label> 
                         <select name="vehiculo" id="vehiculos">
                  

@@ -2,23 +2,22 @@
 
 
 @section("content")
-
-<h2>BUSCAR ORDEN DE REPARACIÓN POR N° DE CHASIS</h2>
+<h2>BUSCAR ÓRDENES POR DNI</h2>
 @if($errors->any())
 
 <div class="alert alert-danger">{{$errors->first()}}</div>
 
 @endif
         <div id="contenedorForm">
-                <form action="" method="post" id="formBuscarOrPorCliente">
+                <form action="" method="post" id="formBuscarPorChasis">
                 @csrf
                     <br>
                     <br>
                     <br>
                     
-                        <label>Chasis </label> <input type="text" name="nro_chasis" placeholder="Ingrese n° de chasis" id="" required /> 
+                        <label>DNI:</label> <input type="text" name="dni" placeholder="Ingrese dni" id="" required />
                                        
-                        <input type="submit" name="btnConsultarOrden" value="CONSULTAR" id=""/> 
+                         <input type="submit" name="btnConsultarChasis" value="CONSULTAR" id=""/> 
                     
                 </form>
             </div>

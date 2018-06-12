@@ -39,6 +39,16 @@ class Turno extends Model
        return $this->hasOne("App\Vehiculo","id_vehiculo");
    }
 
+   public function tipo_vehiculo(){
+      return $this->hasManyThrough(
+          "App\TipoVehiculo",
+          "App\Vehiculo",
+          "id_tipo_vehiculo",
+          "id_tipo_vehiculo",
+          "id_tipo_vehiculo"
+      );
+   }
+
    public function corregirFecha(){
        $fecha = $this->fecha;
        $fecha = strtotime($fecha);

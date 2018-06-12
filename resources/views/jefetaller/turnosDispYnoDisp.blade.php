@@ -21,7 +21,8 @@
           @foreach($fecha['horas'] as $hora)
           @if ($hora["estado"] == 1)
                 <tr>
-                    <th scope="row">{{$fecha['fecha']}} </th>
+                    <th scope="row">@php
+                       echo date('d-m-Y', strtotime($fecha['fecha']) ) @endphp </th>
                     <th scope="row">{{$hora['hora']}} </th>
 
                 </tr>

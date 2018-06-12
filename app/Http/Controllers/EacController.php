@@ -11,6 +11,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use PDF;
+use App\OrdenReparacion;
+use App\DetalleOrden;
+
 
 class EacController extends Controller
 {
@@ -54,7 +57,7 @@ class EacController extends Controller
     {
         $fechas_finales = array();
         $start = Carbon::now();
-        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(10), 0, 10));
+        $end = Carbon::createFromFormat('Y-m-d', substr(Carbon::now()->addDays(364), 0, 10));
 
         $fechas = [];
 
@@ -152,6 +155,7 @@ class EacController extends Controller
         $turnosCancelados = DB::table("turnos")
         ->where("id_estado_turno", 3)->where("fecha", $fechaActual)->get();
 
+        
         return view('eac.canceladosDelDia', ["turnosCancelados" => $turnosCancelados]);
 
 
@@ -213,7 +217,7 @@ class EacController extends Controller
 
     }
 
-    public function buscarORPorCliente(Resquest $request){
+    public function buscarORPorCliente(Request $request){
 
         $dni = $request->dni;
         //ingresa el dni, pero el sistema debe saber qué vehiculo es de ese cliente para que se genere la orden de ese vehiculo en pdf
@@ -228,11 +232,30 @@ class EacController extends Controller
 
     }
 
-    public function buscarORPorChasis(Resquest $request){
+    public function buscarORPorChasis(Request $request){
 
-        $chasis = $request->nro_chasis;
-        //$vehiculo = DB::table("vehiculos")->where("nro_chasis", $chasis)
-            //->join('users', 'vehiculos.id_cliente', '=', 'users.id')->first();
+     
+        $vehiculoABuscar = Vehiculo::where("nro_chasis",$request->nro_chasis)->first();
+
+        if ($vehiculoABuscar){
+
+            $ordenesABuscar= OrdenReparacion::where("id_vehiculo",$vehiculoABuscar->id_vehiculo)->get();
+
+            if (!0 == count($ordenesABuscar)){
+
+                
+                return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"vehiculo"=>$vehiculoABuscar]);
+            }
+            else{
+                return redirect()->back()->withErrors(['El vehiculo no tiene ninguna orden de reparación']);
+
+            }
+
+
+        }else{
+            return redirect()->back()->withErrors(['no se encontró un vehiculo con ese chasis']);
+
+        };
 
     }
 
@@ -296,6 +319,49 @@ class EacController extends Controller
 
         $reporte = PDF::loadView('eac.pdf.clientesturnoscancelados', ["clientesConTurnosCancelados"=>$clientesConTurnosCancelados]);
         return $reporte->stream('clientesportipo.pdf');
+    }
+
+    public function consultarordenClienteVer(){
+        return view("jefetaller.buscarOrdenPorDni");
+    }
+
+    public function consultarordenClienteBuscar(Request $request){
+
+        $clienteABuscar = User::where("dni",$request->dni)->first();
+
+        if ($clienteABuscar){
+
+            $ordenesABuscar= OrdenReparacion::where("id_cliente",$clienteABuscar->id)->get();
+
+            if (!0 == count($ordenesABuscar)){
+
+                
+                return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"cliente"=>$clienteABuscar]);
+            }
+            else{
+                return redirect()->back()->withErrors(['El cliente no tiene ninguna orden de reparación']);
+
+            }
+
+
+        }else{
+            return redirect()->back()->withErrors(['no se encontró un cliente con ese DNI']);
+
+        };
+
+
+    }
+    
+
+    public function mostrarOrden($id){
+
+        $ordenMostrar = OrdenReparacion::find($id);
+        $detalle_orden = DetalleOrden::where("id_orden_reparacion",$ordenMostrar->id_orden_reparacion)->first();
+
+       // return $detalleOrden;
+        $orden = PDF::loadView('jefetaller.pdf.ordenreparacion',
+        ["orden"=>$ordenMostrar,"detalle_orden"=>$detalle_orden]);
+         return $orden->stream('Orden Reparación.pdf');
     }
 
 
