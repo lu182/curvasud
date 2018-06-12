@@ -16,9 +16,12 @@ class VerifyEac
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
+        if($user){
         if ($user->tipo_user_id<2){
             return redirect()->route("sin_permiso");
         }
-        return $next($request);
+        return $next($request);}
+        return redirect()->route("sin_permiso");
+
     }
 }

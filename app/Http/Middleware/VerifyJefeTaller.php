@@ -15,10 +15,15 @@ class VerifyJefeTaller
      */
     public function handle($request, Closure $next)
     {
+
         $user = Auth::user();
-        if ($user->tipo_user_id<3){
-            return redirect()->route("sin_permiso");
+        if($user){
+            if ($user->tipo_user_id<3){
+                return redirect()->route("sin_permiso");
+            }
+            return $next($request);
         }
-        return $next($request);
+        return redirect()->route("sin_permiso");
+
     }
 }
