@@ -22,8 +22,10 @@ class EacController extends Controller
     {
 
 
-        $this->middleware("eac");
+        $this->middleware('jefetaller', ['except' => ['vehiculoclienteajax']]);
     }
+
+
     public function escritorioEac()
     {
         $user = Auth::user();

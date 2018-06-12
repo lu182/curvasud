@@ -24,7 +24,7 @@ class JefeDeTallerController extends Controller
 
     public function __construct()
     {
-       $this->middleware('jefetaller');
+        $this->middleware('jefetaller', ['except' => ['mostrarOrden']]);
     }
 
 
