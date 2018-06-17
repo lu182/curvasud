@@ -131,6 +131,10 @@ Route::post("/eac/consultarordenCliente", "EacController@consultarordenClienteBu
 Route::get("/eac/verOrden/{id}", "EacController@mostrarOrden")->name("/eac/verOrden");
 
 
+Route::get("/eac/reporteclientes", "EacController@reporteClientes")->name("eac/reporteclientes");
+Route::get("/eac/reportecancelados", "EacController@reporteCancelados")->name("eac/reportecancelados");
+
+
 Route::get("/jefetaller/bienvenida", "JefeDeTallerController@bienvenida")->name("/jefetaller/bienvenida")->middleware('jefetaller');
 
 Route::get("/jefetaller/ordenreparacion", "JefeDeTallerController@mostrarFormOrden")->name("/jefetaller/ordenreparacion");
@@ -168,10 +172,26 @@ Route::post("/jefetaller/mostrarOrdenPorChasis", "JefeDeTallerController@buscarO
 
 Route::get("/jefetaller/turnosDiaPorModelo", "JefeDeTallerController@turnosDiaPorModelo")->name("/jefetaller/turnosDiaPorModelo");
 Route::get("/jefetaller/turnosPorTipoServicio", "JefeDeTallerController@turnosPorTipoServicio")->name("/jefetaller/turnosPorTipoServicio");
+Route::get("/jefetaller/generarPdfTurnosPorTipoServicio", "JefeDeTallerController@generarPdfTurnosPorTipoServicio")->name("/jefetaller/generarPdfTurnosPorTipoServicio");
+
+Route::get("/jefetaller/turnosportipovehiculo", "JefeDeTallerController@turnosPorModeloHoy")->name("/jefetaller/turnosportipovehiculo");
+Route::get("/jefetaller/generarPdfTurnosDiaModelo", "JefeDeTallerController@generarPdfTurnosDiaModelo")->name("/jefetaller/generarPdfTurnosDiaModelo");
+
+Route::get("/jefetaller/turnosFinalDia", "JefeDeTallerController@turnosFinalDia")->name("/jefetaller/turnosFinalDia");
+Route::get("/jefetaller/generarPdfturnosFinalDia", "JefeDeTallerController@generarPdfturnosFinalDia")->name("/jefetaller/generarPdfturnosFinalDia");
+
+Route::get("/jefetaller/trabajosPorMecanicoMostrar", "JefeDeTallerController@trabajosPorMecanicoMostrar")->name("/jefetaller/trabajosPorMecanicoMostrar");
+Route::post("/jefetaller/trabajosPorMecanicoMostrar", "JefeDeTallerController@trabajosPorMecanicoGenerar")->name("/jefetaller/trabajosPorMecanicoMostrar");
 
 
-Route::get("/eac/reporteclientes", "EacController@reporteClientes")->name("eac/reporteclientes");
-Route::get("/eac/reportecancelados", "EacController@reporteCancelados")->name("eac/reportecancelados");
+//TAREAA
+
+Route::get("/jefetaller/totalOrdenes", "JefeDeTallerController@totalOrdenes")->name("/jefetaller/totalOrdenes");
+Route::get("/jefetaller/ordenesPorEstado", "JefeDeTallerController@ordenesPorEstado")->name("/jefetaller/ordenesPorEstado");
+Route::get("/jefetaller/vehiculosPorTipoServicio", "JefeDeTallerController@vehiculosPorTipoServicio")->name("/jefetaller/vehiculosPorTipoServicio");
+Route::get("/jefetaller/VehiculosMes", "JefeDeTallerController@VehiculosMes")->name("/jefetaller/VehiculosMes");
+
+//HASTA ACA
 
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 
@@ -183,3 +203,12 @@ Route::post("mail", "EnvioEmailController@enviarMail")->name("mail");
 Route::get("sin_permiso", function () {
     return "NO TIENES PERMISO PARA ACCEDER";
 })->name("sin_permiso");
+
+
+Route::get("admin/{pagina}", "AdministradorController@mostrarPagina")->name("admin");
+Route::get("admin/abm/{objeto}", "AdministradorController@mostrarAbm")->name("admin/abm");
+
+Route::get("/administrador/bienvenida",'AdministradorController@escritorioAdmin')->name('/administrador/bienvenida');
+
+Route::get("/administrador/crearCliente",'AdministradorController@crearCliente')->name('/administrador/crearCliente');
+Route::post("/administrador/crearCliente",'AdministradorController@crearCliente')->name('/administrador/crearCliente');

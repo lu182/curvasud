@@ -44,6 +44,12 @@ class Vehiculo extends Model
     return $fecha_inicio_garantia;
 }
 
+public function turno(){
+    return $this->hasMany("App\Vehiculo","id_vehiculo");
+}
+
+
+
 
 
 

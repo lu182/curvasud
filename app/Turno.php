@@ -36,7 +36,7 @@ class Turno extends Model
    }
 
    public function vehiculo(){
-       return $this->hasOne("App\Vehiculo","id_vehiculo");
+       return $this->belongsTo("App\Vehiculo","id_vehiculo");
    }
 
    public function tipo_vehiculo(){

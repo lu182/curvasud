@@ -218,16 +218,18 @@
                              <p>Registrar clientes</p>
                           </a>
                                 </li>
-
-
-
-
-                                <li class="nav-item ">
+                                    <li class="nav-item ">
                                     <a class="nav-link" href="">
                                  <i class="nc-icon nc-circle-09"></i>
                                  <p>Otras acciones</p>
                               </a>
                                 </li>
+                                <li class="nav-item ">
+                                        <a class="nav-link" href="{{ route('principal') }}">
+                                                   <i class="nc-icon nc-zoom-split"></i>
+                                                   <p>Ir al sitio</p>
+                                                </a>
+                                    </li>
 
 
                                 <li>

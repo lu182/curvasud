@@ -66,12 +66,18 @@
                       <li  class="{{ Request::path() == 'contacto' ? 'menu-active' : '' }}"><a href="{{ route('contacto') }}">Contacto</a></li>
                       @guest
                       <li><a href="{{ route('login') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Acceso Clientes</a></li>
-                      @else
+					  @else
+
                       <li><a href="{{ route('escritorio') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Ir al escritorio</a></li>
                       <li><a href="{{ route('logout') }}" style="    background-image: -webkit-linear-gradient(0deg, #f45622 0%, #f53e54 100%);;color:white;font-size:15px">Cerrar Sesión</a></li>
+					
+					  @if (Auth::user()->tipo_user_id == 4)
+					  <li> Bienvenido Administrador {{Auth::user()->nombre }}   {{Auth::user()->apellido }}</li>
+					  @else
 					  <li> Bienvenido  {{Auth::user()->nombre }}   {{Auth::user()->apellido }}</li>
-
-                      @endguest
+						@endif
+					  @endguest
+					 
 
 
                     </ul>

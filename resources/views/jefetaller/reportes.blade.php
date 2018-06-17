@@ -8,19 +8,20 @@
 <ul>
 
     <li>
-        <a href="">Generar un informe del total de turnos en el dia por modelo de vehiculo</a>
+        <a href="{{route('/jefetaller/turnosportipovehiculo')}}">Generar un informe del total de turnos en el dia por modelo de vehiculo</a>
     </li>
 
     <li>
-        <a href="">Generar un informe de turnos por tipo de servicio</a>
+        <a href="{{route('/jefetaller/turnosPorTipoServicio')}}">Generar un informe de turnos por tipo de servicio</a>
         </li>
-
+        
     <li>
-        <a href="">Generar un informe del total de turnos al final del dia</a>
+        <a href="{{route('/jefetaller/turnosFinalDia')}}">Generar un informe del total de turnos al final del dia</a>
     </li>
 
     <li>
-            <a href="">Generar un informe del total de tabajos realizados por mecánico</a>
+            
+            <a href="{{route('/jefetaller/trabajosPorMecanicoMostrar')}}">Generar un informe del total de tabajos realizados por mecánico</a>
         </li>
 
         <li>

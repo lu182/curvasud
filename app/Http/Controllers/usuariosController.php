@@ -95,30 +95,10 @@ class usuariosController extends Controller
                 case 3:
                     return view("jefetaller.bienvenida");
                 case 4:
-                    $fecha_actual = Carbon::now();
-                    $año = $fecha_actual->year;
-                    $mes = $fecha_actual->month;
-                    if ($mes < 10) {
-                        $mes = "0" . $mes;
-                    }
-                    $dia = $fecha_actual->day;
-                    $fecha_a_buscar = $año . "-" . $mes . "-" . $dia;
-                    $user = Auth::user();
-                    //return view("cliente.bienvenida");
-                    $turno = Turno::where("id_estado_turno", 2)
-                        ->where("fecha", '>', $fecha_a_buscar)
-                        ->orderBy('fecha', 'asc')
-                        ->first();
+                    
+                        return view("administrador.bienvenida");
 
-                    if ($turno) {
-                        $turnoEncriptado = Crypt::encryptString($turno->id_turno);
-
-                        return view("cliente.bienvenida", ["turno" => $turno, "turnoEncriptado" => $turnoEncriptado, "tieneTurno" => 1]);
-
-                    } else {
-                        return view("cliente.bienvenida", ["tieneTurno" => 0]);
-
-                    }
+                    
             }
 
         }

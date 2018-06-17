@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 12-06-2018 a las 10:14:39
+-- Tiempo de generación: 12-06-2018 a las 22:35:24
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 7.2.4
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `ciudades` (
   `id_ciudad` int(11) NOT NULL AUTO_INCREMENT,
   `ciudad` varchar(45) NOT NULL,
   PRIMARY KEY (`id_ciudad`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ciudades`
@@ -52,7 +52,11 @@ INSERT INTO `ciudades` (`id_ciudad`, `ciudad`) VALUES
 (10, 'Agua De Oro'),
 (12, 'Unquillo'),
 (13, 'Salsipuedes'),
-(14, 'Carlos Paz');
+(14, 'Carlos Paz'),
+(15, 'Calamuchita'),
+(16, 'Anisacate'),
+(17, 'Rio primero'),
+(18, 'Rio segundo');
 
 -- --------------------------------------------------------
 
@@ -111,38 +115,13 @@ CREATE TABLE IF NOT EXISTS `detalles_ordenes_reparacion` (
   `operacion_realizada` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id_detalle_orden`),
   KEY `FK_detalles_ordenes_reparacion_ordenes_reparacion_idx` (`id_orden_reparacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `detalles_ordenes_reparacion`
 --
 
 INSERT INTO `detalles_ordenes_reparacion` (`id_detalle_orden`, `id_orden_reparacion`, `kilometraje`, `motivo_ingreso`, `observaciones`, `extra`, `mecanico`, `operacion_realizada`) VALUES
-(1, 6, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(2, 7, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(3, 8, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(4, 9, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(5, 10, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(6, 11, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(7, 12, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(8, 13, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(9, 14, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(10, 15, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(11, 16, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(12, 17, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(13, 18, '20200', 'service 20.000 km', 'Nota manija puerta lado conductor floja', NULL, '3', 'Se realizó service correspondiente'),
-(14, 19, '19900', 'service 20.000 km', 'Cliente nota ruido en puerta trasera. Encuentra manija de la puerta lado conductor, floja.', NULL, '3', 'Se realizó service de 20.000 km correspondiente, se controló puerta ok. Se ajustó manija de la puerta'),
-(15, 20, '19900', 'service 20.000 km', 'Cliente nota ruido en puerta trasera. Encuentra manija de la puerta lado conductor, floja.', NULL, '3', 'Se realizó service de 20.000 km correspondiente, se controló puerta ok. Se ajustó manija de la puerta'),
-(16, 21, '19900', 'service 20.000 km', 'Cliente nota ruido en puerta trasera. Encuentra manija de la puerta lado conductor, floja.', NULL, '3', 'Se realizó service de 20.000 km correspondiente, se controló puerta ok. Se ajustó manija de la puerta'),
-(17, 22, '10128', 'gfgdfg', 'dggdfggdfg', NULL, '1', 'dgdfg'),
-(18, 23, '10128', 'hghgghhg', 'hfghfghfgh', NULL, '2', 'hfghfgh'),
-(19, 24, '19900', 'service 20.000 km', 'Cliente nota ruido en puerta trasera. Encuentra manija de la puerta lado conductor, floja.', NULL, '3', 'Se realizó service de 20.000 km correspondiente, se controló puerta ok. Se ajustó manija de la puerta'),
-(20, 25, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', NULL, '4', 'dgdgdgdg'),
-(21, 26, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
-(22, 27, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
-(23, 28, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
-(24, 29, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
-(25, 30, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
 (26, 31, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
 (27, 32, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
 (28, 33, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
@@ -152,7 +131,8 @@ INSERT INTO `detalles_ordenes_reparacion` (`id_detalle_orden`, `id_orden_reparac
 (32, 37, '10128', 'dgdgfdgfdgdgd', 'dgdfggdfg', 'kkko', '4', 'dgdgdgdg'),
 (33, 38, '45456456', 'dfggdgdg', 'dfgfdggdfg', 'dgdfgd', '1', 'dgfdgdf'),
 (34, 39, '9800', 'Service 10.000 km', 'Clienta nota desperfecto en dirección', NULL, '5', 'Se realizó service 10.000 km correctamente y se verificó la dirección ok'),
-(35, 40, '8000', 'Cambio de aceite', 'Notaba nivel de aceite elevado', NULL, '1', 'Se realizó cambio de aceite a modo de cortesía');
+(35, 40, '8000', 'Cambio de aceite', 'Notaba nivel de aceite elevado', NULL, '1', 'Se realizó cambio de aceite a modo de cortesía'),
+(36, 41, '20000', 'Service prueba', 'prueba', '--', '3', 'probandooo');
 
 -- --------------------------------------------------------
 
@@ -310,34 +290,13 @@ CREATE TABLE IF NOT EXISTS `ordenes_reparacion` (
   PRIMARY KEY (`id_orden_reparacion`),
   KEY `FK_ordenes_reparacion_empleados_idx` (`id_empleado`),
   KEY `FK_ordenes_reparacion_estados_ordenes_idx` (`id_estado_orden`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `ordenes_reparacion`
 --
 
 INSERT INTO `ordenes_reparacion` (`id_orden_reparacion`, `id_empleado`, `id_estado_orden`, `fecha_ingreso_vehiculo`, `fecha_egreso_vehiculo`, `id_mecanico`, `id_vehiculo`, `id_cliente`) VALUES
-(5, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(6, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(7, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(8, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(9, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(10, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(11, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(12, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(13, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(14, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(15, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(16, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(17, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(18, NULL, 2, '2018-06-08', '2018-06-08', 3, NULL, 0),
-(19, NULL, 2, '2018-06-11', '2018-06-12', 3, NULL, 0),
-(20, NULL, 2, '2018-06-11', '2018-06-12', 3, NULL, 0),
-(21, NULL, 2, '2018-06-11', '2018-06-12', 3, NULL, 0),
-(22, NULL, 2, '2018-06-11', '2018-06-13', 1, NULL, 0),
-(23, NULL, 2, '2018-06-11', '2018-06-14', 2, NULL, 0),
-(24, NULL, 2, '2018-06-11', '2018-06-12', 3, NULL, 0),
-(25, NULL, 2, '2018-06-12', '2018-06-12', 4, NULL, 0),
 (26, NULL, 2, '2018-06-12', '2018-06-12', 4, 5, 0),
 (27, NULL, 2, '2018-06-12', '2018-06-12', 4, 18, 0),
 (28, NULL, 2, '2018-06-12', '2018-06-12', 4, 16, 0),
@@ -352,7 +311,8 @@ INSERT INTO `ordenes_reparacion` (`id_orden_reparacion`, `id_empleado`, `id_esta
 (37, NULL, 2, '2018-06-12', '2018-06-12', 4, 5, 8),
 (38, NULL, 2, '2018-06-12', '2018-06-15', 1, 21, 3),
 (39, NULL, 2, '2018-06-12', '2018-06-14', 5, 38, 20),
-(40, NULL, 2, '2018-01-20', '2018-01-21', 1, 39, 20);
+(40, NULL, 2, '2018-01-20', '2018-01-21', 1, 39, 20),
+(41, NULL, 2, '2018-06-12', '2018-06-16', 3, 38, 20);
 
 -- --------------------------------------------------------
 
@@ -505,7 +465,7 @@ CREATE TABLE IF NOT EXISTS `turnos` (
   KEY `fk_turno_tipos_servicios_idx` (`id_tipo_servicio`),
   KEY `FK_turnos_estados_turnos_idx` (`id_estado_turno`),
   KEY `FK_turnos_clientes_idx` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `turnos`
@@ -523,7 +483,14 @@ INSERT INTO `turnos` (`id_turno`, `id_tipo_servicio`, `id_cliente`, `id_estado_t
 (34, 1, 14, 3, '2018-06-26', '12:00:00', 36),
 (35, 2, 14, 2, '2018-07-13', '08:00:00', 36),
 (36, 1, 20, 3, '2018-08-16', '08:00:00', 38),
-(37, 1, 20, 2, '2018-07-10', '09:00:00', 39);
+(37, 1, 20, 3, '2018-07-10', '09:00:00', 39),
+(38, 1, 20, 3, '2018-08-16', '08:00:00', 38),
+(39, 1, 20, 3, '2018-09-20', '08:00:00', 38),
+(40, 1, 20, 3, '2018-09-13', '11:00:00', 39),
+(41, 1, 20, 3, '2018-08-16', '08:00:00', 38),
+(42, 1, 20, 2, '2018-08-16', '08:00:00', 38),
+(43, 2, 20, 3, '2018-10-18', '12:00:00', 39),
+(44, 2, 20, 2, '2018-10-18', '12:00:00', 39);
 
 -- --------------------------------------------------------
 
@@ -559,7 +526,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `users_id_tipo_doc_foreign` (`id_tipo_doc`),
   KEY `users_id_ciudad_foreign` (`id_ciudad`),
   KEY `users_id_tipo_empleado_foreign` (`id_tipo_empleado`)
-) ENGINE=MyISAM AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -573,15 +540,15 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 (8, 'juampi_88', 'juancho1@gmail.com', '$2y$10$.21042BLp6H.O1yHCAW7O.375wvUR/Uj3HXtuHhUwh3PYQLLZ/QpS', NULL, '2018-05-23 04:00:35', '2018-05-23 04:00:35', 1, 1, 1, 36234993, 'Pablo', 'Paillet', '2018-05-31', '', 'Caseros 1180', 5000, '3543640112', NULL, NULL),
 (7, 'hector86', 'hectorcaceres@gmail.com', '$2y$10$xTbuyCkqDxUAXdabFUecL.BWPsnMm9p8pRqWVbYoHlJJskhb1jmG6', NULL, '2018-05-23 04:00:11', '2018-05-23 04:00:11', 1, 1, 1, 36234993, 'Héctor', 'Cáceres', '2018-05-31', '', 'Bv. san juan 600', 5000, '3512566477', NULL, NULL),
 (9, 'lucre29', 'lucrecia.m@hotmail.com', '25f9e794323b453885f5181f1b624d0b', 'siMrVhj7f8ymqStdAoWhMhSUkDLs64RgS4LV9W6EGxWoLhBnZkPAQjSjiIm1', '2018-05-23 04:01:07', '2018-05-23 04:01:07', 1, 1, 1, 36234999, 'Lucrecia', 'Martinez', '2018-05-31', '', 'Av. Duarte Quiros 1500', 5000, '3516985254', NULL, NULL),
-(10, 'luFCA', 'lueac@curvasud.com', '$2y$10$dvCizcP8kg5rKzzUKTNwIeu9AwdHE7y4BaIEHFN/9yzAg7Bf4mzIu', 'iA9HnJYEsn4EE3zANMTssGvTI0TLyPsqSGHtcZAAyjwgMchIp3SYN1IIDRmg', '2018-06-02 02:12:39', '2018-06-12 12:26:20', 2, 1, 1, 14569874, 'Luciana', 'Fernandez', '1990-05-28', NULL, 'Av.Juan B Justo 601', 5000, '3513655411', NULL, NULL),
-(12, 'carlosfca', 'carlosgomez@curvasud.com', '$2y$10$1miGxsLiXYUzKbDiQCgDfuaUwQXw/PVUwmvT74hkJVi4h8zG6VPai', 'NyEszzIBYMbiEFm2K3i9b8xx49Qqpy9GfB9xKGqFJpwGKFUb9oig4cwBJyrl', '2018-06-04 08:29:25', '2018-06-12 12:54:42', 3, 1, 1, 33333333, 'Carlos', 'Gómez', '1983-06-14', NULL, 'Bolivar 556', 5002, '3512654787', NULL, NULL),
+(10, 'luFCA', 'lueac@curvasud.com', '$2y$10$dvCizcP8kg5rKzzUKTNwIeu9AwdHE7y4BaIEHFN/9yzAg7Bf4mzIu', 'qb58mypYoZsycppfJOkKdvb05x0AfK6SVNJnMkHjxk5myKaQ3qlKBfOLQM2f', '2018-06-02 02:12:39', '2018-06-13 01:04:05', 2, 1, 17, 14569874, 'Luciana', 'Fernandez', '1990-05-28', NULL, 'Av.Juan B Justo 602', 5002, '3513655412', NULL, NULL),
+(12, 'carlosfca', 'carlosgomez@curvasud.com', '$2y$10$1miGxsLiXYUzKbDiQCgDfuaUwQXw/PVUwmvT74hkJVi4h8zG6VPai', 'vjpEBjclwHHC8uzAvIk6jly4Q8EUIFZytZGtEz7rofcr4eypdMLJCjy0BUqQ', '2018-06-04 08:29:25', '2018-06-13 01:17:09', 3, 1, 18, 33333333, 'Carlos', 'Gómez', '1983-06-14', NULL, 'Bolivar 556', 5002, '3512654787', NULL, NULL),
 (13, 'mat22', 'mat22@gmail.com', '$2y$10$d.c/5IZ5Ui0cyVcCUNmiBO3rMyML9DB5bcUAAEJzDbCVvtUtIeAf6', 'OGC73nblHxEEdal16TWGJ6gg3rKfcuSXrixDQ3zJLJilUo7rd7xYodbvrPuH', '2018-06-06 06:20:04', '2018-06-06 06:20:04', 1, 1, 1, 1726372, 'Matias ', 'Fernandez', '2018-06-09', '', 'Salta', 5000, '3543640117', NULL, NULL),
 (14, 'JuPrueba', 'juprueba@gmail.com', '$2y$10$0RQv/ZFHLjyFKaFp/VuWTOlRRrig8UHAnGFGrKwCLjx.VnqF/3Lsm', 'Dzcd9VM3VoxxyyJIaBgSllFTf6hZW0030no6LXUKGsvy8ghaWLMl1XkVPT3E', '2018-06-07 03:25:28', '2018-06-07 03:25:28', 1, 1, 1, 35963113, 'Julieta', 'Dominguez', '2018-05-28', NULL, 'Bv. san juan 700', 5000, '3518179694', NULL, NULL),
 (15, 'Jorgelino2', 'jor25@hotmail.com', '$2y$10$Pf.TKbZSuPuBNwdBHz4hNOy7EiBuIqjlKqRWBDFJsJOhagq6Be6dW', NULL, '2018-06-08 06:02:14', '2018-06-08 06:02:15', 1, 1, 14, 3658947, 'Juan', 'Quiroga', '2018-06-15', 'asdsad', 'asasd', 5000, '358978444', NULL, NULL),
 (16, 'LuProbando', 'luprobando@gmail.com', '$2y$10$eJq1vlHbygrlEkdlLGtvAegn6dtM.3WNXE8/4IOO/WClZI10n3olS', 'scesCzNbw3vRFI9Y8hmZsEPWhigAPNjLptrWpNf3QNslRpdzeG8aVGSLs1uY', '2018-06-11 09:00:44', '2018-06-11 09:00:44', 1, 1, 1, 35966333, 'Ludmila', 'Spinetta', '1991-06-21', NULL, 'Dean funes 1322', 5000, '3516988755', NULL, NULL),
 (18, 'julioPrueba', 'julio@gmail.com', '$2y$10$JpJ7Y6d53SkIBs1p1KqSIehmfIje8/BFjlPq2xMrMAHzjeG7c/xq.', 'Ddi12MGiRof6ZEcKqACsdPO8PBRQBZN3bNkH2bsBfVRU6I5Mw5o0SzbyqjdM', '2018-06-11 09:10:59', '2018-06-11 09:11:48', 1, 1, 2, 30233511, 'Julio', 'Cortazar', '1960-06-21', NULL, 'Av maipu 500', 5003, '3512455115', NULL, NULL),
 (19, 'Pichu86', 'patricio_cba@gmail.com', '$2y$10$EZHlD0X.yj4msYSJtcP99uzY9oVKMdvgWStm8pEzuxkvQcRlIMvg6', 'MU7AScQiHutmdEtCZPPEPety4DjZgKVkQ6Bkcbm0uVJDpqqHKuAc9RcOzuLO', '2018-06-12 06:00:45', '2018-06-12 06:00:45', 1, 1, 1, 33655496, 'Patricio', 'Pérez', '2018-06-14', NULL, 'Bv. chacabuco 566', 5000, '3516885544', NULL, NULL),
-(20, 'Jaz88', 'jazmin182@hotmail.com', '$2y$10$W0IAqxQI6umQ1cwRQSvGteKdRBkJjDwbcKrWXQM/ul5XCjgvQmxde', 'UuuBAcBlqi0OqWdL0LUZiRHzhrAVOU1IojHF0W55MQeiyR26y2sZiBeihWjQ', '2018-06-12 11:53:06', '2018-06-12 12:06:48', 1, 1, 1, 36355422, 'Jazmin', 'Suárez', '1988-06-22', NULL, 'Caseros 601', 5003, '3512002183', NULL, NULL);
+(20, 'Jaz88', 'jazmin182@hotmail.com', '$2y$10$W0IAqxQI6umQ1cwRQSvGteKdRBkJjDwbcKrWXQM/ul5XCjgvQmxde', 'FW7qbIzaXRt5YLBIlQChYmfzn83ooG3bBjc9XRCvM5cBHMHJ6CTwVtOhPfPu', '2018-06-12 11:53:06', '2018-06-13 00:53:28', 1, 1, 16, 36355422, 'Jazmin', 'Suárez', '1988-06-22', NULL, 'Caseros 602', 5000, '3512002182', NULL, NULL);
 
 -- --------------------------------------------------------
 

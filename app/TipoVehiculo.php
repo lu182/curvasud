@@ -16,4 +16,6 @@ class TipoVehiculo extends Model
    {
        return $this->hasMany('App\Vehiculo',"id_tipo_vehiculo")->orderBy('id_vehiculo', 'desc');
    }
+   
+   
 }
