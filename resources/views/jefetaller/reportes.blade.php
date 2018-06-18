@@ -21,24 +21,28 @@
 
     <li>
             
-            <a href="{{route('/jefetaller/trabajosPorMecanicoMostrar')}}">Generar un informe del total de tabajos realizados por mecánico</a>
+        <a href="{{route('/jefetaller/trabajosPorMecanicoMostrar')}}">Generar un informe del total de tabajos realizados por mecánico</a>
         </li>
 
         <li>
-                <a href="">Generar un informe del total de ordenes de reparacion ingresadas</a>
+                <a href="{{route('/jefetaller/totalOrdenes')}}">Generar un informe del total de ordenes de reparacion ingresadas</a>
             </li>
+            
 
             <li>
-                    <a href="">Generar un informe de ordenes de reparacion por estado de la orden</a>
+                    <a href="{{route('/jefetaller/ordenesPorEstado')}}">Generar un informe de ordenes de reparacion por estado de la orden</a>
                 </li>
+                
 
                 <li>
-                        <a href="">Generar un informe de vehiculos por tipo de servicio</a>
+                        <a href="{{route('/jefetaller/vehiculosPorTipoServicio')}}">Generar un informe de vehiculos por tipo de servicio</a>
                     </li>
+                    
 
                     <li>
-                            <a href="">Generar un informe de la cantidad total de vehiculos ingesados en el mes</a>
+                            <a href="{{route('/jefetaller/VehiculosMes')}}">Generar un informe de la cantidad total de vehiculos ingesados en el mes</a>
                         </li>
+                        
     
 
 </ul>

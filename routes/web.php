@@ -185,12 +185,20 @@ Route::post("/jefetaller/trabajosPorMecanicoMostrar", "JefeDeTallerController@tr
 
 
 //TAREAA
-
 Route::get("/jefetaller/totalOrdenes", "JefeDeTallerController@totalOrdenes")->name("/jefetaller/totalOrdenes");
-Route::get("/jefetaller/ordenesPorEstado", "JefeDeTallerController@ordenesPorEstado")->name("/jefetaller/ordenesPorEstado");
-Route::get("/jefetaller/vehiculosPorTipoServicio", "JefeDeTallerController@vehiculosPorTipoServicio")->name("/jefetaller/vehiculosPorTipoServicio");
-Route::get("/jefetaller/VehiculosMes", "JefeDeTallerController@VehiculosMes")->name("/jefetaller/VehiculosMes");
+Route::get("/jefetaller/generarPDFtotalOrdenes", "JefeDeTallerController@generarPDFtotalOrdenes")->name("/jefetaller/generarPDFtotalOrdenes");
 
+
+Route::get("/jefetaller/ordenesPorEstado", "JefeDeTallerController@ordenesPorEstado")->name("/jefetaller/ordenesPorEstado");
+Route::get("/jefetaller/generarPDFordenesPorEstado", "JefeDeTallerController@generarPDFordenesPorEstado")->name("/jefetaller/generarPDFordenesPorEstado");
+
+
+Route::get("/jefetaller/vehiculosPorTipoServicio", "JefeDeTallerController@vehiculosPorTipoServicio")->name("/jefetaller/vehiculosPorTipoServicio");
+Route::get("/jefetaller/generarPDFvehiculosPorTipoServicio", "JefeDeTallerController@generarPDFvehiculosPorTipoServicio")->name("/jefetaller/generarPDFvehiculosPorTipoServicio");
+
+
+Route::get("/jefetaller/VehiculosMes", "JefeDeTallerController@VehiculosMes")->name("/jefetaller/VehiculosMes");
+Route::get("/jefetaller/generarPDFVehiculosMes", "JefeDeTallerController@generarPDFVehiculosMes")->name("/jefetaller/generarPDFVehiculosMes");
 //HASTA ACA
 
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");

@@ -2,13 +2,13 @@
 
 
 @section("content")
-<h2>Turnos en el día por Tipos de Servicio </h2>
+<h2>Turnos por Tipo de Servicio </h2>
 <a class="btn btn-primary" href="{{route('/jefetaller/generarPdfTurnosPorTipoServicio')}}" target="_blank"> 
-Generar Pdf
+IMPRIMIR
 </a>
         @foreach ($tipos as $key => $tipo)
-@if($tipo->tiposervicio_turno->count() > 0)
-        <h2> Tipo de Servicio: {{$tipo->tipoServicio}} </h2>
+    @if($tipo->tiposervicio_turno->count() > 0)
+        <h3> Tipo de Servicio: {{$tipo->tipoServicio}} </h3>
 
              <table class="table display" id="tabla">
                         <thead class="thead-dark">
@@ -28,7 +28,7 @@ Generar Pdf
                    
             @foreach ($tipo->tiposervicio_turno as  $turno)
                 <tr>
-                    <th scope="row">{{$turno->fecha}} </th>
+                    <th scope="row">{{$turno->corregirFecha()}} </th>
                     <th scope="row">{{$turno->vehiculo['marca']}} </th>
                     <th scope="row">{{$turno->vehiculo['patente']}} </th>
                     <th scope="row">{{$turno->vehiculo['nro_chasis']}} </th>

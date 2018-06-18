@@ -2,7 +2,7 @@
 
 
 @section("content")
-<h3>ÓRDENES POR MECÁNICO</h3>
+<h3>TRABAJOS REALIZADOS POR MECÁNICO</h3>
 
         <div id="contenedorForm">
                 <form action="" method="post" id="formBuscarPorModelo">
@@ -10,8 +10,8 @@
                     <br>
                     <br>
                     <br>
-                    <ul> 
-                        <li><label>Seleccione Mecánico</label> 
+                     
+                        <label>Seleccione Mecánico</label> 
                        
                             <select name="id_mecanico">
                                     @foreach ($mecanicos as $mecanico)
@@ -19,8 +19,8 @@
                                                             @endforeach
                               
                             </select>
-                        <li> <input type="submit" name="btnConsultarModelo" value="BUSCAR" id=""/> </li>
-                    </ul>
+                        <input type="submit" name="btnConsultar" value="BUSCAR" id="" formtarget="_blank"/>
+                    
                 </form>
             </div>
 

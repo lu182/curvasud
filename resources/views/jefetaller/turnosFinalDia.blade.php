@@ -2,13 +2,13 @@
 
 
 @section("content")
-<h2>Turnos al final del Día</h2>
+<h2>Turnos al final del día</h2>
 <a class="btn btn-primary" href="{{route('/jefetaller/generarPdfturnosFinalDia')}}" target="_blank"> 
-Generar Pdf
+IMPRIMIR
 </a>
         @foreach ($turnos as $key => $turnoDia)
 
-        <h2> Estado del turno: {{$key}} </h2>
+            <h3> Estado del turno: {{$key}} </h3>
 
              <table class="table display" id="tabla">
                         <thead class="thead-dark">
@@ -28,7 +28,7 @@ Generar Pdf
                    
             @foreach ($turnoDia as $key => $turno)
                 <tr>
-                    <th scope="row">{{$turno->fecha}} </th>
+                    <th scope="row">{{$turno->corregirFecha()}} </th>
                     <th scope="row">{{$turno->vehiculo['marca']}} </th>
                     <th scope="row">{{$turno->vehiculo['patente']}} </th>
                     <th scope="row">{{$turno->vehiculo['nro_chasis']}} </th>

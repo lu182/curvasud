@@ -4,7 +4,7 @@
 @section("content")
 <h2>Turnos en el día por Modelo de Vehículo</h2>
 <a class="btn btn-primary" href="{{route('/jefetaller/generarPdfTurnosDiaModelo')}}" target="_blank"> 
-Generar Pdf
+IMPRIMIR
 </a>
         @foreach ($turnosConModelo as $key => $modelo)
 

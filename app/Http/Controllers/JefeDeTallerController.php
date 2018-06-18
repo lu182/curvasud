@@ -319,15 +319,7 @@ class JefeDeTallerController extends Controller
 //Consultar órdenes de reparación ingresadas, por cliente.
     //Consultar órdenes de reparación ingresadas, por número de chasis.
 
-//Reporte del total de turnos en el día por modelo de vehículo
-    //Reporte de turnos por tipo de servicio
-    //Reporte del total de turnos al final del día
-    //Reporte del total de trabajos realizados por mecánico
-    //Reporte de vehículos por tipo de servicio
-    //Reporte del total de OR registradas
-    //Reporte de OR por estado de la órden
-    //Reporte del total de vehiculos ingresados en el mes
-    //Imprimir órden de reparación (PDF)
+
 
 //Consultar mecánicos
     public function mecanicosRegistrados()
@@ -339,7 +331,7 @@ class JefeDeTallerController extends Controller
 
     }
 
-//Consultar vehículos registrados // agregarle el tipo de vehiculo
+//Consultar vehículos registrados 
     public function vehiculosRegistrados()
     {
 
@@ -405,6 +397,51 @@ class JefeDeTallerController extends Controller
 
     }
 
+
+
+    //************************************** REPORTES *****************************************************//
+
+    //Reporte del total de turnos en el día por modelo de vehículo
+    public function turnosPorModeloHoy()
+    {
+
+        $fechaActual = date('Y-m-d', time());
+
+        // $turnosHoy = Turno::with("vehiculo")->where("fecha", $fechaActual)->get();
+
+        //GET ES IGUAL A SELECT *
+
+        $turnosConModelo = DB::table("vehiculos")
+            ->join("turnos", 'vehiculos.id_vehiculo', '=', 'turnos.id_vehiculo')
+            ->where("fecha", $fechaActual)
+            ->get()
+            ->groupBy("modelo");
+
+        return view("jefetaller.turnosdiamodelo", ["turnosConModelo" => $turnosConModelo]);
+
+    }
+
+    public function generarPdfTurnosDiaModelo()
+    {
+        $fechaActual = date('Y-m-d', time());
+
+        // $turnosHoy = Turno::with("vehiculo")->where("fecha", $fechaActual)->get();
+
+        //GET ES IGUAL A SELECT *
+
+        $turnosConModelo = DB::table("vehiculos")
+            ->join("turnos", 'vehiculos.id_vehiculo', '=', 'turnos.id_vehiculo')
+            ->where("fecha", $fechaActual)
+            ->get()
+            ->groupBy("modelo");
+
+        $informe = PDF::loadView('jefetaller.pdf.turnosdiamodelo',
+            ["turnosConModelo" => $turnosConModelo]);
+        return $informe->stream('Turnos en el día por modelo.pdf');
+
+    }
+
+//Reporte de turnos por tipo de servicio
     public function turnosPorTipoServicio()
     {
 
@@ -423,51 +460,13 @@ class JefeDeTallerController extends Controller
         return $informe->stream('Turnos por tipo de servicio.pdf');
 
     }
-    public function turnosPorModeloHoy()
-    {
 
-        $fechaActual = date('Y-m-d', time());
-
-        // $turnosHoy = Turno::with("vehiculo")->where("fecha", $fechaActual)->get();
-
-        //GET ES IGUAL A SELECT *
-
-        $turnosConModelo = DB::table("vehiculos")
-            ->join("turnos", 'vehiculos.id_vehiculo', '=', 'turnos.id_vehiculo')
-            ->where("fecha", "2018-10-18")
-            ->get()
-            ->groupBy("modelo");
-
-        return view("jefetaller.turnosdiamodelo", ["turnosConModelo" => $turnosConModelo]);
-
-    }
-
-    public function generarPdfTurnosDiaModelo()
-    {
-        $fechaActual = date('Y-m-d', time());
-
-        // $turnosHoy = Turno::with("vehiculo")->where("fecha", $fechaActual)->get();
-
-        //GET ES IGUAL A SELECT *
-
-        $turnosConModelo = DB::table("vehiculos")
-            ->join("turnos", 'vehiculos.id_vehiculo', '=', 'turnos.id_vehiculo')
-            ->where("fecha", "2018-10-18")
-            ->get()
-            ->groupBy("modelo");
-
-        $informe = PDF::loadView('jefetaller.pdf.turnosdiamodelo',
-            ["turnosConModelo" => $turnosConModelo]);
-        return $informe->stream('Turnos en el día por modelo.pdf');
-
-    }
-
+//Reporte del total de turnos al final del día
     public function turnosFinalDia()
     {
+         $fechaActual = date('Y-m-d', time());
 
-        $fechaActual = date('Y-m-d', time());
-
-        $turnos = Turno::with("vehiculo")->where("fecha", "2018-10-18")->get()->groupBy("estado.estadoTurno");
+        $turnos = Turno::with("vehiculo")->where("fecha", $fechaActual)->get()->groupBy("estado.estadoTurno");
         return view("jefetaller.turnosFinalDia", ["turnos" => $turnos]);
     }
 
@@ -482,9 +481,10 @@ class JefeDeTallerController extends Controller
         return $informe->stream('Turnos al final del día.pdf');
     }
 
+
+//Reporte del total de trabajos realizados por mecánico
     public function trabajosPorMecanicoMostrar()
     {
-
         $mecanicos = Mecanico::get();
         return view("jefetaller.buscarMecanicos", ["mecanicos" => $mecanicos]);
     }
@@ -494,42 +494,98 @@ class JefeDeTallerController extends Controller
 
         $mecanico = Mecanico::find($request->id_mecanico);
         $ordenes = OrdenReparacion::where("id_mecanico", $request->id_mecanico)->get();
-
-       
-
+        $vehiculos = Vehiculo::all(); //despues llamo en la vista (trabajospormecanico.blade) la funcion del modelo orden_vehiculo()
+        
         $informe = PDF::loadView('jefetaller.pdf.trabajospormecanico',
-        ["ordenes" => $ordenes,"mecanico"=>$mecanico]);
+        ["ordenes" => $ordenes,"mecanico"=>$mecanico, "vehiculos"=>$vehiculos]);
         return $informe->stream('Trabajos por Mecánico.pdf');
 
     }
 
+//Reporte del total de OR ingresadas
+    public function totalOrdenes(){
+        $ordenes = OrdenReparacion::all();
+        $mecanicos = Mecanico::all();
+        return view ("jefetaller.totalOrdenesIngresadas", ["ordenes" => $ordenes, "mecanicos"=> $mecanicos]);
+        
+    }
+
+    public function generarPDFtotalOrdenes(){
+        $ordenes = OrdenReparacion::all();
+        $mecanicos = Mecanico::all();
+
+        $informe = PDF::loadview('jefetaller.pdf.totalordenes',
+        ["ordenes" => $ordenes, "mecanicos"=> $mecanicos]);
+        return $informe->stream('TotalOrdenesRegistradas.pdf');
+        
+    }
+
+
+//Reporte de OR por estado de la órden
     public function ordenesPorEstado(){
         $ordenes = EstadoOrden::with("estados_orden")->get();
 
-        return $ordenes;
+        return view ("jefetaller.ordenesReparacionPorEstado", ["ordenes" => $ordenes]);
     }
 
-    public function totalOrdenes(){
-        $ordenes = OrdenReparacion::all();
-        return $ordenes;
+    public function generarPDFordenesPorEstado(){
+
+        $ordenes = EstadoOrden::with("estados_orden")->get();
+
+        $informe =  PDF::loadview('jefetaller.pdf.ordenesporestado',
+        ["ordenes" => $ordenes]);
+        return $informe->stream('OrdenesReparacionPorEstado.pdf');
+
     }
 
+                                        //PENDIENTES!!!
+
+//Reporte de vehículos por tipo de servicio
     public function vehiculosPorTipoServicio(){
-        $turnos = Turno::with("tipo")->with("vehiculo")->get()->groupBy("tipo.tipoServicio");
-        return $turnos;
+        $tipoService = Turno::with("tipo")->with("vehiculo")->get()->groupBy("tipo.tipoServicio");
+
+        return view ("jefetaller.buscarVehiculosPorTipoServicio", ["tipoService" => $tipoService]);
     }
 
+    public function generarPDFvehiculosPorTipoServicio(){
+
+        $tipoService = Turno::with("tipo")->with("vehiculo")->get()->groupBy("tipo.tipoServicio");
+        $informe = PDF::loadview('jefetaller.pdf.vehiculosportipodeservicio',
+        ["tipoService" => $tipoService]);
+        return $informe->stream('VehiculosPorTipoDeServicio.pdf');
+
+    }
+
+
+//Reporte del total de vehiculos ingresados en el mes
     public function VehiculosMes(){
 
         $hoy = Carbon::now();
         $mesActual = $hoy->month;
 
-
-
         $vehiculosDelMes = Turno::with("vehiculo")->whereMonth('fecha', '=', $mesActual)->get();
 
-        return $vehiculosDelMes;
+        return view ("jefetaller.vehiculosIngresadosEnElMes",
+        ["vehiculosDelMes" => $vehiculosDelMes]);
+
 
     }
+
+    public function generarPDFVehiculosMes(){
+    
+    $vehiculosDelMes = Turno::with("vehiculo")->whereMonth('fecha', '=', $mesActual)->get(); 
+    $informe = PDF::loadview('jefetaller.pdf.vehiculosingresadosenelmes',
+    ["vehiculosDelMes" => $vehiculosDelMes]);
+
+    
+
+    }
+
+    
+
+
+
+
+
 
 }

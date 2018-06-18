@@ -30,15 +30,20 @@
                 </h1>
 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doeiusmo d tempor incididunt ut labore et dolore magna aliqua.
+                    CurvaSud es una empresa dedicada a la venta y comercialización de vehículos teniendo como eje principal de su operatoria la atención y el servicio al cliente. Con más de 20 años de experiencia en este rubro, CurvaSud ofrece el respaldo y confianza que toda persona necesita al momento de adquirir un vehículo.
                 </p>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed doeiusmo d tempor incididunt ut labore et dolore magna aliqua.
+                    En la actualidad, es uno de los más importantes concesionarios de las redes oficiales Fiat, y cuenta con toda la línea de automóviles, pick ups y utilitarios. También comercializa, en forma oficial.
                 </p>
-                <a class="primary-btn" href="#">Comience ahora</a>
+                <p>
+                    La empresa se encuentra emplazada en la ciudad de Córdoba, en la intersección del Bv. San Juan esquina Pasaje Santo Tomás, desarrollando sus actividades en un predio de más de 9.300 m2.
+                </p>
+                
             </div>
-            <div class="col-lg-6 about-video-right justify-content-center align-items-center d-flex">
-                <a class="play-btn" href="https://www.youtube.com/watch?v=o3SYW4NPcRw"><img class="img-fluid mx-auto" src="https://image.flaticon.com/icons/svg/26/26025.svg" width="50"alt=""></a>
+            <div class="col-lg-6 about-video-right justify-content-center align-items-center d-flex" style= "height: 415px;">
+                <p>
+                    Cuenta con una importante estructura edilicia, con cómodas y funcionales instalaciones para el mejor desenvolvimiento de los clientes; haciendo de la estadía en la concesionaria un momento sumamente agradable. Cada una de las líneas de automotores que la empresa comercializa se encuentran en un espacio único y especialmente diseñado, como así también el sector destinado a servicio mecánico.
+                </p>
             </div>
         </div>
     </div>
@@ -51,7 +56,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 home-about-left">
-                <img class="mx-auto d-block img-fluid" src="{{asset('img/header1.jpg')}}" alt="">
+                <img class="mx-auto d-block img-fluid" src="{{asset('img/empresa.jpg')}}" alt="">
             </div>
             <div class="col-lg-6 home-about-right">
                 <h6 class="text-uppercase">Una empresa centrada en el valor agregado</h6>

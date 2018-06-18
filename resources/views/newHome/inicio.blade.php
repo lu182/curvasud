@@ -38,7 +38,7 @@
                     A través del sistema de gestión de CurvaSud, podrás realizar un registro y
                     seguimiento de todas las tareas de mantenimiento de tu vehículo, para que puedas ocuparte de lo que te importa.
                 </p>
-                <a class="primary-btn" href="#">Conoce más sobre nosotros</a>
+                <a class="primary-btn" href="{{ route('nosotros') }}">Conoce más sobre nosotros</a>
             </div>
             <div class="col-lg-6 justify-content-center align-items-center d-flex">
                 <img class="img-fluid mx-auto" src="{{asset('img/tacografo.jpg')}}" alt=""></a>
