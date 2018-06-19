@@ -22,7 +22,7 @@ class EacController extends Controller
     {
 
 
-        $this->middleware('jefetaller', ['except' => ['vehiculoclienteajax']]);
+        $this->middleware('eac', ['except' => ['vehiculoclienteajax']]);
     }
 
 
@@ -210,9 +210,9 @@ class EacController extends Controller
     {
 
         $chasis = $request->nro_chasis;
-        $vehiculo = DB::table("vehiculos")->where("nro_chasis", $chasis)
-            ->join('users', 'vehiculos.id_cliente', '=', 'users.id')->first();
-
+        $vehiculo = Vehiculo::with("vehiculo_cliente")->where("nro_chasis",$chasis)->first();
+      
+   
         return view("eac.clientePorChasis", ["clienteEncontrado" => $vehiculo]); //clienteEncontrado es lo que llamas despues en la vista clientePorChasis como variable para el if
 
     }

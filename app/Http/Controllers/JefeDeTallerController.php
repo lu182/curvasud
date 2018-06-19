@@ -118,7 +118,7 @@ class JefeDeTallerController extends Controller
             $mecanicoNuevo->update(["id_ciudad" => $ciudadNueva->id_ciudad]);
 
         }
-        return view("jefetaller.bienvenida");
+        return view("jefetaller.bienvenida")->withErrors(['Mecánico Registrado Correctamente']);
 
     }
 
@@ -573,11 +573,70 @@ class JefeDeTallerController extends Controller
 
     public function generarPDFVehiculosMes(){
     
-    $vehiculosDelMes = Turno::with("vehiculo")->whereMonth('fecha', '=', $mesActual)->get(); 
-    $informe = PDF::loadview('jefetaller.pdf.vehiculosingresadosenelmes',
-    ["vehiculosDelMes" => $vehiculosDelMes]);
+        $hoy = Carbon::now();
+        $mesActual = $hoy->month;
+        $vehiculosDelMes = Turno::with("vehiculo")->whereMonth('fecha', '=', $mesActual)->get();
 
     
+
+    $informe = PDF::loadview('jefetaller.pdf.vehiculosingresadosenelmes',
+    ["vehiculosDelMes" => $vehiculosDelMes]);
+    return $informe->stream('VehiculosDelMes.pdf');
+
+    }
+
+    public function verOrdenes(){
+
+        $ordenes = OrdenReparacion::with("estado_ordenes")->with("orden_mecanico")->with("orden_vehiculo")->with("detalle_ordenes")->where("id_estado_orden",2)->get();
+        return view ("jefetaller.ordenesdelcliente",["ordenes"=>$ordenes]);
+    }
+
+    public function actualizarOrdenMostrar(Request $request){
+
+        $orden = OrdenReparacion::find($request->id);
+        return view("jefetaller.actualizarFechaOrden",["orden"=>$orden]);
+
+    }
+
+    public function actualizarOrdenGuardar(Request $request){
+
+        $ordenAActualizar = OrdenReparacion::find($request->id);
+
+        $cliente = User::find($ordenAActualizar->id_cliente);
+
+
+        $data = ['orden' => $ordenAActualizar,
+        "cliente"=>$cliente,
+        ];
+
+
+        \Mail::send('mails.confirmacionorden', $data, function ($message) {
+
+        $message->from('info@curvasud.com.ar', 'Curvasud');
+
+        $message->to("cliente@curvasud.com.ar")->subject('Órden de Reparación completada');});
+
+        if ($request->fecha != $ordenAActualizar->fecha_egreso_vehiculo){
+            $ordenAActualizar->update([
+                "fecha_egreso_vehiculo"=>$request->fecha,
+                "id_estado_orden"=>1
+            ]);
+
+            return redirect()->route("/jefetaller/verOrdenes")->withErrors(['Órden marcada como finalizada con una nueva fecha correctamente ']);
+
+
+
+        }else{
+
+            $ordenAActualizar->update([
+                "fecha_egreso_vehiculo"=>$request->fecha,
+                "id_estado_orden"=>1
+            ]);
+            return redirect()->route("/jefetaller/verOrdenes")->withErrors(['Órden marcada como finalizada correctamente ']);
+
+        }
+    
+
 
     }
 

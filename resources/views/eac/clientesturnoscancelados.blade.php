@@ -32,7 +32,11 @@
 
 
             <tr>
-                    <th scope="row">{{$turnoCancelado->fecha}} </th>
+                    <th scope="row">
+                        @php
+                        echo date("d-m-Y", strtotime($turnoCancelado->fecha));
+                        @endphp
+                       </th>
                     <td>{{$turnoCancelado->hora}}</td>
            
                   </tr>

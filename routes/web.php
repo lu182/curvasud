@@ -40,6 +40,8 @@ Route::get('services', function () {
 
 
 Route::get('/misturnos',"TuneroController@verTurnos")->name("misturnos");
+Route::get('/misordenes',"usuariosController@misOrdenes")->name("misordenes");
+
 
 Route::resource("usuarios","ClientesEmpleadosControlador");
 
@@ -196,10 +198,17 @@ Route::get("/jefetaller/generarPDFordenesPorEstado", "JefeDeTallerController@gen
 Route::get("/jefetaller/vehiculosPorTipoServicio", "JefeDeTallerController@vehiculosPorTipoServicio")->name("/jefetaller/vehiculosPorTipoServicio");
 Route::get("/jefetaller/generarPDFvehiculosPorTipoServicio", "JefeDeTallerController@generarPDFvehiculosPorTipoServicio")->name("/jefetaller/generarPDFvehiculosPorTipoServicio");
 
+Route::get("/jefetaller/verOrdenes", "JefeDeTallerController@verOrdenes")->name("/jefetaller/verOrdenes");
+Route::post('/jefetaller/verOrdenes',"JefeDeTallerController@actualizarOrdenMostrar")->name("jefetaller/misordenes");
+Route::post('/actualizarOrden',"JefeDeTallerController@actualizarOrdenGuardar")->name("jefetaller/actualizarOrden");
+
 
 Route::get("/jefetaller/VehiculosMes", "JefeDeTallerController@VehiculosMes")->name("/jefetaller/VehiculosMes");
 Route::get("/jefetaller/generarPDFVehiculosMes", "JefeDeTallerController@generarPDFVehiculosMes")->name("/jefetaller/generarPDFVehiculosMes");
 //HASTA ACA
+
+
+
 
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 

@@ -58,6 +58,12 @@
                      <p>Mis Vehículos</p>
                   </a>
                     </li>
+                    <li>
+                            <a class="nav-link" href="{{ route('misordenes') }}">
+                         <i class="nc-icon nc-single-copy-04"></i>
+                         <p>Mis Órdenes</p>
+                      </a>
+                        </li>
 
                     <li class="nav-item ">
                         <a class="nav-link" href="{{ route('principal') }}">
@@ -174,6 +180,12 @@
                                 </a>
                             </li>
 
+                            <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('/jefetaller/verOrdenes') }}">
+                                           <i class="nc-icon nc-simple-add"></i>
+                                           <p>Gestionar Órdenes de Reparación</p>
+                                        </a>
+                                </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="{{ route('/jefetaller/ordenreparacion') }}">
                                        <i class="nc-icon nc-paper-2"></i>

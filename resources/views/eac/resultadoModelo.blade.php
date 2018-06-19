@@ -31,7 +31,11 @@
             <td>{{$modeloAMostrar->anio}}</td>
             <td>{{$modeloAMostrar->patente}} </td>
             <td>{{$modeloAMostrar->nro_chasis}} </td>
-            <td>{{$modeloAMostrar->fecha_inicio_garantia}} </td>
+            <td>
+                @php
+                echo date("d-m-Y", strtotime($modeloAMostrar->fecha_inicio_garantia));
+         
+            @endphp</td>
             
             <td>{{$modeloAMostrar->vehiculo_cliente->nombre}} {{$modeloAMostrar->vehiculo_cliente->apellido}}</td>
             <td>{{$modeloAMostrar->vehiculo_cliente->dni}}</td>

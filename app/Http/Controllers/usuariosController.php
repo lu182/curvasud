@@ -6,6 +6,7 @@ use App\Ciudad;
 use App\Turno;
 use App\User;
 use App\Vehiculo;
+use App\OrdenReparacion;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
@@ -245,6 +246,14 @@ class usuariosController extends Controller
         $user = Auth::user();
 
         return view("prueba2");
+    }
+
+    public function misOrdenes(){
+        $usuario = Auth::user();
+        $ordenes = OrdenReparacion::with("estado_ordenes")->with("orden_mecanico")->with("orden_vehiculo")->with("detalle_ordenes")->where("id_cliente",$usuario->id)->get()->groupBy("estado_ordenes.estadoOrden");
+
+
+        return view("cliente.misordenes",["ordenes"=>$ordenes]);
     }
 
 }

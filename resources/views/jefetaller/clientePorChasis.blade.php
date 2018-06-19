@@ -24,7 +24,10 @@
           <td>{{$clienteEncontrado->modelo}}</td>
           <td>{{$clienteEncontrado->anio}}</td>
           <td>{{$clienteEncontrado->patente}}</td>
-          <td>{{$clienteEncontrado->fecha_inicio_garantia}}</td>
+          <td>
+            @php
+            echo date("d-m-Y", strtotime($clienteEncontrado->fecha_inicio_garantia));
+          @endphp</td>
         </tr>
          
     </tbody> 

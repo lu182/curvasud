@@ -61,6 +61,12 @@ class TuneroController extends Controller
 
             }
 
+            
+            if($fecha > $turno->fecha and $id_tipo_servicio < $turno->id_tipo_servicio){
+                return redirect()->route('turnero')->withErrors(['Ya tienes un turno registrado con un tipo de servicio anterior']);
+
+            }
+
 
         }
 
@@ -361,8 +367,7 @@ class TuneroController extends Controller
 
         $tipos_servicio = DB::table("tipos_servicios")->get();
 
-        return view("cliente.misturnos", ["turnos" => $turnos, "tipos_servicio" => $tipos_servicio]);
-
+return redirect()->route("misturnos");
     }
 
 }

@@ -24,7 +24,7 @@
           <td>{{$clienteEncontrado->modelo}}</td>
           <td>{{$clienteEncontrado->anio}}</td>
           <td>{{$clienteEncontrado->patente}}</td>
-          <td>{{$clienteEncontrado->fecha_inicio_garantia}}</td>
+          <td>{{$clienteEncontrado->corregirFecha()}}</td>
         </tr>
          
     </tbody> 

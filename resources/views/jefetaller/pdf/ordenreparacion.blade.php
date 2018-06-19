@@ -1,4 +1,26 @@
 <style>
+
+    .cajaNombres > p
+    {
+      flex:1 1 auto;
+     
+      
+    
+      margin:5px;  /* and that, will result in a 10px gap */
+    }
+    
+    h3{
+        line-height: 0.3!important;
+    }
+        .vcenter {
+            display: inline-block;
+            vertical-align: middle;
+            float: none;
+        }
+        hr.style2 {
+            border-top: 3px double #8c8b8b;
+        }
+        
     /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2018 Twitter, Inc.
@@ -1669,39 +1691,100 @@
     }
 </style>
 
-<h1> Orden de Reparación </h1>
+<body > 
+
+    <div class="" style="padding:5px">
+<div style="border:2px black solid">
+<div class="row" style="padding:2%;margin-left:2px;margin-right:2px;background:#f1f1f1">
+<div class="col-md-4" style="float:left">
+
+        <img src="{{asset('img/logocurvasud.png')}}" width="200"class="img-fluid" >
+
+</div>
+
+<div class="col-md-8" style="float:right">
+
+        <h1> Orden de Reparación n° {{$orden->id_orden_reparacion}}</h1>
+
+        <h3> Fecha de Ingreso {{$orden->corregirFecha1()}} </h3>
+        <h3> Fecha estimada de Egreso {{$orden->corregirFecha2()}} </h3>
+</div>
 
 
-<h3> Fecha de Ingreso {{$orden->corregirFecha1()}} </h3>
-<h3> Fecha estimada de Egreso {{$orden->corregirFecha2()}} </h3>
+</div>
+
+<div class="row" style="padding:2%">
 
 
-<h2>Cliente </h2>
-<p> Nombre: {{$orden->orden_usuario->nombre}} </p>
-<p> Apellido: {{$orden->orden_usuario->apellido}} </p>
-<p> DNI: {{$orden->orden_usuario->dni}} </p>
-<p> Email: {{$orden->orden_usuario->email}} </p>
-<br>
-<h2> Detalles del vehiculo </h2>
-<p> Marca: {{$orden->orden_vehiculo->marca}} </p>
-<p> Modelo: {{$orden->orden_vehiculo->modelo}} </p>
-<p> Patente: {{$orden->orden_vehiculo->patente}} </p>
-<p> Número de Chasis: {{$orden->orden_vehiculo->nro_chasis}} </p>
+<div class="col-md-12" style="border:2px solid black;width:40%;float:left;margin-left:2%">
+        <h2  style="">Cliente </h2>
 
-<h2> Motivo de Ingreso: </h2>
-<p> {{$detalle_orden->motivo_ingreso}} </p>
+    <div style="" class="cajaNombres"> 
+        <p> <span style="font-weight: bold"> Nombre: </span> {{$orden->orden_usuario->nombre}} </p> 
+        <p> <span style="font-weight: bold">Apellido: </span> {{$orden->orden_usuario->apellido}} </p>
+        <p> <span style="font-weight: bold">DNI: </span> {{$orden->orden_usuario->dni}} </p>
+        <p> <span style="font-weight: bold">Email: </span> {{$orden->orden_usuario->email}} </p>
+    </div>
+</div>
 
-<h2> Observaciones: </h2>
-<p> {{$detalle_orden->observaciones}} </p>
+<div class="col-md-12" style="border:2px solid black;width:40%;float:right;margin-right:2%">
+        <h2 style=""> Detalles del vehiculo </h2>
+        <div style=""  class="cajaNombres"> 
 
-<h2> Operación Realizada: </h2>
-<p> {{$detalle_orden->operacion_realizada}} </p>
+        <p> <span style="font-weight: bold">  Marca: </span> {{$orden->orden_vehiculo->marca}} </p>
+        <p> <span style="font-weight: bold"> Modelo:  </span>{{$orden->orden_vehiculo->modelo}} </p>
+        <p> <span style="font-weight: bold"> Patente: </span> {{$orden->orden_vehiculo->patente}} </p>
+        <p> <span style="font-weight: bold">  Número de Chasis: </span> {{$orden->orden_vehiculo->nro_chasis}} </p>
+    </div>
 
-<h2> Extra: </h2>
+</div>
+</div>
+
+
+<div class="container  center" style="width:80%;margin:auto">
+<div class="row  center">
+<div >
+        <h3> Motivo de Ingreso: </h3>
+        <p> {{$detalle_orden->motivo_ingreso}} </p>
+        
+        <h3> Observaciones: </h3>
+        <p> {{$detalle_orden->observaciones}} </p>
+       
+
+</div>
+<div style="width:40%;float:left">
+ 
+        <h3> Operación Realizada: </h3>
+        <p> {{$detalle_orden->operacion_realizada}} </p>
+</div>
+<div style="width:40%;float:right">
+
+        <h3> Extra: </h3>
 <p> {{$detalle_orden->extra}} </p>
 
-<h2> Km: </h2>
-<p> {{$detalle_orden->kilometraje}} </p>
+    </div>
+</div>
 
-<h2> Trabajo realizado por: </h2>
-<p>{{$orden->orden_mecanico->nombre}} {{$orden->orden_mecanico->apellido}}</p>
+    <div style="width:40%;float:left">
+
+            <h3> Km: </h3>
+            <p> {{$detalle_orden->kilometraje}} </p>
+        </div>
+        <div style="width:40%;float:right">
+
+            <h3> Trabajo realizado por: </h3>
+            <p>{{$orden->orden_mecanico->nombre}} {{$orden->orden_mecanico->apellido}}</p>
+        </div>
+</div>
+</div>
+</div>
+    </div>
+
+</div>
+
+
+
+
+
+
+</body>

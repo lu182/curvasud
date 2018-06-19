@@ -26,15 +26,15 @@ IMPRIMIR
                       </tr>
                     </thead>
                     <tbody>
-                    @foreach($vehiculosDelMes as $vehiculo)
+                    @foreach($vehiculosDelMes as $turno)
                     <tr>
-                        <th scope="row">{{$vehiculo->marca}}</th>
-                        <td>{{$vehiculo->tipo_vehiculo->tipoVehiculo}}</td>
-                        <td>{{$vehiculo->modelo}}</td>
-                        <td>{{$vehiculo->anio}}</td>
-                        <td>{{$vehiculo->patente}}</td>                        
-                        <td>{{$vehiculo->nro_chasis}}</td>
-                        <td>{{$vehiculo->fecha_inicio_garantia}}</td>
+                        <th scope="row">{{$turno->vehiculo->marca}}</th>
+                        <td>{{$turno->vehiculo->vehiculo_tipoVehiculo->tipoVehiculo}}</td>
+                        <td>{{$turno->vehiculo->modelo}}</td>
+                        <td>{{$turno->vehiculo->anio}}</td>
+                        <td>{{$turno->vehiculo->patente}}</td>                        
+                        <td>{{$turno->vehiculo->nro_chasis}}</td>
+                        <td>{{$turno->vehiculo->corregirFecha()}}</td>
                         
 
                     </tr>       

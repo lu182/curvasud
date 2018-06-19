@@ -48,6 +48,8 @@ padding:3px!important
                         <tr>
                             <th>Fecha  </th>
                             <th>Hora</th>
+                            <th>Vehiculo</th>
+
                             <th>Tipo</th>
                             <th>Acciones</th>
 
@@ -58,6 +60,8 @@ padding:3px!important
                         <tr>
                                 <td>{{$turno->corregirFecha()}}</td>
                                 <td>{{$turno->hora}}</td>
+                                <td>{{$turno->vehiculo->modelo}} - {{$turno->vehiculo->nro_chasis}}</td>
+
                                 <td>{{$turno->tipo->tipoServicio}}</td>
                                 <td>
                                         <!--Botón para activar modal -->

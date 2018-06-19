@@ -2,7 +2,20 @@
 
 
 @section("content")
+<style>
+label{
+        width:200px;
+}
 
+input{
+        width: 300px 
+}
+
+li{
+        list-style:none;
+
+}
+</style>
 
 <div class="row">
         <div class="col-md-12">

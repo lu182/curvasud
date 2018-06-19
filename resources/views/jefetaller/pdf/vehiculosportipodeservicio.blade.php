@@ -6,11 +6,11 @@
 </style>
 <h2>Vehículos registrados según tipo de servicio</h2>
 
-        @foreach ($tipos as $key => $tipo)
-    @if($tipo->tiposervicio_turno->count() > 0)
-        <h2> Tipo de Servicio: {{$tipo->tipoServicio}} </h2>
+            @foreach ($tipoService as $key => $tipoSer)
+            @if ($tipoSer->count() > 0)
+            <h2> Tipo de Servicio: {{$key}} </h2>
 
-             <table class="table display" id="tabla" cellspacing="5" >
+             <table class="table display" id="tabla" cellspacing="5" style="width: 100%;text-align:center" >
                         <thead class="thead-dark">
                           <tr>
                             <th scope="col" style="text-align:center">Marca</th>
@@ -27,21 +27,20 @@
                   
                        
                      
-                      
-                   
-            @foreach ($tipo->tiposervicio_turno as  $turno)
-                <tr>
-                    <th scope="row" style="text-align:center"></th>
-                    <th scope="row" style="text-align:center"></th>
-                    <th scope="row" style="text-align:center"></th>
-                    <th scope="row" style="text-align:center"></th>
-                    <th scope="row" style="text-align:center"></th>
-                    <th scope="row" style="text-align:center"></th>
-                    <th scope="row" style="text-align:center"></th>
-                </tr>
-  
-
-            @endforeach
+                                @foreach ($tipoSer as $key=> $vehiculoIndividual)
+                                <tr>
+                                    <th scope="row"> {{$vehiculoIndividual->vehiculo->marca}}</th>
+                                    <th scope="row"> {{$vehiculoIndividual->vehiculo->vehiculo_tipoVehiculo->tipoVehiculo}}</th>
+                                    <th scope="row"> {{$vehiculoIndividual->vehiculo->modelo}}</th>
+                                    <th scope="row"> {{$vehiculoIndividual->vehiculo->anio}}</th>
+                                    <th scope="row"> {{$vehiculoIndividual->vehiculo->patente}}</th>
+                                    <th scope="row"> {{$vehiculoIndividual->vehiculo->nro_chasis}}</th>
+                                    <th scope="row"> {{$vehiculoIndividual->vehiculo->corregirFecha()}}</th>
+                
+                                </tr>
+                  
+                
+                            @endforeach
         </tbody>
     </table>
     @endif
