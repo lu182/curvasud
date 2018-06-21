@@ -186,7 +186,7 @@ Route::get("/jefetaller/trabajosPorMecanicoMostrar", "JefeDeTallerController@tra
 Route::post("/jefetaller/trabajosPorMecanicoMostrar", "JefeDeTallerController@trabajosPorMecanicoGenerar")->name("/jefetaller/trabajosPorMecanicoMostrar");
 
 
-//TAREAA
+
 Route::get("/jefetaller/totalOrdenes", "JefeDeTallerController@totalOrdenes")->name("/jefetaller/totalOrdenes");
 Route::get("/jefetaller/generarPDFtotalOrdenes", "JefeDeTallerController@generarPDFtotalOrdenes")->name("/jefetaller/generarPDFtotalOrdenes");
 
@@ -205,8 +205,6 @@ Route::post('/actualizarOrden',"JefeDeTallerController@actualizarOrdenGuardar")-
 
 Route::get("/jefetaller/VehiculosMes", "JefeDeTallerController@VehiculosMes")->name("/jefetaller/VehiculosMes");
 Route::get("/jefetaller/generarPDFVehiculosMes", "JefeDeTallerController@generarPDFVehiculosMes")->name("/jefetaller/generarPDFVehiculosMes");
-//HASTA ACA
-
 
 
 

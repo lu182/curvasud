@@ -27,7 +27,7 @@
           <td>
             @php
             echo date("d-m-Y", strtotime($clienteEncontrado->fecha_inicio_garantia));
-          @endphp</td>
+          @endphp </td>
         </tr>
          
     </tbody> 

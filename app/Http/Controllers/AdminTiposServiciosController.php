@@ -5,14 +5,14 @@
 	use DB;
 	use CRUDBooster;
 
-	class AdminOrdenesReparacionController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminTiposServiciosController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
 			$this->title_field = "id";
 			$this->limit = "20";
-			$this->orderby = "id_orden_reparacion,desc";
+			$this->orderby = "id_tipo_servicio,desc";
 			$this->global_privilege = false;
 			$this->button_table_action = true;
 			$this->button_bulk_action = true;
@@ -25,41 +25,24 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "ordenes_reparacion";
+			$this->table = "tipos_servicios";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Estado de la órden","name"=>"id_estado_orden","join"=>"estados_ordenes,estadoOrden"];
-			$this->col[] = ["label"=>"Fecha Ingreso Vehiculo","name"=>"fecha_ingreso_vehiculo"];
-			$this->col[] = ["label"=>"Fecha Egreso Vehiculo","name"=>"fecha_egreso_vehiculo"];
-			$this->col[] = ["label"=>"Nombre mecánico","name"=>"id_mecanico","join"=>"mecanicos,nombre"];
-			$this->col[] = ["label"=>"Apellido mecánico","name"=>"id_mecanico","join"=>"mecanicos,apellido"];
-			$this->col[] = ["label"=>"Modelo vehículo","name"=>"id_vehiculo","join"=>"vehiculos,modelo"];
-			$this->col[] = ["label"=>"Chasis vehículo","name"=>"id_vehiculo","join"=>"vehiculos,nro_chasis"];
-			$this->col[] = ["label"=>"Patente vehículo","name"=>"id_vehiculo","join"=>"vehiculos,patente"];
-			$this->col[] = ["label"=>"Nombre cliente","name"=>"id_cliente","join"=>"users,nombre"];
-			$this->col[] = ["label"=>"Apellido cliente","name"=>"id_cliente","join"=>"users,apellido"];
+			$this->col[] = ["label"=>"Service","name"=>"tipoServicio"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Estado Orden','name'=>'id_estado_orden','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'estados_ordenes,estadoOrden'];
-			$this->form[] = ['label'=>'Fecha Ingreso Vehiculo','name'=>'fecha_ingreso_vehiculo','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Fecha Egreso Vehiculo','name'=>'fecha_egreso_vehiculo','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Mecanico','name'=>'id_mecanico','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'mecanicos,apellido'];
-			$this->form[] = ['label'=>'Vehiculo','name'=>'id_vehiculo','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'vehiculos,patente'];
-			$this->form[] = ['label'=>'Cliente','name'=>'id_cliente','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,apellido'];
+			$this->form[] = ['label'=>'Tipo Servicio','name'=>'id_tipo_servicio','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_servicios,id_tipo_servicio'];
+			$this->form[] = ['label'=>'TipoServicio','name'=>'tipoServicio','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Estado Orden','name'=>'id_estado_orden','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'estados_ordenes,estadoOrden'];
-			//$this->form[] = ['label'=>'Fecha Ingreso Vehiculo','name'=>'fecha_ingreso_vehiculo','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Fecha Egreso Vehiculo','name'=>'fecha_egreso_vehiculo','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Mecanico','name'=>'id_mecanico','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'mecanicos,apellido'];
-			//$this->form[] = ['label'=>'Vehiculo','name'=>'id_vehiculo','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'vehiculos,patente'];
-			//$this->form[] = ['label'=>'Cliente','name'=>'id_cliente','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,apellido'];
+			//$this->form[] = ["label"=>"Tipo Servicio","name"=>"id_tipo_servicio","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"tipo_servicio,id"];
+			//$this->form[] = ["label"=>"TipoServicio","name"=>"tipoServicio","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
 			# OLD END FORM
 
 			/* 

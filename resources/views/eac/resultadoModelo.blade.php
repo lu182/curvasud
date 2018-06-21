@@ -34,8 +34,8 @@
             <td>
                 @php
                 echo date("d-m-Y", strtotime($modeloAMostrar->fecha_inicio_garantia));
-         
-            @endphp</td>
+            @endphp
+        </td>
             
             <td>{{$modeloAMostrar->vehiculo_cliente->nombre}} {{$modeloAMostrar->vehiculo_cliente->apellido}}</td>
             <td>{{$modeloAMostrar->vehiculo_cliente->dni}}</td>

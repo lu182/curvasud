@@ -40,8 +40,7 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Tipo Empleado","name"=>"id_tipo_empleado","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"tipo_empleado,id"];
-			//$this->form[] = ["label"=>"TipoEmpleado","name"=>"tipoEmpleado","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ['label'=>'Tipo Empleado','name'=>'tipoEmpleado','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 

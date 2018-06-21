@@ -8,7 +8,7 @@ IMPRIMIR
 </a>
         @foreach ($turnosConModelo as $key => $modelo)
 
-        <h2> Modelo: {{$key}} </h2>
+        <h3> Modelo: {{$key}} </h3>
 
              <table class="table display" id="tabla">
                         <thead class="thead-dark">
@@ -28,7 +28,11 @@ IMPRIMIR
                    
             @foreach ($modelo as $key => $turno_vehiculo)
                 <tr>
-                    <th scope="row">{{$turno_vehiculo->fecha}} </th>
+                    <th scope="row">
+                        @php
+                        echo date("d-m-Y", strtotime($turno_vehiculo->fecha));
+                        @endphp
+                    </th>
                     <th scope="row">{{$turno_vehiculo->marca}} </th>
                     <th scope="row">{{$turno_vehiculo->patente}} </th>
                     <th scope="row">{{$turno_vehiculo->nro_chasis}} </th>

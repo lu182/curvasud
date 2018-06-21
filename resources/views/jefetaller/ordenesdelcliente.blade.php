@@ -32,8 +32,8 @@
                 <tr>
                         
                     <td style="text-align:center">{{$orden->id_orden_reparacion}}</td>
-                    <td style="text-align:center">{{$orden->fecha_ingreso_vehiculo}}</td>
-                    <td style="text-align:center">{{$orden->fecha_egreso_vehiculo}}</td>
+                    <td style="text-align:center">{{$orden->corregirFecha1()}}</td>
+                    <td style="text-align:center">{{$orden->corregirFecha2()}}</td>
                     <td style="text-align:center">{{$orden->orden_mecanico->nombre}} {{$orden->orden_mecanico->apellido}}</td>
                     <td style="text-align:center">{{$orden->orden_vehiculo->modelo}} </td>
                     <td style="text-align:center">{{$orden->orden_vehiculo->nro_chasis}} </td>
