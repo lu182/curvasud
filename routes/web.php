@@ -206,6 +206,10 @@ Route::post('/actualizarOrden',"JefeDeTallerController@actualizarOrdenGuardar")-
 Route::get("/jefetaller/VehiculosMes", "JefeDeTallerController@VehiculosMes")->name("/jefetaller/VehiculosMes");
 Route::get("/jefetaller/generarPDFVehiculosMes", "JefeDeTallerController@generarPDFVehiculosMes")->name("/jefetaller/generarPDFVehiculosMes");
 
+Route::get("/jefetaller/vehiculosPeriodo", "JefeDeTallerController@vehiculoPeriodoMostrar")->name("jefetaller/vehiculosPeriodo");
+Route::post("/jefetaller/vehiculosPeriodo", "JefeDeTallerController@vehiculoPeriodoResultado")->name("jefetaller/vehiculosPeriodo");
+Route::post("/jefetaller/periodoPDF", "JefeDeTallerController@periodoPDF")->name("jefetaller/periodoPDF");
+
 
 
 Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
@@ -214,6 +218,7 @@ Route::get('/logout', 'Auth\LoginController@logout')->name("logout");
 Route::get("jefetaller/{pagina}", "JefeDeTallerController@mostrarPagina")->name("/jefetaller/");
 
 Route::post("mail", "EnvioEmailController@enviarMail")->name("mail");
+Route::post("suscripcion", "EnvioEmailController@suscripcion")->name("suscripcion");
 
 Route::get("sin_permiso", function () {
     return "NO TIENES PERMISO PARA ACCEDER";

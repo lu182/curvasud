@@ -19,6 +19,7 @@
     <link href="{{asset('tablas/estilo.css')}}" rel="stylesheet" />
     <link href="{{asset('calendario/styles/glDatePicker.default.css')}}" rel="stylesheet" />
     <link href="{{asset('select/estilo.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/style2.css')}}" rel="stylesheet" />
 
 </head>
 
@@ -377,8 +378,9 @@
 <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
 <script src="{{asset('assets/js/light-bootstrap-dashboard.js?v=2.0.1')}}" type="text/javascript"></script>
     <script src="../assets/js/light-bootstrap-dashboard.js?v=2.0.1" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js" type="text/javascript"></script>
 
-
+    
 
 <script type="text/javascript">
     // var tablas = $("#tabla")

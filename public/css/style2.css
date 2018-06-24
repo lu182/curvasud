@@ -1,0 +1,9 @@
+.gradiente{
+
+    text-align:center;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff2323+0,3fff0a+99&0.72+0,0.74+100 */
+background: -moz-linear-gradient(left, rgba(255,35,35,0.72) 0%, rgba(63,255,10,0.74) 99%, rgba(63,255,10,0.74) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(left, rgba(255,35,35,0.72) 0%,rgba(63,255,10,0.74) 99%,rgba(63,255,10,0.74) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to right, rgba(255,35,35,0.72) 0%,rgba(63,255,10,0.74) 99%,rgba(63,255,10,0.74) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b8ff2323', endColorstr='#bd3fff0a',GradientType=1 ); /* IE6-9 */
+};

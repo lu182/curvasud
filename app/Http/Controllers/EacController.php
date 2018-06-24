@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use App\Vehiculo;
+use App\DetalleOrden;
+use App\OrdenReparacion;
 use App\TipoVehiculo;
 use App\Turno;
+use App\User;
+use App\Vehiculo;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
 use PDF;
-use App\OrdenReparacion;
-use App\DetalleOrden;
-
 
 class EacController extends Controller
 {
@@ -21,10 +20,8 @@ class EacController extends Controller
     public function __construct()
     {
 
-
         $this->middleware('eac', ['except' => ['vehiculoclienteajax']]);
     }
-
 
     public function escritorioEac()
     {
@@ -32,10 +29,81 @@ class EacController extends Controller
 
         if (!empty($user)) {
 
-            if ($user->tipo_user_id > 1) {
-                return view("eac.bienvenida");
-
+            $fecha_actual = Carbon::now('America/Argentina/Buenos_Aires');
+            $año = $fecha_actual->year;
+            $mes = $fecha_actual->month;
+            if ($mes < 10) {
+                $mes = "0" . $mes;
             }
+            $dia = $fecha_actual->day;
+            $fecha_a_buscar = $año . "-" . $mes . "-" . $dia;
+
+            $turnosHoy = Turno::where("id_estado_turno", "2")
+                ->where("fecha", '=', $fecha_a_buscar)
+                ->get();
+
+
+            //GENERACION DE GRAFICO DE TURNOS CANCELADOS POR CLIENTE
+
+            $clientesConTurnosCancelados = User::with("turnos_cancelados")->get();
+
+            //nombre de los clientes
+            $clientesCancelados = [];
+            //cantidad de turnos cancelados por cliente
+            $cantidadTurnosporCliente = [];
+            //array donde se insertarán colores
+            $colores = [];
+
+            foreach ($clientesConTurnosCancelados as $cliente) {
+                if ($cliente->turnos_cancelados->count() > 0) {
+                    array_push($clientesCancelados, ''.$cliente->nombre.' '.$cliente->apellido);
+                    array_push($cantidadTurnosporCliente, $cliente->turnos_cancelados->count());
+                    array_push($colores, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+                }
+            }
+
+            $chartjs = app()->chartjs
+                ->name('ClientesTurnosCancelados')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels($clientesCancelados)
+                ->datasets([
+                    [
+                        'backgroundColor' => $colores,
+                        'hoverBackgroundColor' => $colores,
+                        'data' => $cantidadTurnosporCliente,
+                    ],
+                ])
+                ->options([]);
+
+            // CANTIDAD DE VEHICULOS POR TIPO
+
+            $tipos_vehiculos = TipoVehiculo::with("tipovehiculo_vehiculo")->get();
+            $total_vehiculos = [];
+            $nombres_tipos_vehiculos = [];
+            $colores_tipos = [];
+
+            foreach ($tipos_vehiculos as $tipo) {
+                array_push($total_vehiculos, $tipo->tipovehiculo_vehiculo->count());
+                array_push($nombres_tipos_vehiculos, $tipo->tipoVehiculo);
+                array_push($colores_tipos, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+            }
+
+            $chartjs2 = app()->chartjs
+                ->name('ClientesPorTipoVehiculo')
+                ->type('pie')
+                ->size(['width' => 400, 'height' => 200])
+                ->labels($nombres_tipos_vehiculos)
+                ->datasets([
+                    [
+                        'backgroundColor' => $colores_tipos,
+                        'hoverBackgroundColor' => $colores_tipos,
+                        'data' => $total_vehiculos,
+                    ],
+                ])
+                ->options([]);
+
+            return view("eac.bienvenida", ["turnosHoy" => $turnosHoy, "chartjs" => $chartjs, "chartjs2" => $chartjs2]);
 
         }
         return "No tienes permiso para acceder";
@@ -77,7 +145,7 @@ class EacController extends Controller
             $diaAgregar = $start->addDay();
         }
 
-        foreach ($fechas as $fecha){
+        foreach ($fechas as $fecha) {
 
             $turnos_fecha = Turno::where("fecha", $fecha)->where("id_estado_turno", 2)->get();
 
@@ -95,7 +163,7 @@ class EacController extends Controller
                 ["hora" => "17:00:00", "estado" => 1],
                 ["hora" => "18:00:00", "estado" => 1],
             );
-            $fechas_finales[$fecha]=['fecha'=>$fecha,"horas"=>$horas];
+            $fechas_finales[$fecha] = ['fecha' => $fecha, "horas" => $horas];
 
             //Hacemos la comparación del Array con los turnos cargados en Database,
             // y agregamos los ya tomados, junto con sus 3 horas siguientes y 2 anteriores
@@ -118,23 +186,23 @@ class EacController extends Controller
                     $fechas_finales[$fecha]['horas'][$clave] = ["hora" => $fechas_finales[$fecha]['horas'][$clave]["hora"], "estado" => 0];
 
                     if (array_key_exists($clave + 1, $fechas_finales[$fecha]['horas'])) {
-                    $fechas_finales[$fecha]['horas'][$clave + 1] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 1]["hora"], "estado" => 0];
+                        $fechas_finales[$fecha]['horas'][$clave + 1] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 1]["hora"], "estado" => 0];
                     }
 
                     if (array_key_exists($clave + 2, $fechas_finales[$fecha]['horas'])) {
-                    $fechas_finales[$fecha]['horas'][$clave + 2] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 2]["hora"], "estado" => 0];
+                        $fechas_finales[$fecha]['horas'][$clave + 2] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 2]["hora"], "estado" => 0];
                     }
 
                     if (array_key_exists($clave + 3, $fechas_finales[$fecha]['horas'])) {
-                    $fechas_finales[$fecha]['horas'][$clave + 3] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 3]["hora"], "estado" => 0];
+                        $fechas_finales[$fecha]['horas'][$clave + 3] = ["hora" => $fechas_finales[$fecha]['horas'][$clave + 3]["hora"], "estado" => 0];
                     }
 
                     if (array_key_exists($clave - 1, $fechas_finales[$fecha]['horas'])) {
-                    $fechas_finales[$fecha]['horas'][$clave - 1] = ["hora" => $fechas_finales[$fecha]['horas'][$clave - 1]["hora"], "estado" => 0];
+                        $fechas_finales[$fecha]['horas'][$clave - 1] = ["hora" => $fechas_finales[$fecha]['horas'][$clave - 1]["hora"], "estado" => 0];
                     }
 
                     if (array_key_exists($clave - 2, $fechas_finales[$fecha]['horas'])) {
-                    $fechas_finales[$fecha]['horas'][$clave - 2] = ["hora" => $fechas_finales[$fecha]['horas'][$clave - 2]["hora"], "estado" => 0];
+                        $fechas_finales[$fecha]['horas'][$clave - 2] = ["hora" => $fechas_finales[$fecha]['horas'][$clave - 2]["hora"], "estado" => 0];
                     }
 
                 }
@@ -146,27 +214,24 @@ class EacController extends Controller
 
         $fechaActual = date('Y-m-d', time());
 
-        $turnsNoDisponibles = Turno::where("id_estado_turno", 2)->where("fecha",">=",$fechaActual)->get();
+        $turnsNoDisponibles = Turno::where("id_estado_turno", 2)->where("fecha", ">=", $fechaActual)->get();
 
         return view('eac.consultaDispTurnos', ['disp' => $fechas_finales, 'noDisp' => $turnsNoDisponibles]);
 
     } //termina la llave de la funcion
 
-
     //Consultar turnos cancelados del día
     public function TurnosHoy()
     {
 
-         date_default_timezone_set('America/Argentina/Buenos_Aires');
+        date_default_timezone_set('America/Argentina/Buenos_Aires');
 
         $fechaActual = date('Y-m-d', time());
 
         $turnosCancelados = DB::table("turnos")
-        ->where("id_estado_turno", 3)->where("fecha", $fechaActual)->get();
-
+            ->where("id_estado_turno", 3)->where("fecha", $fechaActual)->get();
 
         return view('eac.canceladosDelDia', ["turnosCancelados" => $turnosCancelados]);
-
 
     }
 
@@ -210,9 +275,8 @@ class EacController extends Controller
     {
 
         $chasis = $request->nro_chasis;
-        $vehiculo = Vehiculo::with("vehiculo_cliente")->where("nro_chasis",$chasis)->first();
-      
-   
+        $vehiculo = Vehiculo::with("vehiculo_cliente")->where("nro_chasis", $chasis)->first();
+
         return view("eac.clientePorChasis", ["clienteEncontrado" => $vehiculo]); //clienteEncontrado es lo que llamas despues en la vista clientePorChasis como variable para el if
 
     }
@@ -220,64 +284,59 @@ class EacController extends Controller
     /////////// PENDIENTEEEE !!!
 
     //Consultar órdenes de reparación ingresadas, por cliente (tener en cuenta que un cliente puede tener varios vehiculos).
-    public function mostrarORporCliente(){
+    public function mostrarORporCliente()
+    {
 
         return view("eac.mostrarOrdenPorCliente");
 
     }
 
-    public function buscarORPorCliente(Request $request){
+    public function buscarORPorCliente(Request $request)
+    {
 
         $dni = $request->dni;
         //ingresa el dni, pero el sistema debe saber qué vehiculo es de ese cliente para que se genere la orden de ese vehiculo en pdf
         //tener en cuenta qué órdenes se van a generar (filtrando por fecha o algo asi)
     }
 
-
     //Consultar órdenes de reparación ingresadas, por nro_chasis.
-    public function mostrarORporChasis(){
+    public function mostrarORporChasis()
+    {
 
         return view("eac.mostrarOrdenPorChasis");
 
     }
 
-    public function buscarORPorChasis(Request $request){
+    public function buscarORPorChasis(Request $request)
+    {
 
+        $vehiculoABuscar = Vehiculo::where("nro_chasis", $request->nro_chasis)->first();
 
-        $vehiculoABuscar = Vehiculo::where("nro_chasis",$request->nro_chasis)->first();
+        if ($vehiculoABuscar) {
 
-        if ($vehiculoABuscar){
+            $ordenesABuscar = OrdenReparacion::where("id_vehiculo", $vehiculoABuscar->id_vehiculo)->get();
 
-            $ordenesABuscar= OrdenReparacion::where("id_vehiculo",$vehiculoABuscar->id_vehiculo)->get();
+            if (!0 == count($ordenesABuscar)) {
 
-            if (!0 == count($ordenesABuscar)){
-
-
-                return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"vehiculo"=>$vehiculoABuscar]);
-            }
-            else{
+                return view("jefetaller.resultadoBusquedaOrdenes", ["ordenes" => $ordenesABuscar, "vehiculo" => $vehiculoABuscar]);
+            } else {
                 return redirect()->back()->withErrors(['El vehiculo no tiene ninguna orden de reparación']);
 
             }
 
-
-        }else{
+        } else {
             return redirect()->back()->withErrors(['no se encontró un vehiculo con ese chasis']);
 
         };
 
     }
 
-
-
-
-
     //Consultar clientes por tipo de vehiculo.
     public function buscarClientePorVehiculo()
     {
 
         $consulta = TipoVehiculo::with("tipovehiculo_vehiculo")->get();
-        return view("eac.clientesPorTipoVehiculo",["vehiculos"=>$consulta]);
+        return view("eac.clientesPorTipoVehiculo", ["vehiculos" => $consulta]);
     }
 
     //Consultar clientes con turnos cancelados
@@ -285,10 +344,8 @@ class EacController extends Controller
     {
         $clientesConTurnosCancelados = User::with("turnos_cancelados")->get();
 
-        return view("eac.clientesturnoscancelados",["clientesConTurnosCancelados"=>$clientesConTurnosCancelados]);
+        return view("eac.clientesturnoscancelados", ["clientesConTurnosCancelados" => $clientesConTurnosCancelados]);
     }
-
-
 
     //Funciones para devolver página de consultas y reportes
     public function mostrarPagina($pagina)
@@ -301,9 +358,10 @@ class EacController extends Controller
     }
 
     //AJAX
-    public function vehiculoclienteajax($id){
+    public function vehiculoclienteajax($id)
+    {
 
-        $vehiculos = Vehiculo::where("id_cliente",$id)->where("cancelado",0)->get();
+        $vehiculos = Vehiculo::where("id_cliente", $id)->where("cancelado", 0)->get();
         echo json_encode($vehiculos);
         die();
 
@@ -312,11 +370,12 @@ class EacController extends Controller
     /////-----------------------------REPORTES (PDF)----------------------------/////
 
     //Generar un informe del total de clientes por tipo de vehiculo
-    public function reporteClientes(){
+    public function reporteClientes()
+    {
 
         $consulta = TipoVehiculo::with("tipovehiculo_vehiculo")->get();
 
-        $reporte = PDF::loadView('eac.pdf.clientesportipo', ["vehiculos"=>$consulta]);
+        $reporte = PDF::loadView('eac.pdf.clientesportipo', ["vehiculos" => $consulta]);
         return $reporte->stream('clientesportipo.pdf');
     }
 
@@ -325,55 +384,49 @@ class EacController extends Controller
     {
         $clientesConTurnosCancelados = User::with("turnos_cancelados")->get();
 
-
-        $reporte = PDF::loadView('eac.pdf.clientesturnoscancelados', ["clientesConTurnosCancelados"=>$clientesConTurnosCancelados]);
+        $reporte = PDF::loadView('eac.pdf.clientesturnoscancelados', ["clientesConTurnosCancelados" => $clientesConTurnosCancelados]);
         return $reporte->stream('clientesportipo.pdf');
     }
 
-    public function consultarordenClienteVer(){
+    public function consultarordenClienteVer()
+    {
         return view("jefetaller.buscarOrdenPorDni");
     }
 
-    public function consultarordenClienteBuscar(Request $request){
+    public function consultarordenClienteBuscar(Request $request)
+    {
 
-        $clienteABuscar = User::where("dni",$request->dni)->first();
+        $clienteABuscar = User::where("dni", $request->dni)->first();
 
-        if ($clienteABuscar){
+        if ($clienteABuscar) {
 
-            $ordenesABuscar= OrdenReparacion::where("id_cliente",$clienteABuscar->id)->get();
+            $ordenesABuscar = OrdenReparacion::where("id_cliente", $clienteABuscar->id)->get();
 
-            if (!0 == count($ordenesABuscar)){
+            if (!0 == count($ordenesABuscar)) {
 
-
-                return view("jefetaller.resultadoBusquedaOrdenes",["ordenes"=>$ordenesABuscar,"cliente"=>$clienteABuscar]);
-            }
-            else{
+                return view("jefetaller.resultadoBusquedaOrdenes", ["ordenes" => $ordenesABuscar, "cliente" => $clienteABuscar]);
+            } else {
                 return redirect()->back()->withErrors(['El cliente no tiene ninguna orden de reparación']);
 
             }
 
-
-        }else{
+        } else {
             return redirect()->back()->withErrors(['no se encontró un cliente con ese DNI']);
 
         };
 
-
     }
 
-
-    public function mostrarOrden($id){
+    public function mostrarOrden($id)
+    {
 
         $ordenMostrar = OrdenReparacion::find($id);
-        $detalle_orden = DetalleOrden::where("id_orden_reparacion",$ordenMostrar->id_orden_reparacion)->first();
+        $detalle_orden = DetalleOrden::where("id_orden_reparacion", $ordenMostrar->id_orden_reparacion)->first();
 
-       // return $detalleOrden;
+        // return $detalleOrden;
         $orden = PDF::loadView('jefetaller.pdf.ordenreparacion',
-        ["orden"=>$ordenMostrar,"detalle_orden"=>$detalle_orden]);
-         return $orden->stream('Orden Reparación.pdf');
+            ["orden" => $ordenMostrar, "detalle_orden" => $detalle_orden]);
+        return $orden->stream('Orden Reparación.pdf');
     }
-
-
-
 
 }

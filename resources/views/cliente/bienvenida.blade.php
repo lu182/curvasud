@@ -6,12 +6,12 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card ">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Bienvenido {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</h4>
-                                    <p class="card-category">Gracias por elegir Curvasud</p>
+                            <div class="card " style="text-align:center;background: -webkit-linear-gradient(left, rgba(63,255,10,0.74) 0%,rgba(63,255,10,0.74) 1%,rgba(255,35,35,0.72) 100%); ">
+                                <div class="card-header " style="background:none;color:white">
+                                    <h4 class="card-title" style="text-shadow: 2px 2px 30px black;color:white">Bienvenido {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</h4>
+                                    <p class="card-category" style="color:white;font-weight:bold">Gracias por elegir Curvasud</p>
                                 </div>
-                                <div class="card-body ">
+                                <div class="card-body " style="background:none">
                                 </div>
                                 <div class="card-footer ">
                                   
@@ -19,12 +19,12 @@
                             </div>
                         </div>
 
-                        <div style="margin:auto;text-align:center;width:80%">
+                        <div style="margin:auto;text-align:center;width:90%">
 
                         <h3> Tu Próximo Turno </h3>
                         <div class="container-fluid">
                                 <div class="card " style="min-width: 900px">
-
+                                    <img src="{{asset('img/bannerTurnos.png')}}">
                                     @if($tieneTurno == 1  )
                                 <div class="row animated  bounceInRight">
                                     <div class="col-lg-4">

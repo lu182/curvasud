@@ -31,7 +31,119 @@ class JefeDeTallerController extends Controller
     public function bienvenida()
     {
 
-        return view("jefetaller.bienvenida");
+        $fecha_actual = Carbon::now('America/Argentina/Buenos_Aires');
+        $año = $fecha_actual->year;
+        $mes = $fecha_actual->month;
+        if ($mes < 10) {
+            $mes = "0" . $mes;
+        }
+        $dia = $fecha_actual->day;
+        $fecha_a_buscar = $año . "-" . $mes . "-" . $dia;
+
+                    //Turnos por tipo de servicio
+
+
+        $tipos = TipoServicio::with("tiposervicio_turno")->get();
+        $total_turnos_tipo = [];
+        $nombres_tipos = [];
+        $colores_tipos = [];
+        $cantidad = 0;
+
+        array_push($colores_tipos, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+
+        foreach ($tipos as $tipo){
+            if ($tipo->tiposervicio_turno->count() > 1){
+                array_push($nombres_tipos,$tipo->tipoServicio);
+                array_push($colores_tipos, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+                foreach($tipo->tiposervicio_turno as $turno){
+                    if ($turno->fecha >= $fecha_a_buscar){
+                        $cantidad = $cantidad + 1;
+                    }
+                }
+                    array_push($total_turnos_tipo,$cantidad);
+                    $cantidad = 0;
+
+                }
+            }
+
+            $graficoTurnosTipoServicio = app()->chartjs
+            ->name('graficoTurnosTipoServicio')
+            ->type('pie')
+            ->size(['width' => 400, 'height' => 200])
+            ->labels($nombres_tipos)
+            ->datasets([
+                [
+                    'backgroundColor' => $colores_tipos,
+                    'hoverBackgroundColor' => $colores_tipos,
+                    'data' => $total_turnos_tipo,
+                ],
+            ])
+            ->options([]);
+
+
+            //Grafico de vehiculos ingresados por mes
+
+            $nombres_meses = [];
+            $cantidad_vehiculos = [];
+            $colores_vehiculos = [];
+            $hoy = Carbon::now('America/Argentina/Buenos_Aires');
+            $vehiculosMesIds = [];
+            $mesActual = $hoy->month;
+            setlocale(LC_TIME, 'Spanish');
+            $meses = [1,2,4,5,6,7,8,9,10,11,12];
+
+            foreach ($meses as $mes){
+
+                $turnosMes = Turno::with("vehiculo")->whereMonth("fecha","=",$mes)->get();
+
+                if($turnosMes->count() > 0 ){
+                    $vehiculosMesIds = [];
+
+                    foreach($turnosMes as $turno) {
+
+                        array_push($vehiculosMesIds,$turno->id_vehiculo);
+                        
+                    }
+
+                    $vehiculosUnicos = array_unique($vehiculosMesIds);
+
+                    //ACA TENEMOS AL MENOS UN TURNO REGISTRADO EN EL MES
+                   array_push($cantidad_vehiculos, count($vehiculosUnicos));
+
+                    array_push($colores_vehiculos, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
+                    $query1 = Carbon::now('America/Argentina/Buenos_Aires')->month($mes);
+                    setlocale(LC_TIME, 'Spanish');
+                    $nombre_mes = $query1->formatLocalized(' %B');
+                    array_push($nombres_meses,$nombre_mes);
+                
+                }
+            }
+
+        
+
+            
+array_push($cantidad_vehiculos,0);
+
+            $vehiculosMes = app()->chartjs
+            ->name('vehiculosMes')
+            ->type('bar')
+            ->size(['width' => 400, 'height' => 200])
+            ->labels($nombres_meses)
+            ->datasets([
+                [
+                    'label'=>"Vehiculo por mes",
+                    'backgroundColor' => $colores_vehiculos,
+                    'hoverBackgroundColor' => $colores_vehiculos,
+                    'data' => $cantidad_vehiculos,
+                ],
+            ])
+            ->options([]);
+
+            $ordenesEnProceso= OrdenReparacion::where("id_estado_orden",2)->count();
+
+
+        return view("jefetaller.bienvenida",["turnosHoy"=>$turnosHoy,"ordenesEnProceso"=>$ordenesEnProceso,
+         "graficoTurnosTipoServicio"=>$graficoTurnosTipoServicio, "vehiculosMes"=>$vehiculosMes]);
 
     }
 
@@ -565,17 +677,70 @@ class JefeDeTallerController extends Controller
 
         $vehiculosDelMes = Turno::with("vehiculo")->whereMonth('fecha', '=', $mesActual)->get();
 
+        $vehiculosDelMes = $vehiculosDelMes->unique("id_vehiculo");
         return view ("jefetaller.vehiculosIngresadosEnElMes",
         ["vehiculosDelMes" => $vehiculosDelMes]);
 
 
     }
 
+    public function vehiculoPeriodoMostrar(){
+        return view("jefetaller.buscarperiodo");
+    }
+
+    public function vehiculoPeriodoResultado (Request $request){
+
+        $desde = $request->desde;
+        $hasta = $request->hasta;
+
+        $vehiculosPeriodo = OrdenReparacion::where('fecha_ingreso_vehiculo', '>=', $desde)
+        ->where("fecha_ingreso_vehiculo","<=",$hasta)
+        ->orderBy("fecha_ingreso_vehiculo")
+        ->get();
+
+      $desde = strtotime($desde);
+        $desde = date('d-m-Y', $desde);
+
+        $hasta = strtotime($hasta);
+        $hasta = date('d-m-Y', $hasta);
+
+        return view("jefetaller.resultadosperiodo",["ordenes"=>$vehiculosPeriodo,"desde"=>$desde,"hasta"=>$hasta]);
+    }
+
+    public function periodoPDF(Request $request){
+
+        $desde = $request->desde;
+        $hasta = $request->hasta;
+
+        $desde = strtotime($desde);
+        $desde = date('Y-m-d', $desde);
+
+        $hasta = strtotime($hasta);
+        $hasta = date('Y-m-d', $hasta);
+
+        $vehiculosPeriodo = OrdenReparacion::where('fecha_ingreso_vehiculo', '>=', $desde)
+        ->where("fecha_ingreso_vehiculo","<=",$hasta)
+        ->orderBy("fecha_ingreso_vehiculo")
+        ->get();
+
+      $desde = strtotime($desde);
+        $desde = date('d-m-Y', $desde);
+
+        $hasta = strtotime($hasta);
+        $hasta = date('d-m-Y', $hasta);
+
+        $informe = PDF::loadview('jefetaller.pdf.ordenesPeriodo',
+        ["ordenes"=>$vehiculosPeriodo,"desde"=>$desde,"hasta"=>$hasta]);
+        return $informe->stream('ordenesPeriodo.pdf');
+        
+     }
+
     public function generarPDFVehiculosMes(){
     
         $hoy = Carbon::now();
         $mesActual = $hoy->month;
         $vehiculosDelMes = Turno::with("vehiculo")->whereMonth('fecha', '=', $mesActual)->get();
+        $vehiculosDelMes = $vehiculosDelMes->unique("id_vehiculo");
 
     
 
@@ -609,18 +774,32 @@ class JefeDeTallerController extends Controller
         "cliente"=>$cliente,
         ];
 
+        try{
+            \Mail::send('mails.confirmacionorden', $data, function ($message) {
 
-        \Mail::send('mails.confirmacionorden', $data, function ($message) {
+                $message->from('info@curvasud.com.ar', 'Curvasud');
+        
+                $message->to("cliente@curvasud.com.ar")->subject('Órden de Reparación completada');}
+            
+            );
+        }
+        catch(\Exception $e){
+        }
 
-        $message->from('info@curvasud.com.ar', 'Curvasud');
+ 
 
-        $message->to("cliente@curvasud.com.ar")->subject('Órden de Reparación completada');});
 
         if ($request->fecha != $ordenAActualizar->fecha_egreso_vehiculo){
             $ordenAActualizar->update([
                 "fecha_egreso_vehiculo"=>$request->fecha,
                 "id_estado_orden"=>1
             ]);
+
+            if(isset($e)){
+                return redirect()->route("/jefetaller/verOrdenes")
+                ->withErrors(['Órden marcada como finalizada con una nueva fecha correctamente. No se pudo enviar el mail debido a un problema de conectividad']);
+
+            }
 
             return redirect()->route("/jefetaller/verOrdenes")->withErrors(['Órden marcada como finalizada con una nueva fecha correctamente ']);
 
@@ -632,6 +811,13 @@ class JefeDeTallerController extends Controller
                 "fecha_egreso_vehiculo"=>$request->fecha,
                 "id_estado_orden"=>1
             ]);
+
+            if(isset($e)){
+                return redirect()->route("/jefetaller/verOrdenes")
+                ->withErrors(['Órden marcada como finalizada con una nueva fecha correctamente. No se pudo enviar el mail debido a un problema de conectividad']);
+
+            }
+
             return redirect()->route("/jefetaller/verOrdenes")->withErrors(['Órden marcada como finalizada correctamente ']);
 
         }

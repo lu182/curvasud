@@ -16,6 +16,13 @@ class TipoVehiculo extends Model
    {
        return $this->hasMany('App\Vehiculo',"id_tipo_vehiculo")->orderBy('id_vehiculo', 'desc');
    }
+
+   public function contarTipo(){
+       $vehiculos = $this->tipovehiculo_vehiculo;
+       return $this->count($vehiculos);
+   }
+
+
    
    
 }

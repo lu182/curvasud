@@ -42,6 +42,11 @@
                     <li>
                             <a href="{{route('/jefetaller/VehiculosMes')}}">Generar un informe de la cantidad total de vehiculos ingesados en el mes</a>
                         </li>
+
+
+                        <li>
+                                <a href="{{route('jefetaller/vehiculosPeriodo')}}">Generar un informe de las órdenes de reparación generadas en un período determinado</a>
+                            </li>
                         
     
 

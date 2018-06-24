@@ -115,16 +115,11 @@ Esperamos tu contacto en nuestras lineas rotativas								</p>
 								<h4>Newsletter</h4>
 								<p>Suscribete a nuestro newsletter para recibir novedades y promociones.</p>
 								<div class="d-flex flex-row" id="mc_embed_signup">
-
-
-									  <form class="navbar-form" novalidate="true" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get">
+									  <form class="navbar-form" novalidate="true" action="{{route('suscripcion')}}" method="POST">
 									    <div class="input-group add-on align-items-center d-flex">
-									      	<input class="form-control" name="EMAIL" placeholder="Email " onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email address'" required="" type="email">
-											<div style="position: absolute; left: -5000px;">
-												<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value="" type="text">
-											</div>
+									      	<input class="form-control" name="email" placeholder="Email " onfocus="this.placeholder = ''" onblur="this.placeholder = ' Correo Electrónico'" required="" type="email">
 									      <div class="input-group-btn">
-									        <button class="genric-btn"><span class="lnr lnr-arrow-right"></span></button>
+									        <button class="genric-btn" type="submit"><span class="lnr lnr-arrow-right"></span></button>
 									      </div>
 									    </div>
 									      <div class="info mt-20"></div>
@@ -155,7 +150,6 @@ Esperamos tu contacto en nuestras lineas rotativas								</p>
   			<script src="{{asset('newHome/js/easing.min.js')}}"></script>
 			<script src="{{asset('newHome/js/hoverIntent.js')}}"></script>
 			<script src="{{asset('newHome/js/superfish.min.js')}}"></script>
-			<script src="{{asset('newHome/js/jquery.ajaxchimp.min.js')}}"></script>
 			<script src="{{asset('newHome/js/jquery.magnific-popup.min.js')}}"></script>
 			<script src="{{asset('newHome/js/owl.carousel.min.js')}}"></script>
 			<script src="{{asset('newHome/js/jquery.sticky.js')}}"></script>

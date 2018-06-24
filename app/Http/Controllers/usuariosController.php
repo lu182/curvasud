@@ -79,22 +79,11 @@ class usuariosController extends Controller
                 case 2:
                     //Verifica que el usuario tiene un tipo_user_id = 1, lo que significa que es un cliente
                     //Por ello, le devuelve la vista de bienvenida para clientes
-                    $fecha_actual = Carbon::now();
-                    $año = $fecha_actual->year;
-                    $mes = $fecha_actual->month;
-                    if ($mes < 10) {
-                        $mes = "0" . $mes;
-                    }
-                    $dia = $fecha_actual->day;
-                    $fecha_a_buscar = $año . "-" . $mes . "-" . $dia;
-
-                    $turnosHoy = Turno::where("id_estado_turno", 2)
-                    ->where("fecha", '=', $fecha_a_buscar)
-                    ->get();
-                    return view("eac.bienvenida",["turnosHoy"=>$turnosHoy]);
+                   
+                    return redirect()->route("/eac/bienvenida");
 
                 case 3:
-                    return view("jefetaller.bienvenida");
+                return redirect()->route("/jefetaller/bienvenida");
                 case 4:
                     
                         return view("administrador.bienvenida");

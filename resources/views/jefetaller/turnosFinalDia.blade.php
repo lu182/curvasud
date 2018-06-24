@@ -6,6 +6,7 @@
 <a class="btn btn-primary" href="{{route('/jefetaller/generarPdfturnosFinalDia')}}" target="_blank"> 
 IMPRIMIR
 </a>
+@if($turnos->count() > 0)
         @foreach ($turnos as $key => $turnoDia)
 
             <h3> Estado del turno: {{$key}} </h3>
@@ -41,6 +42,8 @@ IMPRIMIR
     </table>
 
         @endforeach
-
+        @else
+        <h3>No se encontraron turnos </h3>
+        @endif
             
 @endsection
