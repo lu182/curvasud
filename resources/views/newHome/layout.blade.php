@@ -87,7 +87,8 @@
           </header><!--header -->
           <!-- Comienza Contenido -->
           @yield("content")
-
+		  <br>
+		  <br>
           <!-- start footer Area -->
 			<footer class="footer-area section-gap">
 				<div class="container">
@@ -96,14 +97,14 @@
 							<div class="single-footer-widget">
 								<h4>Sobre Nosotros</h4>
 								<p>
-Somos Curvasud, una concesionaria de vehículos centradas en el valor agregado a nuestros clientes.								</p>
+		Somos Curvasud, una concesionaria de vehículos centradas en el valor agregado a nuestros clientes.</p>
 							</div>
 						</div>
 						<div class="col-lg-4  col-md-6 col-sm-6">
 							<div class="single-footer-widget">
 								<h4>Contactanos</h4>
 								<p>
-Esperamos tu contacto en nuestras lineas rotativas								</p>
+						Esperamos tu contacto en nuestras lineas rotativas	</p>
 								<p class="number">
 									0800 555 28782<br>
 									0800 555 28783

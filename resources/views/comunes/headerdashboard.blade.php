@@ -21,6 +21,8 @@
     <link href="{{asset('select/estilo.css')}}" rel="stylesheet" />
     <link href="{{asset('css/style2.css')}}" rel="stylesheet" />
 
+
+
 </head>
 
 <body>
@@ -86,9 +88,9 @@
 
                     <li class="nav-item active active-pro">
                         <a class="nav-link active" href="{{route('turnero')}}">
-                     <i class="nc-icon nc-settings-tool-66"></i>
-                     <p>Solicitar Turno</p>
-                  </a>
+                            <i class="nc-icon nc-settings-tool-66"></i>
+                        <p>Solicitar Turno</p>
+                        </a>
                     </li>
                     @else
 

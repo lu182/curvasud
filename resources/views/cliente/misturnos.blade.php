@@ -14,7 +14,7 @@
         buttton{
             margin-top:0px!important;
             font-size: 12px!importat;
-padding:3px!important
+            padding:3px!important
         }
 
         
@@ -46,7 +46,7 @@ padding:3px!important
                 <table class="table table-hover table-striped" id="tablaSinBuscar">
                     <thead>
                         <tr>
-                            <th>Fecha  </th>
+                            <th>Fecha </th>
                             <th>Hora</th>
                             <th>Vehiculo</th>
 

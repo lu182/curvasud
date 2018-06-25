@@ -149,7 +149,7 @@ class TuneroController extends Controller
 
     }
 
-    public function guardarTurno(Request $request) //NO GUARDA UN NUEVO TURNO PARA UN NUEVO USUARIO
+    public function guardarTurno(Request $request) 
     {
 
         $turno = Turno::create($request->all());

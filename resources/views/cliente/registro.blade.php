@@ -58,7 +58,7 @@
                 <div class="form-group" id="ciudad_input">
                         <label>Ingrese nombre de ciudad</label>
                         <input type="text" class="form-control" placeholder="" name = "inputOtro" >
-                    </div>
+                </div>
                 <li><label>* Nombre:</label> <input type="text" name="nombre" value="" id="" required> </li>
                 <li><label>* Apellido:</label> <input type="text" name="apellido" value="" id="" required> </li>
                 <li><label>Fecha de nacimiento:</label> <input type="date" name="fecha_nac" value="" id=""></li>

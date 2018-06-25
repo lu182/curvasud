@@ -36,13 +36,13 @@
                     En la actualidad, es uno de los más importantes concesionarios de las redes oficiales Fiat, y cuenta con toda la línea de automóviles, pick ups y utilitarios. También comercializa, en forma oficial.
                 </p>
                 <p>
-                    La empresa se encuentra emplazada en la ciudad de Córdoba, en la intersección del Bv. San Juan esquina Pasaje Santo Tomás, desarrollando sus actividades en un predio de más de 9.300 m2.
+                    La empresa se encuentra emplazada en la ciudad de Córdoba, con dirección en Caseros 1180, desarrollando sus actividades en un predio de más de 9.300 m2.
                 </p>
                 
             </div>
             <div class="col-lg-6 about-video-right justify-content-center align-items-center d-flex" style= "height: 415px;">
                 <p>
-                    Cuenta con una importante estructura edilicia, con cómodas y funcionales instalaciones para el mejor desenvolvimiento de los clientes; haciendo de la estadía en la concesionaria un momento sumamente agradable. Cada una de las líneas de automotores que la empresa comercializa se encuentran en un espacio único y especialmente diseñado, como así también el sector destinado a servicio mecánico.
+                    Cuenta con una importante estructura edilicia, con cómodas y funcionales instalaciones para el mejor desenvolvimiento de los clientes; haciendo de la estadía en la concesionaria un momento sumamente agradable. Cada uno de los modelos de la marca que la empresa comercializa, se encuentran en un espacio único y especialmente diseñado, como así también el sector destinado a servicio mecánico.
                 </p>
             </div>
         </div>
@@ -57,17 +57,33 @@
         <div class="row">
             <div class="col-lg-6 home-about-left">
                 <img class="mx-auto d-block img-fluid" src="{{asset('img/empresa.jpg')}}" alt="">
+                <br>
+                <br>
+                <img class="mx-auto d-block img-fluid" src="{{asset('img/diagnostico.jpg')}}" alt="">
             </div>
+            
+           
             <div class="col-lg-6 home-about-right">
                 <h6 class="text-uppercase">Una empresa centrada en el valor agregado</h6>
-                <h1>La solución para el  <br>
-                    mantenimiento de tu vehículo</h1>
+                <h1>Un poco de historia</h1>
 
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis.
+                        En un principio la empresa se dedicaba exclusivamente a Ia comercialización de vehículos para el transporte de carga y el agro, en Córdoba y zonas de influencia.
+                        <br>
+                        <br>
+                        Hoy, luego de enfrentar con éxito y solvencia diferentes desafíos en pos de crecer y desarrollarse, brinda la posibilidad de adquirir una amplia gama de vehículos Fiat.
+                        <br>
+                        <br>
+                        En estos años la empresa progresó a través de la ejecución de proyectos puntuales y concretos, tanto en la ampliación de la oferta vehicular y de servicios al cliente, como en lo que hace a la infraestructura edilicia y de personal.
+                        <br>
+                        <br>
+                        La apertura de salones de exposición, sectores de servicio y capacitación constante de todo el personal, son la prueba de la adaptación a los nuevos tiempos. CURVASUD se ha modernizado para satisfacer al máximo todos los requerimientos de quienes la eligen a diario.
                 </p>
-                <a class="primary-btn" href="#">Comenzá ahora</a>
+                <!-- <a class="primary-btn" href="{{ route('registro_clientes') }}">Comenzá ahora</a> -->
+                
             </div>
+            
+            
         </div>
     </div>
 </section>

@@ -32,13 +32,13 @@ padding:3px!important
     
         <div class="card strpied-tabled-with-hover">
             <div class="card-header ">
-                <h4 class="card-title">Listado de Órdenes</h4>
+                <h4 class="card-title" align="center">LISTADO DE ÓRDENES</h4>
 
             </div>
 @if($ordenes->count()<1)
 
 <div class="card-body " style="padding:2%">
-    No hay ninguna orden registrada
+    No tienes ninguna órden registrada
 </div>
 @endif
             @foreach ($ordenes as $key => $orden)
