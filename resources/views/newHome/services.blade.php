@@ -167,7 +167,7 @@
         <br>
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xs-12">
-                <h4 class="tit">PACKS</h4>
+                <h1 class="tit">PACKS</h1>
             </div>
             <br>
             <br>

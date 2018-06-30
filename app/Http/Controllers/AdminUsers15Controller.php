@@ -30,37 +30,40 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"Nombre de Usuario","name"=>"name"];
+			$this->col[] = ["label"=>"Usuario","name"=>"name"];
 			$this->col[] = ["label"=>"Email","name"=>"email"];
-			$this->col[] = ["label"=>"Tipo de Usuario","name"=>"tipo_user_id","join"=>"tipos_empleados,id_tipo_empleado"];
-			$this->col[] = ["label"=>"Contraseña","name"=>"password","width"=>"1"];
-			$this->col[] = ["label"=>"Tipo Documento","name"=>"id_tipo_doc","join"=>"tipos_documentos,id_tipo_doc"];
-			$this->col[] = ["label"=>"Nro. Documento","name"=>"dni"];
-			$this->col[] = ["label"=>"Ciudad","name"=>"id_ciudad","join"=>"ciudades,id_ciudad"];
-			$this->col[] = ["label"=>"Nombre","name"=>"nombre"];
-			$this->col[] = ["label"=>"Apellido","name"=>"apellido"];
-			$this->col[] = ["label"=>"Fecha Nac","name"=>"fecha_nac"];
-			$this->col[] = ["label"=>"Telefono","name"=>"telefono"];
+			$this->col[] = ["label"=>"Contraseña","name"=>"password"];
+			$this->col[] = ["label"=>"Tipo de Usuario","name"=>"tipo_user_id","join"=>"tipos_empleados,tipoEmpleado"];
+			$this->col[] = ["label"=>"Tipo Documento","name"=>"id_tipo_doc","join"=>"tipos_documentos,tipoDocumento"];
+			$this->col[] = ["label"=>"Ciudad","name"=>"id_ciudad","join"=>"ciudades,ciudad"];
+			$this->col[] = ["label"=>"Dni","name"=>"dni"];
+			$this->col[] = ["label"=>"Nombre del usuario","name"=>"nombre"];
+			$this->col[] = ["label"=>"Apellido del usuario","name"=>"apellido"];
+			$this->col[] = ["label"=>"Fecha de nacimiento","name"=>"fecha_nac"];
+			$this->col[] = ["label"=>"Razon Social","name"=>"razon_social"];
+			$this->col[] = ["label"=>"Domicilio","name"=>"domicilio"];
+			$this->col[] = ["label"=>"Cód. postal","name"=>"cod_postal"];
+			$this->col[] = ["label"=>"Teléfono","name"=>"telefono"];
 			$this->col[] = ["label"=>"Cuil","name"=>"cuil"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Usuaio','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'Puedes introducir solo una letra'];
+			$this->form[] = ['label'=>'Usuario','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'Puedes introducir solo una letra'];
 			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:users','width'=>'col-sm-10','placeholder'=>'Introduce una dirección de correo electrónico válida'];
-			$this->form[] = ['label'=>'Password','name'=>'password','type'=>'password','validation'=>'min:3|max:32','width'=>'col-sm-10','help'=>'Mínimo 5 caracteres. Deja este campo vacio si no solicitaste un cambio de contraseña.'];
-			$this->form[] = ['label'=>'Tipo User Id','name'=>'tipo_user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipo_user,nombre'];
-			$this->form[] = ['label'=>'Tipo Doc','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
+			$this->form[] = ['label'=>'Contraseña','name'=>'password','type'=>'password','validation'=>'min:3|max:32|required','width'=>'col-sm-10','help'=>'Mínimo 5 caracteres. Deja este campo vacio si no solicitaste un cambio de contraseña.'];
+			$this->form[] = ['label'=>'Tipo de usuario','name'=>'tipo_user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipo_user,nombre'];
+			$this->form[] = ['label'=>'Tipo de documento','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
 			$this->form[] = ['label'=>'Ciudad','name'=>'id_ciudad','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ciudades,ciudad'];
 			$this->form[] = ['label'=>'Dni','name'=>'dni','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Nombre','name'=>'nombre','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Apellido','name'=>'apellido','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Fecha Nac','name'=>'fecha_nac','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Razon Social','name'=>'razon_social','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Domicilio','name'=>'domicilio','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Cod Postal','name'=>'cod_postal','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nombre del usuario','name'=>'nombre','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Apellido del usuario','name'=>'apellido','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Fecha de nacimiento','name'=>'fecha_nac','type'=>'date','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Razon Social','name'=>'razon_social','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Domicilio','name'=>'domicilio','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Cód. postal','name'=>'cod_postal','type'=>'number','validation'=>'integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Telefono','name'=>'telefono','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Cuil','name'=>'cuil','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Cuil','name'=>'cuil','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -69,8 +72,8 @@
 			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:users','width'=>'col-sm-10','placeholder'=>'Introduce una dirección de correo electrónico válida'];
 			//$this->form[] = ['label'=>'Password','name'=>'password','type'=>'password','validation'=>'min:3|max:32','width'=>'col-sm-10','help'=>'Mínimo 5 caracteres. Deja este campo vacio si no solicitaste un cambio de contraseña.'];
 			//$this->form[] = ['label'=>'Tipo User Id','name'=>'tipo_user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipo_user,nombre'];
-			//$this->form[] = ['label'=>'Tipo Doc','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipo_user,nombre'];
-			//$this->form[] = ['label'=>'Ciudad','name'=>'id_ciudad','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
+			//$this->form[] = ['label'=>'Tipo Doc','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
+			//$this->form[] = ['label'=>'Ciudad','name'=>'id_ciudad','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ciudades,ciudad'];
 			//$this->form[] = ['label'=>'Dni','name'=>'dni','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Nombre','name'=>'nombre','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Apellido','name'=>'apellido','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];

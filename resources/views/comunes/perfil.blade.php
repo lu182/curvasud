@@ -2,9 +2,13 @@
 
 
 @section("content")
+ 
 
 <div class="col-md-8">
-        <div class="card">
+        
+        
+       <div class="card">
+             
             <div class="card-header">
                 <h4 class="card-title">Actualizar mis datos</h4>
 
@@ -16,7 +20,8 @@
 
             </div>
             <div class="card-body">
-                <form method="post" action ="">
+
+               <form method="post" action ="">
                     @csrf
                     <div class="row">
                         <div class="col-md-5 pr-1">
@@ -121,7 +126,18 @@
                     <div class="clearfix"></div>
                 </form>
             </div>
+
+            
         </div>
-    </div>
+</div>
+
+
+
+
+
+
+    
+
+    
 
     @endsection

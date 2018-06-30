@@ -40,16 +40,22 @@
 			$this->col[] = ["label"=>"Patente vehículo","name"=>"id_vehiculo","join"=>"vehiculos,patente"];
 			$this->col[] = ["label"=>"Nombre cliente","name"=>"id_cliente","join"=>"users,nombre"];
 			$this->col[] = ["label"=>"Apellido cliente","name"=>"id_cliente","join"=>"users,apellido"];
+			$this->col[] = ["label"=>"Dni cliente","name"=>"id_cliente","join"=>"users,dni"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Estado Orden','name'=>'id_estado_orden','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'estados_ordenes,estadoOrden'];
-			$this->form[] = ['label'=>'Fecha Ingreso Vehiculo','name'=>'fecha_ingreso_vehiculo','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Fecha Egreso Vehiculo','name'=>'fecha_egreso_vehiculo','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Mecanico','name'=>'id_mecanico','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'mecanicos,apellido'];
-			$this->form[] = ['label'=>'Vehiculo','name'=>'id_vehiculo','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'vehiculos,patente'];
-			$this->form[] = ['label'=>'Cliente','name'=>'id_cliente','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'users,apellido'];
+			$this->form[] = ['label'=>'Estado de la órden','name'=>'id_estado_orden','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'estados_ordenes,estadoOrden'];
+			$this->form[] = ['label'=>'Fecha de ingreso vehículo','name'=>'fecha_ingreso_vehiculo','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Fecha de egreso vehículo','name'=>'fecha_egreso_vehiculo','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nombre mecánico','name'=>'id_mecanico','type'=>'select2','validation'=>'required','width'=>'col-sm-10','datatable'=>'mecanicos,nombre'];
+			$this->form[] = ['label'=>'Apellido mecánico','name'=>'id_mecanico','type'=>'select2','validation'=>'required','width'=>'col-sm-9','datatable'=>'mecanicos,apellido'];
+			$this->form[] = ['label'=>'Modelo del vehículo','name'=>'id_vehiculo','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Patente del vehículo','name'=>'id_vehiculo','type'=>'text','validation'=>'required|min:1|max:7','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Chasis del vehículo','name'=>'id_vehiculo','type'=>'text','validation'=>'required|min:1|max:7','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Nombre cliente','name'=>'id_cliente','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Apellido cliente','name'=>'id_cliente','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			$this->form[] = ['label'=>'Dni cliente','name'=>'id_cliente','type'=>'number','validation'=>'required','width'=>'col-sm-9'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM

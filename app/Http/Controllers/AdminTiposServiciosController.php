@@ -35,14 +35,13 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Tipo Servicio','name'=>'id_tipo_servicio','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_servicios,id_tipo_servicio'];
-			$this->form[] = ['label'=>'TipoServicio','name'=>'tipoServicio','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Tipo de servicio','name'=>'tipoServicio','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ["label"=>"Tipo Servicio","name"=>"id_tipo_servicio","type"=>"select2","required"=>TRUE,"validation"=>"required|integer|min:0","datatable"=>"tipo_servicio,id"];
-			//$this->form[] = ["label"=>"TipoServicio","name"=>"tipoServicio","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ['label'=>'Tipo Servicio','name'=>'id_tipo_servicio','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_servicios,id_tipo_servicio'];
+			//$this->form[] = ['label'=>'TipoServicio','name'=>'tipoServicio','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
