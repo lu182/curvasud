@@ -1691,7 +1691,7 @@
     }
 </style>
 
-<body > 
+<body> 
 
     <div class="" style="padding:5px">
 <div style="border:2px black solid">
@@ -1699,7 +1699,9 @@
 <div class="col-md-4" style="float:left">
 
         <img src="{{asset('img/logocurvasud.png')}}" width="200"class="img-fluid" >
-
+        <h4> Caseros 1181 - CP: 5000 - Córdoba, capital. <br>
+             Tel: 0800 555 28782 / 0800 555 28783 <br>
+             Email: info@curvasud.com.ar </h4> 
 </div>
 
 <div class="col-md-8" style="float:right">
