@@ -20,8 +20,8 @@
 			$this->button_add = true;
 			$this->button_edit = true;
 			$this->button_delete = true;
-			$this->button_detail = true;
-			$this->button_show = true;
+			$this->button_detail = false;
+			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
@@ -35,12 +35,7 @@
 			$this->col[] = ["label"=>"Email","name"=>"email"];
 			$this->col[] = ["label"=>"Dni","name"=>"dni"];
 			$this->col[] = ["label"=>"Tipo de documento","name"=>"id_tipo_doc","join"=>"tipos_documentos,tipoDocumento"];
-            $this->col[] = ["label"=>"Fecha de nacimiento","name"=>"fecha_nac","callback"=>function($row){
-                $fecha_nac = $row->fecha_nac;
-            $fecha_nac = strtotime($fecha_nac);
-            $fecha_nac = date('d-m-Y', $fecha_nac);
-            return $fecha_nac;
-            }];
+			$this->col[] = ["label"=>"Fecha de nacimiento","name"=>"fecha_nac"];
 			$this->col[] = ["label"=>"Domicilio","name"=>"domicilio"];
 			$this->col[] = ["label"=>"Cód. postal","name"=>"cod_postal"];
 			$this->col[] = ["label"=>"Teléfono","name"=>"telefono"];
@@ -51,7 +46,7 @@
 			$this->form = [];
 			$this->form[] = ['label'=>'Nombre','name'=>'nombre','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			$this->form[] = ['label'=>'Apellido','name'=>'apellido','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:mecanicos','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Dni','name'=>'dni','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10','placeholder'=>'Introduce una dirección de correo electrónico válida'];
 			$this->form[] = ['label'=>'Tipo de documento','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
 			$this->form[] = ['label'=>'Fecha de nacimiento','name'=>'fecha_nac','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
@@ -65,7 +60,7 @@
 			//$this->form = [];
 			//$this->form[] = ['label'=>'Nombre','name'=>'nombre','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			//$this->form[] = ['label'=>'Apellido','name'=>'apellido','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:mecanicos','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Dni','name'=>'dni','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10','placeholder'=>'Introduce una dirección de correo electrónico válida'];
 			//$this->form[] = ['label'=>'Tipo de documento','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
 			//$this->form[] = ['label'=>'Fecha de nacimiento','name'=>'fecha_nac','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];

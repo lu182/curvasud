@@ -20,8 +20,8 @@
 			$this->button_add = true;
 			$this->button_edit = true;
 			$this->button_delete = true;
-			$this->button_detail = true;
-			$this->button_show = true;
+			$this->button_detail = false;
+			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = true;
@@ -40,14 +40,7 @@
 			$this->col[] = ["label"=>"Nombre cliente","name"=>"id_cliente","join"=>"users,nombre"];
 			$this->col[] = ["label"=>"Apellido cliente","name"=>"id_cliente","join"=>"users,apellido"];
 			$this->col[] = ["label"=>"Dni cliente","name"=>"id_cliente","join"=>"users,dni"];
-			$this->col[] = ["label"=>"Cancelado","name"=>"cancelado","callback"=>function($row){
-                $cancelado = $row->cancelado;
-
-                if($cancelado == 1){
-                    return "Disponible";
-                }
-            return "Cancelado";
-            }];
+			$this->col[] = ["label"=>"Cancelado","name"=>"cancelado"];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
@@ -58,11 +51,11 @@
 			$this->form[] = ['label'=>'Año','name'=>'anio','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Patente','name'=>'patente','type'=>'text','validation'=>'required|min:1|max:7','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Número de chasis','name'=>'nro_chasis','type'=>'text','validation'=>'required|min:1|max:7','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Fecha inicio de garantía','name'=>'fecha_inicio_garantia','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Nombre del cliente','name'=>'id_cliente','type'=>'text','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Fecha inicio de garantía','name'=>'fecha_inicio_garantia','type'=>'date','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nombre del cliente','name'=>'id_cliente','type'=>'text','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Apellido del cliente','name'=>'id_cliente','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			$this->form[] = ['label'=>'Dni cliente','name'=>'id_cliente','type'=>'number','validation'=>'required','width'=>'col-sm-9'];
-			$this->form[] = ['label'=>'Cancelado','name'=>'cancelado','type'=>'select','validation'=>'required','width'=>'col-sm-9','dataenum'=>'0|Cancelado;1|Disponible'];
+			$this->form[] = ['label'=>'Cancelado','name'=>'cancelado','type'=>'number','validation'=>'required','width'=>'col-sm-9','placeholder'=>'Debe escribir 1 para cancelado, 0 si no está cancelado'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
@@ -73,11 +66,11 @@
 			//$this->form[] = ['label'=>'Año','name'=>'anio','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Patente','name'=>'patente','type'=>'text','validation'=>'required|min:1|max:7','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Número de chasis','name'=>'nro_chasis','type'=>'text','validation'=>'required|min:1|max:7','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Fecha inicio de garantía','name'=>'fecha_inicio_garantia','type'=>'date','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Nombre del cliente','name'=>'id_cliente','type'=>'text','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Apellido del cliente','name'=>'id_cliente','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Fecha inicio de garantía','name'=>'fecha_inicio_garantia','type'=>'date','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Nombre del cliente','name'=>'id_cliente','type'=>'select2','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Apellido del cliente','name'=>'id_cliente','type'=>'select2','validation'=>'required','width'=>'col-sm-9'];
 			//$this->form[] = ['label'=>'Dni cliente','name'=>'id_cliente','type'=>'number','validation'=>'required','width'=>'col-sm-9'];
-			//$this->form[] = ['label'=>'Cancelado','name'=>'cancelado','type'=>'number','validation'=>'required','width'=>'col-sm-9'];
+			//$this->form[] = ['label'=>'Cancelado','name'=>'cancelado','type'=>'number','validation'=>'required','width'=>'col-sm-9','placeholder'=>'Debe escribir 1 para cancelado, 0 si no está cancelado'];
 			# OLD END FORM
 
 			/*

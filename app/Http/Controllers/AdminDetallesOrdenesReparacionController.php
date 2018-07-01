@@ -20,8 +20,8 @@
 			$this->button_add = true;
 			$this->button_edit = true;
 			$this->button_delete = true;
-			$this->button_detail = true;
-			$this->button_show = true;
+			$this->button_detail = false;
+			$this->button_show = false;
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
@@ -43,10 +43,10 @@
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
 			$this->form[] = ['label'=>'Orden de reparación','name'=>'id_orden_reparacion','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ordenes_reparacion,id_orden_reparacion'];
-			$this->form[] = ['label'=>'Kilometraje','name'=>'kilometraje','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kilometraje','name'=>'kilometraje','type'=>'number','validation'=>'required|integer','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Motivo de ingreso','name'=>'motivo_ingreso','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Observaciones','name'=>'observaciones','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Extra','name'=>'extra','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Extra','name'=>'extra','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Operación realizada','name'=>'operacion_realizada','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Nombre mecánico','name'=>'mecanico','type'=>'select2','validation'=>'required|min:1|max:255','width'=>'col-sm-10','datatable'=>'mecanicos,nombre'];
 			$this->form[] = ['label'=>'Apellido mecánico','name'=>'mecanico','type'=>'select2','validation'=>'required','width'=>'col-sm-9','datatable'=>'mecanicos,apellido'];
@@ -54,8 +54,8 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Orden de reparacion','name'=>'id_orden_reparacion','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Kilometraje','name'=>'kilometraje','type'=>'number','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Orden de reparación','name'=>'id_orden_reparacion','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ordenes_reparacion,id_orden_reparacion'];
+			//$this->form[] = ['label'=>'Kilometraje','name'=>'kilometraje','type'=>'number','validation'=>'required|integer','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Motivo de ingreso','name'=>'motivo_ingreso','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Observaciones','name'=>'observaciones','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Extra','name'=>'extra','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
