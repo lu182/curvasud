@@ -1693,7 +1693,7 @@
 
 <body> 
 
-    <div class="" style="padding:5px">
+<div class="" style="padding:5px">
 <div style="border:2px black solid">
 <div class="row" style="padding:2%;margin-left:2px;margin-right:2px;background:#f1f1f1">
 <div class="col-md-4" style="float:left">
@@ -1708,8 +1708,8 @@
 
         <h1> Orden de Reparación n° {{$orden->id_orden_reparacion}}</h1>
 
-        <h3> Fecha de Ingreso {{$orden->corregirFecha1()}} </h3>
-        <h3> Fecha estimada de Egreso {{$orden->corregirFecha2()}} </h3>
+        <p> <span style="font-weight: bold">Fecha de ingreso: </span> {{$orden->corregirFecha1()}} </p>
+        <p> <span style="font-weight: bold">Fecha estimada de egreso: </span> {{$orden->corregirFecha2()}} </p>
 </div>
 
 
@@ -1719,19 +1719,19 @@
 
 
 <div class="col-md-12" style="border:2px solid black;width:40%;float:left;margin-left:2%">
-        <h2  style="">Cliente </h2>
+        <h2>Cliente </h2>
 
     <div style="" class="cajaNombres"> 
-        <p> <span style="font-weight: bold"> Nombre: </span> {{$orden->orden_usuario->nombre}} </p> 
-        <p> <span style="font-weight: bold">Apellido: </span> {{$orden->orden_usuario->apellido}} </p>
+        <p> <span style="font-weight: bold"> Nombre y apellido: </span> {{$orden->orden_usuario->nombre}} {{$orden->orden_usuario->apellido}}</p> 
         <p> <span style="font-weight: bold">DNI: </span> {{$orden->orden_usuario->dni}} </p>
+        <p> <span style="font-weight: bold">Tel: </span> {{$orden->orden_usuario->telefono}} </p>
         <p> <span style="font-weight: bold">Email: </span> {{$orden->orden_usuario->email}} </p>
     </div>
 </div>
 
-<div class="col-md-12" style="border:2px solid black;width:40%;float:right;margin-right:2%">
-        <h2 style=""> Detalles del vehiculo </h2>
-        <div style=""  class="cajaNombres"> 
+<div class="col-md-12" style="border:2px solid black;width:45%;float:right;margin-right:2%">
+        <h2> Detalles del vehiculo </h2>
+    <div style=""  class="cajaNombres"> 
 
         <p> <span style="font-weight: bold">  Marca: </span> {{$orden->orden_vehiculo->marca}} </p>
         <p> <span style="font-weight: bold"> Modelo:  </span>{{$orden->orden_vehiculo->modelo}} </p>
@@ -1743,40 +1743,41 @@
 </div>
 
 
-<div class="container  center" style="width:80%;margin:auto">
-<div class="row  center">
-<div >
-        <h3> Motivo de Ingreso: </h3>
-        <p> {{$detalle_orden->motivo_ingreso}} </p>
+<div class="container  center" style="width:90%;margin:auto">
+    <div class="row center">
+        <div>
+            <h3> Motivo de Ingreso: </h3>
+            <p> {{$detalle_orden->motivo_ingreso}} </p>
+            
+            <h3> Observaciones: </h3>
+            <p> {{$detalle_orden->observaciones}} </p>
         
-        <h3> Observaciones: </h3>
-        <p> {{$detalle_orden->observaciones}} </p>
-       
 
-</div>
-<div style="width:40%;float:left">
- 
-        <h3> Operación Realizada: </h3>
-        <p> {{$detalle_orden->operacion_realizada}} </p>
-</div>
-<div style="width:40%;float:right">
+        </div>
+        <div style="width:40%;float:left">
+    
+            <h3> Operación Realizada: </h3>
+            <p> {{$detalle_orden->operacion_realizada}} </p>
+        </div>
+        <div style="width:40%;float:right">
 
-        <h3> Extra: </h3>
-<p> {{$detalle_orden->extra}} </p>
+            <h3> Extra: </h3>
+                <p> {{$detalle_orden->extra}} </p>
 
+        </div>
     </div>
-</div>
 
     <div style="width:40%;float:left">
 
             <h3> Km: </h3>
             <p> {{$detalle_orden->kilometraje}} </p>
-        </div>
-        <div style="width:40%;float:right">
+    </div>
+    <div style="width:40%;float:right">
 
             <h3> Trabajo realizado por: </h3>
             <p>{{$orden->orden_mecanico->nombre}} {{$orden->orden_mecanico->apellido}}</p>
-        </div>
+    </div>
+
 </div>
 </div>
 </div>

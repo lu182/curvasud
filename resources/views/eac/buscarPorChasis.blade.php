@@ -11,9 +11,9 @@
                     <br>
                     <br>
                     
-                        <label>Número de chasis:</label> <input type="text" name="nro_chasis" placeholder="Ingrese número de chasis" id="" required />
-                                       
-                         <input type="submit" name="btnConsultarChasis" value="CONSULTAR" id=""/> 
+                    <label>Número de chasis:</label> <input type="text" name="nro_chasis" placeholder="Ingrese número de chasis" id="" required />
+                     <br>                  
+                    <input class="btn btn-primary" type="submit" name="btnConsultarChasis" value="CONSULTAR" id=""/> 
                     
                 </form>
             </div>
