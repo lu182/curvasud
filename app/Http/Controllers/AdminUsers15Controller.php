@@ -33,7 +33,7 @@
 			$this->col[] = ["label"=>"Usuario","name"=>"name"];
 			$this->col[] = ["label"=>"Email","name"=>"email"];
 			$this->col[] = ["label"=>"Contraseña","name"=>"password"];
-			$this->col[] = ["label"=>"Tipo de Usuario","name"=>"tipo_user_id","join"=>"tipos_empleados,tipoEmpleado"];
+			$this->col[] = ["label"=>"Tipo de Usuario","name"=>"tipo_user_id","join"=>"tipo_user,nombre"];
 			$this->col[] = ["label"=>"Tipo Documento","name"=>"id_tipo_doc","join"=>"tipos_documentos,tipoDocumento"];
 			$this->col[] = ["label"=>"Ciudad","name"=>"id_ciudad","join"=>"ciudades,ciudad"];
 			$this->col[] = ["label"=>"Dni","name"=>"dni"];
@@ -68,7 +68,7 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Usuario','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Usuario','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:32','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:users','width'=>'col-sm-10','placeholder'=>'Introduce una dirección de correo electrónico válida'];
 			//$this->form[] = ['label'=>'Contraseña','name'=>'password','type'=>'password','validation'=>'min:9|max:32','width'=>'col-sm-10','help'=>'Mínimo 8 caracteres. Al menos debe contener una letra. Deja este campo vacío si no solicitaste un cambio de contraseña.'];
 			//$this->form[] = ['label'=>'Tipo de usuario','name'=>'tipo_user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipo_user,nombre'];
