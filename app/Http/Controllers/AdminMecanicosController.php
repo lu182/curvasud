@@ -10,7 +10,7 @@
 	    public function cbInit() {
 
 			# START CONFIGURATION DO NOT REMOVE THIS LINE
-			$this->title_field = "id";
+			$this->title_field = "id_mecanico";
 			$this->limit = "20";
 			$this->orderby = "id_mecanico,desc";
 			$this->global_privilege = false;
@@ -35,7 +35,7 @@
 			$this->col[] = ["label"=>"Email","name"=>"email"];
 			$this->col[] = ["label"=>"Dni","name"=>"dni"];
 			$this->col[] = ["label"=>"Tipo de documento","name"=>"id_tipo_doc","join"=>"tipos_documentos,tipoDocumento"];
-			$this->col[] = ["label"=>"Fecha de nacimiento","name"=>"fecha_nac","callback"=>function($row){
+            $this->col[] = ["label"=>"Fecha de nacimiento","name"=>"fecha_nac","callback"=>function($row){
                 $fecha_nac = $row->fecha_nac;
             $fecha_nac = strtotime($fecha_nac);
             $fecha_nac = date('d-m-Y', $fecha_nac);
@@ -67,12 +67,12 @@
 			//$this->form[] = ['label'=>'Apellido','name'=>'apellido','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:mecanicos','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Dni','name'=>'dni','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10','placeholder'=>'Introduce una dirección de correo electrónico válida'];
-			//$this->form[] = ['label'=>'Tipo de documento','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Fecha de nacimiento','name'=>'fecha_nac','type'=>'date','validation'=>'required|date','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
+			//$this->form[] = ['label'=>'Tipo de documento','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
+			//$this->form[] = ['label'=>'Fecha de nacimiento','name'=>'fecha_nac','type'=>'date','validation'=>'required|date','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Domicilio','name'=>'domicilio','type'=>'text','validation'=>'required','width'=>'col-sm-9'];
 			//$this->form[] = ['label'=>'Cód. postal','name'=>'cod_postal','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Telefono','name'=>'telefono','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Ciudad','name'=>'id_ciudad','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ciudades,id_ciudad'];
+			//$this->form[] = ['label'=>'Ciudad','name'=>'id_ciudad','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ciudades,ciudad'];
 			# OLD END FORM
 
 			/*
@@ -345,6 +345,10 @@
 	        //Your code here
 
 	    }
+
+
+	    //By the way, you can still create your own method in here... :)
+
 
 
 
