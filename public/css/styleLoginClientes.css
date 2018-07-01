@@ -69,6 +69,9 @@ img {
 #formlogin input:required {
     background: #fff url(../img/advertencia.png) no-repeat 98% center;
     padding-right: 70px;
+    width: auto; 
+    height: 50px; 
+
 }
 
 #formlogin input:required:valid {
@@ -76,6 +79,8 @@ img {
     box-shadow: 0 0 5px #5cd053;
     border-color: #28921f;
     padding-right: 70px;
+    width: auto;
+    height: 50px;
 }
 
 #formlogin input:focus:invalid {
@@ -91,8 +96,8 @@ img {
     width: 30px;
     padding-bottom: 70px;
     position: absolute;
-    margin-left: 25px;
-    margin-top: 7px;
+    margin-left: 8px;
+    margin-top: 10px;
 }
 
 #imgPass {
@@ -101,6 +106,6 @@ img {
     width: 30px;
     padding-bottom: 70px;
     position: absolute;
-    margin-left: 25px;
-    margin-top: 7px;
+    margin-left: 8px;
+    margin-top: 10px;
 }
