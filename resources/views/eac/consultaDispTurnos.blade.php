@@ -56,7 +56,7 @@
 @foreach($noDisp as $turnoNoDisponible)
 
 <tr>
-        <th scope="row">{{$turnoNoDisponible->fecha}} </th>
+        <th scope="row">{{$turnoNoDisponible->fecha}} </th>     
         <td>{{$turnoNoDisponible->hora}}</td>
         <td>{{$turnoNoDisponible->cliente->nombre}} {{$turnoNoDisponible->cliente->apellido}} </td>
         <td>{{$turnoNoDisponible->tipo->tipoServicio}}  </td>

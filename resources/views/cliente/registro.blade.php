@@ -35,9 +35,9 @@
             <br>
             
             <ul> 
-                <li><label>* Nombre de usuario:</label> <input type="text" name="name" placeholder="Ingrese un nombre de usuario" id="" required /> </li>
+                <li><label>* Nombre de usuario:</label> <input type="text" name="name" minlength="3" maxlength="32" placeholder="Ingrese un nombre de usuario" id="" required /> </li>
                 <li><label>* Email:</label> <input type="email" name="email" value="" placeholder="Ingrese su correo electrónico" id="" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{3}$" title="Incluye un signo @, por ejemplo: nombre@dominio.com" required /> </li>
-                <li><label>* Contraseña:</label> <input type="password" name="password" value="" placeholder="Ingrese una contraseña" id="" pattern="(?=.*\d)(?=.*[a-z]).{8,}" title="Debe contener un minimo de 8 caracteres y al menos un número y una letra" required /> </li>
+                <li><label>* Contraseña:</label> <input type="password" name="password" minlength="9" maxlength="32" autocomplete="off"  placeholder="Ingrese una contraseña" id="" pattern="(?=.*\d)(?=.*[A-Za-z0-9]).{9,}" title="Debe contener un minimo de 9 caracteres y al menos un número y una letra (mayúscula o minúscula)" required /> </li>
                 <li><label>* Tipo de documento:</label>
                     <select name="id_tipo_doc" id="comboDni" required>
                         <option value="1" selected>DNI</option>

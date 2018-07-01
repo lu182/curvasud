@@ -39,12 +39,7 @@
 			$this->col[] = ["label"=>"Dni","name"=>"dni"];
 			$this->col[] = ["label"=>"Nombre del usuario","name"=>"nombre"];
 			$this->col[] = ["label"=>"Apellido del usuario","name"=>"apellido"];
-			$this->col[] = ["label"=>"Fecha de nacimiento","name"=>"fecha_nac","callback"=>function($row){
-                $fecha_nac = $row->fecha_nac;
-            $fecha_nac = strtotime($fecha_nac);
-            $fecha_nac = date('d-m-Y', $fecha_nac);
-            return $fecha_nac;
-            }];
+			$this->col[] = ["label"=>"Fecha de nacimiento","name"=>"fecha_nac"];
 			$this->col[] = ["label"=>"Razon Social","name"=>"razon_social"];
 			$this->col[] = ["label"=>"Domicilio","name"=>"domicilio"];
 			$this->col[] = ["label"=>"Cód. postal","name"=>"cod_postal"];
@@ -54,9 +49,9 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Usuario','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Usuario','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:32','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:users','width'=>'col-sm-10','placeholder'=>'Introduce una dirección de correo electrónico válida'];
-			$this->form[] = ['label'=>'Contraseña','name'=>'password','type'=>'password','validation'=>'min:8|max:8','width'=>'col-sm-10','help'=>'Mínimo 8 caracteres. Al menos debe contener una letra. Deja este campo vacío si no solicitaste un cambio de contraseña.'];
+			$this->form[] = ['label'=>'Contraseña','name'=>'password','type'=>'password','validation'=>'min:9|max:32','width'=>'col-sm-10','help'=>'Mínimo 8 caracteres. Al menos debe contener una letra. Deja este campo vacío si no solicitaste un cambio de contraseña.'];
 			$this->form[] = ['label'=>'Tipo de usuario','name'=>'tipo_user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipo_user,nombre'];
 			$this->form[] = ['label'=>'Tipo de documento','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
 			$this->form[] = ['label'=>'Ciudad','name'=>'id_ciudad','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ciudades,ciudad'];
@@ -73,21 +68,21 @@
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Usuario','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'Puedes introducir solo una letra'];
+			//$this->form[] = ['label'=>'Usuario','name'=>'name','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Email','name'=>'email','type'=>'email','validation'=>'required|min:1|max:255|email|unique:users','width'=>'col-sm-10','placeholder'=>'Introduce una dirección de correo electrónico válida'];
-			//$this->form[] = ['label'=>'Contraseña','name'=>'password','type'=>'password','validation'=>'min:8|max:8','width'=>'col-sm-10','help'=>'Mínimo 8 caracteres. Al menos debe contener una letra. Deja este campo vacío si no solicitaste un cambio de contraseña.'];
+			//$this->form[] = ['label'=>'Contraseña','name'=>'password','type'=>'password','validation'=>'min:9|max:32','width'=>'col-sm-10','help'=>'Mínimo 8 caracteres. Al menos debe contener una letra. Deja este campo vacío si no solicitaste un cambio de contraseña.'];
 			//$this->form[] = ['label'=>'Tipo de usuario','name'=>'tipo_user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipo_user,nombre'];
 			//$this->form[] = ['label'=>'Tipo de documento','name'=>'id_tipo_doc','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'tipos_documentos,tipoDocumento'];
 			//$this->form[] = ['label'=>'Ciudad','name'=>'id_ciudad','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'ciudades,ciudad'];
 			//$this->form[] = ['label'=>'Dni','name'=>'dni','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Nombre del usuario','name'=>'nombre','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			//$this->form[] = ['label'=>'Apellido del usuario','name'=>'apellido','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Fecha de nacimiento','name'=>'fecha_nac','type'=>'date','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Fecha de nacimiento','name'=>'fecha_nac','type'=>'date','validation'=>'min:1|max:255','width'=>'col-sm-10','help'=>'Podes dejar este campo vacío'];
 			//$this->form[] = ['label'=>'Razon Social','name'=>'razon_social','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10','help'=>'Podes dejar este campo vacío'];
-			//$this->form[] = ['label'=>'Domicilio','name'=>'domicilio','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Cód. postal','name'=>'cod_postal','type'=>'number','validation'=>'integer|min:0','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Domicilio','name'=>'domicilio','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10','help'=>'Podes dejar este campo vacío'];
+			//$this->form[] = ['label'=>'Cód. postal','name'=>'cod_postal','type'=>'number','validation'=>'integer|min:0','width'=>'col-sm-10','help'=>'Podes dejar este campo vacío'];
 			//$this->form[] = ['label'=>'Telefono','name'=>'telefono','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Cuil','name'=>'cuil','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'Cuil','name'=>'cuil','type'=>'text','validation'=>'min:1|max:255','width'=>'col-sm-10','help'=>'Podes dejar este campo vacío'];
 			# OLD END FORM
 
 			/*
