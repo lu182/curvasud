@@ -134,6 +134,11 @@
                 </table>
             </div>
         </div>
+
+        <div class="col-md-4" style= "float:right;margin-top:130px;padding-left:150px"> 
+
+                <img src="{{asset('img/misturnos.png')}}">
+        </div>
     </div>
                 
 
