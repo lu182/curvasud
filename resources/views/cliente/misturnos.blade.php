@@ -17,6 +17,15 @@
             padding:3px!important
         }
 
+        #selectModal{
+            width: 30%;
+            padding-left: 10px;
+        }
+
+        #modalAbierto{
+            width:auto;
+        }
+
         
 </style>
 
@@ -87,9 +96,9 @@
                                                             <input type="hidden" name="id_turno" value="{{$turno->encriptarTurno()}}">
                                                             <!-- El name define lo que enviamos a la request  -->
                                                             
-                                                            <div class="form-control">
-                                                                    <li><label>Seleccione tipo de servicio:</label> 
-                                                                        <select name="id_tipo_servicio"  required>
+                                                            <div class="form-control" id="modalAbierto">
+                                                                    <label>Seleccione tipo de servicio:</label> 
+                                                                        <select name="id_tipo_servicio" id="selectModal" required>
                                                                                 @foreach ($tipos_servicio as $tipo)
                                                                                 <option value="{{$tipo->id_tipo_servicio}}">{{$tipo->tipoServicio}}</option>
                                                                                 @endforeach
