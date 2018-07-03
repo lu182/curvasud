@@ -8,7 +8,7 @@
                         <div class="col-md-12">
                             <div class="card animated zoomIn" style="text-align:center;background: -webkit-linear-gradient(left, rgba(63,255,10,0.74) 0%,rgba(63,255,10,0.74) 1%,rgba(255,35,35,0.72) 100%); ">
                                 <div class="card-header " style="background:none;color:white">
-                                    <h4 class="card-title" style="text-shadow: 2px 2px 30px black;color:white">Bienvenido {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</h4>
+                                    <h4 class="card-title" style="text-shadow: 2px 2px 30px black;color:white">Bienvenida {{ Auth::user()->nombre }} {{ Auth::user()->apellido }}</h4>
                                     <p class="card-category" style="color:white;">Gracias por elegir Curvasud</p>
                                 </div>
                                 <div class="card-body " style="background:none">

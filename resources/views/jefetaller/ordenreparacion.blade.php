@@ -68,6 +68,14 @@ li{
                         </select>
                 
                 </div>
+
+                <div class="form-control seleccionVehiculo">
+                        <li><label>Seleccione Vehiculo:</label> 
+                                <select name="vehiculo" id="vehiculos">
+                                             
+                                </select>
+                                       
+                </div>
         
                 <div class="form-control">
                         <li><label>Motivo de Ingreso:</label> 

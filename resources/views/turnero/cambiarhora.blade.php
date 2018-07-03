@@ -3,21 +3,35 @@
 
 @section("content")
 
+
+<style>
+
+    #disponible{
+        width: 250px;
+        text-align: center;
+    }
+
+    #ocupado{
+        width: 250px;
+        text-align: center;
+    }
+
+</style>
 <div class="row">
 <div class="col-md-12">
 <div class="card">
 
-<h2> Turnos disponibles para {{$fecha}} </h2>
+<h3 style="text-align:center"> Turnos disponibles para el @php echo date("d-m-Y", strtotime($fecha)); @endphp </h3>
 
-<h3> Referencias </h3>
+<h4 style="margin-left:18px"> Referencias </h4>
     
     <div class="container">
       
 
-                    <div class="alert alert-success">Disponible</div>
+                    <div class="alert alert-success" id="disponible">Disponible</div>
 
 
-                        <div class="alert alert-danger">Ocupado</div>
+                        <div class="alert alert-danger" id="ocupado">Ocupado</div>
 
 
 
@@ -37,10 +51,10 @@
                                 @foreach ($horas as $hora)
                                 <div style="margin-top:5%">
                                 @if ($hora["estado"] == 0)
-                                <input type="" class="alert alert-danger" disabled value="{{$hora['hora']}}"  name="hora" style="cursor:pointer;width:80%;margin:auto"/> 
+                                <input type="" class="alert alert-danger" disabled value="{{$hora['hora']}}"  name="hora" style="cursor:pointer;width:80%;margin:auto;text-align:center"/> 
                                 @endif
                                 @if ($hora["estado"] == 1)
-                                <input type="submit" class="alert alert-success" value="{{$hora['hora']}}"  name="hora" style="cursor:pointer;width:80%;margin:auto"/> 
+                                <input type="submit" class="alert alert-success" value="{{$hora['hora']}}"  name="hora" style="cursor:pointer;width:80%;margin:auto;text-align:center"/> 
                                 @endif
                                 </div>
                                 @endforeach

@@ -242,7 +242,7 @@ class TuneroController extends Controller
 
     }
 
-    public function cambiar_fecha(Request $request) //da error la ruta curvasud.com/cambiar_fecha
+    public function cambiar_fecha(Request $request) 
     {
         $vehiculos = Vehiculo::where("id_cliente", Auth::user()->id)->get();
 
@@ -367,7 +367,7 @@ class TuneroController extends Controller
 
         $tipos_servicio = DB::table("tipos_servicios")->get();
 
-return redirect()->route("misturnos");
+        return redirect()->route("misturnos")->withErrors(['Turno modificado correctamente']);;
     }
 
 }
