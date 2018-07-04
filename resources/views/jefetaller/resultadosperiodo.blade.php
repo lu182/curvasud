@@ -3,7 +3,7 @@
 
 @section("content")
 
-<h3>ORDENES ENCONTRADAS EN EL PERIODO DESDE {{$desde}} HASTA {{$hasta}}</h3>
+<h4>ORDENES ENCONTRADAS EN EL PERIODO DESDE: {{$desde}} HASTA {{$hasta}}</h4>
 <form action="{{route('jefetaller/periodoPDF')}}" target="_blank" method="POST"> 
     @csrf
     <input type="hidden" name="desde" value="{{$desde}}" >
@@ -14,7 +14,7 @@
    
 </form>
 @if ($ordenes->count() > 0)
-<h3> Se encontraron {{$ordenes->count()}} órdenes </h3>
+<h3> Total de órdenes: {{$ordenes->count()}} </h3>
 
 
 <table class="table display" id="tabla">

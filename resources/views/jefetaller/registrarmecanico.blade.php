@@ -74,7 +74,7 @@
                         <div class="col-md-7">
                             <div class="form-group">
                                 <label>Domicilio</label>
-                                <input type="text" class="form-control" placeholder="Domicilio" name= "domicilio">
+                                <input type="text" class="form-control" name= "domicilio">
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
@@ -113,6 +113,7 @@
                                 </div>
                    
                     <button type="submit" class="btn btn-info btn-fill pull-right">REGISTRAR</button>
+                    <p style="margin-left:200px;margin-top:15px">Todos los campos son obligatorios</p>
                     <div class="clearfix"></div>
                 </form>
             </div>

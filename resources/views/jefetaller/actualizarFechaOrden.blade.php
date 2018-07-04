@@ -13,12 +13,12 @@ Si lo desea, puede también actualizar la fecha de egreso del vehículo.
 
     <input type="hidden" value="{{$orden->id_orden_reparacion}}" name="id">
 <div class="form-control">
-        <li><label>Seleccione nueva fecha de egreso de vehículo (opcional):</label> 
-        <input type="text" name="fecha" value="{{$orden->fecha_egreso_vehiculo}}" id="calendario" readonly required style="width:400px;border: none;color: white;"></li>
+        <label>Seleccione nueva fecha de egreso de vehículo (opcional):</label> 
+        <input type="text" name="fecha" value="{{$orden->fecha_egreso_vehiculo}}" id="calendario" readonly required style="width:400px;border: none;color: white;">
 
 </div>
 
-<input type="submit" value="Actualizar" class="btn btn-primary"> 
+<input type="submit" value="Actualizar" class="btn btn-primary" style="margin-left:720px;margin-top:420px"> 
 </form>
 
 

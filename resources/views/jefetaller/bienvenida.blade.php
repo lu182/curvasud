@@ -80,7 +80,7 @@
      <div class="col-md-6">
         <div class="card">
            <div class="card-header" >
-              <h3 style="text-align: center"> Total de turnos por tipo de servicio</h3>
+              <h3 style="text-align: center"> Total de vehículos por mes</h3>
            </div>
            <div style="width:100%;">
               {!! $vehiculosMes->render() !!}

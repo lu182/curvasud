@@ -5,9 +5,9 @@
          }
 </style>
 
-<h3>ORDENES ENCONTRADAS EN EL PERIODO DESDE {{$desde}} HASTA {{$hasta}}</h>
+<h3>ORDENES ENCONTRADAS EN EL PERIODO DESDE {{$desde}} HASTA {{$hasta}}</h3>
 @if ($ordenes->count() > 0)
-<h3> Se encontraron {{$ordenes->count()}} órdenes </h3>
+<h4> Total de órdenes: {{$ordenes->count()}}</h4>
 
 
 <table class="table display" id="tabla" cellspacing="5" >

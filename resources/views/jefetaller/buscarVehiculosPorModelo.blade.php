@@ -11,7 +11,7 @@
                     <br>
                     <br>
                     <ul> 
-                        <li><label>Modelo de vehículo:</label> 
+                        <label>Modelo de vehículo:</label> 
                        
                             <select name="modelo">
                                     @foreach ($modelos as $key => $modelo)
@@ -19,7 +19,7 @@
                                                             @endforeach
                               
                             </select>
-                        <li> <input type="submit" name="btnConsultarModelo" value="CONSULTAR" id=""/> </li>
+                        <input type="submit" class="btn btn-primary" name="btnConsultarModelo" value="CONSULTAR" style="margin-left:20px"/> 
                     </ul>
                 </form>
             </div>

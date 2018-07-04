@@ -24,7 +24,7 @@
                         
                     <th scope="row">{{$cliente->name}}</th>
                     <td>{{$cliente->nombre}} {{$cliente->apellido}}</td>
-                    <td>{{$cliente->fecha_nac}}</td>
+                    <td>@php echo date("d-m-Y", strtotime($cliente->fecha_nac));@endphp </th>                    
                     <td>{{$cliente->telefono}}</td>
                     <td>{{$cliente->email}} </td>
                         

@@ -21,7 +21,7 @@
 
     <li>
             
-        <a href="{{route('/jefetaller/trabajosPorMecanicoMostrar')}}">Generar un informe del total de tabajos realizados por mecánico</a>
+        <a href="{{route('/jefetaller/trabajosPorMecanicoMostrar')}}">Generar un informe del total de trabajos realizados por mecánico</a>
         </li>
 
         <li>
@@ -40,7 +40,7 @@
                     
 
                     <li>
-                            <a href="{{route('/jefetaller/VehiculosMes')}}">Generar un informe de la cantidad total de vehiculos ingesados en el mes</a>
+                            <a href="{{route('/jefetaller/VehiculosMes')}}">Generar un informe de la cantidad total de vehiculos ingresados en el mes</a>
                         </li>
 
 

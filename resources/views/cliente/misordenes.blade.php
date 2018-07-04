@@ -53,7 +53,7 @@ padding:3px!important
                             <th>Mecánico</th>
                             <th>Modelo</th>
                             <th>Chasis</th>
-
+                            <th>Órden</th>
 
                         </tr>
                     </thead>
@@ -66,7 +66,7 @@ padding:3px!important
                                 <td>{{$ordenIndividual->orden_mecanico->nombre}} {{$ordenIndividual->orden_mecanico->apellido}}</td>
                                 <td>{{$ordenIndividual->orden_vehiculo->modelo}}</td>
                                 <td>{{$ordenIndividual->orden_vehiculo->nro_chasis}}</td>
-
+                                <td><a style="font-size: 25" target="_blank" href="" class="btn btn-primary">DESCARGAR</a></td>
 
                             </tr>
                         @endforeach

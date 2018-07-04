@@ -281,7 +281,7 @@ class EacController extends Controller
 
     }
 
-    /////////// PENDIENTEEEE !!!
+    
 
     //Consultar órdenes de reparación ingresadas, por cliente (tener en cuenta que un cliente puede tener varios vehiculos).
     public function mostrarORporCliente()

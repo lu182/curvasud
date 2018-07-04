@@ -19,7 +19,7 @@
                                                             @endforeach
                               
                             </select>
-                        <input type="submit" name="btnConsultar" value="BUSCAR" id="" formtarget="_blank"/>
+                        <input type="submit" class="btn btn-primary" style="margin-left:18px" name="btnConsultar" value="BUSCAR" id="" formtarget="_blank"/>
                     
                 </form>
             </div>

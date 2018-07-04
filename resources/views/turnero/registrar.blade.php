@@ -12,11 +12,11 @@
                 <div class="alert alert-success">{{$errors->first()}}</div>
             
             @endif
-<h2> Registrar Turno </h2>
+<h2 style= "text-align:center"> REGISTRAR TURNO </h2>
    <form action="" method="post" id="formRegistro">
         @csrf
 <div class="form-control">
-        <li><label>Seleccione tipo de servicio:</label> 
+        <label>Seleccione tipo de servicio:</label> 
             <select name="id_tipo_servicio"  required>
                     @foreach ($tipos_servicio as $tipo)
                     <option value="{{$tipo->id_tipo_servicio}}">{{$tipo->tipoServicio}}</option>
@@ -25,7 +25,7 @@
 </div>
 
 <div class="form-control">
-                <li><label>Seleccione Vehiculo:</label> 
+                <label>Seleccione Vehiculo:</label> 
                     <select name="id_vehiculo"  required>
                             @foreach ($vehiculos as $vehiculo)
                             <option value="{{$vehiculo->id_vehiculo}}">{{$vehiculo->modelo}} - {{$vehiculo->patente}} </option>
@@ -35,12 +35,12 @@
 
 
 <div class="form-control">
-        <li><label>Seleccione Fecha del Turno:</label> 
-        <input type="text" name="fecha" value="" id="calendario" readonly required style="width:400px;border: none;color: white;"></li>
+        <label>Seleccione Fecha del Turno:</label> 
+        <input type="text" name="fecha" value="" id="calendario" readonly required style="width:400px;border: none;color: white;">
 
 </div>
 
-<li> <input type="submit"  value="Registrar Turno" placeholder="" id="registrarse"/> </li>
+<input class= "btn btn-primary" type="submit"  value="Registrar Turno" style="margin-left:30px" id="registrarse"/> 
 
 </div>
 </div>

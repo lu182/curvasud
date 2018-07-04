@@ -18,7 +18,7 @@
                     
                         <label>Chasis </label> <input type="text" name="nro_chasis" placeholder="Ingrese n° de chasis" id="" required /> 
                                        
-                        <input type="submit" name="btnConsultarOrden" value="CONSULTAR" id=""/> 
+                        <input type="submit" class= "btn btn-primary" name="btnConsultarOrden" value="CONSULTAR" id=""/> 
                     
                 </form>
             </div>

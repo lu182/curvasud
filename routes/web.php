@@ -43,6 +43,8 @@ Route::get('/misturnos',"TuneroController@verTurnos")->name("misturnos");
 Route::get('/misordenes',"usuariosController@misOrdenes")->name("misordenes");
 
 
+
+
 Route::resource("usuarios","ClientesEmpleadosControlador");
 
 

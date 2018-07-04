@@ -245,4 +245,6 @@ class usuariosController extends Controller
         return view("cliente.misordenes",["ordenes"=>$ordenes]);
     }
 
+    
+
 }

@@ -18,7 +18,7 @@
                         <label>Desde:</label> <input type="date" name="desde"  required />
                         <label>Hasta:</label> <input type="date" name="hasta"  required />
 
-                         <input type="submit" name="btnConsultarChasis" value="CONSULTAR" id=""/> 
+                         <input type="submit" class="btn btn-primary" style="margin-left:18px" name="btnConsultarChasis" value="CONSULTAR" id=""/> 
                     
                 </form>
             </div>

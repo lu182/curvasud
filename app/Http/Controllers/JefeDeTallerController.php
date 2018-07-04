@@ -230,7 +230,8 @@ array_push($cantidad_vehiculos,0);
             $mecanicoNuevo->update(["id_ciudad" => $ciudadNueva->id_ciudad]);
 
         }
-        return view("jefetaller.bienvenida")->withErrors(['Mecánico Registrado Correctamente']);
+        return Redirect::back()->withErrors(['Mecánico registrado correctamente']);
+        // view("jefetaller.bienvenida")->withErrors(['Mecánico Registrado Correctamente']);
 
     }
 

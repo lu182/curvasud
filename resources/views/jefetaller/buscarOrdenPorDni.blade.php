@@ -17,7 +17,7 @@
                     
                         <label>DNI:</label> <input type="text" name="dni" placeholder="Ingrese dni" id="" required />
                                        
-                         <input type="submit" name="btnConsultarChasis" value="CONSULTAR" id=""/> 
+                         <input type="submit" class= "btn btn-primary" name="btnConsultarChasis" value="CONSULTAR" id=""/> 
                     
                 </form>
             </div>

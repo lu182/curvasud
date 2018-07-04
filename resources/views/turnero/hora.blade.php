@@ -3,22 +3,37 @@
 
 @section("content")
 
+<style>
+    
+    #disponible{
+        width: 250px;
+        text-align: center;
+    }
+
+    #ocupado{
+        width: 250px;
+        text-align: center;
+    }
+
+
+</style>
+
 <div class="row">
 <div class="col-md-12">
 <div class="card">
 
-<h2> Turnos disponibles para la fecha seleccionada </h2>
-<h2> Con el tipo de servicio {{$servicio->tipoServicio}} </h2>
+<h2 style="text-align: center"> Turnos disponibles para el @php echo date("d-m-Y", strtotime($fecha)); @endphp </h2>
+<h3 style="margin-left:18px"> Service: {{$servicio->tipoServicio}} </h3>
 
-<h3> Referencias </h3>
+<h4 style="margin-left:18px"> Referencias </h4>
     
     <div class="container">
       
 
-                    <div class="alert alert-success">Disponible</div>
+                    <div style="text-align: center" class="alert alert-success" id="disponible">Disponible</div>
 
 
-                        <div class="alert alert-danger">Ocupado</div>
+                        <div style="text-align: center" class="alert alert-danger" id="ocupado">Ocupado</div>
 
 
 

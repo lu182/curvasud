@@ -46,7 +46,7 @@ li{
                         <div class="alert alert-danger">{{$errors->first()}}</div>
                     
                     @endif
-        <h2> Órden de Reparación </h2>
+        <h2 style="text-align:center"> ÓRDEN DE REPARACIÓN </h2>
            <form action="" method="post" >
                 @csrf
 

@@ -5,8 +5,9 @@
 @section("content")
 
 @if(!$clienteEncontrado == null)
-<h2> Cliente: {{ $clienteEncontrado->nombre}} {{ $clienteEncontrado->apellido}}
-  para el chasis: {{$clienteEncontrado->nro_chasis}}</h2>
+<h2> Datos encontrados para el chasis: {{$clienteEncontrado->nro_chasis}}  </h2>
+<!-- <h2> Cliente: {{$clienteEncontrado->nombre}} {{$clienteEncontrado->apellido}}
+  para el chasis: {{$clienteEncontrado->nro_chasis}}</h2> -->
 
 <table class="table display" id="tabla">
     <thead class="thead-dark">
