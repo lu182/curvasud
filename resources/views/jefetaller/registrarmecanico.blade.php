@@ -23,7 +23,7 @@
                         <div class="col-md-12 px-1">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="text" class="form-control" placeholder="" name= "email">
+                                <input type="text" class="form-control" placeholder="" name= "email" required>
                             </div>
                         </div>
                         
@@ -32,24 +32,24 @@
                         <div class="col-md-6 pr-1">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" placeholder="" name="nombre" >
+                                <input type="text" class="form-control" placeholder="" name="nombre" required>
                             </div>
                         </div>
                         <div class="col-md-6 pl-1">
                             <div class="form-group">
                                 <label>Apellido</label>
-                                <input type="text" class="form-control" placeholder=""  name="apellido" >
+                                <input type="text" class="form-control" placeholder=""  name="apellido" required>
                             </div>
                         </div>
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>Documento</label>
-                                <input type="number" class="form-control" placeholder="" name="dni" >
+                                <input type="number" class="form-control" placeholder="" name="dni" required >
                             </div>
                         </div>
                         <div class="form-group col-md-4">
                            <label for="">Tipo de documento</label>
-                           <select id="selector_ciudad" class="form-control" name="id_tipo_doc">
+                           <select id="selector_ciudad" class="form-control" name="id_tipo_doc" required>
                                    
 
                                 @foreach ($tipos_documento as $tipo)
@@ -64,7 +64,7 @@
                         <div class="col-md-4 pl-1">
                             <div class="form-group">
                                 <label>Fecha de nacimiento</label>
-                                <input type="date" class="form-control" placeholder="" name="fecha_nac" >
+                                <input type="date" class="form-control" placeholder="" name="fecha_nac" required>
                             </div>
                         </div>
                        
@@ -74,13 +74,13 @@
                         <div class="col-md-7">
                             <div class="form-group">
                                 <label>Domicilio</label>
-                                <input type="text" class="form-control" name= "domicilio">
+                                <input type="text" class="form-control" name= "domicilio" required>
                             </div>
                         </div>
                         <div class="col-md-4 px-1">
                             <div class="form-group">
                                 <label>Cód.Postal</label>
-                                <input type="number" class="form-control" placeholder="" name= "cod_postal">
+                                <input type="number" class="form-control" placeholder="" name= "cod_postal" required>
                             </div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                         <div class="col-md-4 px-1">
                             <div class="form-group">
                                 <label>Teléfono</label>
-                                <input type="text" class="form-control" placeholder="" name= "telefono">
+                                <input type="text" class="form-control" placeholder="" name= "telefono" required>
                             </div>
                         </div>
                         <div class="form-group col-md-4">

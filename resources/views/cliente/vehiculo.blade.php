@@ -122,8 +122,8 @@
                                 @endforeach
                             </select>
                         </li>
-                        <li class="listas"><label>Marca:</label> <input type="text" name="marca" value="Fiat" id="" readonly> </li>
-                        <li class="listas"><label>* Modelo:</label><input type="text" name="modelo" value="" id="" required></li>
+                        <li class="listas"><label>Marca:</label> <input type="text"  name="marca" value="Fiat" id="" readonly> </li>
+                        <li class="listas"><label>* Modelo:</label><input type="text" pattern="[A-Za-z]" name="modelo" value="" id="" required></li>
                         <li class="listas"><label>* Año:</label> <input type="number" accept="number" name="anio" value="" id="" required> </li>
                         <li class="listas"><label>* Patente:</label><input type="text" name="patente" value="" id="" minlength=7 required> </li>
                         <li class="listas"><label>* Número de Chasis:</label><input type="text" name="nro_chasis" value="" id="" minlength=7 required> </li>

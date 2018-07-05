@@ -49,12 +49,14 @@
                <thead class="thead-dark">
                   <tr>
                      <th scope="col">Fecha del turno</th>
+                     <th scope="col">Hora del turno</th>
                      <th scope="col">Cliente</th>
                   </tr>
                </thead>
                <tbody>
                   @foreach ($turnosHoy as $turno)
                   <td>{{$turno->corregirFecha()}}</td>
+                  <td>{{$turno->hora}}</td>
                   <td>{{$turno->cliente->nombre}} {{$turno->cliente->apellido}}</td>
                   @endforeach
                </tbody>

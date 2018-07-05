@@ -59,8 +59,8 @@
                         <label>Ingrese nombre de ciudad</label>
                         <input type="text" class="form-control" placeholder="" name = "inputOtro" >
                 </div>
-                <li><label>* Nombre:</label> <input type="text" name="nombre" value="" id="" required> </li>
-                <li><label>* Apellido:</label> <input type="text" name="apellido" value="" id="" required> </li>
+                <li><label>* Nombre:</label> <input type="text" pattern="[A-Za-z]" name="nombre" title="El campo solo acepta letras.Verifique los datos ingresados" value="" id="" required> </li>
+                <li><label>* Apellido:</label> <input type="text" pattern="[A-Za-z]" name="apellido" title="El campo solo acepta letras.Verifique los datos ingresados" value="" id="" required> </li>
                 <li><label>Fecha de nacimiento:</label> <input type="date" name="fecha_nac" value="" id=""></li>
                 <li><label>Razón social:</label> <input type="text" name="razon_social" value="" id="">  </li>
                 <li> <label>Domicilio:</label> <input type="text" name="domicilio" value="" id=""> </li>

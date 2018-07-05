@@ -40,6 +40,10 @@ class JefeDeTallerController extends Controller
         $dia = $fecha_actual->day;
         $fecha_a_buscar = $año . "-" . $mes . "-" . $dia;
 
+        $turnosHoy = Turno::where("id_estado_turno", "2")
+                ->where("fecha", '=', $fecha_a_buscar)
+                ->get();
+
                     //Turnos por tipo de servicio
 
 
