@@ -114,7 +114,6 @@ class TuneroController extends Controller
                 $horas[0] = ["hora" => $horas[0]["hora"], "estado" => 0];
                 $horas[1] = ["hora" => $horas[1]["hora"], "estado" => 0];
 
-
             }
 
             if ($clave) {
@@ -126,18 +125,9 @@ class TuneroController extends Controller
                     $horas[$clave + 1] = ["hora" => $horas[$clave + 1]["hora"], "estado" => 0];
                 }
 
-                if (array_key_exists($clave + 2, $horas)) {
-                    $horas[$clave + 2] = ["hora" => $horas[$clave + 2]["hora"], "estado" => 0];
-                }
-
-
 
                 if (array_key_exists($clave - 1, $horas)) {
                     $horas[$clave - 1] = ["hora" => $horas[$clave - 1]["hora"], "estado" => 0];
-                }
-
-                if (array_key_exists($clave - 2, $horas)) {
-                    $horas[$clave - 2] = ["hora" => $horas[$clave - 2]["hora"], "estado" => 0];
                 }
 
             }
@@ -313,7 +303,6 @@ class TuneroController extends Controller
 
                 $horas[0] = ["hora" => $horas[0]["hora"], "estado" => 0];
                 $horas[1] = ["hora" => $horas[1]["hora"], "estado" => 0];
-                $horas[2] = ["hora" => $horas[2]["hora"], "estado" => 0];
 
             }
 
@@ -326,21 +315,12 @@ class TuneroController extends Controller
                     $horas[$clave + 1] = ["hora" => $horas[$clave + 1]["hora"], "estado" => 0];
                 }
 
-                if (array_key_exists($clave + 2, $horas)) {
-                    $horas[$clave + 2] = ["hora" => $horas[$clave + 2]["hora"], "estado" => 0];
-                }
-
-                if (array_key_exists($clave + 3, $horas)) {
-                    $horas[$clave + 3] = ["hora" => $horas[$clave + 3]["hora"], "estado" => 0];
-                }
-
                 if (array_key_exists($clave - 1, $horas)) {
                     $horas[$clave - 1] = ["hora" => $horas[$clave - 1]["hora"], "estado" => 0];
                 }
 
-                if (array_key_exists($clave - 2, $horas)) {
-                    $horas[$clave - 2] = ["hora" => $horas[$clave - 2]["hora"], "estado" => 0];
-                }
+
+
 
             }
         }
