@@ -61,7 +61,7 @@ class TuneroController extends Controller
 
             }
 
-            
+
             if($fecha > $turno->fecha and $id_tipo_servicio < $turno->id_tipo_servicio){
                 return redirect()->route('turnero')->withErrors(['Ya tienes un turno registrado con un tipo de servicio anterior']);
 
@@ -113,7 +113,7 @@ class TuneroController extends Controller
 
                 $horas[0] = ["hora" => $horas[0]["hora"], "estado" => 0];
                 $horas[1] = ["hora" => $horas[1]["hora"], "estado" => 0];
-                $horas[2] = ["hora" => $horas[2]["hora"], "estado" => 0];
+
 
             }
 
@@ -130,9 +130,7 @@ class TuneroController extends Controller
                     $horas[$clave + 2] = ["hora" => $horas[$clave + 2]["hora"], "estado" => 0];
                 }
 
-                if (array_key_exists($clave + 3, $horas)) {
-                    $horas[$clave + 3] = ["hora" => $horas[$clave + 3]["hora"], "estado" => 0];
-                }
+
 
                 if (array_key_exists($clave - 1, $horas)) {
                     $horas[$clave - 1] = ["hora" => $horas[$clave - 1]["hora"], "estado" => 0];
@@ -149,7 +147,7 @@ class TuneroController extends Controller
 
     }
 
-    public function guardarTurno(Request $request) 
+    public function guardarTurno(Request $request)
     {
 
         $turno = Turno::create($request->all());
@@ -242,7 +240,7 @@ class TuneroController extends Controller
 
     }
 
-    public function cambiar_fecha(Request $request) 
+    public function cambiar_fecha(Request $request)
     {
         $vehiculos = Vehiculo::where("id_cliente", Auth::user()->id)->get();
 

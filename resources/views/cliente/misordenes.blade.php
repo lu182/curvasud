@@ -2,7 +2,7 @@
 
 <style>
 
-        .btn{ 
+        .btn{
             width: 200px!important;
             height: 30px!important;
             font-size: 12px!importat;
@@ -17,19 +17,19 @@
 padding:3px!important
         }
 
-        
+
 </style>
 
 @section("content")
 <div class="col-md-12">
-      
+
     @if($errors->any())
 
     <div class="alert alert-success">{{$errors->first()}}</div>
 
 @endif
 
-    
+
         <div class="card strpied-tabled-with-hover">
             <div class="card-header ">
                 <h4 class="card-title" align="center">LISTADO DE ÓRDENES</h4>
@@ -70,20 +70,20 @@ padding:3px!important
 
                             </tr>
                         @endforeach
-                     
+
 
                     </tbody>
                 </table>
             </div>
             @endforeach
         </div>
- 
+
     </div>
-                
 
 
 
-    
+
+
     @endsection
 
 
